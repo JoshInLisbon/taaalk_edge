@@ -1,0 +1,2 @@
+class NewSpkr < ApplicationRecord
+end

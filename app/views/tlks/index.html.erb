@@ -1,0 +1,12 @@
+<h1>Taaalk</h1>
+<h2>Description of The Taaalk Co.</h2>
+
+<% @tlks.each do |tlk| %>
+  <%= link_to show_tlk_path(tlk) do %>
+    <h4><%= tlk.title %></h4>
+    <% tlk.spkrs.each do |spkr| %>
+      <p><%= spkr.name %></p>
+    <% end %>
+    <p><%= tlk.description %></p>
+  <% end %>
+<% end %>

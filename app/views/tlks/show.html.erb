@@ -1,0 +1,23 @@
+<h1><%= @tlk.title %></h1>
+<h2><%= @tlk.description %></h2>
+<% @tlk.spkrs.each do |spkr| %>
+  <h3><%= spkr.name %></h3>
+  <p><%= spkr.bio %></p>
+<% end %>
+
+<% @tlk.msgs.each do |msg| %>
+  <p><%= msg.spkr.name %></p>
+  <p><%= msg.content %></p>
+<% end %>
+
+<% @user_spkrs.each do |spkr| %>
+  <%= form_with model: @msg do |form| %>
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.rich_text_area :content %>
+    </div>
+    <%= form.hidden_field :tlk_id, :value => @tlk.id %>
+    <%= form.hidden_field :spkr_id, :value => spkr.id %>
+    <%= form.submit %>
+  <% end %>
+<% end %>
