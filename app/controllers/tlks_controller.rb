@@ -15,19 +15,35 @@ class TlksController < ApplicationController
     @tlk = Tlk.new()
   end
 
+  def edit
+    @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
+  end
+
   def create
     @tlk = Tlk.new(tlk_params)
     @tlk.user = current_user
-    @tlk.save!
+    if @tlk.save!
+      respond_to do |format|
+        format.js # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
+        format.html { redirect_to new_tlk_path(@tlk) }
+      end
+    end
+    # create_self_spkr
+    # create_external_spkrs
+    # redirect_to show_tlk_path(@tlk)
+  end
+
+  def update
+    @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
+    @tlk.update(tlk_params)
     create_self_spkr
-    create_external_spkrs
     redirect_to show_tlk_path(@tlk)
   end
 
   private
 
   def tlk_params
-    params.require(:tlk).permit(:title, :description)
+    params.require(:tlk).permit(:title)
   end
 
   def create_self_spkr

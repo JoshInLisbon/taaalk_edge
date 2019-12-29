@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module TaaalkEdge
   class Application < Rails::Application
+    # For AJAX
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

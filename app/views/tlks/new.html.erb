@@ -1,14 +1,13 @@
 <h1>hello!</h1>
 
+<div id="tlk_title">
+  <%= simple_form_for(@tlk, remote: true) do |f| %>
+    <%= f.input :title %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
+
 <%= form_with model: @tlk, html: { autocomplete: "off" } do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
   <h2>Your own details for the Taaalk</h2>
   <p>You can customise your details for each Taaalk.</p>
   <div class="field">
@@ -38,6 +37,8 @@
   <%= form.submit %>
 
 <% end %>
+
+
 
 <!-- 1. invite another user with an email address -->
 <!-- 2. invite a user who you are 'friends' with already -->
