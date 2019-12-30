@@ -1,23 +1,7 @@
-<%#= simple_form_for(@tlk) do |f| %>
-  <%#= f.input :title %>
-  <%#= f.button :submit %>
-<%# end %>
-
 <%= form_with model: @tlk do |f| %>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
-  </div>
-  <div class="tlk-links">
-    <p><%= link_to tlk_invite_url(@tlk) %></p>
-  </div>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, value: current_user.username %>
-  </div>
-  <div class="field">
-    <%= f.label :bio %>
-    <%= f.text_field :bio, value: current_user.bio %>
   </div>
   <%= f.submit %>
 <% end %>

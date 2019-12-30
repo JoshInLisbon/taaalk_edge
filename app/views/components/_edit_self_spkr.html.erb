@@ -1,0 +1,9 @@
+<% @tlk.spkrs.each do |spkr| %>
+  <% if spkr.user == current_user %>
+    <%= simple_form_for(spkr) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :bio %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+<% end %>

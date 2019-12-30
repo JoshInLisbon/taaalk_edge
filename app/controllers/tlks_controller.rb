@@ -22,15 +22,19 @@ class TlksController < ApplicationController
   def create
     @tlk = Tlk.new(tlk_params)
     @tlk.user = current_user
+    @tlk.invite_code = '%010d' % rand(0..999999)
     if @tlk.save!
-      respond_to do |format|
-        format.js # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
-        format.html { redirect_to new_tlk_path(@tlk) }
-      end
+      create_self_spkr
+      redirect_to tlk_owner_path(@tlk)
+      # show_tlk_path(@tlk)
     end
+    # respond_to do |format|
+    #   format.js # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
+    #   format.html { redirect_to new_tlk_path(@tlk) }
+    # end
     # create_self_spkr
     # create_external_spkrs
-    # redirect_to show_tlk_path(@tlk)
+
   end
 
   def update
@@ -47,9 +51,12 @@ class TlksController < ApplicationController
   end
 
   def create_self_spkr
-    self_params = params.require(:tlk).permit(:name, :bio)
-    spkr = Spkr.new(self_params)
+    # self_params = params.require(:tlk).permit(:name, :bio)
+    # spkr = Spkr.new(self_params)
+    spkr = Spkr.new()
     spkr.user = current_user
+    spkr.name = current_user.username
+    spkr.bio = current_user.bio
     spkr.tlk = @tlk
     spkr.save!
   end

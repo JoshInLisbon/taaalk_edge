@@ -1,0 +1,2 @@
+class SpkrsController < ApplicationController
+end
