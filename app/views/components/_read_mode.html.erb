@@ -1,7 +1,15 @@
-<h1><%= @tlk.title %></h1>
+<h1 class="tlk-title"><%= @tlk.title %></h1>
 
 <% @tlk.spkrs.each do |spkr| %>
-  <h3><%= spkr.name %></h3>
-  <p><%= spkr.bio %></p>
+  <% if spkr.user == @tlk.user %>
+    <h3 class="spkr-name-<%= spkr.id %>"><%= spkr.name %></h3>
+    <p class="spkr-bio-<%= spkr.id %>"><%= spkr.bio %></p>
+  <% end %>
 <% end %>
 
+<% @tlk.spkrs.each do |spkr| %>
+  <% unless spkr.user == @tlk.user %>
+    <h3><%= spkr.name %></h3>
+    <p><%= spkr.bio %></p>
+  <% end %>
+<% end %>

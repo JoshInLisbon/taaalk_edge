@@ -2,9 +2,9 @@
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == current_user %>
     <%= form_with model: spkr do |f| %>
-      <%= f.text_field :name %>
-      <%= f.text_field :bio %>
-      <%= f.submit "Update Your Details" %>
+      <%= f.text_field :name, id: "spkr-name-#{spkr.id}-edit", class: 'spkr-edit' %>
+      <%= f.text_field :bio, id: "spkr-bio-#{spkr.id}-edit", class: 'spkr-edit' %>
+      <%= f.submit "Update Your Details", class: 'btn btn-secondary' %>
     <% end %>
     <p id="unsaved-note-self-spkr">Changes not saved. Press 'Update Your Details' to save.</p>
   <% end %>

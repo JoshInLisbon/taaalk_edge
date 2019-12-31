@@ -41,8 +41,11 @@ class TlksController < ApplicationController
   def update
     @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
     @tlk.update(tlk_params)
-    create_self_spkr
-    redirect_to show_tlk_path(@tlk)
+    # redirect_to show_tlk_path(@tlk)
+    respond_to do |format|
+      format.js { render 'update', layout: false } # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
+      format.html { redirect_to new_tlk_path(@tlk) }
+    end
   end
 
   private
