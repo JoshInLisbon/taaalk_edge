@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'tlk/owner/:id', to: 'owner/tlks#show', as: 'tlk_owner'
   resources :tlks, only: [:new, :create, :update, :edit]
   resources :msgs, only: :create
+  resources :spkrs, only: [:update]
 end

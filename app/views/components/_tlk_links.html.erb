@@ -1,7 +1,12 @@
 <div class="tlk-links">
-  <p>Some important links:</p>
-  <p><strong>Invite</strong> people to Taaalk with you:</p>
-  <p><%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>, invite code: <%= @tlk.invite_code %></p>
-  <p>For people to <strong>read your Taaalk</strong> and where you will <strong>write</strong>:</p>
-  <p><%= link_to show_tlk_url(@tlk), show_tlk_url(@tlk) %></p>
+  <p><strong>Key links:</strong></p>
+  <div class="tlk-note">
+    <p>To invite people to this Taaalk:</p>
+    <p><%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>, invite code: <%= @tlk.invite_code %></p>
+    <p>Inviting people is optional. Your Taaalk can be a monologue 🎤.</p>
+  </div>
+  <div class="tlk-note">
+    <p>To share your Taaalk with readers:</p>
+    <p><%= link_to show_tlk_url(@tlk), show_tlk_url(@tlk) %></p>
+  </div>
 </div>

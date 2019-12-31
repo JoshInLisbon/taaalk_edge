@@ -24,9 +24,10 @@ class TlksController < ApplicationController
     @tlk.user = current_user
     @tlk.invite_code = '%010d' % rand(0..999999)
     if @tlk.save!
+      @edit = true
       create_self_spkr
-      redirect_to tlk_owner_path(@tlk)
-      # show_tlk_path(@tlk)
+      redirect_to show_tlk_path(@tlk), flash: { edit: true }
+      # tlk_owner_path(@tlk)
     end
     # respond_to do |format|
     #   format.js # { @tlk }# <-- will render `app/views/reviews/create.js.erb`

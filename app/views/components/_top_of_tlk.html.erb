@@ -1,0 +1,23 @@
+<% if current_user == @tlk.user %>
+  <% if flash[:edit] == true %>
+    <button id="tlk-toggle-edit" class="edit-mode-on">Edit Mode Off</button>
+    <div id="tlk-section-edit" class="tlk-section-on">
+      <%= render 'components/edit_mode' %>
+    </div>
+    <div id="tlk-section-read" class="tlk-section-off">
+      <%= render 'components/read_mode' %>
+    </div>
+  <% else %>
+    <button id="tlk-toggle-edit" class="edit-mode-off">Edit This Taalk</button>
+    <div id="tlk-section-edit" class="tlk-section-off">
+      <%= render 'components/edit_mode' %>
+    </div>
+    <div id="tlk-section-read" class="tlk-section-on">
+      <%= render 'components/read_mode' %>
+    </div>
+  <% end %>
+<% else %>
+  <div id="tlk-section-read">
+    <%= render 'components/read_mode' %>
+  </div>
+<% end %>

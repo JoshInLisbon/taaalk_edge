@@ -1,0 +1,7 @@
+<h1><%= @tlk.title %></h1>
+
+<% @tlk.spkrs.each do |spkr| %>
+  <h3><%= spkr.name %></h3>
+  <p><%= spkr.bio %></p>
+<% end %>
+

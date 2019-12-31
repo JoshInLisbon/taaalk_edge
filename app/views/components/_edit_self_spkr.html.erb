@@ -1,9 +1,12 @@
+<p><strong>Your details...</strong></p>
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == current_user %>
-    <%= simple_form_for(spkr) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :bio %>
-      <%= f.submit %>
+    <%= form_with model: spkr do |f| %>
+      <%= f.text_field :name %>
+      <%= f.text_field :bio %>
+      <%= f.submit "Update Your Details" %>
     <% end %>
+    <p id="unsaved-note-self-spkr">Changes not saved. Press 'Update Your Details' to save.</p>
   <% end %>
 <% end %>
+<p class="p-lesson">You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>

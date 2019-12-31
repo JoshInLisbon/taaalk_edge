@@ -1,0 +1,16 @@
+<p><strong>Other people's details...</strong></p>
+<% if @tlk.spkrs.length == 1 %>
+  <div class="tlk-note">
+    <p>The details of people you invite to Taaalk with will appear here. You will be able to suggest edits to their name and bio.</p>
+  </div>
+<% end %>
+<% @tlk.spkrs.each do |spkr| %>
+  <% unless spkr.user == current_user %>
+    <%= form_with model: spkr do |f| %>
+      <%= f.text_field :name %>
+      <%= f.text_field :bio %>
+      <%= f.submit "Update #{spkr.name.possessive} Details" %>
+    <% end %>
+    <p id="unsaved-note-spkr-<%= spkr.id %>">Changes not saved. Press 'Update <%= spkr.name.possessive %> Details' to save.</p>
+  <% end %>
+<% end %>

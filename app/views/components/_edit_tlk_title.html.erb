@@ -1,7 +1,5 @@
 <%= form_with model: @tlk do |f| %>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <%= f.submit %>
+  <%= f.text_field :title, class: 'tlk-title-edit' %>
+  <%= f.submit "Update Title", class: 'btn btn-secondary', id: 'btn-update-title' %>
 <% end %>
+<p id="unsaved-note-title">Changes not saved. Press 'Update Title' to save.</p>
