@@ -7,10 +7,10 @@
 <% @tlk.spkrs.each do |spkr| %>
   <% unless spkr.user == current_user %>
     <%= form_with model: spkr do |f| %>
-      <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit' %>
-      <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit' %>
+      <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
+      <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
       <%= f.submit "Update #{spkr.name.possessive} Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
     <% end %>
-    <p id="unsaved-note-spkr-<%= spkr.id %>">Changes not saved. Press 'Update <%= spkr.name.possessive %> Details' to save.</p>
+    <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update <%= spkr.name.possessive %> Details' to save.</p>
   <% end %>
 <% end %>

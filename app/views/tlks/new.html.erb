@@ -7,36 +7,6 @@
   <% end %>
 </div>
 
-<%= form_with model: @tlk, html: { autocomplete: "off" } do |form| %>
-  <h2>Your own details for the Taaalk</h2>
-  <p>You can customise your details for each Taaalk.</p>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, value: current_user.username %>
-  </div>
-  <div class="field">
-    <%= form.label :bio %>
-    <p>Make sure your bio matches up to what this Taaalk is about.</p>
-    <%= form.text_field :bio, value: current_user.bio %>
-  </div>
-  <h2>Who are you Taaalking with?</h2>
-  <p>(Optional. You can have a monologue if you want.)</p>
-  <div class="field">
-    <%= form.label :p_email %>
-    <%= form.email_field :p_email %>
-    <p>Note to josh: I can use the title and description for the email content.</p>
-  </div>
-  <div class="field">
-    <%= form.label :p_name %>
-    <%= form.text_field :p_name %>
-  </div>
-  <div class="field">
-    <%= form.label :p_bio %>
-    <%= form.text_field :p_bio %>
-  </div>
-  <%= form.submit %>
-
-<% end %>
 
 
 

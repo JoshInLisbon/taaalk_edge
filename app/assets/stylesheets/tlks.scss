@@ -18,6 +18,14 @@
   display: block;
 }
 
-.tlk-update-needs-save {
-  background: pink;
+.tlk-btn-unsaved {
+  background: green !important;
+}
+
+.tlk-p-unsaved {
+  display: block;
+}
+
+.tlk-p-nochange {
+  display: none;
 }
