@@ -1,7 +1,7 @@
 <%= render 'components/top_of_tlk' %>
 
 <% @tlk.msgs.each do |msg| %>
-  <p class="spkr-name-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
+  <p class="name-spkr-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
   <p><%= msg.content %></p>
 <% end %>
 
