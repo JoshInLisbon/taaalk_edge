@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root to: 'tlks#index'
   get '/tlk/:id', to: 'tlks#show', as: 'show_tlk'
   get 'tlk/invite/:id', to: 'invite/tlks#show', as: 'tlk_invite'
-  get 'tlk/owner/:id', to: 'owner/tlks#show', as: 'tlk_owner'
+  patch 'tlk/jim', to: 'invite/tlks#invited?', as: 'invited_to_tlk'
+  # match 'tlk/invite_code' => 'invite/tlk#invited?', via: :post
   resources :tlks, only: [:new, :create, :update, :edit]
   resources :msgs, only: :create
   resources :spkrs, only: [:update]
