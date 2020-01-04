@@ -1,0 +1,14 @@
+<h1><%= @tlk.title %></h1>
+
+<% if current_user.present? %>
+  <%= render 'components/invite_with_user' %>
+<% else %>
+  <%= render 'components/invite_no_user' %>
+<% end %>
+
+<p>The other people in this Taaalk are:</p>
+
+<% @tlk.spkrs.each do |spkr| %>
+  <h3 class="name-spkr-<%= spkr.id %>"><%= spkr.name %></h3>
+  <p class="bio-spkr-<%= spkr.id %>"><%= spkr.bio %></p>
+<% end %>

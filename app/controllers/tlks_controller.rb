@@ -1,4 +1,6 @@
 class TlksController < ApplicationController
+  include SpkrMaker
+
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -9,6 +11,8 @@ class TlksController < ApplicationController
     @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
     @user_spkrs = Spkr.where(tlk: @tlk, user: current_user)
     @msg = Msg.new()
+    new_spkr_on_invite
+    user_is_spkr_only? if current_user.present?
   end
 
   def new
@@ -25,7 +29,7 @@ class TlksController < ApplicationController
     @tlk.invite_code = '%010d' % rand(0..999999)
     if @tlk.save!
       @edit = true
-      create_self_spkr
+      make_spkr
       redirect_to show_tlk_path(@tlk), flash: { edit: true }
     end
   end
@@ -45,13 +49,14 @@ class TlksController < ApplicationController
     params.require(:tlk).permit(:title)
   end
 
-  def create_self_spkr
-    spkr = Spkr.new()
-    spkr.user = current_user
-    spkr.name = current_user.username
-    spkr.bio = current_user.bio
-    spkr.tlk = @tlk
-    spkr.save!
+  def new_spkr_on_invite
+    @spkr = Spkr.new() if flash[:invited]
+  end
+
+  def user_is_spkr_only?
+    @tlk.spkrs.each do |spkr|
+      @spkr_only = true if spkr.user == current_user && @tlk.user != current_user
+    end
   end
 
 # do I need this??

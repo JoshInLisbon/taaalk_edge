@@ -1,3 +1,5 @@
+import { toggleZone } from 'components/toggle_zone'
+
 const editBtn = document.querySelector('#tlk-toggle-edit');
 const editZone = document.querySelector('#tlk-section-edit');
 const readZone = document.querySelector('#tlk-section-read');
@@ -20,10 +22,10 @@ const changeBtnText = () => {
   }
 }
 
-const toggleZone = (zone) => {
-  zone.classList.toggle('tlk-section-on');
-  zone.classList.toggle('tlk-section-off');
-}
+// const toggleZone = (zone) => {
+//   zone.classList.toggle('tlk-section-on');
+//   zone.classList.toggle('tlk-section-off');
+// }
 
 // update buttons need save
 

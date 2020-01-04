@@ -6,5 +6,6 @@
 
 <%= form_with model: @tlk, as: :post, url: invited_to_tlk_path do |f| %>
   <%= f.text_field :key %>
+  <%= f.hidden_field :id, :value => @tlk.id %>
   <%= f.submit "Submit Invite Code" %>
 <% end %>

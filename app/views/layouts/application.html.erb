@@ -3,9 +3,13 @@
   <head>
     <title>TaaalkEdge</title>
     <meta id="meta" name="js-loader"
-      <% if @tlk.present? %>
+      <% if @current_user.present? || @tlk.present? %>
         <% if @tlk.user == current_user %>
           content="<%= controller_name %>-<%= action_name %>-edit"
+        <% elsif flash[:invited] %>
+          content="<%= controller_name %>-<%= action_name %>-invited"
+        <% elsif @spkr_only %>
+          content="<%= controller_name %>-<%= action_name %>-spkr"
         <% else %>
           content="<%= controller_name %>-<%= action_name %>"
         <% end %>
