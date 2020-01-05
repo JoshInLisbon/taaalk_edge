@@ -2,11 +2,25 @@
 <html>
   <head>
     <title>TaaalkEdge</title>
+    <meta id="meta" name="js-loader"
+      <% if @current_user.present? || @tlk.present? %>
+        <% if @tlk.user == current_user %>
+          content="<%= controller_name %>-<%= action_name %>-edit"
+        <% elsif flash[:invited] %>
+          content="<%= controller_name %>-<%= action_name %>-invited"
+        <% elsif @spkr_only %>
+          content="<%= controller_name %>-<%= action_name %>-spkr"
+        <% else %>
+          content="<%= controller_name %>-<%= action_name %>"
+        <% end %>
+      <% else %>
+        content="<%= controller_name %>-<%= action_name %>"
+      <% end %>
+    >
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -14,5 +28,6 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <%= javascript_pack_tag 'on_new_page' %>
   </body>
 </html>

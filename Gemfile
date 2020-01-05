@@ -8,6 +8,8 @@ gem 'rails', github: "rails/rails", branch: "6-0-stable"
 
 # TAAALK ADDITIONS
 
+# Simple Form
+gem 'simple_form'
 # Fake emails in development
 gem 'letter_opener', group: :development
 # Friendly URLs

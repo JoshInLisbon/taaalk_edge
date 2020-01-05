@@ -1,0 +1,5 @@
+<%= form_with model: @tlk do |f| %>
+  <%= f.text_field :title, class: 'tlk-title-edit', target: 'update-title' %>
+  <%= f.submit "Update Title", class: 'btn btn-secondary', id: 'update-title' %>
+<% end %>
+<p id="p-update-title" class="tlk-p-nochange">Changes not saved. Press 'Update Title' to save.</p>

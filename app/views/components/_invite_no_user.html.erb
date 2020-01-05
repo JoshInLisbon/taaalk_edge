@@ -1,0 +1,88 @@
+<div class="tlk-note">
+  <p>A Taaalk is a conversation between two or more people that anyone can read.
+  Please provide a name and a bio for readers to know who you are and where your thoughts are coming from.</p>
+</div>
+
+<div class="tlk-note">
+  <p id="tlk-invited-note-login" class="tlk-section-on">Have a Taaalk account? <span id="tlk-invited-login" class="fake-link">Log in</span>.</p>
+  <p id ="tlk-invited-note-signup" class="tlk-section-off">Don't have an account? <span id="tlk-invited-signup" class="fake-link">Sign up</span>.</p>
+</div>
+
+<div class="tlk-login tlk-section-off">
+  <div class="tlk-note">
+    <strong>Logging in using the form below will add to this Taaalk as a participant.</strong> If you don't want that to happen, please log in <%= link_to "here", new_user_session_path %>.
+  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <% if flash[:invited] %>
+      <%= fields_for @spkr do |fi| %>
+        <%= fi.hidden_field :flash_invite_code, value: @tlk.invite_code %>
+        <%= fi.hidden_field :tlk_id, value: @tlk.id %>
+      <% end %>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+</div>
+
+<div class="tlk-signup tlk-section-on">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <%= fields_for @spkr do |fi| %>
+      <div class="field">
+        <%= fi.label :name %>
+        <%= fi.text_field :name %>
+      </div>
+      <div class="field">
+        <%= fi.label :bio %>
+        <%= fi.text_field :bio %>
+      </div>
+    <% end %>
+
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+
+
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+
+
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <%= f.hidden_field :tlk_id, :value => @tlk.id %>
+
+    <div class="actions">
+      <%= f.submit "Sign Up and Create Your Profile" %>
+    </div>
+  <% end %>
+</div>

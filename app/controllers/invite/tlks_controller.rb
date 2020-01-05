@@ -1,0 +1,33 @@
+class Invite::TlksController < ApplicationController
+  include SpkrMaker
+
+  skip_before_action :authenticate_user!, only: [:show, :invited?]
+
+  def show
+    @tlk = Tlk.friendly.find(params[:id])
+  end
+
+  def invited?
+    @tlk = Tlk.friendly.find(invited_params[:id])
+
+    if invited_params[:key].to_i == @tlk.invite_code
+      if current_user.present?
+        make_spkr
+        redirect_to show_tlk_path(@tlk)
+      else
+        redirect_to show_tlk_path(@tlk), flash: { invited: true }
+      end
+    else
+      respond_to do |format|
+        format.js { render 'invited', layout: false } # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
+        format.html { redirect_to invited_to_tlk_path(@tlk) }
+      end
+    end
+  end
+
+  private
+
+  def invited_params
+    params.require(:tlk).permit(:key, :id)
+  end
+end

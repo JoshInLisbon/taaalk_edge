@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_132231) do
+ActiveRecord::Schema.define(version: 2020_01_04_234807) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_132231) do
     t.string "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "hide", default: false
     t.index ["tlk_id"], name: "index_spkrs_on_tlk_id"
     t.index ["user_id"], name: "index_spkrs_on_user_id"
   end
@@ -87,10 +88,10 @@ ActiveRecord::Schema.define(version: 2019_12_28_132231) do
   create_table "tlks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title"
-    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.integer "invite_code"
     t.index ["slug"], name: "index_tlks_on_slug", unique: true
     t.index ["user_id"], name: "index_tlks_on_user_id"
   end
