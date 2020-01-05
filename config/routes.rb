@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   patch 'tlk/invited', to: 'invite/tlks#invited?', as: 'invited_to_tlk'
   resources :tlks, only: [:new, :create, :update, :edit]
   resources :msgs, only: :create
-  resources :spkrs, only: [:create, :update]
+  resources :spkrs, only: [:create, :update, :destroy]
+  get 'spkrs/hide', to: 'spkrs#hide_spkr', as: 'hide_spkr'
 end

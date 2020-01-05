@@ -9,16 +9,27 @@
 
 <p><strong>Your details...</strong></p>
 <% @tlk.spkrs.each do |spkr| %>
-  <% if spkr.user == current_user %>
+  <% if spkr.user == current_user && spkr.hide == false %>
     <%= form_with model: spkr do |f| %>
       <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
       <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
       <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
     <% end %>
+    <p id="leave-tlk" class="fake-link">Leave Taaalk</p>
+    <div id="leave-tlk-links" class="tlk-section-off">
+      <%= link_to 'Remove your presence & KEEP all your messages. (You\'ll be able to delete your messages later if you change your mind.)', url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"} %></br>
+      <%= link_to 'Remove your presence & DELETE all your messages.', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"} %>
+    </div>
     <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
+    <p>You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>
+  <% elsif spkr.user == current_user && spkr.hide == true %>
+    <div class="tlk-note">
+      <p>You (<%= spkr.name %>) are no longer a participant in this Taaalk. <%= link_to 'Delete all your messages', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). Confirm below:"} %>.</p>
+      <p>To rejoin the Taaalk visit <%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>.</p>
+    </div>
   <% end %>
 <% end %>
-<p>You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>
+
 
 
 <% @tlk.spkrs.each do |spkr| %>

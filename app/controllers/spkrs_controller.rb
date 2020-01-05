@@ -10,6 +10,17 @@ class SpkrsController < ApplicationController
     end
   end
 
+  def destroy
+    @spkr.destroy
+    redirect_to show_tlk_path(@spkr.tlk)
+  end
+
+  def hide_spkr
+    @spkr.hide = true
+    @spkr.save!
+    redirect_to show_tlk_path(@spkr.tlk)
+  end
+
   private
 
   def set_spkr

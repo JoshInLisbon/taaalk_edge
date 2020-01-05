@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_213009) do
+ActiveRecord::Schema.define(version: 2020_01_04_234807) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_12_29_213009) do
     t.string "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "hide", default: false
     t.index ["tlk_id"], name: "index_spkrs_on_tlk_id"
     t.index ["user_id"], name: "index_spkrs_on_user_id"
   end
