@@ -8,6 +8,7 @@
 <% end %>
 
 <p><strong>Your details...</strong></p>
+<p>You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == current_user && spkr.hide == false %>
     <%= form_with model: spkr do |f| %>
@@ -21,7 +22,6 @@
       <%= link_to 'Remove your presence & DELETE all your messages.', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"} %>
     </div>
     <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
-    <p>You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>
   <% elsif spkr.user == current_user && spkr.hide == true %>
     <div class="tlk-note">
       <p>You (<%= spkr.name %>) are no longer a participant in this Taaalk. <%= link_to 'Delete all your messages', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). Confirm below:"} %>.</p>
