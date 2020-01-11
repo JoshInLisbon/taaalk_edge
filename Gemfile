@@ -8,6 +8,12 @@ gem 'rails', github: "rails/rails", branch: "6-0-stable"
 
 # TAAALK ADDITIONS
 
+# Pagination
+gem 'will_paginate', '~> 3.1.1'
+# Images
+# gem 'cloudinary', '~> 1.12.0'
+# Dot Env
+gem 'dotenv-rails', groups: [:development, :test]
 # Simple Form
 gem 'simple_form'
 # Fake emails in development

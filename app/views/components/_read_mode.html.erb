@@ -1,7 +1,20 @@
-<h1 class="tlk-title"><%= @tlk.title %></h1>
+
+<div class="tlk-image"
+<% if @tlk.image.present? %>
+  style="background-image: url(<%= rails_blob_url(@tlk.image) %>)"
+<% end %>
+>
+  <h1 class="tlk-title"><%= @tlk.title %></h1>
+</div>
 
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == @tlk.user && spkr.hide == false %>
+      <div class="spkr-image image-spkr-<%= spkr.id %>"
+        <% if spkr.image.present? %>
+          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+        <% end %>
+        >
+      </div>
     <h3 class="name-spkr-<%= spkr.id %>"><%= spkr.name %></h3>
     <p class="bio-spkr-<%= spkr.id %>"><%= spkr.bio %></p>
   <% end %>
@@ -9,6 +22,12 @@
 
 <% @tlk.spkrs.each do |spkr| %>
   <% unless spkr.user == @tlk.user || spkr.hide == true  %>
+    <div class="spkr-image image-spkr-<%= spkr.id %>"
+      <% if spkr.image.present? %>
+        style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+      <% end %>
+      >
+    </div>
     <h3 class="name-spkr-<%= spkr.id %>"><%= spkr.name %></h3>
     <p class="bio-spkr-<%= spkr.id %>"><%= spkr.bio %></p>
   <% end %>

@@ -4,6 +4,7 @@ class MsgsController < ApplicationController
     msg.user = current_user
     msg.save!
     tlk = Tlk.friendly.find(params['msg']['tlk_id'])
+    tlk.update(updated_at: Time.now)
     redirect_to show_tlk_path(tlk)
   end
 

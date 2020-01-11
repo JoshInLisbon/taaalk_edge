@@ -1,0 +1,25 @@
+<% if @user.image.present? %>
+  <div class="spkr-image-div">
+    <%= image_tag(@user.image, class: "spkr-image") %>
+  </div>
+<% else %>
+  <div class="spkr-image-none"></div>
+<% end %>
+<h1><%= @user.username %></h1>
+<p><%= @user.bio %></p>
+
+<% if @user == current_user %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<% end %>
+
+<% @user.spkrs.each do |spkr| %>
+  <%= link_to show_tlk_path(spkr.tlk) do %>
+    <h4><%= spkr.tlk.title %></h4>
+    <% spkr.tlk.spkrs.each do |speaker| %>
+      <p><%= speaker.name %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
