@@ -5,6 +5,8 @@ class MsgsController < ApplicationController
     msg.save!
     tlk = Tlk.friendly.find(params['msg']['tlk_id'])
     tlk.update(updated_at: Time.now)
+    send_spkrs_new_msg_mail(tlk, msg)
+
     redirect_to show_tlk_path(tlk)
   end
 
@@ -12,5 +14,14 @@ class MsgsController < ApplicationController
 
   def msg_params
     params.require(:msg).permit(:content, :tlk_id, :spkr_id)
+  end
+
+  def send_spkrs_new_msg_mail(tlk , msg)
+    tlk.spkrs.each do |spkr|
+      unless spkr == msg.spkr
+        mail = MsgMailer.with(tlk: tlk, spkr: spkr, msg: msg).new_msg_update_spkr
+        mail.deliver_later
+      end
+    end
   end
 end

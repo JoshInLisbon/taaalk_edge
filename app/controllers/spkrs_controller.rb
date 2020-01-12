@@ -67,7 +67,15 @@ class SpkrsController < ApplicationController
   end
 
   def send_spkr_edited_mail
-    mail = SpkrMailer.with(spkr: @spkr, editing_user: current_user, tlk: @spkr.tlk).edited_spkr
+    editing_spkr = ""
+
+    @spkr.tlk.spkrs.each do |spkr|
+      if spkr.user == current_user
+        editing_spkr = spkr
+      end
+    end
+
+    mail = SpkrMailer.with(spkr: @spkr, editing_spkr: editing_spkr, tlk: @spkr.tlk).edited_spkr
     mail.deliver_later
   end
 end
