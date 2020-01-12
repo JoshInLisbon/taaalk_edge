@@ -1,0 +1,11 @@
+Hi <%= @spkr.name %>,
+
+<%= @editing_user.username %> is suggesting an edit to your details in the Taaalk '<%= @tlk.title %>'.
+
+Your updated details are:
+
+Name: <%= @spkr.edited_name %>
+
+Bio: <%= @spkr.edited_bio %>
+
+To confirm this edit click this link: <%= edit_confirmed_url(@spkr) %>

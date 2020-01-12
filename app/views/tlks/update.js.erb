@@ -1,4 +1,10 @@
-const header = document.querySelector('.tlk-title');
-const headerEdit = document.querySelector('.tlk-title-edit') ;
+let header = document.querySelector('.tlk-title');
+let headerEdit = document.querySelector('.tlk-title-edit');
+let tlkImages = document.querySelectorAll('.tlk-image');
 
-header.innerText = headerEdit.value
+header.innerText = headerEdit.value;
+<% if @tlk.image.present? %>
+  tlkImages.forEach(image => {
+    image.style = "background-image: url(<%= rails_blob_url(@tlk.image) %>)";
+  });
+<% end %>

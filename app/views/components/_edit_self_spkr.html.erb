@@ -1,15 +1,27 @@
-<p><strong>Your details...</strong></p>
-<p>You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>
+<p><strong>Your details</strong></p>
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == current_user && spkr.hide == false %>
+    <p class="tlk-note">You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>
     <%= form_with model: spkr do |f| %>
+      <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+        <% if spkr.image.present? %>
+          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+        <% elsif spkr.user.image.present? %>
+          style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+        <% else %>
+          style="background-image: url(<%= asset_url('user.svg') %>)"
+        <% end %>
+        >
+      </div>
+      <%= f.label :image %>
+      <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{spkr.id}" %><br>
       <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
-      <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
+      <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %><br>
       <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
     <% end %>
-    <p id="leave-tlk" class="fake-link">Leave Taaalk</p>
-    <div id="leave-tlk-links" class="tlk-section-off">
-      <%= link_to 'Remove your presence & KEEP all your messages. (You\'ll be able to delete your messages later if you change your mind.)', url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"} %></br>
+    <p id="leave-tlk" class="fake-link leave-tlk" target="spkr-leave-<%= spkr.id %>">Leave Taaalk</p>
+    <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off leave-tlk-links">
+      <%= link_to 'Remove your presence & KEEP all your messages. (You\'ll be able to delete your messages later if you change your mind.)', url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"} %><br>
       <%= link_to 'Remove your presence & DELETE all your messages.', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"} %>
     </div>
     <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>

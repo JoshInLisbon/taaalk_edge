@@ -1,0 +1,38 @@
+<div class="user-image"
+  <% if @user.image.present? %>
+    style="background-image: url(<%= rails_blob_url(@user.image) %>)"
+  <% else %>
+    style="background-image: url(<%= asset_url('user.svg') %>)"
+  <% end %>
+  >
+</div>
+<h1><%= @user.username %></h1>
+<p><%= @user.bio %></p>
+
+<% if @user == current_user %>
+  <p><%= @user.email %></p>
+  <p><%= link_to "Edit Your Details", edit_user_path(@user) %></p>
+  <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
+<% end %>
+
+<% @user.spkrs.each do |spkr| %>
+  <%= link_to show_tlk_path(spkr.tlk) do %>
+    <h4><%= spkr.tlk.title %></h4>
+    <% spkr.tlk.spkrs.each do |speaker| %>
+      <div class="tlk-tlking-image spkr-image"
+        <% if speaker.image.present? %>
+          style="background-image: url(<%= rails_blob_url(speaker.image) %>)"
+        <% elsif speaker.user.image.present? %>
+          style="background-image: url(<%= rails_blob_url(speaker.user.image) %>)"
+        <% else %>
+          style="background-image: url(<%= asset_url('user.svg') %>)"
+        <% end %>
+        >
+      </div>
+      <p><%= speaker.name %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+

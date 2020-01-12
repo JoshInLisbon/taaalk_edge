@@ -1,0 +1,17 @@
+
+<div class="user-image"
+  <% if @user.image.present? %>
+    style="background-image: url(<%= rails_blob_url(@user.image) %>)"
+  <% else %>
+    style="background-image: url(<%= asset_url('user.svg') %>)"
+  <% end %>
+  >
+</div>
+
+<%= simple_form_for(@user) do |f| %>
+  <%= f.input :image %>
+  <%= f.input :username %>
+  <%= f.input :bio %>
+  <%= f.input :email %>
+  <%= f.button :submit, 'Update Your Details' %>
+<% end %>

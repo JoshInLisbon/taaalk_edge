@@ -1,8 +1,7 @@
 <h1>Taaalk</h1>
 <h2>Description of The Taaalk Co.</h2>
 
-<p>The Taaalks below are sorted by the most recently updated conversations. <%= link_to "Sort Taaalks by when they were created instead.", newly_created_path %></p>
-
+<p>The Taaalks below are sorted by the most recently created. <%= link_to "Sort Taaalks by when their conversations were last updated instead.", root_path %></p>
 
 <% @tlks.each do |tlk| %>
   <%= link_to show_tlk_path(tlk) do %>

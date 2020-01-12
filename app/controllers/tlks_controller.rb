@@ -4,7 +4,11 @@ class TlksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @tlks = Tlk.includes(:spkrs)
+    @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
+  end
+
+  def newly_created
+    @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(created_at: :desc)
   end
 
   def show
@@ -46,7 +50,7 @@ class TlksController < ApplicationController
   private
 
   def tlk_params
-    params.require(:tlk).permit(:title)
+    params.require(:tlk).permit(:title, :image)
   end
 
   def new_spkr_on_invite

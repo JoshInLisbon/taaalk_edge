@@ -1,0 +1,14 @@
+<%= form_with model: @tlk do |f| %>
+  <div class="tlk-image"
+  <% if @tlk.image.present? %>
+    style="background-image: url(<%= rails_blob_url(@tlk.image) %>)"
+  <% end %>
+  >
+    <%= f.label :title %><br />
+    <%= f.text_field :title, class: 'tlk-title-edit', target: 'update-tlk' %><br>
+  </div>
+  <%= f.label :image %><br />
+  <%= f.file_field :image, accept: 'image/png,image/jpeg', target: 'update-tlk' %>
+  <%= f.submit "Update Taaalk", class: 'btn btn-secondary', id: 'update-tlk' %>
+<% end %>
+<p id="p-update-tlk" class="tlk-p-nochange">Changes not saved. Press 'Update Taaalk' to save.</p>

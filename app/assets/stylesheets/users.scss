@@ -1,17 +1,13 @@
-// Place all the styles related to the spkrs controller here.
+// Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-.spkr-image {
+.user-image {
   background: #091346;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
-}
-
-.spkr-bio-image {
-  height: 50px;
-  width: 50px;
 }

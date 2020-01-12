@@ -1,4 +1,4 @@
-<p><strong>Other people's details...</strong></p>
+<p><strong>Other people's details</strong></p>
 <% if @tlk.spkrs.length == 1 %>
   <div class="tlk-note">
     <p>The details of people you invite to Taaalk with will appear here. You will be able to suggest edits to their name and bio.</p>
@@ -9,8 +9,14 @@
     <%= form_with model: spkr do |f| %>
       <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
       <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
-      <%= f.submit "Update #{spkr.name.possessive} Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
+      <%= f.submit spkr.name.present? ? "Suggest Update to #{spkr.name.possessive} Details" : "Update Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
     <% end %>
-    <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update <%= spkr.name.possessive %> Details' to save.</p>
+    <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">
+      <% if spkr.name.present? %>
+        Suggesting an update will send an email to <%= spkr.name %> to confirm changes.
+      <% else %>
+        Suggesting an update will send an email to this participant to confirm changes.
+      <% end %>
+    </p>
   <% end %>
 <% end %>

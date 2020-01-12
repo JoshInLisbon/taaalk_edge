@@ -1,19 +1,30 @@
 <%= render 'components/top_of_tlk' %>
-<%#= render 'components/invited_mode' %>
 
 <% @tlk.msgs.each do |msg| %>
+  <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
+    <% if msg.spkr.image.present? %>
+      style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
+    <% elsif msg.spkr.user.image.present? %>
+      style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
+    <% else %>
+      style="background-image: url(<%= asset_url('user.svg') %>)"
+    <% end %>
+    >
+  </div>
   <p class="name-spkr-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
   <p><%= msg.content %></p>
 <% end %>
 
 <% @user_spkrs.each do |spkr| %>
-  <%= form_with model: @msg do |f| %>
-    <div class="field">
-      <%= f.label :content %>
-      <%= f.rich_text_area :content %>
-    </div>
-    <%= f.hidden_field :tlk_id, :value => @tlk.id %>
-    <%= f.hidden_field :spkr_id, :value => spkr.id %>
-    <%= f.submit %>
+  <% if spkr.hide == false %>
+    <%= form_with model: @msg do |f| %>
+      <div class="field">
+        <%= f.label :content %>
+        <%= f.rich_text_area :content %>
+      </div>
+      <%= f.hidden_field :tlk_id, :value => @tlk.id %>
+      <%= f.hidden_field :spkr_id, :value => spkr.id %>
+      <%= f.submit %>
+    <% end %>
   <% end %>
 <% end %>

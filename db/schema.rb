@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_234807) do
+ActiveRecord::Schema.define(version: 2020_01_09_134423) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2020_01_04_234807) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "hide", default: false
+    t.string "edited_name"
+    t.string "edited_bio"
     t.index ["tlk_id"], name: "index_spkrs_on_tlk_id"
     t.index ["user_id"], name: "index_spkrs_on_user_id"
   end
@@ -107,8 +109,10 @@ ActiveRecord::Schema.define(version: 2020_01_04_234807) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
