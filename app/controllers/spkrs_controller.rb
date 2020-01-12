@@ -15,8 +15,6 @@ class SpkrsController < ApplicationController
     end
   end
 
-  # add complete_user_profile to... the confirm edit route
-
   def destroy
     @spkr.destroy
     redirect_to show_tlk_path(@spkr.tlk)

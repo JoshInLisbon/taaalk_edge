@@ -6,14 +6,13 @@ module SpkrMaker
       name: current_user.username,
       bio: current_user.bio,
     )
-
-    if current_user.image.present?
-    ActiveStorage::Attachment.create(
-      name: 'image',
-      record_type: 'Spkr',
-      record_id: spkr.id,
-      blob_id: current_user.image.id
-    )
-    end
+    # if current_user.image.present?
+    #   ActiveStorage::Attachment.create!(
+    #     name: 'image',
+    #     record_type: 'Spkr',
+    #     record_id: spkr.id,
+    #     blob_id: current_user.image.id
+    #   )
+    # end
   end
 end

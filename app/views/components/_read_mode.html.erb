@@ -9,12 +9,16 @@
 
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == @tlk.user && spkr.hide == false %>
-      <div class="spkr-image image-spkr-<%= spkr.id %>"
-        <% if spkr.image.present? %>
-          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
-        <% end %>
-        >
-      </div>
+    <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+      <% if spkr.image.present? %>
+        style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+      <% elsif spkr.user.image.present? %>
+        style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+      <% else %>
+        style="background-image: url(<%= asset_url('user.svg') %>)"
+      <% end %>
+      >
+    </div>
     <h3 class="name-spkr-<%= spkr.id %>"><%= spkr.name %></h3>
     <p class="bio-spkr-<%= spkr.id %>"><%= spkr.bio %></p>
   <% end %>
@@ -22,9 +26,13 @@
 
 <% @tlk.spkrs.each do |spkr| %>
   <% unless spkr.user == @tlk.user || spkr.hide == true  %>
-    <div class="spkr-image image-spkr-<%= spkr.id %>"
+    <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
       <% if spkr.image.present? %>
         style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+      <% elsif spkr.user.image.present? %>
+        style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+      <% else %>
+        style="background-image: url(<%= asset_url('user.svg') %>)"
       <% end %>
       >
     </div>

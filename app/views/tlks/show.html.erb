@@ -1,6 +1,16 @@
 <%= render 'components/top_of_tlk' %>
 
 <% @tlk.msgs.each do |msg| %>
+  <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
+    <% if msg.spkr.image.present? %>
+      style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
+    <% elsif msg.spkr.user.image.present? %>
+      style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
+    <% else %>
+      style="background-image: url(<%= asset_url('user.svg') %>)"
+    <% end %>
+    >
+  </div>
   <p class="name-spkr-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
   <p><%= msg.content %></p>
 <% end %>

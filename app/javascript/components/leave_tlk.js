@@ -1,11 +1,14 @@
 import { toggleZone } from 'components/toggle_zone'
 
-const leave = document.querySelector('#leave-tlk');
-const leaveLinks = document.querySelector('#leave-tlk-links');
+const leaveBtns = document.querySelectorAll('.leave-tlk');
 
 const leaveTlk = () => {
-  leave.addEventListener('click', (event) => {
-    toggleZone(leaveLinks);
+  leaveBtns.forEach(btn => {
+    let btnTarget = btn.getAttribute('target')
+    btn.addEventListener('click', (event) => {
+      let leaveLinks = document.querySelector(`#${btnTarget}`)
+      toggleZone(leaveLinks);
+    });
   });
 }
 

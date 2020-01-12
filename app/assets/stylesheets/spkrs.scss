@@ -4,7 +4,14 @@
 
 
 .spkr-image {
+  background: #091346;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.spkr-bio-image {
   height: 50px;
   width: 50px;
-  background: red;
 }

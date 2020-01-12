@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :tlks, only: [:new, :create, :update, :edit]
 
   get '/u/:id', to: 'users#show', as: 'show_user'
+  resources :users
 
   resources :msgs, only: :create
 
