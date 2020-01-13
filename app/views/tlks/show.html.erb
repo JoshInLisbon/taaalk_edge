@@ -1,5 +1,9 @@
 <%= render 'components/top_of_tlk' %>
 
+<%= render 'components/follow_unfollow_tlk' %>
+
+
+
 <% @tlk.msgs.each do |msg| %>
   <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
     <% if msg.spkr.image.present? %>

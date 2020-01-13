@@ -8,6 +8,16 @@
   <%= link_to show_tlk_path(tlk) do %>
     <h4><%= tlk.title %></h4>
     <% tlk.spkrs.each do |spkr| %>
+      <div class="tlk-tlking-image spkr-image"
+        <% if spkr.image.present? %>
+          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+        <% elsif spkr.user.image.present? %>
+          style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+        <% else %>
+          style="background-image: url(<%= asset_url('user.svg') %>)"
+        <% end %>
+        >
+      </div>
       <p><%= spkr.name %></p>
     <% end %>
   <% end %>

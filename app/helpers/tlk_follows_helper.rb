@@ -1,0 +1,2 @@
+module TlkFollowsHelper
+end

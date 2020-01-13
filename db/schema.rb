@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_134423) do
+ActiveRecord::Schema.define(version: 2020_01_13_123645) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -87,6 +87,15 @@ ActiveRecord::Schema.define(version: 2020_01_09_134423) do
     t.index ["user_id"], name: "index_spkrs_on_user_id"
   end
 
+  create_table "tlk_follows", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tlk_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tlk_id"], name: "index_tlk_follows_on_tlk_id"
+    t.index ["user_id"], name: "index_tlk_follows_on_user_id"
+  end
+
   create_table "tlks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title"
@@ -121,5 +130,7 @@ ActiveRecord::Schema.define(version: 2020_01_09_134423) do
   add_foreign_key "msgs", "users"
   add_foreign_key "spkrs", "tlks"
   add_foreign_key "spkrs", "users"
+  add_foreign_key "tlk_follows", "tlks"
+  add_foreign_key "tlk_follows", "users"
   add_foreign_key "tlks", "users"
 end

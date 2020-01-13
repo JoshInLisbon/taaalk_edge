@@ -27,16 +27,21 @@ class SpkrsController < ApplicationController
   end
 
   def edit_confirmed
-    if @spkr.edited_name.present?
-      @spkr.name = @spkr.edited_name
-      @spkr.save!
+    if @spkr.user == current_user
+      if @spkr.edited_name.present?
+        @spkr.name = @spkr.edited_name
+        @spkr.save!
+      end
+      if @spkr.edited_bio.present?
+        @spkr.bio = @spkr.edited_bio
+        @spkr.save!
+      end
+      complete_user_profile
+      redirect_to show_tlk_path(@spkr.tlk)
+    else
+      flash[:notice] = "You must be the logged in as the account holder for #{@spkr.name} to confirm an edit. Right now you are not logged in as this user."
+      redirect_to show_tlk_path(@spkr.tlk)
     end
-    if @spkr.edited_bio.present?
-      @spkr.bio = @spkr.edited_bio
-      @spkr.save!
-    end
-    complete_user_profile
-    redirect_to show_tlk_path(@spkr.tlk)
   end
 
   private
