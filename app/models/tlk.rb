@@ -2,6 +2,7 @@ class Tlk < ApplicationRecord
   belongs_to :user
   has_many :spkrs, dependent: :destroy
   has_many :msgs, dependent: :destroy
+  has_many :tlk_follows, dependent: :destroy
 
   has_one_attached :image
 

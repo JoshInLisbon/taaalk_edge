@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :tlks, dependent: :destroy
   has_many :spkrs, dependent: :destroy
   has_many :msgs, dependent: :destroy
+  has_many :tlk_follows, dependent: :destroy
 
   has_one_attached :image
 
@@ -19,4 +20,23 @@ class User < ApplicationRecord
       [:username, DateTime.now.to_date]
     ]
   end
+
+  def is_follower_of_tlk?(tlk)
+    arr = []
+    tlk_follows.each do |tlk_following|
+      arr << "true" if tlk_following.tlk_id == tlk.id
+    end
+    true if arr.any?
+  end
+
+  #   if tlk_follows.present?
+  #     tlk_follows.each do |tlk_following|
+  #       unless tlk_following == tlk
+
+  #       end
+  #     end
+  #   else
+  #     return false
+  #   end
+  # end
 end

@@ -1,0 +1,5 @@
+var followDivs = document.querySelectorAll('.tlk-follow-div');
+
+followDivs.forEach(div => {
+  div.innerHTML = '<%= j render "components/unfollow_tlk" %>';
+});

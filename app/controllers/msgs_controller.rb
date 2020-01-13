@@ -6,6 +6,7 @@ class MsgsController < ApplicationController
     tlk = Tlk.friendly.find(params['msg']['tlk_id'])
     tlk.update(updated_at: Time.now)
     send_spkrs_new_msg_mail(tlk, msg)
+    send_followers_new_msg_mail(tlk, msg)
 
     redirect_to show_tlk_path(tlk)
   end
@@ -22,6 +23,13 @@ class MsgsController < ApplicationController
         mail = MsgMailer.with(tlk: tlk, spkr: spkr, msg: msg).new_msg_update_spkr
         mail.deliver_later
       end
+    end
+  end
+
+  def send_followers_new_msg_mail(tlk, msg)
+    tlk.tlk_follows.each do |tlk_follow|
+      mail = MsgMailer.with(tlk: tlk, follow: tlk_follow, msg: msg).new_msg_update_follower
+      mail.deliver_later
     end
   end
 end

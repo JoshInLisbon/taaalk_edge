@@ -1,0 +1,11 @@
+<div class="tlk-follow-div">
+  <% if current_user.present? %>
+    <% if current_user.is_follower_of_tlk?(@tlk)  %>
+      <%= render 'components/unfollow_tlk' %>
+    <% else %>
+      <%= render 'components/follow_tlk' %>
+    <% end %>
+  <% else %>
+    <%= render 'components/follow_tlk' %>
+  <% end %>
+</div>
