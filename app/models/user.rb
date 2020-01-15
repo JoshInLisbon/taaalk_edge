@@ -9,6 +9,12 @@ class User < ApplicationRecord
   has_many :msgs, dependent: :destroy
   has_many :tlk_follows, dependent: :destroy
 
+  has_and_belongs_to_many :user_follows,
+        class_name: "User",
+        join_table:  :user_follows,
+        foreign_key: :user_id,
+        association_foreign_key: :user_followed_id
+
   has_one_attached :image
 
   extend FriendlyId

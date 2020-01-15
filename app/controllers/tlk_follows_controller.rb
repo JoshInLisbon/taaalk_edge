@@ -1,18 +1,18 @@
 class TlkFollowsController < ApplicationController
   before_action :set_tlk
+  skip_before_action :authenticate_user!, only: :create
 
   def create
-    TlkFollow.create!(
-      tlk: @tlk,
-      user: current_user
-    )
-    # if spkrs_follow == "true"
-    #   @tlk.spkrs.each do |spkr|
-
-    #   end
-    # end
-    respond_to do |format|
-      format.js { render 'create', layout: false }
+    if current_user.present?
+      follow = TlkFollow.create!(
+        tlk: @tlk,
+        user: current_user
+      )
+      respond_to do |format|
+        format.js { render 'create', layout: false }
+      end
+    else
+      redirect_to new_user_session_path
     end
   end
 

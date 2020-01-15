@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_13_123645) do
+ActiveRecord::Schema.define(version: 2020_01_15_153758) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -105,6 +105,13 @@ ActiveRecord::Schema.define(version: 2020_01_13_123645) do
     t.integer "invite_code"
     t.index ["slug"], name: "index_tlks_on_slug", unique: true
     t.index ["user_id"], name: "index_tlks_on_user_id"
+  end
+
+  create_table "user_follows", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "user_followed_id"
+    t.index ["user_followed_id", "user_id"], name: "index_user_follows_on_user_followed_id_and_user_id", unique: true
+    t.index ["user_id", "user_followed_id"], name: "index_user_follows_on_user_id_and_user_followed_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
