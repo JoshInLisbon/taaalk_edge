@@ -9,11 +9,11 @@ class User < ApplicationRecord
   has_many :msgs, dependent: :destroy
   has_many :tlk_follows, dependent: :destroy
 
-  has_and_belongs_to_many :user_follows,
-        class_name: "User",
-        join_table:  :user_follows,
-        foreign_key: :user_id,
-        association_foreign_key: :user_followed_id
+  # UserFollow
+  has_many :received_follows, foreign_key: :followed_user_id, class_name: "UserFollow"
+  has_many :followers, through: :received_follows, source: :follower
+  has_many :given_follows, foreign_key: :follower_id, class_name: "UserFollow"
+  has_many :followings, through: :given_follows, source: :followed_user
 
   has_one_attached :image
 
@@ -35,14 +35,11 @@ class User < ApplicationRecord
     true if arr.any?
   end
 
-  #   if tlk_follows.present?
-  #     tlk_follows.each do |tlk_following|
-  #       unless tlk_following == tlk
-
-  #       end
-  #     end
-  #   else
-  #     return false
-  #   end
-  # end
+  def is_follower_of_user?(user)
+    arr = []
+    followings.each do |user_followed|
+      arr << user_followed if user_followed == user
+    end
+    true if arr.any?
+  end
 end

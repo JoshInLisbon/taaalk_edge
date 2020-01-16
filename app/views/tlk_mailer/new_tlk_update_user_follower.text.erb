@@ -1,0 +1,7 @@
+Hi <%= @follower.username %>,
+
+<%= @followed_user.username %> has started a new Taaalk called '<%= @tlk.title %>'.
+
+To follow this Taaalk so you get future updates by email, please go to this link:
+
+<%= show_tlk_url(@tlk) %>

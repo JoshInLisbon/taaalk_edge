@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_15_153758) do
+ActiveRecord::Schema.define(version: 2020_01_16_090110) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -107,11 +107,11 @@ ActiveRecord::Schema.define(version: 2020_01_15_153758) do
     t.index ["user_id"], name: "index_tlks_on_user_id"
   end
 
-  create_table "user_follows", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "user_followed_id"
-    t.index ["user_followed_id", "user_id"], name: "index_user_follows_on_user_followed_id_and_user_id", unique: true
-    t.index ["user_id", "user_followed_id"], name: "index_user_follows_on_user_id_and_user_followed_id", unique: true
+  create_table "user_follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -34,6 +34,7 @@ class TlksController < ApplicationController
     if @tlk.save!
       @edit = true
       make_spkr
+      send_user_followers_new_tlk_mail(current_user, @tlk)
       redirect_to show_tlk_path(@tlk), flash: { edit: true }
     end
   end
@@ -63,20 +64,10 @@ class TlksController < ApplicationController
     end
   end
 
-# do I need this??
-
-  # def create_external_spkrs
-  #   external_params = params.require(:tlk).permit(:p_email, :p_name, :p_bio)
-  #   if User.find_by_email(external_params[:p_email])
-  #     puts "nothing"
-  #   else
-  #     @new_spkr = NewSpkr.create!(
-  #       email: external_params[:p_email],
-  #       name: external_params[:p_name],
-  #       bio: external_params[:P_bio]
-  #     )
-  #     NewSpkrMailer.with(tlk: @tlk, new_spkr: @new_spkr).welcome.deliver_later
-  #   end
-  # end
-
+  def send_user_followers_new_tlk_mail(current_user, tlk)
+    current_user.followers.each do |follower|
+      mail = TlkMailer.with(tlk: tlk, followed_user: current_user, follower: follower).new_tlk_update_user_follower
+      mail.deliver_later
+    end
+  end
 end

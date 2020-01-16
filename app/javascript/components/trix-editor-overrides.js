@@ -5,6 +5,12 @@ const trixEditorOverrides = () => {
       event.preventDefault();
       alert("Only support attachment files upto size 4MB!");
     }
+    const acceptedTypes = ['image/jpeg', 'image/png']
+    if (!acceptedTypes.includes(event.file.type)) {
+      event.preventDefault()
+      alert("Only support attachment of jpeg or png files")
+      console.log("YAY!")
+    }
   });
 }
 
