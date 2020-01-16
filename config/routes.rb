@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'tlk_follows/create'
-  get 'tlk_follows/destroy'
   # devise_for :users
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -18,7 +16,10 @@ Rails.application.routes.draw do
   end
 
   get '/u/:id', to: 'users#show', as: 'show_user'
-  resources :users
+  resources :users do
+    post :user_follows, to: 'user_follows#create', as: 'follow'
+    delete :user_follows, to: 'user_follows#destroy', as: 'destroy_follow'
+  end
 
   resources :msgs, only: :create
 

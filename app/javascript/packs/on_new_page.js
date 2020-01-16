@@ -3,6 +3,7 @@ import { copyWithClick } from "../components/copy_with_click"
 import { unsavedAlert, unsavedImageAlert } from "../components/unsaved_alert"
 import { invitedLogin } from "../components/invited_login"
 import { leaveTlk } from "../components/leave_tlk"
+import { trixEditorOverrides } from "../components/trix-editor-overrides"
 
 let mode = document.querySelector('#meta').content
 
@@ -12,6 +13,7 @@ if(mode == 'tlks-show-edit') {
   unsavedAlert();
   leaveTlk();
   unsavedImageAlert();
+  trixEditorOverrides();
 }
 
 if(mode == 'tlks-show-invited') {
@@ -22,4 +24,5 @@ if(mode == 'tlks-show-spkr') {
   unsavedAlert();
   leaveTlk();
   unsavedImageAlert();
+  trixEditorOverrides();
 }

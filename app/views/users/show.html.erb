@@ -16,6 +16,8 @@
     <p><%= link_to "Edit Your Details", edit_user_path(@user) %></p>
     <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
   </div>
+<% else %>
+  <%= render 'components/follow_unfollow_user' %>
 <% end %>
 
 

@@ -11,6 +11,7 @@ gem 'rails', github: "rails/rails", branch: "6-0-stable"
 # Pagination
 gem 'will_paginate', '~> 3.1.1'
 # Images
+gem 'mini_magick'
 # gem 'cloudinary', '~> 1.12.0'
 # Dot Env
 gem 'dotenv-rails', groups: [:development, :test]
@@ -48,7 +49,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

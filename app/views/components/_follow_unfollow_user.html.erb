@@ -1,0 +1,11 @@
+<div class="user-follow-div">
+  <% if current_user.present? %>
+    <% if current_user.is_follower_of_user?(@user) %>
+      <%= render 'components/unfollow_user' %>
+    <% else %>
+      <%= render 'components/follow_user' %>
+    <% end %>
+  <% else %>
+    <%= render 'components/follow_user' %>
+  <% end %>
+</div>
