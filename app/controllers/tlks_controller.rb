@@ -1,4 +1,5 @@
 class TlksController < ApplicationController
+  require 'digest/md5'
   include SpkrMaker
 
   skip_before_action :authenticate_user!, only: [:index, :show]
@@ -31,6 +32,7 @@ class TlksController < ApplicationController
     @tlk = Tlk.new(tlk_params)
     @tlk.user = current_user
     @tlk.invite_code = '%010d' % rand(0..999999)
+    @tlk.msg_key = Digest::MD5.hexdigest(@tlk.title)
     if @tlk.save!
       @edit = true
       make_spkr

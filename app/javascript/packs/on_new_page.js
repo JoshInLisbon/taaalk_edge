@@ -4,6 +4,7 @@ import { unsavedAlert, unsavedImageAlert } from "../components/unsaved_alert"
 import { invitedLogin } from "../components/invited_login"
 import { leaveTlk } from "../components/leave_tlk"
 import { trixEditorOverrides } from "../components/trix-editor-overrides"
+import { loadDraftMsg } from "../components/load_draft_msg"
 
 let mode = document.querySelector('#meta').content
 
@@ -14,6 +15,7 @@ if(mode == 'tlks-show-edit') {
   leaveTlk();
   unsavedImageAlert();
   trixEditorOverrides();
+  loadDraftMsg(draftMsg);
 }
 
 if(mode == 'tlks-show-invited') {
@@ -25,4 +27,5 @@ if(mode == 'tlks-show-spkr') {
   leaveTlk();
   unsavedImageAlert();
   trixEditorOverrides();
+  loadDraftMsg(draftMsg);
 }
