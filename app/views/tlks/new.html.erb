@@ -1,8 +1,17 @@
-<h1>hello!</h1>
+<h1>Start a Taaalk</h1>
 
-<div id="tlk_title">
-  <%= simple_form_for(@tlk, remote: true) do |f| %>
-    <%= f.input :title %>
-    <%= f.button :submit %>
+<h3>Create a Taaalk and invite people you know</h3>
+<p>Create a Taaalk with a title of your choice. Get an invite link and code. Invite as many people as you want to Taaalk with you.</p>
+<div>
+  <% if current_user.present? %>
+    <%= simple_form_for(@tlk, remote: true) do |f| %>
+      <%= f.input :title %>
+      <%= f.button :submit %>
+    <% end %>
+  <% else %>
+    <%= link_to "Log in or Sign up to Create Your Taaalk", new_user_session_path %>
   <% end %>
 </div>
+
+<h3>Meet someone to Taaalk with</h3>
+<p>Let others know why they should Taaalk with you and ask </p>

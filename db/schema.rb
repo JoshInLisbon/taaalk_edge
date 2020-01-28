@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_19_094143) do
+ActiveRecord::Schema.define(version: 2020_01_19_110315) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 2020_01_19_094143) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "draft_msgs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tlk_id", null: false
+    t.integer "spkr_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["spkr_id"], name: "index_draft_msgs_on_spkr_id"
+    t.index ["tlk_id"], name: "index_draft_msgs_on_tlk_id"
+    t.index ["user_id"], name: "index_draft_msgs_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -134,6 +145,9 @@ ActiveRecord::Schema.define(version: 2020_01_19_094143) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "draft_msgs", "spkrs"
+  add_foreign_key "draft_msgs", "tlks"
+  add_foreign_key "draft_msgs", "users"
   add_foreign_key "msgs", "spkrs"
   add_foreign_key "msgs", "tlks"
   add_foreign_key "msgs", "users"

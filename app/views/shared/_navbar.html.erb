@@ -2,9 +2,10 @@
   <%= link_to "Taaalk", root_path, class: "navbar-brand" %>
 
   <%= link_to "Start a Taaalk", new_tlk_path %>
+
   <% if user_signed_in? %>
     <%= link_to "Your Profile", show_user_path(current_user) %>
   <% else %>
-    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Log In", new_user_session_path %>
   <% end %>
 </nav>

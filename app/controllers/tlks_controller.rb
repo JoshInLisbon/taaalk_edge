@@ -2,7 +2,7 @@ class TlksController < ApplicationController
   require 'digest/md5'
   include SpkrMaker
 
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new]
 
   def index
     @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
@@ -31,7 +31,7 @@ class TlksController < ApplicationController
   def create
     @tlk = Tlk.new(tlk_params)
     @tlk.user = current_user
-    @tlk.invite_code = '%010d' % rand(0..999999)
+    @tlk.invite_code = '%010d' % rand(100000..999999)
     @tlk.msg_key = Digest::MD5.hexdigest(@tlk.title)
     if @tlk.save!
       @edit = true

@@ -4,33 +4,29 @@
 
 <% if @tlk.msgs.any? %>
   <% @tlk.msgs.each_with_index do |msg, i| %>
-    <% if msg.draft == false %>
-      <div class="tlk-blob" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
-        <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
-          <% if msg.spkr.image.present? %>
-            style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
-          <% elsif msg.spkr.user.image.present? %>
-            style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
-          <% else %>
-            style="background-image: url(<%= asset_url('user.svg') %>)"
-          <% end %>
-          >
-        </div>
-        <p class="name-spkr-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
-        <p><%= msg.content %></p>
+    <div class="tlk-blob" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
+      <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
+        <% if msg.spkr.image.present? %>
+          style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
+        <% elsif msg.spkr.user.image.present? %>
+          style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
+        <% else %>
+          style="background-image: url(<%= asset_url('user.svg') %>)"
+        <% end %>
+        >
       </div>
-    <% else %>
-      <% @draft_msg = msg %>
-    <% end %>
+      <p class="name-spkr-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
+      <p><%= msg.content %></p>
+    </div>
   <% end %>
 <% end %>
 
-<% @user_spkrs.each do |spkr| %>
+<% @user_spkrs.each do |spkr|  %>
   <% if spkr.hide == false %>
-    <%= form_with model: @msg do |f| %>
-      <div class="field">
-        <%= f.label :content %>
-        <%= f.rich_text_area :content %>
+    <%= form_with model: @msg, class: 'rta' do |f| %>
+      <div class="field" id="rta-<%= spkr.id %>">
+        <%= f.label :content, "#{spkr.name} says:" %>
+        <%= f.rich_text_area :content, target: "draft-#{spkr.id}" %>
       </div>
       <%= f.hidden_field :tlk_id, :value => @tlk.id %>
       <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
@@ -39,15 +35,27 @@
       <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button" %>
     <% end %>
   <% end %>
+
+  <% if spkr.draft_msg.present? %>
+  <div class="tlk-draft" id="draft-<%= spkr.id %>">
+    <%= spkr.draft_msg.content %>
+  </div>
+
+
+    <%= javascript_tag do %>
+    <!-- can I pass spkr id to js? -->
+      window.draftMsgpe<%= spkr.id %> = `<%= spkr.draft_msg.content %>`;
+    <% end %>
+  <% else %>
+    <%= javascript_tag do %>
+      window.draftMsg = '';
+    <% end %>
+  <% end %>
+
+
+
 <% end %>
 
-<% if @draft_msg.present? %>
-  <%= javascript_tag do %>
-    window.draftMsg = `<%= @draft_msg.content %>`;
-  <% end %>
-<% else %>
-  <%= javascript_tag do %>
-    window.draftMsg = '';
-  <% end %>
-<% end %>
+<!-- need to solve here for multiple spkrs?! -->
+
 

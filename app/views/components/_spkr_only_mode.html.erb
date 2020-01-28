@@ -20,7 +20,7 @@
       <% end %>
       >
     </div>
-    <h3 class="name-spkr-<%= spkr.id %>"><%= spkr.name %></h3>
+    <h3 class="name-spkr-<%= spkr.id %>"><%= link_to spkr.name, show_user_path(spkr.user) %></h3>
     <p class="bio-spkr-<%= spkr.id %>"><%= spkr.bio %></p>
   <% end %>
 <% end %>

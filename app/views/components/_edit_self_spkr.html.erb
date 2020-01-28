@@ -1,7 +1,10 @@
 <p><strong>Your details</strong></p>
+<% unless current_user == @tlk.user %>
+  <p class="tlk-note">You are a member of this Taaalk, so can take part in the conversation.</p>
+<% end %>
+<p class="tlk-note">You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on <%= link_to 'your profile', show_user_path(current_user) %>.</p>
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == current_user && spkr.hide == false %>
-    <p class="tlk-note">You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>
     <%= form_with model: spkr do |f| %>
       <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
         <% if spkr.image.present? %>
