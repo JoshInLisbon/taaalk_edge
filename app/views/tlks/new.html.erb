@@ -1,7 +1,11 @@
-<h1>Start a Taaalk</h1>
+<h1>Two Ways to Start a Taaalk</h1>
 
-<h3>Create a Taaalk and invite people you know</h3>
-<p>Create a Taaalk with a title of your choice. Get an invite link and code. Invite as many people as you want to Taaalk with you.</p>
+<h4>1. Start a Taaalk and invite people you know</h4>
+<ul>
+  <li>Create a Taaalk with a title of your choice</li>
+  <li>Get an invite link and code</li>
+  <li>Invite as many people as you'd like to take part</li>
+</ul>
 <div>
   <% if current_user.present? %>
     <%= simple_form_for(@tlk, remote: true) do |f| %>
@@ -9,9 +13,21 @@
       <%= f.button :submit %>
     <% end %>
   <% else %>
-    <%= link_to "Log in or Sign up to Create Your Taaalk", new_user_session_path %>
+    <%= link_to "Log in or sign up to start your Taaalk.", new_user_session_path %>
   <% end %>
 </div>
 
-<h3>Meet someone to Taaalk with</h3>
-<p>Let others know why they should Taaalk with you and ask </p>
+<h4>2. Meet someone to Taaalk with</h4>
+<ul>
+  <li>Let people know what you know</li>
+  <li>Ask people who know interesting things to Taaalk with you</li>
+</ul>
+<% if current_user.present? %>
+  <%= simple_form_for(current_user, remote: true) do |f| %>
+    <p><strong>People should Taaalk to you about...</strong></p>
+    <%= f.input :username %>
+    <%= f.button :submit %>
+  <% end %>
+<% else %>
+  <%= link_to "Log in or sign up to start your Taaalk.", new_user_session_path %>
+<% end %>

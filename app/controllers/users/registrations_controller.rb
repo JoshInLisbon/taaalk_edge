@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     if params.include? :spkr
       super
-      current_user.update_attributes(username: spkr_params[:name], bio: spkr_params[:bio])
+      current_user.update_attributes(username: spkr_params[:name], bio: spkr_params[:bio], biog: spkr_params[:biog])
       set_tlk
       make_spkr
     else

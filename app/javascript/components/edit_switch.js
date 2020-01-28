@@ -16,7 +16,7 @@ export { editSwitch }
 
 const changeBtnText = () => {
   if (editBtn.innerText == "Edit This Taalk") {
-    editBtn.innerText = "Edit Mode Off";
+    editBtn.innerText = "Exit Edit Mode";
   } else {
     editBtn.innerText = "Edit This Taalk";
   }

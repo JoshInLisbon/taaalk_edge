@@ -5,4 +5,7 @@ class Spkr < ApplicationRecord
   has_one :draft_msg, dependent: :destroy
 
   has_one_attached :image
+
+  has_rich_text :biog
+  has_rich_text :edited_biog
 end

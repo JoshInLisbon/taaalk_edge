@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
+  has_rich_text :biog
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 

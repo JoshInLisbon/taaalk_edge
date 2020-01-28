@@ -16,11 +16,14 @@
         <% end %>
         >
       </div>
+      <div class="spkr-user-edit-form">
       <%= f.label :image %>
       <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{spkr.id}" %><br>
       <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
       <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %><br>
+      <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
       <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
+      </div>
     <% end %>
     <p id="leave-tlk" class="fake-link leave-tlk" target="spkr-leave-<%= spkr.id %>">Leave Taaalk</p>
     <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off leave-tlk-links">

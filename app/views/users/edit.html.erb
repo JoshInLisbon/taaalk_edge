@@ -7,11 +7,13 @@
   <% end %>
   >
 </div>
-
+<div class="spkr-user-edit-form">
 <%= simple_form_for(@user) do |f| %>
   <%= f.input :image %>
   <%= f.input :username %>
   <%= f.input :bio %>
+  <%= f.rich_text_area :biog %>
   <%= f.input :email %>
   <%= f.button :submit, 'Update Your Details' %>
 <% end %>
+</div>

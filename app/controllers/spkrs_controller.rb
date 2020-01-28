@@ -51,13 +51,14 @@ class SpkrsController < ApplicationController
   end
 
   def spkr_params
-    params.require(:spkr).permit(:name, :bio, :image)
+    params.require(:spkr).permit(:name, :bio, :image, :biog)
   end
 
   def complete_user_profile
     current_user.update_attributes(username: spkr_params[:name]) unless current_user.username.present?
     current_user.update_attributes(bio: spkr_params[:bio]) unless current_user.bio.present?
     current_user.update_attributes(image: spkr_params[:image]) unless current_user.image.present?
+    current_user.update_attributes(biog: spkr_params[:biog]) unless current_user.biog.present?
   end
 
   def spkr_edited
@@ -67,6 +68,10 @@ class SpkrsController < ApplicationController
     end
     if spkr_params[:bio] != @spkr.bio
       @spkr.edited_bio = spkr_params[:bio]
+      @spkr.save!
+    end
+    if spkr_params[:biog] != @spkr.biog
+      @spkr.edited_biog = spkr_params[:biog]
       @spkr.save!
     end
   end

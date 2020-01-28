@@ -5,3 +5,20 @@
     text-decoration: underline;
   }
 }
+
+.alert {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+.spkr-user-edit-form {
+  .trix-button-group--block-tools,
+  .trix-button-group--file-tools,
+  .trix-button-group-spacer,
+  .trix-button-group--history-tools,
+  .trix-button--icon-strike {
+    display: none;
+  }
+}
+

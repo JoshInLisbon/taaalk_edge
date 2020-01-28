@@ -1,0 +1,11 @@
+<p>Hi <%= @spkr.name %>,</p>
+
+<p><%= @editing_spkr.name %> is suggesting an edit to your details in the Taaalk '<%= @tlk.title %>'.</p>
+
+<p>Your updated details are:</p>
+
+<p>Name: <%= @spkr.edited_name %></p>
+
+<p>Bio: <%= @spkr.edited_biog %></p>
+
+<p>To confirm this edit click this link: <%= edit_confirmed_url(@spkr) %></p>

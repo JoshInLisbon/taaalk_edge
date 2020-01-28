@@ -5,6 +5,7 @@ module SpkrMaker
       tlk: @tlk,
       name: current_user.username,
       bio: current_user.bio,
+      biog: current_user.biog
     )
     # if current_user.image.present?
     #   ActiveStorage::Attachment.create!(

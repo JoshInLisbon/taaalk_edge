@@ -1,6 +1,6 @@
 <% if current_user == @tlk.user %>
   <% if flash[:edit] == true %>
-    <button id="tlk-toggle-edit" class="edit-mode-on">Edit Mode Off</button>
+    <button id="tlk-toggle-edit" class="edit-mode-on">Exit Edit Mode</button>
     <div id="tlk-section-edit" class="tlk-section-on">
       <%= render 'components/edit_mode' %>
     </div>

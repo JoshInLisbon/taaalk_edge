@@ -1,6 +1,6 @@
 import { editSwitch } from "../components/edit_switch"
 import { copyWithClick } from "../components/copy_with_click"
-import { unsavedAlert, unsavedImageAlert } from "../components/unsaved_alert"
+import { unsavedAlert, unsavedImageAlert, rtaUnsavedAlert } from "../components/unsaved_alert"
 import { invitedLogin } from "../components/invited_login"
 import { leaveTlk } from "../components/leave_tlk"
 import { trixEditorOverrides } from "../components/trix-editor-overrides"
@@ -15,6 +15,7 @@ if(mode == 'tlks-show-edit') {
   unsavedAlert();
   leaveTlk();
   unsavedImageAlert();
+  rtaUnsavedAlert();
   trixEditorOverrides();
   loadDraftMsg();
   multiDraft();
@@ -26,6 +27,7 @@ if(mode == 'tlks-show-invited') {
 
 if(mode == 'tlks-show-spkr') {
   unsavedAlert();
+  rtaUnsavedAlert();
   leaveTlk();
   unsavedImageAlert();
   trixEditorOverrides();
