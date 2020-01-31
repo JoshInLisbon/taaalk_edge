@@ -4,8 +4,13 @@
 
 <p>Your updated details are:</p>
 
-<p>Name: <%= @spkr.edited_name %></p>
+<% if @spkr.edited_image.present? || @spkr.image.present? %>
+  <p>Image:</p>
+  <%= image_tag(@spkr.edited_image || @spkr.image) %>
+<% end %>
 
-<p>Bio: <%= @spkr.edited_biog %></p>
+<p>Name: <%= @spkr.edited_name || @spkr.name %></p>
 
-<p>To confirm this edit click this link: <%= edit_confirmed_url(@spkr) %></p>
+<p>Bio: <%= @spkr.edited_biog || @spkr.biog %></p>
+
+<p>To confirm this edit click this link: <%= link_to edit_confirmed_url(@spkr), edit_confirmed_url(@spkr) %></p>
