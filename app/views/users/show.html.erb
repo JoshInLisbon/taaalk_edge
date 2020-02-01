@@ -14,6 +14,8 @@
   <div class="tlk-note">
     <p>This is your page. Only you can see your email and the Edit and Log Out options below. This information will not be visible for other users who view this page.</p>
     <p><%= @user.email %></p>
+    <%= @user.tlk_with_me %>
+    <%= @user.tlk_with_you %>
     <p><%= link_to "Edit Your Details", edit_user_path(@user) %></p>
     <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
   </div>

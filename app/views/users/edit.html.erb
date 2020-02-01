@@ -8,12 +8,16 @@
   >
 </div>
 <div class="spkr-user-edit-form">
-<%= simple_form_for(@user) do |f| %>
-  <%= f.input :image %>
-  <%= f.input :username %>
-  <%= f.input :bio %>
-  <%= f.rich_text_area :biog %>
-  <%= f.input :email %>
-  <%= f.button :submit, 'Update Your Details' %>
-<% end %>
+  <%= simple_form_for(@user) do |f| %>
+    <%= f.input :image %>
+    <%= f.input :username %>
+    <%= f.input :email %>
+    <p>Default Taaalk bio:</p>
+    <%= f.rich_text_area :biog %>
+    <p>People should Taaalk with you about:</p>
+    <%= f.rich_text_area :tlk_with_me %>
+    <p>Default 'Taaalk Request' message:</p>
+    <%= f.rich_text_area :tlk_with_you %>
+    <%= f.button :submit, 'Update Your Details' %>
+  <% end %>
 </div>

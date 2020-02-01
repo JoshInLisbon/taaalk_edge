@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_one_attached :image
 
   has_rich_text :biog
+  has_rich_text :tlk_with_me
+  has_rich_text :tlk_with_you
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged

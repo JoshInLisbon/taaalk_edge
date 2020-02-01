@@ -22,12 +22,9 @@
   <li>Let people know what you know</li>
   <li>Ask people who know interesting things to Taaalk with you</li>
 </ul>
-<% if current_user.present? %>
-  <%= simple_form_for(current_user, remote: true) do |f| %>
-    <p><strong>People should Taaalk to you about...</strong></p>
-    <%= f.input :username %>
-    <%= f.button :submit %>
-  <% end %>
-<% else %>
-  <%= link_to "Log in or sign up to start your Taaalk.", new_user_session_path %>
-<% end %>
+
+<%= render 'components/tlk_to_me' %>
+
+<%= render 'components/tlk_to_me_users' %>
+
+

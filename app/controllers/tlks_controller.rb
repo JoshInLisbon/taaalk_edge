@@ -22,6 +22,7 @@ class TlksController < ApplicationController
 
   def new
     @tlk = Tlk.new()
+    @tlk_with_me_users = User.joins(:rich_text_tlk_with_me).paginate(page: params[:page], per_page: 30).order(created_at: :desc)
   end
 
   def edit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_19_110315) do
+ActiveRecord::Schema.define(version: 2020_02_01_161413) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(version: 2020_01_19_110315) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tlk_id"], name: "index_tlk_follows_on_tlk_id"
     t.index ["user_id"], name: "index_tlk_follows_on_user_id"
+  end
+
+  create_table "tlk_requests", force: :cascade do |t|
+    t.string "title"
+    t.integer "requesting_user_id"
+    t.integer "requested_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tlks", force: :cascade do |t|
