@@ -1,7 +1,21 @@
 <p><strong>Your details</strong></p>
+
+<% if current_user.biog.present? %>
+  <div>
+    <div class="tlk-note">
+    <p>You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on <%= link_to 'your profile', show_user_path(current_user) %>.</p>
+    </div>
+  </div>
+<% else %>
+  <div>
+    <div class="tlk-note">
+      <p>Write a bio for yourself so that the people reading this Taaalk know how your thoughts are relevant to the subject.</p>
+    </div>
+  </div>
+<% end %>
+
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == current_user && spkr.hide == false %>
-    <p class="tlk-note">You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on your [link]profile[/link].</p>
     <%= form_with model: spkr do |f| %>
       <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
         <% if spkr.image.present? %>
@@ -13,11 +27,14 @@
         <% end %>
         >
       </div>
+      <div class="spkr-user-edit-form">
       <%= f.label :image %>
       <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{spkr.id}" %><br>
       <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
       <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %><br>
+      <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
       <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
+      </div>
     <% end %>
     <p id="leave-tlk" class="fake-link leave-tlk" target="spkr-leave-<%= spkr.id %>">Leave Taaalk</p>
     <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off leave-tlk-links">
@@ -26,9 +43,11 @@
     </div>
     <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
   <% elsif spkr.user == current_user && spkr.hide == true %>
-    <div class="tlk-note">
-      <p>You (<%= spkr.name %>) are no longer a participant in this Taaalk. <%= link_to 'Delete all your messages', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). Confirm below:"} %>.</p>
-      <p>To rejoin the Taaalk visit <%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>.</p>
+    <div>
+      <div class="tlk-note">
+        <p>You (<%= spkr.name %>) are no longer a participant in this Taaalk. <%= link_to 'Delete all your messages', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). Confirm below:"} %>.</p>
+        <p>To rejoin the Taaalk visit <%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>.</p>
+      </div>
     </div>
   <% end %>
 <% end %>

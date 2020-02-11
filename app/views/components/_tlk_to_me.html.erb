@@ -1,0 +1,21 @@
+<% if current_user.present? %>
+  <div class="spkr-user-edit-form">
+    <%= simple_form_for current_user, :url => tlk_with_me_path, :method => :patch do |f| %>
+      <div class="user-image"
+        <% if current_user.image.present? %>
+          style="background-image: url(<%= rails_blob_url(current_user.image) %>)"
+        <% else %>
+          style="background-image: url(<%= asset_url('user.svg') %>)"
+        <% end %>
+        >
+      </div>
+      <%= f.input :image %>
+      <%= f.input :username %>
+      <p><strong>People should Taaalk to you about...</strong></p>
+      <%= f.rich_text_area :tlk_with_me %>
+      <%= f.button :submit, 'Update Your Details' %>
+    <% end %>
+  </div>
+<% else %>
+  <%= link_to "Log in or sign up to leave your details.", new_user_session_path %>
+<% end %>

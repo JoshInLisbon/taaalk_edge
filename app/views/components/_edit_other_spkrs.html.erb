@@ -1,15 +1,32 @@
 <p><strong>Other people's details</strong></p>
 <% if @tlk.spkrs.length == 1 %>
-  <div class="tlk-note">
-    <p>The details of people you invite to Taaalk with will appear here. You will be able to suggest edits to their name and bio.</p>
+  <div>
+    <div class="tlk-note">
+      <p>The details of people you invite to Taaalk with will appear here. You will be able to suggest edits to their name and bio.</p>
+    </div>
   </div>
 <% end %>
 <% @tlk.spkrs.each do |spkr| %>
   <% unless spkr.user == current_user %>
     <%= form_with model: spkr do |f| %>
+      <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+        <% if spkr.image.present? %>
+          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+        <% elsif spkr.user.image.present? %>
+          style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+        <% else %>
+          style="background-image: url(<%= asset_url('user.svg') %>)"
+        <% end %>
+        >
+      </div>
+      <div class="spkr-user-edit-form">
+      <%= f.label :image %>
+      <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{spkr.id}" %><br>
       <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
       <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
+      <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
       <%= f.submit spkr.name.present? ? "Suggest Update to #{spkr.name.possessive} Details" : "Update Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
+    </div>
     <% end %>
     <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">
       <% if spkr.name.present? %>

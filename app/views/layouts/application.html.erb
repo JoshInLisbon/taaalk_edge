@@ -17,15 +17,17 @@
         content="<%= controller_name %>-<%= action_name %>"
       <% end %>
     >
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'shared/navbar' %>
-    <p class="notice"><%= notice %></p>
+    <p class="alert notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
     <%= javascript_pack_tag 'on_new_page' %>

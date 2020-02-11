@@ -1,0 +1,16 @@
+<p>Hi<%= " #{@requested_user.username}" %>,</p>
+
+<p><strong><%= @requesting_user.username %> would like to start a Taaalk with you.</strong></p>
+
+<p>To accept the request follow this link: <%= link_to tlk_request_url(@tlk_request), tlk_request_url(@tlk_request) %></p>
+
+<p><%= @requesting_user.username %> wants to talk with you because:</p>
+
+<p><%= @tlk_request.tlk_with_you %></p>
+
+<p><strong>Title:</strong><%= @tlk_request.title %></p>
+
+<p><strong>Start of the Taaalk:</strong></p>
+
+<p><%= @tlk_request.first_msg %></p>
+

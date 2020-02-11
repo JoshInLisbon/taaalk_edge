@@ -8,6 +8,8 @@ gem 'rails', github: "rails/rails", branch: "6-0-stable"
 
 # TAAALK ADDITIONS
 
+# Font Awesome
+gem 'font-awesome-sass', '~> 5.12.0'
 # Pagination
 gem 'will_paginate', '~> 3.1.1'
 # Images

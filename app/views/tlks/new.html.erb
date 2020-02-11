@@ -1,8 +1,30 @@
-<h1>hello!</h1>
+<h1>Two Ways to Start a Taaalk</h1>
 
-<div id="tlk_title">
-  <%= simple_form_for(@tlk, remote: true) do |f| %>
-    <%= f.input :title %>
-    <%= f.button :submit %>
+<h4>1. Start a Taaalk and invite people you know</h4>
+<ul>
+  <li>Create a Taaalk with a title of your choice</li>
+  <li>Get an invite link and code</li>
+  <li>Invite as many people as you'd like to take part</li>
+</ul>
+<div>
+  <% if current_user.present? %>
+    <%= simple_form_for(@tlk, remote: true) do |f| %>
+      <%= f.input :title %>
+      <%= f.button :submit %>
+    <% end %>
+  <% else %>
+    <%= link_to "Log in or sign up to start your Taaalk.", new_user_session_path %>
   <% end %>
 </div>
+
+<h4>2. Meet someone to Taaalk with</h4>
+<ul>
+  <li>Let people know what you know</li>
+  <li>Ask people who know interesting things to Taaalk with you</li>
+</ul>
+
+<%= render 'components/tlk_to_me' %>
+
+<%= render 'components/tlk_to_me_users' %>
+
+

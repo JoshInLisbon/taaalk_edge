@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :tlks, dependent: :destroy
   has_many :spkrs, dependent: :destroy
   has_many :msgs, dependent: :destroy
+  has_many :draft_msgs, dependent: :destroy
   has_many :tlk_follows, dependent: :destroy
 
   # UserFollow
@@ -16,6 +17,10 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :followed_user
 
   has_one_attached :image
+
+  has_rich_text :biog
+  has_rich_text :tlk_with_me
+  has_rich_text :tlk_with_you
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged

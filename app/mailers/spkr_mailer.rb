@@ -5,7 +5,7 @@ class SpkrMailer < ApplicationMailer
     @tlk = params[:tlk]
 
     mail(
-      to: "#{@spkr.name} <#{@spkr.user.email}>",,
+      to: "#{@spkr.name} <#{@spkr.user.email}>",
       subject: "#{@editing_spkr.name} has edited your details in '#{@tlk.title}'. Please confirm or reject this edit."
     )
   end

@@ -14,11 +14,13 @@
  *
  */
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "variables";
+@import "bootstrap";
 @import "users";
 @import "tlks";
 @import "spkrs";
 @import "shared";
 @import "./actiontext.scss";
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
 @import "components/index";

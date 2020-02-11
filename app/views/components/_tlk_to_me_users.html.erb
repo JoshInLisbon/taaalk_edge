@@ -1,0 +1,15 @@
+<% @tlk_with_me_users.each do |twm_user| %>
+  <div class="tlk-tlking-image spkr-image"
+    <% if twm_user.image.present? %>
+      style="background-image: url(<%= rails_blob_url(twm_user.image) %>)"
+    <% else %>
+      style="background-image: url(<%= asset_url('user.svg') %>)"
+    <% end %>
+    >
+  </div>
+  <h4><%= link_to twm_user.username, show_user_path(twm_user) %></h4>
+  <p><%= twm_user.tlk_with_me %></p>
+  <p><%= link_to "Request to Taaalk with #{twm_user.username}", tlk_with_request_path(twm_user) %></p>
+<% end %>
+
+<%= will_paginate @tlk_with_me_users %>

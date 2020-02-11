@@ -3,6 +3,7 @@ class Tlk < ApplicationRecord
   has_many :spkrs, dependent: :destroy
   has_many :msgs, dependent: :destroy
   has_many :tlk_follows, dependent: :destroy
+  has_many :draft_msgs, dependent: :destroy
 
   has_one_attached :image
 

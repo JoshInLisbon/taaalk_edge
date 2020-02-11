@@ -1,10 +1,8 @@
-console.log('<%= @spkr.name %>');
-
 let nameInput = document.querySelector('#name-spkr-<%= @spkr.id %>');
-let bioInput = document.querySelector('#bio-spkr-<%= @spkr.id %>');
+let bioInput = document.querySelector('#biog-spkr-<%= @spkr.id %>');
 let images = document.querySelectorAll('.image-spkr-<%= @spkr.id %>')
 let names = document.querySelectorAll('.name-spkr-<%= @spkr.id %>')
-let bio = document.querySelector('.bio-spkr-<%= @spkr.id %>')
+let bio = document.querySelector('.biog-spkr-<%= @spkr.id %>')
 names.forEach(name => {
   name.innerText = '<%= @spkr.name %>'
 });
@@ -13,4 +11,4 @@ names.forEach(name => {
     image.style = 'background-image: url(<%= rails_blob_url(@spkr.image) %>)'
   });
 <% end %>
-bio.innerText = '<%= @spkr.bio %>'
+bio.innerHTML = bioInput.innerHTML

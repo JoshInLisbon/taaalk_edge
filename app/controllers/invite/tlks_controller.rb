@@ -13,7 +13,7 @@ class Invite::TlksController < ApplicationController
     if invited_params[:key].to_i == @tlk.invite_code
       if current_user.present?
         make_spkr
-        redirect_to show_tlk_path(@tlk)
+        redirect_to show_tlk_path(@tlk), flash: { edit: true }
       else
         redirect_to show_tlk_path(@tlk), flash: { invited: true }
       end

@@ -1,0 +1,16 @@
+<p>Hi<%= " #{@spkr.name}" %>,</p>
+
+<p><%= @editing_spkr.name %> is suggesting an edit to your details in the Taaalk '<%= @tlk.title %>'.</p>
+
+<p>Your updated details are:</p>
+
+<% if @spkr.edited_image.present? || @spkr.image.present? %>
+  <p>Image:</p>
+  <%= image_tag(@spkr.edited_image || @spkr.image) %>
+<% end %>
+
+<p>Name: <%= @spkr.edited_name || @spkr.name %></p>
+
+<p>Bio: <%= @spkr.edited_biog || @spkr.biog %></p>
+
+<p>To confirm this edit click this link: <%= link_to edit_confirmed_url(@spkr), edit_confirmed_url(@spkr) %></p>

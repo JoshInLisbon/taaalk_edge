@@ -1,0 +1,36 @@
+
+  <div class="spkr-bio-image spkr-image"
+    <% if @user.image.present? %>
+      style="background-image: url(<%= rails_blob_url(@user.image) %>)"
+    <% else %>
+      style="background-image: url(<%= asset_url('user.svg') %>)"
+    <% end %>
+    >
+  </div>
+  <h3><%= link_to @user.username, show_user_path(@user) %></h3>
+  <p><%= @user.tlk_with_me %></p>
+  <p><strong>You want to Taaalk with <i><%= @user.username %></i> because...</strong></p>
+  <div class="tlk-tlking-image spkr-image"
+    <% if current_user.image.present? %>
+      style="background-image: url(<%= rails_blob_url(current_user.image) %>)"
+    <% else %>
+      style="background-image: url(<%= asset_url('user.svg') %>)"
+    <% end %>
+    >
+  </div>
+  <h4><%= link_to current_user.username, show_user_path(current_user) %></h4>
+  <%= simple_form_for current_user, :url => send_tlk_request_path, :method => :patch  do |f| %>
+    <div class="spkr-user-edit-form">
+    <%= f.rich_text_area :tlk_with_you %>
+    </div>
+      <%= fields_for @tlk_request do |fi| %>
+        <p><strong>What will the title of your Taaalk be?</strong></p>
+        <%= fi.label :title %>
+        <%= fi.text_field :title %>
+        <p><strong>What's the first thing you will say in your Taaalk?</strong></p>
+        <p>Ask a question to get things going.</p>
+        <%= fi.rich_text_area :first_msg %>
+      <% end %>
+    <%= f.submit %>
+
+  <% end %>

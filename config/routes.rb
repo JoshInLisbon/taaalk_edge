@@ -16,14 +16,21 @@ Rails.application.routes.draw do
   end
 
   get '/u/:id', to: 'users#show', as: 'show_user'
+  get '/u/:id/taaalk-request', to: 'users#tlk_with_request', as: 'tlk_with_request'
+  patch 'tlk-with-me', to: 'users#tlk_with_me', as: 'tlk_with_me'
+  patch ':id/send-tlk-request', to: 'users#send_tlk_request', as: 'send_tlk_request'
   resources :users do
     post :user_follows, to: 'user_follows#create', as: 'follow'
     delete :user_follows, to: 'user_follows#destroy', as: 'destroy_follow'
   end
 
-  resources :msgs, only: :create
+  resources :msgs, only: [:create, :update]
 
   resources :spkrs, only: [:create, :update, :destroy]
   get 'spkrs/hide', to: 'spkrs#hide_spkr', as: 'hide_spkr'
   get 'spkr/confirm-edit/:id', to: 'spkrs#edit_confirmed', as: 'edit_confirmed'
+
+  get '/t/request/:id', to: 'tlk_requests#show', as: 'tlk_request'
+  get '/t/request-accepted/:id', to: 'tlk_requests#accept', as: 'tlk_request_accept'
+  get '/t/request-rejected/:id', to: 'tlk_requests#reject', as: 'tlk_request_reject'
 end
