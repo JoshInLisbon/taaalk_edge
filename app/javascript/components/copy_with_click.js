@@ -6,8 +6,8 @@ const copyWithClick = () => {
       let id = btn.getAttribute('target');
       selectText(id);
       document.execCommand('copy');
-      btn.innerText = 'copied';
-      btn.style = 'color: green;';
+      // btn.innerText = 'copied';
+      btn.style = 'color: #25C973;';
     });
   });
 }

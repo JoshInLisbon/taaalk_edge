@@ -1,8 +1,19 @@
 <p><strong>Your details</strong></p>
-<% unless current_user == @tlk.user %>
-  <p class="tlk-note">You are a member of this Taaalk, so can take part in the conversation.</p>
+
+<% if current_user.biog.present? %>
+  <div>
+    <div class="tlk-note">
+    <p>You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on <%= link_to 'your profile', show_user_path(current_user) %>.</p>
+    </div>
+  </div>
+<% else %>
+  <div>
+    <div class="tlk-note">
+      <p>Write a bio for yourself so that the people reading this Taaalk know how your thoughts are relevant to the subject.</p>
+    </div>
+  </div>
 <% end %>
-<p class="tlk-note">You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on <%= link_to 'your profile', show_user_path(current_user) %>.</p>
+
 <% @tlk.spkrs.each do |spkr| %>
   <% if spkr.user == current_user && spkr.hide == false %>
     <%= form_with model: spkr do |f| %>
@@ -32,9 +43,11 @@
     </div>
     <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
   <% elsif spkr.user == current_user && spkr.hide == true %>
-    <div class="tlk-note">
-      <p>You (<%= spkr.name %>) are no longer a participant in this Taaalk. <%= link_to 'Delete all your messages', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). Confirm below:"} %>.</p>
-      <p>To rejoin the Taaalk visit <%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>.</p>
+    <div>
+      <div class="tlk-note">
+        <p>You (<%= spkr.name %>) are no longer a participant in this Taaalk. <%= link_to 'Delete all your messages', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). Confirm below:"} %>.</p>
+        <p>To rejoin the Taaalk visit <%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>.</p>
+      </div>
     </div>
   <% end %>
 <% end %>

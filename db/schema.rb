@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_01_161413) do
+ActiveRecord::Schema.define(version: 2020_02_10_193013) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -114,6 +114,9 @@ ActiveRecord::Schema.define(version: 2020_02_01_161413) do
     t.integer "requested_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "key"
+    t.string "slug"
+    t.index ["slug"], name: "index_tlk_requests_on_slug", unique: true
   end
 
   create_table "tlks", force: :cascade do |t|

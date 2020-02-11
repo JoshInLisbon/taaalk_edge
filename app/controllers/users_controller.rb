@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def send_tlk_request
     create_tlk_request
     update_user_profile_with_tlk_request
-    raise
+    send_tlk_request_mail
   end
 
   private
@@ -51,8 +51,10 @@ class UsersController < ApplicationController
     @requested_user = User.friendly.find(params[:id])
     @requesting_user = current_user
     @tlk_request = TlkRequest.new(tlk_request_params)
+    @tlk_request.tlk_with_you = tlk_request_user_params[:tlk_with_you]
     @tlk_request.requesting_user_id = @requesting_user.id
     @tlk_request.requested_user_id = @requested_user.id
+    @tlk_request.key = rand(100000..999999)
     @tlk_request.save!
   end
 
@@ -61,5 +63,14 @@ class UsersController < ApplicationController
       current_user.tlk_with_you = tlk_request_user_params[:tlk_with_you]
       current_user.save!
     end
+  end
+
+  def send_tlk_request_mail
+    mail = TlkMailer.with(
+      tlk_request: @tlk_request,
+      requested_user: @requested_user,
+      requesting_user: @requesting_user
+    ).tlk_request
+    mail.deliver_later
   end
 end

@@ -1,0 +1,45 @@
+<div class="tlk-image">
+  <h1 class="tlk-title"><%= @tlk_request.title %></h1>
+</div>
+
+<div class="spkr-bio-image spkr-image"
+  <% if @requesting_user.image.present? %>
+    style="background-image: url(<%= rails_blob_url(@requesting_user.image) %>)"
+  <% else %>
+    style="background-image: url(<%= asset_url('user.svg') %>)"
+  <% end %>
+  >
+</div>
+<h3><%= link_to @requesting_user.username, show_user_path(@requesting_user) %></h3>
+<p><%= @requesting_user.bio %></p>
+
+
+<div class="spkr-bio-image spkr-image"
+  <% if @requested_user.image.present? %>
+    style="background-image: url(<%= rails_blob_url(@requested_user.image) %>)"
+  <% else %>
+    style="background-image: url(<%= asset_url('user.svg') %>)"
+  <% end %>
+  >
+</div>
+<h3><%= link_to @requested_user.username, show_user_path(@requested_user) %></h3>
+<p><%= @requested_user.bio %></p>
+
+
+
+<div class="tlk-blob">
+  <div class="tlk-tlking-image spkr-image"
+    <% if @requesting_user.image.present? %>
+      style="background-image: url(<%= rails_blob_url(@requesting_user.image) %>)"
+    <% else %>
+      style="background-image: url(<%= asset_url('user.svg') %>)"
+    <% end %>
+    >
+  </div>
+  <p><%= @requesting_user.username %></p>
+  <p><%= @tlk_request.first_msg %></p>
+</div>
+
+<%= link_to "Accept Taaalk Request", tlk_request_accept_path(@tlk_request), class: 'tlk-accept-btn', data: { confirm: 'Are you sure?' } %>
+
+<%= link_to "Reject Taaalk Request", tlk_request_reject_path(@tlk_request), class: 'tlk-reject-btn', data: { confirm: 'Are you sure?' } %>

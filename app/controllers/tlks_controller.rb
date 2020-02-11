@@ -30,12 +30,12 @@ class TlksController < ApplicationController
   end
 
   def create
+    # If making changes, this method also exists in TlkRequestsController
     @tlk = Tlk.new(tlk_params)
     @tlk.user = current_user
     @tlk.invite_code = '%010d' % rand(100000..999999)
     @tlk.msg_key = Digest::MD5.hexdigest(@tlk.title)
     if @tlk.save!
-      @edit = true
       make_spkr
       send_user_followers_new_tlk_mail(current_user, @tlk)
       redirect_to show_tlk_path(@tlk), flash: { edit: true }
@@ -69,7 +69,10 @@ class TlksController < ApplicationController
 
   def send_user_followers_new_tlk_mail(current_user, tlk)
     current_user.followers.each do |follower|
-      mail = TlkMailer.with(tlk: tlk, followed_user: current_user, follower: follower).new_tlk_update_user_follower
+      mail = TlkMailer.with(
+        tlk: tlk, followed_user: current_user,
+        follower: follower
+      ).new_tlk_update_user_follower
       mail.deliver_later
     end
   end

@@ -1,0 +1,54 @@
+
+.navbar {
+  a {
+    color: $core-font-color;
+    &:hover {
+      color: $green;
+    }
+  }
+  .tlk-brand {
+    font-weight: bold;
+    font-size: 32px;
+    &:hover {
+      color: $green;
+    }
+  }
+  .navbar-non-logo{
+    display: inline;
+    text-align: right;
+    div {
+      display: inline-block;
+    }
+    a {
+      display: inline-block;
+      padding: 8px;
+      border: 1px solid $light-grey;
+      border-radius: 4px;
+    }
+    a:hover {
+      border: 1px solid $green;
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 368px) {
+  .navbar-non-logo {
+    text-align: left !important;
+    display: block;
+    div:first-of-type {
+      a {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {  }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  }

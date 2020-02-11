@@ -8,8 +8,13 @@
       <%= render 'components/read_mode' %>
     </div>
   <% else %>
-    <p class="tlk-note">You are the owner of this Taaalk.</p>
-    <button id="tlk-toggle-edit" class="edit-mode-off">Edit This Taalk</button>
+    <div>
+      <div class="tlk-note">
+        <p>You are the owner of this Taaalk.
+          <button id="tlk-toggle-edit" class="edit-mode-off">Edit Taaalk Details</button>
+        </p>
+      </div>
+    </div>
     <div id="tlk-section-edit" class="tlk-section-off">
       <%= render 'components/edit_mode' %>
     </div>
@@ -18,17 +23,38 @@
     </div>
   <% end %>
 <% elsif @spkr_only %>
-  <div id="tlk-section-spkr">
-    <%= render 'components/spkr_only_mode' %>
-  </div>
-<% else %>
-  <% if flash[:invited] == true %>
-    <div id="tlk-section-invite">
-      <%= render 'components/invited_mode' %>
+  <% if flash[:edit] == true %>
+    <button id="tlk-toggle-edit" class="edit-mode-on">Exit Edit Mode</button>
+    <div id="tlk-section-edit" class="tlk-section-on">
+      <%= render 'components/spkr_only_mode' %>
+    </div>
+    <div id="tlk-section-read" class="tlk-section-off">
+      <%= render 'components/read_mode' %>
     </div>
   <% else %>
-    <div id="tlk-section-read">
+    <div>
+      <div class="tlk-note">
+        <p>You are a member of this Taaalk.
+          <button id="tlk-toggle-edit" class="edit-mode-off">Edit Taaalk Details</button>
+        </p>
+      </div>
+    </div>
+    <div id="tlk-section-edit" class="tlk-section-off">
+      <%= render 'components/spkr_only_mode' %>
+    </div>
+    <div id="tlk-section-read" class="tlk-section-on">
       <%= render 'components/read_mode' %>
     </div>
   <% end %>
+<% elsif flash[:invited] == true %>
+  <div id="tlk-section-invite">
+    <%= render 'components/invited_mode' %>
+  </div>
+  <div id="tlk-section-read" class="tlk-section-on">
+    <%= render 'components/read_mode' %>
+  </div>
+<% else %>
+  <div id="tlk-section-read">
+    <%= render 'components/read_mode' %>
+  </div>
 <% end %>

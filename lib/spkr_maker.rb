@@ -16,4 +16,14 @@ module SpkrMaker
     #   )
     # end
   end
+
+  def make_remote_spkr(user)
+    spkr = Spkr.create!(
+      user: user,
+      tlk: @tlk,
+      name: user.username,
+      bio: user.bio,
+      biog: user.biog
+    )
+  end
 end

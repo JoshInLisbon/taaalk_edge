@@ -7,15 +7,18 @@
   >
 </div>
 <h1><%= @user.username %></h1>
-<p><%= @user.bio %></p>
 <p><%= @user.biog %></p>
+<% if @user.tlk_with_me.present? %>
+<p>Taaalk with me about:</p>
+<p><%= @user.tlk_with_me %></p>
+<% end %>
 
 <% if @user == current_user %>
   <div class="tlk-note">
-    <p>This is your page. Only you can see your email and the Edit and Log Out options below. This information will not be visible for other users who view this page.</p>
-    <p><%= @user.email %></p>
-    <%= @user.tlk_with_me %>
-    <%= @user.tlk_with_you %>
+    <p><strong>This is your profile.</strong> Only you can see the information in this box.</p>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong>Default 'Taaalk Request' message:</strong></p>
+    <p><%= @user.tlk_with_you %></p>
     <p><%= link_to "Edit Your Details", edit_user_path(@user) %></p>
     <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
   </div>

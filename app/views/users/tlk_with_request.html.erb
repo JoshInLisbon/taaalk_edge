@@ -34,21 +34,3 @@
     <%= f.submit %>
 
   <% end %>
-
-
-
-<!-- @tlk request -->
-<!-- needs to have two user models or does it? -->
-<!-- just one that started it, as other one must be current user -->
-<!-- or rather, when current user matches requested user... so needs two -->
-<!-- t.integer :follower_id -->
-<!-- t.integer :followed_user_id -->
-<!-- rails g model TlkRequest title:string requesting_user_id:integer requested_user_id:integer -->
-
-
-<!-- in user model -->
-<!-- has_many :received_follows, foreign_key: :followed_user_id, class_name: "UserFollow"
-has_many :followers, through: :received_follows, source: :follower
-has_many :given_follows, foreign_key: :follower_id, class_name: "UserFollow"
-has_many :followings, through: :given_follows, source: :followed_user
- -->

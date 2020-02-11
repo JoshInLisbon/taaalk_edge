@@ -15,9 +15,9 @@ const editSwitch = () => {
 export { editSwitch }
 
 const changeBtnText = () => {
-  if (editBtn.innerText == "Edit This Taalk") {
+  if (editBtn.innerText == "Edit Taaalk Details") {
     editBtn.innerText = "Exit Edit Mode";
   } else {
-    editBtn.innerText = "Edit This Taalk";
+    editBtn.innerText = "Edit Taaalk Details";
   }
 }

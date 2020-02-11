@@ -1,7 +1,9 @@
 <p><strong>Other people's details</strong></p>
 <% if @tlk.spkrs.length == 1 %>
-  <div class="tlk-note">
-    <p>The details of people you invite to Taaalk with will appear here. You will be able to suggest edits to their name and bio.</p>
+  <div>
+    <div class="tlk-note">
+      <p>The details of people you invite to Taaalk with will appear here. You will be able to suggest edits to their name and bio.</p>
+    </div>
   </div>
 <% end %>
 <% @tlk.spkrs.each do |spkr| %>

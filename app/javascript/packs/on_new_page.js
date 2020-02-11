@@ -26,6 +26,7 @@ if(mode == 'tlks-show-invited') {
 }
 
 if(mode == 'tlks-show-spkr') {
+  editSwitch();
   unsavedAlert();
   rtaUnsavedAlert();
   leaveTlk();
