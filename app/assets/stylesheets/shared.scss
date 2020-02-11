@@ -14,20 +14,19 @@ h1 {
 }
 
 a {
-  color: $bright-blue;
+  color: $green;
   &:hover {
-    text-decoration: none;
+    // text-decoration: none;
     color: $green;
   }
 }
 
 .fake-link {
   cursor: pointer;
-  color: $bright-blue;
-  text-decoration: underline;
+  color: $green;
   &:hover {
-    // text-decoration: none;
-    color: $green;
+    text-decoration: underline;
+    // color: $green;
   }
 }
 
@@ -85,7 +84,7 @@ a {
     // border-bottom: 1px solid $bright-blue;
     border-bottom: 4px solid white;
   }
-  button {
+  .tlk-note-btn {
     display: inline-block;
     border: none;
     background: $bright-blue;
@@ -93,7 +92,8 @@ a {
     border-radius: 4px;
     padding: 4px 8px;
     &:hover {
-
+      cursor: pointer;
+      opacity: $link-hover-opacity;
     }
   }
 }

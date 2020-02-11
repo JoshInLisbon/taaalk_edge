@@ -4,6 +4,7 @@
     color: $core-font-color;
     &:hover {
       color: $green;
+      text-decoration: none;
     }
   }
   .tlk-brand {
@@ -22,11 +23,12 @@
     a {
       display: inline-block;
       padding: 8px;
-      border: 1px solid $light-grey;
+      background-color: $bright-blue;
+      color: white;
       border-radius: 4px;
     }
     a:hover {
-      border: 1px solid $green;
+      opacity: $link-hover-opacity;
     }
   }
 }
