@@ -18,11 +18,27 @@ h1 {
   font-size: 48px;
 }
 
+h3 {
+  font-size: 24px;
+}
+
+.big-white-split {
+  height: $desk-line-width;
+  background-color: $grey;
+  margin: 48px 0 32px 0;
+}
 
 // Medium devices (tablets, 768px and up)
 @media (max-width: 768px) {
   h1 {
     font-size: 32px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  .big-white-split {
+    height: $mob-line-width;
+    margin: 32px 0 16px 0;
   }
 }
 
@@ -36,6 +52,9 @@ h1 {
   max-width: 732px;
   padding: 0 16px;
   margin: 0 auto;
+  .tlk-note {
+    margin: 16px 0;
+  }
 }
 
 a {
@@ -126,13 +145,14 @@ a {
     &:hover {
       cursor: pointer;
       background-color: $red-btn-hover;
+      text-decoration: none;
     }
   }
 }
 
 .big-white-split {
   height: 12px;
-  background-color: $almost-white;
+  background-color: $grey;
   margin-top: 48px;
 }
 

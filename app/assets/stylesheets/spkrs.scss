@@ -12,8 +12,8 @@
 }
 
 .spkr-bio-image {
-  height: 50px;
-  width: 50px;
+  height: 48px;
+  width: 48px;
   display: inline-block;
   flex-shrink: 0;
 }
@@ -46,7 +46,7 @@
   .spkr-biog {
     text-align: left;
     padding-left: 32px;
-    border-left: 12px solid $almost-white;
+    border-left: $desk-line-width solid $grey;
   }
 }
 
@@ -56,10 +56,25 @@
   }
   .spkr-biog {
     padding-right: 32px;
-    border-right: 12px solid $almost-white;
+    border-right: $desk-line-width solid $grey;
   }
 }
 
 .spkr-link {
 
+}
+
+@media (max-width: 768px) {
+  .spkr-info-right {
+    .spkr-biog {
+      padding-left: 16px;
+      border-left: $mob-line-width solid $grey;
+    }
+  }
+  .spkr-info-left {
+    .spkr-biog {
+      padding-right: 16px;
+      border-right: $mob-line-width solid $grey;
+    }
+  }
 }

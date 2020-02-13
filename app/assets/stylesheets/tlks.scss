@@ -6,9 +6,9 @@
   border: 1px solid red;
 }
 
-#tlk-section-read {
-  border: 1px solid blue;
-}
+// #tlk-section-read {
+//   border: 1px solid blue;
+// }
 
 .tlk-section-off {
   display: none;
@@ -40,7 +40,7 @@
   padding: 0 16px;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
   // Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0000ff+0,c6f1d6+100 */
   background: #0000ff; /* Old browsers */
   background: -moz-linear-gradient(top,  #0000ff 0%, $pink-btn-hover 100%); /* FF3.6-15 */
@@ -78,6 +78,8 @@
   display: none;
 }
 
-
+.tlk-follow {
+  margin-bottom: 8px;
+}
 
 
