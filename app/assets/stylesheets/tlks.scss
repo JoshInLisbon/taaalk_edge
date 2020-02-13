@@ -34,12 +34,26 @@
   border: 1px solid red;
 }
 
+
 .tlk-image {
-  background: blue;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  // Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0000ff+0,c6f1d6+100 */
+  background: #0000ff; /* Old browsers */
+  background: -moz-linear-gradient(top,  #0000ff 0%, $pink-btn-hover 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #0000ff 0%, $pink-btn-hover 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #0000ff 0%, $pink-btn-hover 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#B9E4C9',GradientType=0 ); /* IE6-9 */
 }
 
 .tlk-title {
   color: white;
+  display: block;
+  width: 700px;
+  margin: 0 auto;
+  font-weight: $bold;
+  padding: 60px 0;
 }
 
 .tlk-tlking-image {

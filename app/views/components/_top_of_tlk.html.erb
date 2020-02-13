@@ -1,6 +1,12 @@
 <% if current_user == @tlk.user %>
   <% if flash[:edit] == true %>
-    <span id="tlk-toggle-edit" class="edit-mode-on tlk-note-btn">Exit Edit Mode</span>
+    <div>
+      <div class="tlk-note">
+        <p>You are the owner of this Taaalk.
+          <span id="tlk-toggle-edit" class="edit-mode-on tlk-note-btn">Exit Edit Mode</span>
+        </p>
+      </div>
+    </div>
     <div id="tlk-section-edit" class="tlk-section-on">
       <%= render 'components/edit_mode' %>
     </div>
@@ -24,7 +30,13 @@
   <% end %>
 <% elsif @spkr_only %>
   <% if flash[:edit] == true %>
-    <span id="tlk-toggle-edit" class="edit-mode-on tlk-note-btn">Exit Edit Mode</span>
+    <div>
+      <div class="tlk-note">
+        <p>You are a member of this Taaalk.
+          <span id="tlk-toggle-edit" class="edit-mode-on tlk-note-btn">Exit Edit Mode</span>
+        </p>
+      </div>
+    </div>
     <div id="tlk-section-edit" class="tlk-section-on">
       <%= render 'components/spkr_only_mode' %>
     </div>

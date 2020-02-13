@@ -30,7 +30,12 @@ class TlkRequestsController < ApplicationController
   end
 
   def reject
-    raise
+    if current_user == @requested_user
+      redirect_to root_path
+    else
+      flash[:notice] = "You need to be logged in as the requested user to reject the Taaalk request."
+      redirect_to tlk_request_path(@tlk_request)
+    end
   end
 
   private

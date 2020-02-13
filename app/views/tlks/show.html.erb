@@ -23,17 +23,19 @@
 
 <% @user_spkrs.each do |spkr|  %>
   <% if spkr.hide == false %>
-    <%= form_with model: @msg, class: 'rta' do |f| %>
-      <div class="field" id="rta-<%= spkr.id %>">
-        <%= f.label :content, "#{spkr.name} says:" %>
-        <%= f.rich_text_area :content, target: "draft-#{spkr.id}" %>
-      </div>
-      <%= f.hidden_field :tlk_id, :value => @tlk.id %>
-      <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
-      <%= f.hidden_field :spkr_id, :value => spkr.id %>
-      <%= f.submit "Publish", name: "publish" %>
-      <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button" %>
-    <% end %>
+    <div class="spkr-msg-form">
+      <%= form_with model: @msg, class: 'rta' do |f| %>
+        <div class="field" id="rta-<%= spkr.id %>">
+          <%= f.label :content, "#{spkr.name} says:" %>
+          <%= f.rich_text_area :content, target: "draft-#{spkr.id}" %>
+        </div>
+        <%= f.hidden_field :tlk_id, :value => @tlk.id %>
+        <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
+        <%= f.hidden_field :spkr_id, :value => spkr.id %>
+        <%= f.submit "Publish", name: "publish" %>
+        <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button" %>
+      <% end %>
+    </div>
   <% end %>
 
   <% if spkr.draft_msg.present? %>

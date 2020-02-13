@@ -7,14 +7,6 @@ module SpkrMaker
       bio: current_user.bio,
       biog: current_user.biog
     )
-    # if current_user.image.present?
-    #   ActiveStorage::Attachment.create!(
-    #     name: 'image',
-    #     record_type: 'Spkr',
-    #     record_id: spkr.id,
-    #     blob_id: current_user.image.id
-    #   )
-    # end
   end
 
   def make_remote_spkr(user)

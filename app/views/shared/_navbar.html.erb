@@ -1,17 +1,41 @@
 <nav class="navbar navbar-light bg-light">
   <%= link_to "Taaalk", root_path, class: "navbar-brand tlk-brand" %>
 
-  <div class="navbar-non-logo">
-    <%= link_to "Start a Conversation", new_tlk_path %>
 
-    <% if user_signed_in? %>
-      <div>
-        <%= link_to current_user.username, show_user_path(current_user) %>
-      </div>
-    <% else %>
-      <div>
-        <%= link_to "Log In", new_user_session_path %>
-      </div>
-    <% end %>
+  <div class="navbar-non-logo">
+    <div class="nav-btn-holder">
+      <%= link_to new_tlk_path do %>
+        <div class="nav-btn">
+        <i class="fas fa-align-left"></i>Start a Conversation
+        </div>
+      <% end %>
+    </div>
+
+    <div class="nav-btn-holder">
+
+      <% if user_signed_in? %>
+        <%= link_to show_user_path(current_user) do %>
+          <div class="nav-user-btn">
+            <div class="navbar-user-image"
+              <% if current_user.image.present? %>
+                style="background-image: url(<%= rails_blob_url(current_user.image) %>)"
+              <% else %>
+                style="background-image: url(<%= asset_url('user.svg') %>)"
+              <% end %>
+              >
+            </div>
+            <span>
+              <%= current_user.username %>
+            </span>
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+        <div class="nav-btn">
+          Log In
+        </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </nav>
