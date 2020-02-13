@@ -5,25 +5,19 @@ module SpkrMaker
       tlk: @tlk,
       name: current_user.username,
       bio: current_user.bio,
-      biog: current_user.biog
+      biog: current_user.biog,
+      side: @tlk.spkrs.length.even? ? 'left' : 'right'
     )
-    # if current_user.image.present?
-    #   ActiveStorage::Attachment.create!(
-    #     name: 'image',
-    #     record_type: 'Spkr',
-    #     record_id: spkr.id,
-    #     blob_id: current_user.image.id
-    #   )
-    # end
   end
 
   def make_remote_spkr(user)
     spkr = Spkr.create!(
       user: user,
-      tlk: @tlk,
+      tlk: @new_tlk,
       name: user.username,
       bio: user.bio,
-      biog: user.biog
+      biog: user.biog,
+      side: @new_tlk.spkrs.length.even? ? 'left' : 'right'
     )
   end
 end

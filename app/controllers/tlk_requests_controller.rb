@@ -11,12 +11,13 @@ class TlkRequestsController < ApplicationController
 
   def accept
     if current_user == @requested_user
-      @tlk = Tlk.new(title: @tlk_request.title)
-      @tlk.user = @requesting_user
-      @tlk.invite_code = '%010d' % rand(100000..999999)
-      @tlk.msg_key = Digest::MD5.hexdigest(@tlk.title)
-      if @tlk.save!
+      @new_tlk = Tlk.new(title: @tlk_request.title)
+      @new_tlk.user = @requesting_user
+      @new_tlk.invite_code = '%010d' % rand(100000..999999)
+      @new_tlk.msg_key = Digest::MD5.hexdigest(@new_tlk.title)
+      if @new_tlk.save!
         @requesting_spkr = make_remote_spkr(@requesting_user)
+        @tlk = Tlk.find(@new_tlk.id)
         make_spkr
         make_msg
         @tlk_request.destroy
@@ -30,7 +31,12 @@ class TlkRequestsController < ApplicationController
   end
 
   def reject
-    raise
+    if current_user == @requested_user
+      redirect_to root_path
+    else
+      flash[:notice] = "You need to be logged in as the requested user to reject the Taaalk request."
+      redirect_to tlk_request_path(@tlk_request)
+    end
   end
 
   private

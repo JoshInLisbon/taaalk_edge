@@ -4,40 +4,99 @@
     color: $core-font-color;
     &:hover {
       color: $green;
+      text-decoration: none;
     }
   }
   .tlk-brand {
     font-weight: bold;
-    font-size: 32px;
+    font-size: 24px;
     &:hover {
       color: $green;
     }
   }
   .navbar-non-logo{
-    display: inline;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
     text-align: right;
-    div {
-      display: inline-block;
+    .nav-btn-holder {
+      margin-right: 8px
     }
-    a {
+    .nav-btn-holder:last-of-type {
+      margin-right: 0px;
+    }
+    .nav-btn {
+      height: 36px;
       display: inline-block;
-      padding: 8px;
-      border: 1px solid $light-grey;
+      display: inline-block;
+      padding: 6px 8px 0 8px;
+      background-color: $pink;
       border-radius: 4px;
+      margin-right: 8px;
+      i {
+        margin-right: 8px;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: $pink-btn-hover;
+        color: $green;
+        a {
+          color: $green;
+        }
+      }
     }
-    a:hover {
-      border: 1px solid $green;
+    .nav-btn:last-of-type {
+      margin-right: 0px;
+    }
+    .nav-user-btn {
+      height: 36px;
+      border-radius: 4px;
+      background-color: $pink;
+      display: inline-flex;
+      align-items: center;
+      padding-right: 8px;
+      flex-shrink: 0;
+      .navbar-user-image {
+        display: inline-block;
+        height: 28px;
+        width: 28px;
+        margin: 4px 8px 4px 4px;
+        z-index: 100;
+        background: #091346;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50%;
+      }
+      span {
+        padding-top: 1px;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: $pink-btn-hover;
+        color: $green;
+        a {
+          color: $green;
+        }
+      }
     }
   }
 }
 
+
+
 // Small devices (landscape phones, 576px and up)
-@media (max-width: 368px) {
+@media (max-width: 440px) {
+  .navbar {
+    display: block !important;
+  }
   .navbar-non-logo {
     text-align: left !important;
-    display: block;
-    div:first-of-type {
-      a {
+    display: block !important;
+    .nav-btn-holder {
+      display: block !important;
+      .nav-btn {
         margin-bottom: 8px;
       }
     }
