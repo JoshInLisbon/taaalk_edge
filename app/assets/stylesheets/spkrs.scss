@@ -14,4 +14,52 @@
 .spkr-bio-image {
   height: 50px;
   width: 50px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.spkr-image-and-name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  .spkr-info {
+    h3 {
+      display: inline-block;
+      margin: 0;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.spkr-info {
+  margin-bottom: 32px;
+}
+
+.spkr-info-right {
+  text-align: right;
+  .spkr-image-and-name {
+    flex-direction: row-reverse;
+  }
+  .spkr-bio-image {
+    margin-left: 8px;
+  }
+  .spkr-biog {
+    text-align: left;
+    padding-left: 32px;
+    border-left: 12px solid $almost-white;
+  }
+}
+
+.spkr-info-left {
+  .spkr-bio-image {
+    margin-right: 8px;
+  }
+  .spkr-biog {
+    padding-right: 32px;
+    border-right: 12px solid $almost-white;
+  }
+}
+
+.spkr-link {
+
 }

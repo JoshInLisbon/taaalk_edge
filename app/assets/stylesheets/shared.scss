@@ -10,10 +10,32 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-weight: bold;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   font-size: 48px;
+}
+
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  }
+
+.tlk-container {
+  max-width: 732px;
+  padding: 0 16px;
+  margin: 0 auto;
 }
 
 a {
@@ -108,6 +130,11 @@ a {
   }
 }
 
+.big-white-split {
+  height: 12px;
+  background-color: $almost-white;
+  margin-top: 48px;
+}
 
 
 

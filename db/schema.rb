@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_10_193013) do
+ActiveRecord::Schema.define(version: 2020_02_13_150946) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_193013) do
     t.boolean "hide", default: false
     t.string "edited_name"
     t.string "edited_bio"
+    t.string "side"
     t.index ["tlk_id"], name: "index_spkrs_on_tlk_id"
     t.index ["user_id"], name: "index_spkrs_on_user_id"
   end
