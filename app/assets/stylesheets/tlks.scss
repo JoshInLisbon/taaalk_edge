@@ -19,7 +19,7 @@
 }
 
 .tlk-btn-unsaved {
-  background: green !important;
+  background: $bright-blue !important;
 }
 
 .tlk-p-unsaved {
@@ -43,10 +43,10 @@
   margin-bottom: 32px;
   // Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0000ff+0,c6f1d6+100 */
   background: #0000ff; /* Old browsers */
-  background: -moz-linear-gradient(top,  #0000ff 0%, $pink-btn-hover 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #0000ff 0%, $pink-btn-hover 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #0000ff 0%, $pink-btn-hover 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#B9E4C9',GradientType=0 ); /* IE6-9 */
+  background: -moz-linear-gradient(top,  #0000ff 0%, $grey 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #0000ff 0%, $grey 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #0000ff 0%, $grey 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#f0f0f0',GradientType=0 ); /* IE6-9 */
 }
 
 
@@ -80,11 +80,58 @@
 
 .tlk-follow {
   margin-bottom: 8px;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .tlk-unfollow {
   margin-left: 4px;
 }
 
+@media (max-width: 768px) {
+  .tlk-image {
+    min-height: 180px;
+  }
+  .tlk-title {
+    padding: 40px 0;
+  }
+  .tlk-follow {
+    font-size: 16px;
+  }
 
+}
+
+// Edit section
+
+.tlk-image-edit {
+  flex-direction: column;
+  justify-content: center;
+  .tlk-title-edit {
+    outline: none;
+    background: transparent;
+    border: 2px dashed white;
+    color: white;
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 700;
+    padding: 0 8px;
+    font-size: 48px;
+    display: block;
+  }
+  label {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    color: white;
+    margin: 0 auto -24px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .tlk-image {
+    .tlk-title-edit {
+      font-size: 32px;
+    }
+  }
+}

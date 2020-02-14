@@ -21,7 +21,7 @@
     display: box;
     text-align: right;
     .nav-btn-holder {
-      margin-right: 8px
+      margin-right: 32px
     }
     .nav-btn-holder:last-of-type {
       margin-right: 0px;
@@ -30,16 +30,15 @@
       height: 36px;
       display: inline-block;
       display: inline-block;
-      padding: 6px 8px 0 8px;
-      background-color: $pink;
+      padding: 6px 0px 0 0px;
       border-radius: 4px;
-      margin-right: 8px;
+      // margin-right: 32px;
       i {
         margin-right: 8px;
       }
       &:hover {
         cursor: pointer;
-        background-color: $pink-btn-hover;
+        // background-color: $almost-white;
         color: $green;
         a {
           color: $green;
@@ -52,7 +51,6 @@
     .nav-user-btn {
       height: 36px;
       border-radius: 4px;
-      background-color: $pink;
       display: inline-flex;
       align-items: center;
       padding-right: 8px;
@@ -61,9 +59,9 @@
         display: inline-block;
         height: 28px;
         width: 28px;
-        margin: 4px 8px 4px 4px;
+        margin: 4px 8px 4px 0px;
         z-index: 100;
-        background: #091346;
+        background: $bright-blue;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -74,7 +72,7 @@
       }
       &:hover {
         cursor: pointer;
-        background-color: $pink-btn-hover;
+        // background-color: $almost-white;
         color: $green;
         a {
           color: $green;
@@ -96,10 +94,19 @@
     display: block !important;
     .nav-btn-holder {
       display: block !important;
+      margin-right: 8px !important;
       .nav-btn {
         margin-bottom: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+        background-color: #e9e9e9;
       }
     }
+  }
+  .nav-user-btn {
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #e9e9e9;
   }
 }
 

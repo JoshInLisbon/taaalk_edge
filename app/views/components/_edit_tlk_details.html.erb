@@ -1,14 +1,26 @@
 <%= form_with model: @tlk do |f| %>
-  <div class="tlk-image"
+  <div class="tlk-image tlk-image-edit"
   <% if @tlk.image.present? %>
-    style="background-image: url(<%= rails_blob_url(@tlk.image) %>)"
+    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(@tlk.image) %>)"
   <% end %>
   >
-    <%= f.label :title %><br />
+    <%= f.label :title, "Edit Title:" %><br />
     <%= f.text_field :title, class: 'tlk-title-edit', target: 'update-tlk' %><br>
   </div>
-  <%= f.label :image %><br />
-  <%= f.file_field :image, accept: 'image/png,image/jpeg', target: 'update-tlk' %>
-  <%= f.submit "Update Taaalk", class: 'btn btn-secondary', id: 'update-tlk' %>
+
+  <div class="tlk-container">
+    <label id="cocktail_photo_upload_btn">
+      <span class="btn btn-dark">Upload Taaalk Background Image</span>
+      <div id="update-tlk-file-name-div" class="text-success mt-2"></div>
+      <span style="display:none;">
+        <%= f.file_field :image, accept: 'image/png,image/jpeg', target: 'update-tlk' %>
+      </span>
+    </label>
+    <div>
+      <%= f.submit "Update Taaalk", class: 'btn btn-secondary', id: 'update-tlk' %>
+    </div>
+  </div>
 <% end %>
-<p id="p-update-tlk" class="tlk-p-nochange">Changes not saved. Press 'Update Taaalk' to save.</p>
+  <div class="tlk-container">
+    <p id="p-update-tlk" class="tlk-p-nochange">Changes not saved. Press 'Update Taaalk' to save.</p>
+  </div>

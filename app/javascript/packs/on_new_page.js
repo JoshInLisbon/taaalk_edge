@@ -6,6 +6,7 @@ import { leaveTlk } from "../components/leave_tlk"
 import { trixEditorOverrides } from "../components/trix-editor-overrides"
 import { loadDraftMsg } from "../components/load_draft_msg"
 import { multiDraft } from "../components/multi_draft"
+import { uploadImage } from "../components/upload_image"
 
 let mode = document.querySelector('#meta').content
 
@@ -19,6 +20,7 @@ if(mode == 'tlks-show-edit') {
   trixEditorOverrides();
   loadDraftMsg();
   multiDraft();
+  uploadImage();
 }
 
 if(mode == 'tlks-show-invited') {
@@ -34,4 +36,9 @@ if(mode == 'tlks-show-spkr') {
   trixEditorOverrides();
   loadDraftMsg();
   multiDraft();
+  // uploadImage();
+}
+
+if(mode == 'users-edit') {
+  // uploadImage();
 }

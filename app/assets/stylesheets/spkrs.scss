@@ -12,8 +12,8 @@
 }
 
 .spkr-bio-image {
-  height: 48px;
-  width: 48px;
+  height: 40px;
+  width: 40px;
   display: inline-block;
   flex-shrink: 0;
 }
@@ -78,7 +78,12 @@
     }
   }
   .spkr-bio-image {
-    height: 40px;
-    width: 40px;
+    height: 32px;
+    width: 32px;
+  }
+  .spkr-image-and-name {
+    h3 {
+      font-size: 20px;
+    }
   }
 }
