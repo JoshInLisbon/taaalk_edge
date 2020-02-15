@@ -158,8 +158,20 @@ a {
 .big-white-split {
   height: 12px;
   background-color: $grey;
-  margin-top: 48px;
+  margin: 32px 0;
+}
+
+.btn-secondary {
+  background-color: $grey;
+  color: $core-font-color;
+  &:hover {
+    background-color: $grey;
+    color: $core-font-color;
+  }
 }
 
 
+.p-header-followed-by-tlk-note {
+  margin-bottom: 0;
+}
 

@@ -19,7 +19,11 @@
 }
 
 .tlk-btn-unsaved {
-  background: $bright-blue !important;
+  background: $sharp-red !important;
+  color: white !important;
+  &:hover {
+    background: $sharp-red-hover !important;
+  }
 }
 
 .tlk-p-unsaved {
@@ -107,9 +111,9 @@
   justify-content: center;
   .tlk-title-edit {
     outline: none;
-    background: transparent;
-    border: 2px dashed white;
-    color: white;
+    // background: transparent;
+    // border: 2px dashed white;
+    // color: white;
     display: block;
     width: 100%;
     max-width: 700px;
@@ -118,6 +122,12 @@
     padding: 0 8px;
     font-size: 48px;
     display: block;
+
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: $bright-blue;
+    color: $core-font-color;
   }
   label {
     display: block;
@@ -134,4 +144,20 @@
       font-size: 32px;
     }
   }
+}
+
+.tlk-leave {
+  margin: 16px 0 0 0;
+}
+
+.tlk-leave-links {
+  a {
+    margin: 16px 0 0 0;
+    display: inline-block;
+  }
+}
+
+
+.tlk-p-unsaved {
+  margin-bottom: 0;
 }

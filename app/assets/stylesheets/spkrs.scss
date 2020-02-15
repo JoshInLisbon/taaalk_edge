@@ -87,3 +87,75 @@
     }
   }
 }
+
+.spkr-edit {
+  background-color: white;
+  // border: 2px dashed $bright-blue;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 4px;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  color: $core-font-color;
+  border-width: 2px;
+  border-style: inset;
+  border-color: $sharp-red;
+}
+
+@media (max-width: 768px) {
+  .spkr-edit {
+    font-size: 20px;
+    width: 223px;
+  }
+  .spkr-image-upload-btn-and-text {
+      margin: -2px 0 0 8px !important;
+  }
+}
+
+
+.spkr-image-upload-div {
+  display: inline-flex;
+  .spkr-image-upload-btn-and-text {
+    margin: 3px 0 0 8px;
+  }
+}
+.spkr-user-edit-form {
+  .trix-content {
+    background-color: white;
+    // border: 2px dashed $bright-blue;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    color: $core-font-color;
+    border-width: 2px;
+    border-style: inset;
+    border-color: $sharp-red;
+  }
+  trix-toolbar .trix-button:not(:disabled) {
+      color: blue;
+      cursor: pointer;
+      background: #fcfcfc;
+      border-radius: 4px;
+      margin: 0 2px 0 0;
+      border: none;
+  }
+  trix-toolbar .trix-button-group {
+      border: none;
+  }
+}
+
+// .spkr-user-edit-form:first-of-type {
+//   .spkr-edit-other-heading-link {
+//     margin-top: 24px !important;
+//   }
+// }
+
+.spkr-edit-other-heading-link {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.other-spkr-edit-btn {
+  margin-bottom: 8px !important;
+}

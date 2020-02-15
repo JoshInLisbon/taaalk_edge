@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def spkr_params
-    params.require(:spkr).permit(:name, :bio)
+    params.require(:spkr).permit(:name, :bio, :biog)
   end
 
   def set_tlk

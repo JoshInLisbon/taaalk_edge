@@ -4,12 +4,12 @@
     style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(@tlk.image) %>)"
   <% end %>
   >
-    <%= f.label :title, "Edit Title:" %><br />
+    <%= f.label :title, "Edit title:" %><br />
     <%= f.text_field :title, class: 'tlk-title-edit', target: 'update-tlk' %><br>
   </div>
 
   <div class="tlk-container">
-    <label id="cocktail_photo_upload_btn">
+    <label>
       <span class="btn btn-dark">Upload Taaalk Background Image</span>
       <div id="update-tlk-file-name-div" class="text-success mt-2"></div>
       <span style="display:none;">
