@@ -1,39 +1,82 @@
-<p><strong>Other people's details</strong></p>
-<% if @tlk.spkrs.length == 1 %>
-  <div>
-    <div class="tlk-note">
-      <p>The details of people you invite to Taaalk with will appear here. You will be able to suggest edits to their name and bio.</p>
-    </div>
-  </div>
-<% end %>
-<% @tlk.spkrs.each do |spkr| %>
-  <% unless spkr.user == current_user %>
-    <%= form_with model: spkr do |f| %>
-      <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
-        <% if spkr.image.present? %>
-          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
-        <% elsif spkr.user.image.present? %>
-          style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
-        <% else %>
-          style="background-image: url(<%= asset_url('user.svg') %>)"
-        <% end %>
-        >
+<div class="tlk-container">
+
+  <p class="p-header-followed-by-tlk-note"><strong>Other people's details:</strong></p>
+  <% if @tlk.spkrs.length == 1 %>
+    <div>
+      <div class="tlk-note">
+        <p>The details of people you invite to Taaalk with will appear here.</p>
+        <p>To invite people to speak with you in this Taaalk:</p>
+        <p>
+          <div class="to-copy-section">
+            <span id="invite-link-2"><%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>, invite code: <%= @tlk.invite_code %></span> <span target="invite-link-2" class="copy-with-click"><i class="fas fa-copy"></i></span>
+          </div>
+        </p>
+        <p>You will be able to suggest edits to their name and bio.</p>
       </div>
-      <div class="spkr-user-edit-form">
-      <%= f.label :image %>
-      <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{spkr.id}" %><br>
-      <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
-      <%= f.text_field :bio, id: "bio-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
-      <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
-      <%= f.submit spkr.name.present? ? "Suggest Update to #{spkr.name.possessive} Details" : "Update Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
     </div>
-    <% end %>
-    <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">
-      <% if spkr.name.present? %>
-        Suggesting an update will send an email to <%= spkr.name %> to confirm changes.
-      <% else %>
-        Suggesting an update will send an email to this participant to confirm changes.
-      <% end %>
-    </p>
+  <% else %>
+    <div class="tlk-note">
+      <p>You can suggest updates to the profiles of other members of your Taaalk (so your readers get a good idea of who they are).</p>
+    </div>
   <% end %>
-<% end %>
+  <% @tlk.spkrs.each do |spkr| %>
+    <% unless spkr.user == current_user %>
+      <div>
+      <%= link_to raw("<strong>#{spkr.name}</strong>"), show_user_path(spkr.user), class: "spkr-edit-other-heading-link" %>
+      </div>
+
+      <%= form_with model: spkr do |f| %>
+
+        <div class="spkr-user-edit-form">
+
+          <div>
+            <label for="name">Edit name:</label>
+          </div>
+          <div>
+          <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
+          </div>
+
+          <label>
+            <div class="spkr-image-upload-div">
+              <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+                <% if spkr.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                <% elsif spkr.user.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                <% else %>
+                  style="background-image: url(<%= asset_url('user.svg') %>)"
+                <% end %>
+                >
+              </div>
+              <div class="spkr-image-upload-btn-and-text">
+                <span class="btn btn-dark">Upload a Profile Photo</span>
+                <div id="spkr-<%= spkr.id %>-file-name-div" class="text-success mt-2"></div>
+                <span style="display:none;">
+                  <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{spkr.id}" %>
+                </span>
+              </div>
+            </div>
+          </label>
+
+          <div>
+            <label for="name">Edit bio:</label>
+          </div>
+          <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
+          <%= f.submit spkr.name.present? ? "Suggest Update (#{spkr.name})" : "Update Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary other-spkr-edit-btn' %>
+
+        <% end %>
+
+        <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">
+          <% if spkr.name.present? %>
+            Suggesting an update will send an email to <%= spkr.name %> to confirm changes.
+          <% else %>
+            Suggesting an update will send an email to this participant to confirm changes.
+          <% end %>
+        </p>
+
+      </div>
+
+    <% end %>
+  <% end %>
+
+</div>

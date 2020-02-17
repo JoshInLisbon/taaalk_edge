@@ -1,6 +1,6 @@
 import { toggleZone } from 'components/toggle_zone'
 
-const leaveBtns = document.querySelectorAll('.leave-tlk');
+const leaveBtns = document.querySelectorAll('.tlk-leave');
 
 const leaveTlk = () => {
   leaveBtns.forEach(btn => {

@@ -2,6 +2,8 @@
 
 <%= render 'components/follow_unfollow_tlk' %>
 
+<div class="tlking-container">
+
 <% if @tlk.msgs.any? %>
   <% @tlk.msgs.each_with_index do |msg, i| %>
     <div class="tlk-blob" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
@@ -20,6 +22,8 @@
     </div>
   <% end %>
 <% end %>
+
+</div>
 
 <% @user_spkrs.each do |spkr|  %>
   <% if spkr.hide == false %>

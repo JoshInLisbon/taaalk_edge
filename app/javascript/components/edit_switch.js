@@ -6,7 +6,7 @@ const readZone = document.querySelector('#tlk-section-read');
 
 const editSwitch = () => {
   editBtn.addEventListener('click', (event) => {
-    changeBtnText();
+    changeBtnTextAndClass();
     toggleZone(editZone);
     toggleZone(readZone);
   });
@@ -14,10 +14,14 @@ const editSwitch = () => {
 
 export { editSwitch }
 
-const changeBtnText = () => {
+const changeBtnTextAndClass = () => {
   if (editBtn.innerText == "Edit Taaalk Details") {
     editBtn.innerText = "Exit Edit Mode";
+    editBtn.classList.add("edit-mode-on");
+    // editBtn.classList.remove("edit-mode-on");
   } else {
     editBtn.innerText = "Edit Taaalk Details";
+    editBtn.classList.remove("edit-mode-on");
+    // editBtn.classList.remove("edit-mode-off");
   }
 }
