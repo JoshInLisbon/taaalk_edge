@@ -84,7 +84,7 @@
 
 .tlk-follow {
   margin-bottom: 8px;
-  font-size: 16px;
+  // font-size: 16px;
 }
 
 .tlk-unfollow {
@@ -94,6 +94,7 @@
 @media (max-width: 768px) {
   .tlk-image {
     min-height: 180px;
+    padding: 0 8px;
   }
   .tlk-title {
     padding: 40px 0;
@@ -166,5 +167,6 @@
 }
 
 .tlking-container {
-
+  max-width: 872px;
+  background-color: yellow;
 }
