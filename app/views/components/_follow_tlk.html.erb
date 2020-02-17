@@ -2,7 +2,7 @@
 <div class="tlk-container">
   <div class="tlk-note">
     <%= link_to tlk_follow_path(@tlk.id, spkrs_follow: "true"), method: :post, remote: true do %>
-    <div class="tlk-note-btn tlk-follow"><i class="fas fa-sticky-note"></i> Follow this Taaalk</div>
+    <div class="tlk-note-btn tlk-follow"><i class="fas fa-sticky-note"></i> Follow this Taaalk (<%= @tlk.tlk_follows.count + @tlk.spkrs.count %>)</div>
     <% end %>
     <p>Receive an email when a new message is added to this Taaalk.</p>
   </div>

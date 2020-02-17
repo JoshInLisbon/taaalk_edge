@@ -6,7 +6,11 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: $light-grey;
   color: $core-font-color;
+  font-size: 100%;
+  font-size: 16px;
 }
+
+
 
 h1, h2, h3, h4, h5 {
   font-weight: bold;
@@ -28,6 +32,23 @@ h3 {
   margin: 48px 0 32px 0;
 }
 
+.big-dark-split {
+  height: $desk-line-width;
+  background-color: $sharp-red;
+  margin: 48px 0 48px 0;
+}
+
+.full-width-dark-split {
+  height: $desk-line-width;
+  background-color: $sharp-red;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.full-width-spkr-only {
+  margin-bottom: 16px;
+}
+
 .btn {
   border: none !important;
 }
@@ -43,6 +64,13 @@ h3 {
   .big-white-split {
     height: $mob-line-width;
     margin: 32px 0 16px 0;
+  }
+  .big-red-split {
+    height: $mob-line-width;
+    margin: 32px 0 32px 0;
+  }
+  .full-width-dark-split {
+    height: $mob-line-width;
   }
 }
 
@@ -113,7 +141,6 @@ a {
   // box-shadow: 1px 1px 5px 0px rgba(85,85,85,0.6);
   // border-bottom: 8px solid $bright-blue;
   p {
-    font-size: 16px;
     margin-bottom: 8px;
   }
   p:last-of-type {
@@ -175,3 +202,13 @@ a {
   margin-bottom: 0;
 }
 
+// .trix-content {
+//   line-height: 32px;
+//   font-size: 20px;
+// }
+// @media (max-width: 768px) {
+//   .trix-content {
+//     line-height: 28px;
+//     font-size: 18px;
+//   }
+// }

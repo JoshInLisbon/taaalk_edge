@@ -1,3 +1,5 @@
+<div class="full-width-dark-split full-width-spkr-only"></div>
+
 <div class="tlk-image"
 <% if @tlk.image.present? %>
   style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(@tlk.image) %>)"
@@ -8,21 +10,32 @@
 
 <%= render 'components/edit_self_spkr' %>
 
-<% @tlk.spkrs.each do |spkr| %>
-  <% unless spkr.user == current_user %>
-    <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
-      <% if spkr.image.present? %>
-        style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
-      <% elsif spkr.user.image.present? %>
-        style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
-      <% else %>
-        style="background-image: url(<%= asset_url('user.svg') %>)"
-      <% end %>
-      >
-    </div>
-    <h3 class="name-spkr-<%= spkr.id %>"><%= link_to spkr.name, show_user_path(spkr.user) %></h3>
-    <p class="bio-spkr-<%= spkr.id %>"><%= spkr.bio %></p>
-  <% end %>
-<% end %>
+<div class="tlk-container">
+  <div class="big-dark-split"></div>
+</div>
 
-<%= render 'components/no_msgs_note' %>
+<div class="tlk-container">
+
+  <% @tlk.spkrs.each do |spkr| %>
+    <% unless spkr.user == current_user || spkr.hide == true  %>
+      <div class="spkr-info spkr-info-<%= spkr.side %>">
+
+        <div class="spkr-image-and-name">
+          <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+            <% if spkr.image.present? %>
+              style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+            <% elsif spkr.user.image.present? %>
+              style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+            <% else %>
+              style="background-image: url(<%= asset_url('user.svg') %>)"
+            <% end %>
+            >
+          </div>
+          <h3 class="name-spkr-<%= spkr.id %>"><%= link_to spkr.name, show_user_path(spkr.user) %></h3>
+        </div>
+        <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>

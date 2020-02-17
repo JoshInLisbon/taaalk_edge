@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 #tlk-section-edit {
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 // #tlk-section-read {
@@ -84,7 +84,7 @@
 
 .tlk-follow {
   margin-bottom: 8px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .tlk-unfollow {
@@ -98,10 +98,6 @@
   .tlk-title {
     padding: 40px 0;
   }
-  .tlk-follow {
-    font-size: 16px;
-  }
-
 }
 
 // Edit section
@@ -119,7 +115,7 @@
     max-width: 700px;
     margin: 0 auto;
     font-weight: 700;
-    padding: 0 8px;
+    padding: 0 0 0 8px;
     font-size: 48px;
     display: block;
 
@@ -160,4 +156,15 @@
 
 .tlk-p-unsaved {
   margin-bottom: 0;
+}
+
+.edit-mode-on {
+  background-color: $sharp-red !important;
+  &:hover {
+    background-color: $sharp-red-hover !important;
+  }
+}
+
+.tlking-container {
+
 }

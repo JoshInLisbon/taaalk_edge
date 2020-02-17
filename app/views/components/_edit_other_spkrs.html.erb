@@ -1,10 +1,17 @@
 <div class="tlk-container">
 
-  <p class="p-header-followed-by-tlk-note"><strong>Other people's details</strong></p>
+  <p class="p-header-followed-by-tlk-note"><strong>Other people's details:</strong></p>
   <% if @tlk.spkrs.length == 1 %>
     <div>
       <div class="tlk-note">
-        <p>The details of people you invite to Taaalk with will appear here. You will be able to suggest edits to their name and bio.</p>
+        <p>The details of people you invite to Taaalk with will appear here.</p>
+        <p>To invite people to speak with you in this Taaalk:</p>
+        <p>
+          <div class="to-copy-section">
+            <span id="invite-link-2"><%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>, invite code: <%= @tlk.invite_code %></span> <span target="invite-link-2" class="copy-with-click"><i class="fas fa-copy"></i></span>
+          </div>
+        </p>
+        <p>You will be able to suggest edits to their name and bio.</p>
       </div>
     </div>
   <% else %>
