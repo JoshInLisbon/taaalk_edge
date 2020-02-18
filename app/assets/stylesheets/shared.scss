@@ -73,8 +73,13 @@ h3 {
     height: $mob-line-width;
     margin: 32px 0 32px 0;
   }
+  .big-dark-split {
+    height: $mob-line-width;
+  }
   .full-width-dark-split {
     height: $mob-line-width;
+    margin-left: 8px;
+    margin-right: 8px;
   }
 }
 

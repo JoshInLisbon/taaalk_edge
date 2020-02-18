@@ -1,5 +1,4 @@
 const uploadImage = () => {
-  console.log("alive!");
   const uploaders = document.querySelectorAll('input[type="file"]');
   uploaders.forEach(uploader => {
     uploader.addEventListener('change', (event) => {
