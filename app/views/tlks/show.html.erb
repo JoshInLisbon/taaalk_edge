@@ -6,7 +6,8 @@
 
 <% if @tlk.msgs.any? %>
   <% @tlk.msgs.each_with_index do |msg, i| %>
-    <div class="tlk-blob" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
+  <p><%= msg.spkr.side %></p>
+    <div class="tlk-blob tlk-blob-<%= msg.spkr.side %>" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
       <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
         <% if msg.spkr.image.present? %>
           style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
@@ -18,7 +19,7 @@
         >
       </div>
       <p class="name-spkr-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
-      <p><%= msg.content %></p>
+      <div><%= msg.content %></div>
     </div>
   <% end %>
 <% end %>
@@ -27,8 +28,8 @@
 
 <% @user_spkrs.each do |spkr|  %>
   <% if spkr.hide == false %>
-    <div class="spkr-msg-form">
-      <%= form_with model: @msg, class: 'rta' do |f| %>
+    <div class="spkr-msg-form" target="spkr-msg-form-<%= spkr.id %>">
+      <%= form_with model: @msg, class: 'rta', id: "spkr-msg-form-#{spkr.id}" do |f| %>
         <div class="field" id="rta-<%= spkr.id %>">
           <%= f.label :content, "#{spkr.name} says:" %>
           <%= f.rich_text_area :content, target: "draft-#{spkr.id}" %>
@@ -36,7 +37,7 @@
         <%= f.hidden_field :tlk_id, :value => @tlk.id %>
         <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
-        <%= f.submit "Publish", name: "publish" %>
+        <%= f.submit "Publish", name: "publish", id: "submit-msg-#{spkr.id}" %>
         <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button" %>
       <% end %>
     </div>
@@ -61,6 +62,8 @@
 
 
 <% end %>
+
+
 
 <!-- need to solve here for multiple spkrs?! -->
 

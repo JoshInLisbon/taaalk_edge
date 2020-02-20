@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TaaalkEdge</title>
-    <meta id="meta" name="js-loader"
-      <% if @current_user.present? || @tlk.present? %>
-        <% if @tlk.user == current_user %>
-          content="<%= controller_name %>-<%= action_name %>-edit"
-        <% elsif flash[:invited] %>
-          content="<%= controller_name %>-<%= action_name %>-invited"
-        <% elsif @spkr_only %>
-          content="<%= controller_name %>-<%= action_name %>-spkr"
-        <% else %>
-          content="<%= controller_name %>-<%= action_name %>"
-        <% end %>
-      <% else %>
-        content="<%= controller_name %>-<%= action_name %>"
-      <% end %>
-    >
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <title>TaaalkEdge</title>
+    <% if @current_user.present? || @tlk.present? %>
+      <% if @tlk.user == current_user %>
+        <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-edit" >
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <% elsif flash[:invited] %>
+        <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-invited" >
+      <% elsif @spkr_only %>
+        <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-spkr" >
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <% else %>
+        <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>" >
+      <% end %>
+    <% else %>
+      <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>">
+    <% end %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
