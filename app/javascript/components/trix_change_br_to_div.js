@@ -10,51 +10,102 @@ const changeBrToDiv = () => {
 
     let elemTarget = msgTrixInput.getAttribute('target');
     $(`[target="${elemTarget}"]`).bind('input keyup', function(){
-
+    // msgTrixInput.addEventListener('keyup', (event) => {
       let textBlock = []
-      let completeVar = true
+      // handle copy and paste (where multiple divs are pasted into the editor)
+      let msgTrixInputDivs = msgTrixInput.querySelectorAll("div");
+      msgTrixInputDivs.forEach(mtiDiv => {
+        // boolean for first word mobile 'bug'
+        let completeVar = true
+        // handles n > 3 line situations in the Trix input
+        let brMatchesBr = mtiDiv.outerHTML.match(/(?<=<br>)([\s\S]*?)(?=<br>)/g);
+        // handles the last line if there are n > 1 lines
+        let brMatchDiv = mtiDiv.outerHTML.match(/<br>(?![\s\S]*<br>[\s\S]*$)([\s\S]*?)(?:<\/div>)/);
+        // handles the first line if there are n > 1 lines
+        let blockMatchBr = mtiDiv.outerHTML.match(/(?:<!--block-->)([\s\S]*?)(?=<br>)/);
+        // handles the first line if there is one line
+        let blockMatchDiv = mtiDiv.outerHTML.match(/(?:<!--block-->)([\s\S]*?)(?=<\/div>)/);
 
-      // handles n > 3 line situations in the Trix input
-      let brMatchesBr = msgTrixStore.value.match(/(?<=<br>)([\s\S]*?)(?=<br>)/g);
-      // handles the last line if there are n > 1 lines
-      let brMatchDiv = msgTrixStore.value.match(/<br>(?![\s\S]*<br>[\s\S]*$)([\s\S]*?)(?:<\/div>)/);
-      // handles the first line if there are n > 1 lines
-      let blockMatchBr = msgTrixStore.value.match(/(?:<!--block-->)([\s\S]*?)(?=<br>)/);
-      // handles the first line if there is one line
-      let blockMatchDiv = msgTrixStore.value.match(/(?:<!--block-->)([\s\S]*?)(?=<\/div>)/);
-
-      // handles first word on mobile
-      if(!blockMatchBr || !blockMatchDiv || !brMatchDiv || !brMatchesBr) {
-        textBlock.push(tlkBubbleStart, msgTrixInput.value, tlkBubbleEnd);
-        completeVar = false;
-      }
-
-      // iterates through the different possibilities (i.e. if n > 3, if n > 1, then if n = 1) and updates the textBlock array accordingly
-      if(completeVar) {
-        if(brMatchesBr) {
-          textBlock.push(tlkBubbleStart, blockMatchBr[1], tlkBubbleEnd);
-          brMatchesBr.forEach(match => {
-            if(match) {
-              textBlock.push(tlkBubbleStart, match, tlkBubbleEnd);
-            }
-          });
-          if(brMatchDiv[1]) {
-            textBlock.push(tlkBubbleStart, brMatchDiv[1], tlkBubbleEnd);
-          }
-        } else if(blockMatchBr) {
-          textBlock.push(tlkBubbleStart, blockMatchBr[1], tlkBubbleEnd);
-          if(brMatchDiv[1]) {
-            textBlock.push(tlkBubbleStart, brMatchDiv[1], tlkBubbleEnd);
-          }
-        } else if (blockMatchDiv) {
-          textBlock.push(tlkBubbleStart, blockMatchDiv[1], tlkBubbleEnd);
+        // handles first word on mobile
+        if(!blockMatchDiv && !blockMatchBr) {
+          textBlock.push(tlkBubbleStart, mtiDiv.innerHTML, tlkBubbleEnd);
+          completeVar = false;
         }
-      }
 
-      // see your result in the console
-      console.log(textBlock.join(""))
-      // joins the textBlock array and sets it to the value of the msgTrixStore
-      msgTrixStore.value = textBlock.join("");
+        // iterates through the different possibilities (i.e. if n > 3, if n > 1, then if n = 1) and updates the textBlock array accordingly
+        if(completeVar) {
+          if(brMatchesBr) {
+            textBlock.push(tlkBubbleStart, blockMatchBr[1], tlkBubbleEnd);
+            brMatchesBr.forEach(match => {
+              if(match) {
+                textBlock.push(tlkBubbleStart, match, tlkBubbleEnd);
+              }
+            });
+            if(brMatchDiv[1]) {
+              textBlock.push(tlkBubbleStart, brMatchDiv[1], tlkBubbleEnd);
+            }
+          } else if(blockMatchBr) {
+            textBlock.push(tlkBubbleStart, blockMatchBr[1], tlkBubbleEnd);
+            if(brMatchDiv[1]) {
+              textBlock.push(tlkBubbleStart, brMatchDiv[1], tlkBubbleEnd);
+            }
+          } else if (blockMatchDiv) {
+            textBlock.push(tlkBubbleStart, blockMatchDiv[1], tlkBubbleEnd);
+          }
+        }
+
+        // see your result in the console
+
+        // joins the textBlock array and sets it to the value of the msgTrixStore
+
+      });
+
+      console.log(textBlock)
+      msgTrixStore.value = textBlock.flat(Infinity).join("");
+
+      // let completeVar = true
+
+      // // handles n > 3 line situations in the Trix input
+      // let brMatchesBr = msgTrixStore.value.match(/(?<=<br>)([\s\S]*?)(?=<br>)/g);
+      // // handles the last line if there are n > 1 lines
+      // let brMatchDiv = msgTrixStore.value.match(/<br>(?![\s\S]*<br>[\s\S]*$)([\s\S]*?)(?:<\/div>)/);
+      // // handles the first line if there are n > 1 lines
+      // let blockMatchBr = msgTrixStore.value.match(/(?:<!--block-->)([\s\S]*?)(?=<br>)/);
+      // // handles the first line if there is one line
+      // let blockMatchDiv = msgTrixStore.value.match(/(?:<!--block-->)([\s\S]*?)(?=<\/div>)/);
+
+      // // handles first word on mobile
+      // if(!blockMatchDiv && !blockMatchBr) {
+      //   textBlock.push(tlkBubbleStart, msgTrixInput.value, tlkBubbleEnd);
+      //   completeVar = false;
+      // }
+
+      // // iterates through the different possibilities (i.e. if n > 3, if n > 1, then if n = 1) and updates the textBlock array accordingly
+      // if(completeVar) {
+      //   if(brMatchesBr) {
+      //     textBlock.push(tlkBubbleStart, blockMatchBr[1], tlkBubbleEnd);
+      //     brMatchesBr.forEach(match => {
+      //       if(match) {
+      //         textBlock.push(tlkBubbleStart, match, tlkBubbleEnd);
+      //       }
+      //     });
+      //     if(brMatchDiv[1]) {
+      //       textBlock.push(tlkBubbleStart, brMatchDiv[1], tlkBubbleEnd);
+      //     }
+      //   } else if(blockMatchBr) {
+      //     textBlock.push(tlkBubbleStart, blockMatchBr[1], tlkBubbleEnd);
+      //     if(brMatchDiv[1]) {
+      //       textBlock.push(tlkBubbleStart, brMatchDiv[1], tlkBubbleEnd);
+      //     }
+      //   } else if (blockMatchDiv) {
+      //     textBlock.push(tlkBubbleStart, blockMatchDiv[1], tlkBubbleEnd);
+      //   }
+      // }
+
+      // // see your result in the console
+      // console.log(textBlock.join(""))
+      // // joins the textBlock array and sets it to the value of the msgTrixStore
+      // msgTrixStore.value = textBlock.join("");
     });
   });
 }
@@ -63,4 +114,4 @@ export { changeBrToDiv }
 
 
 // Non mobile line 12:
-// msgTrixInput.addEventListener('keyup', (event) => {
+//
