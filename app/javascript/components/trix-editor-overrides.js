@@ -23,8 +23,8 @@ const trixEditorOverrides = () => {
 
 export { trixEditorOverrides }
 
-const msgTrixInputDivs = document.querySelectorAll(".spkr-msg-form");
-const keyupEvent = new Event('keyup');
+let msgTrixInputDivs = document.querySelectorAll(".spkr-msg-form");
+let keyupEvent = new Event('keyup');
 
 const triggerTrixKeyupEvent = () => {
   msgTrixInputDivs.forEach(div => {
@@ -33,7 +33,7 @@ const triggerTrixKeyupEvent = () => {
     setTimeout(function(){
       msgTrixInput.dispatchEvent(keyupEvent);
       let startTrixValue = msgTrixStore.value;
-      setInterval(function(x){ imageRemovalChecker(msgTrixStore, msgTrixInput, startTrixValue); startTrixValue = msgTrixStore.value; }, 1000)
+      setInterval(function(){ imageRemovalChecker(msgTrixStore, msgTrixInput, startTrixValue); startTrixValue = msgTrixStore.value; }, 1000)
     }, 200);
   });
 }
