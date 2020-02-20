@@ -7,7 +7,7 @@ import { trixEditorOverrides } from "../components/trix-editor-overrides"
 import { loadDraftMsg } from "../components/load_draft_msg"
 import { multiDraft } from "../components/multi_draft"
 import { uploadImage } from "../components/upload_image"
-import { changeBrToP } from "../components/trix_change_br_to_p"
+import { changeBrToDiv } from "../components/trix_change_br_to_div"
 
 let mode = document.querySelector('#meta').content
 
@@ -22,7 +22,7 @@ if(mode == 'tlks-show-edit') {
   loadDraftMsg();
   multiDraft();
   uploadImage();
-  changeBrToP();
+  changeBrToDiv();
 }
 
 if(mode == 'tlks-show-invited') {
@@ -38,7 +38,7 @@ if(mode == 'tlks-show-spkr') {
   trixEditorOverrides();
   loadDraftMsg();
   multiDraft();
-  changeBrToP();
+  changeBrToDiv();
   uploadImage();
 }
 

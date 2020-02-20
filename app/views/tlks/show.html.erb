@@ -28,8 +28,8 @@
 
 <% @user_spkrs.each do |spkr|  %>
   <% if spkr.hide == false %>
-    <div class="spkr-msg-form">
-      <%= form_with model: @msg, class: 'rta' do |f| %>
+    <div class="spkr-msg-form" target="spkr-msg-form-<%= spkr.id %>">
+      <%= form_with model: @msg, class: 'rta', id: "spkr-msg-form-#{spkr.id}" do |f| %>
         <div class="field" id="rta-<%= spkr.id %>">
           <%= f.label :content, "#{spkr.name} says:" %>
           <%= f.rich_text_area :content, target: "draft-#{spkr.id}" %>
@@ -37,7 +37,7 @@
         <%= f.hidden_field :tlk_id, :value => @tlk.id %>
         <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
-        <%= f.submit "Publish", name: "publish" %>
+        <%= f.submit "Publish", name: "publish", id: "submit-msg-#{spkr.id}" %>
         <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button" %>
       <% end %>
     </div>
@@ -62,6 +62,8 @@
 
 
 <% end %>
+
+
 
 <!-- need to solve here for multiple spkrs?! -->
 
