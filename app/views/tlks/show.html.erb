@@ -37,20 +37,26 @@
         <%= f.hidden_field :tlk_id, :value => @tlk.id %>
         <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
-        <%= f.submit "Publish", name: "publish", id: "submit-msg-#{spkr.id}" %>
+        <button>Review Your Message</button>
+
         <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button" %>
+
+
+        <div class="msg-preview" target="preview-spkr-msg-form-<%= spkr.id %>"></div>
+        <%= f.submit "Publish", name: "publish", id: "submit-msg-#{spkr.id}" %>
       <% end %>
     </div>
+
+
   <% end %>
 
   <% if spkr.draft_msg.present? %>
-  <div class="tlk-draft" id="draft-<%= spkr.id %>">
-    <%= spkr.draft_msg.content %>
-  </div>
-
+    <div class="tlk-draft" id="draft-<%= spkr.id %>">
+      <%= spkr.draft_msg.content %>
+    </div>
 
     <%= javascript_tag do %>
-    <!-- can I pass spkr id to js? -->
+      <!-- can I pass spkr id to js? -->
       window.draftMsgpe<%= spkr.id %> = `<%= spkr.draft_msg.content %>`;
     <% end %>
   <% else %>

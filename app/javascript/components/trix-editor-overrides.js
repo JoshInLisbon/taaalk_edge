@@ -32,14 +32,14 @@ const triggerTrixKeyupEvent = () => {
     let msgTrixStore = div.querySelector('[name="msg[content]"]');
     setTimeout(function(){
       msgTrixInput.dispatchEvent(keyupEvent);
-      let startTrixValue = msgTrixStore.value;
-      setInterval(function(){ imageRemovalChecker(msgTrixStore, msgTrixInput, startTrixValue); startTrixValue = msgTrixStore.value; }, 1000)
+      // let startTrixValue = msgTrixStore.value;
+      // setInterval(function(){ imageRemovalChecker(msgTrixStore, msgTrixInput, startTrixValue); startTrixValue = msgTrixStore.value; }, 1500)
     }, 200);
   });
 }
 
-const imageRemovalChecker = (msgTrixStore, msgTrixInput, startTrixValue) => {
-  if (msgTrixStore.value !== startTrixValue) {
-    msgTrixInput.dispatchEvent(keyupEvent);
-  }
-}
+// const imageRemovalChecker = (msgTrixStore, msgTrixInput, startTrixValue) => {
+//   if (msgTrixStore.value !== startTrixValue) {
+//     msgTrixInput.dispatchEvent(keyupEvent);
+//   }
+// }
