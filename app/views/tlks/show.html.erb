@@ -6,20 +6,22 @@
 
 <% if @tlk.msgs.any? %>
   <% @tlk.msgs.each_with_index do |msg, i| %>
-  <p><%= msg.spkr.side %></p>
     <div class="tlk-blob tlk-blob-<%= msg.spkr.side %>" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
-      <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
-        <% if msg.spkr.image.present? %>
-          style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
-        <% elsif msg.spkr.user.image.present? %>
-          style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
-        <% else %>
-          style="background-image: url(<%= asset_url('user.svg') %>)"
-        <% end %>
-        >
+      <div class="tlk-blob-spkr">
+        <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
+          <% if msg.spkr.image.present? %>
+            style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
+          <% elsif msg.spkr.user.image.present? %>
+            style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
+          <% else %>
+            style="background-image: url(<%= asset_url('user.svg') %>)"
+          <% end %>
+          >
+        </div>
+        <div class="name-spkr-<%= msg.spkr.id %> tlk-blob-name"><%= msg.spkr.name %></div>
+        <div class="tlk-blob-date"><%= msg.created_at.strftime("%H:%M, %d %b %Y") %></div>
       </div>
-      <p class="name-spkr-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
-      <div><%= msg.content %></div>
+      <div class="tlk-blob-msg"><%= msg.content %></div>
     </div>
   <% end %>
 <% end %>
@@ -68,7 +70,6 @@
 
 
 <% end %>
-
 
 
 <!-- need to solve here for multiple spkrs?! -->

@@ -5,8 +5,8 @@ const changeBrToDiv = () => {
     let msgTrixInput = div.querySelector("trix-editor");
     let msgTrixStore = div.querySelector('[name="msg[content]"]');
     // set your own value here (e.g. if you want to use <p></p> etc...)
-    let tlkBubbleStart = '<div class="tlk-bubble">';
-    let tlkBubbleEnd = '</div>';
+    let tlkBubbleStart = '<div class="tlk-bubble-holder"><div class="tlk-bubble">';
+    let tlkBubbleEnd = '</div></div>';
 
     let msgTrixPreview = div.querySelector(".msg-preview");
 
