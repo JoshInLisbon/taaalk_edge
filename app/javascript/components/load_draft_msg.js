@@ -6,7 +6,7 @@ const loadDraftMsg = (draftMsg) => {
   drafts.forEach(draft => {
     richTextAreas.forEach(rta => {
       let rtaTarget = rta.getAttribute('target')
-      if(draft.id == rtaTarget) {
+      if(draft.id == `${rtaTarget}-draft`) {
         rta.innerHTML = draft.innerHTML;
         console.log(draft.innerHTML);
         console.log(rta.innerHTML);

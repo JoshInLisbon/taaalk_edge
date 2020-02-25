@@ -90,11 +90,23 @@
   // font-size: 16px;
 }
 
+.tlk-follow-div {
+  .btn {
+    font-size: 19px;
+    margin-bottom: 4px;
+  }
+}
+
 .tlk-unfollow {
   margin-left: 4px;
 }
 
 @media (max-width: 768px) {
+  .tlk-follow-div {
+    .btn {
+      font-size: 18px;
+    }
+  }
   .tlk-image {
     min-height: 180px;
     padding: 0 8px;
@@ -187,17 +199,35 @@
   display: flex;
   max-width: 732px;
   margin: 20px auto 6px auto;
-
+  height: 24px;
 }
 
 .tlk-blob-name {
-  margin: 4px;
+  margin: 4px 8px 4px -38px;
 }
 
 .tlk-blob-date {
   font-size: 10px;
-  margin-top: 10px;
+  margin-top: 11px;
   color: $time-and-date-color;
+}
+
+.tlk-tlking-image {
+  display: inline-block;
+  position: relative;
+  left: -64px;
+  top: 30px;
+  height: 54px;
+  width: 54px;
+}
+
+.tlk-bubble {
+  display: inline-block;
+  background-color: $grey;
+  padding: 11px 16px 10px 16px;
+  border-radius: 26px;
+  margin-bottom: 8px;
+  font-size: 19px;
 }
 
 .tlk-blob-right {
@@ -210,33 +240,74 @@
       text-align: left;
     }
   }
+  .tlk-tlking-image {
+    left: 64px;
+  }
+  .tlk-blob-name {
+    margin: 4px -38px 4px 8px;
+  }
 }
 
-.tlk-tlking-image {
-  display: inline-block;
-  height: 32px;
-  width: 32px;
-}
+
+
+
 
 .tlk-blob-msg {
   max-width: 732px;
   margin: 0 auto;
 }
 
-.tlk-bubble {
-  display: inline-block;
-  background-color: orange;
-  padding: 11px 16px 10px 16px;
-  border-radius: 26px;
-  margin-bottom: 8px;
-  // padding: 8px 12px 8px 12px;
-  // margin-bottom: 6px;
-  // border-radius: 20px;
+@media (max-width: 768px) {
+  .tlk-bubble {
+    padding: 8px 12px 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 20px;
+    font-size: 18px;
+  }
 }
+
+@media (max-width: 872px) {
+  .tlking-container {
+    padding: 0 8px;
+  }
+  .tlk-blob-spkr {
+    height: 32px;
+  }
+  .tlk-tlking-image {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    position: static;
+  }
+  .tlk-blob-name {
+    margin: 4px 8px;
+  }
+  .tlk-blob-date {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .tlk-blob-right {
+    .tlk-blob-name {
+      margin: 4px 8px;
+    }
+  }
+}
+
+
 
 
 
 .msg-preview {
-  background-color: green;
+  background-color: transparent !important;
+  margin: 24px 0 16px 0;
+  border: 2px dashed $core-font-color !important;
+  padding: 8px 8px 0px 8px;
+  p {
+    margin: 0 0 8px 0;
+  }
 }
 
+.tlk-draft-button {
+  border: none;
+  background: transparent;
+}

@@ -1,15 +1,25 @@
 import { toggleZone } from 'components/toggle_zone'
 
 const editBtn = document.querySelector('#tlk-toggle-edit');
+const editBtns = document.querySelectorAll('.tlk-toggle-edit');
 const editZone = document.querySelector('#tlk-section-edit');
 const readZone = document.querySelector('#tlk-section-read');
 
+
+
 const editSwitch = () => {
-  editBtn.addEventListener('click', (event) => {
-    changeBtnTextAndClass();
-    toggleZone(editZone);
-    toggleZone(readZone);
-  });
+  editBtns.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      changeBtnTextAndClass();
+      toggleZone(editZone);
+      toggleZone(readZone);
+    });
+});
+  // editBtn.addEventListener('click', (event) => {
+  //   changeBtnTextAndClass();
+  //   toggleZone(editZone);
+  //   toggleZone(readZone);
+  // });
 }
 
 export { editSwitch }

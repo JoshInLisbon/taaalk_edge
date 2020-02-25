@@ -56,3 +56,15 @@
     max-width: 100%;
     height: auto;
 }
+
+.trix-button--icon-decrease-nesting-level {
+  display: none;
+}
+
+.trix-button--icon-increase-nesting-level {
+  display: none;
+}
+
+.trix-active {
+  color: blue;
+}
