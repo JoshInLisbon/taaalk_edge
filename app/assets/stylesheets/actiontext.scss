@@ -36,3 +36,35 @@
     }
   }
 }
+
+.attachment__caption {
+  display: none !important;
+}
+
+.trix-content blockquote {
+  border-left: 0.3em solid #020202;
+}
+
+.trix-content pre {
+  background-color: #23241f;
+  color: #f8f8f2;
+}
+
+.trix-content img {
+    margin: 5px auto;
+    border-radius: 16px;
+    max-width: 100%;
+    height: auto;
+}
+
+.trix-button--icon-decrease-nesting-level {
+  display: none;
+}
+
+.trix-button--icon-increase-nesting-level {
+  display: none;
+}
+
+.trix-active {
+  color: blue;
+}

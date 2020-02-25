@@ -1,49 +1,78 @@
 <%= render 'components/top_of_tlk' %>
 
 <%= render 'components/follow_unfollow_tlk' %>
+<div class="tlk-container">
+<div class="big-blue-split"></div>
+</div>
 
-<div class="tlking-container">
 
 <% if @tlk.msgs.any? %>
+  <div class="tlking-container">
+
   <% @tlk.msgs.each_with_index do |msg, i| %>
-  <p><%= msg.spkr.side %></p>
     <div class="tlk-blob tlk-blob-<%= msg.spkr.side %>" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
-      <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
-        <% if msg.spkr.image.present? %>
-          style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
-        <% elsif msg.spkr.user.image.present? %>
-          style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
-        <% else %>
-          style="background-image: url(<%= asset_url('user.svg') %>)"
-        <% end %>
-        >
+      <div class="tlk-blob-spkr">
+        <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
+          <% if msg.spkr.image.present? %>
+            style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
+          <% elsif msg.spkr.user.image.present? %>
+            style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
+          <% else %>
+            style="background-image: url(<%= asset_url('user.svg') %>)"
+          <% end %>
+          >
+        </div>
+        <div class="name-spkr-<%= msg.spkr.id %> tlk-blob-name"><%= msg.spkr.name %></div>
+        <div class="tlk-blob-date"><%= msg.created_at.strftime("%H:%M, %d %b %Y") %></div>
       </div>
-      <p class="name-spkr-<%= msg.spkr.id %>"><%= msg.spkr.name %></p>
-      <div><%= msg.content %></div>
+      <div class="tlk-blob-msg"><%= msg.content %></div>
     </div>
   <% end %>
+
+  </div>
+  <div class="tlk-container">
+    <div class="big-white-split big-blue-split-bottom"></div>
+  </div>
+
+<% else %>
+
+  <div class="tlk-blob-msg">
+    <div class="trix-content">
+     <div class="tlk-bubble-holder"><div class="tlk-bubble">Taaalk messages...</div></div>
+     <div class="tlk-bubble-holder"><div class="tlk-bubble">Will appear...</div></div>
+     <div class="tlk-bubble-holder"><div class="tlk-bubble">Here.</div></div>
+    </div>
+  </div>
 <% end %>
 
-</div>
+
+
+<div class="tlk-container">
+
+
 
 <% @user_spkrs.each do |spkr|  %>
   <% if spkr.hide == false %>
+
     <div class="spkr-msg-form" target="spkr-msg-form-<%= spkr.id %>">
       <%= form_with model: @msg, class: 'rta', id: "spkr-msg-form-#{spkr.id}" do |f| %>
         <div class="field" id="rta-<%= spkr.id %>">
-          <%= f.label :content, "#{spkr.name} says:" %>
-          <%= f.rich_text_area :content, target: "draft-#{spkr.id}" %>
+          <strong><%= f.label :content, "#{spkr.name} says:" %></strong>
+          <%#= f.rich_text_area :content, target: "draft-#{spkr.id}", id: "msg-#{spkr.id}" %>
+          <%= f.rich_text_area :content, target: "submit-msg-#{spkr.id}", id: "msg-#{spkr.id}" %>
         </div>
         <%= f.hidden_field :tlk_id, :value => @tlk.id %>
         <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
-        <button>Review Your Message</button>
+        <button class="btn btn-dark preview-msg" target="submit-msg-<%= spkr.id %>" id="preview-msg-<%= spkr.id %>">Review Your Message</button>
 
-        <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button" %>
+        <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button fake-link" %>
 
 
-        <div class="msg-preview" target="preview-spkr-msg-form-<%= spkr.id %>"></div>
-        <%= f.submit "Publish", name: "publish", id: "submit-msg-#{spkr.id}" %>
+        <div class="msg-preview trix-content" target="preview-spkr-msg-form-<%= spkr.id %>">
+          <p>Your message preview will appear here.</p>
+        </div>
+        <%= f.submit "Publish Your Message", name: "publish", id: "submit-msg-#{spkr.id}", class: "btn btn-secondary" %>
       <% end %>
     </div>
 
@@ -51,7 +80,7 @@
   <% end %>
 
   <% if spkr.draft_msg.present? %>
-    <div class="tlk-draft" id="draft-<%= spkr.id %>">
+    <div class="tlk-draft" id="submit-msg-<%= spkr.id %>-draft">
       <%= spkr.draft_msg.content %>
     </div>
 
@@ -64,13 +93,12 @@
       window.draftMsg = '';
     <% end %>
   <% end %>
-
-
-
 <% end %>
 
+</div>
 
-
-<!-- need to solve here for multiple spkrs?! -->
+<% unless @user_spkrs.any? && @tlk.msgs.any? %>
+  <%= render 'components/follow_unfollow_tlk' %>
+<% end %>
 
 

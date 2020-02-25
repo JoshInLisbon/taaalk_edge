@@ -5,8 +5,8 @@ const changeBrToDiv = () => {
     let msgTrixInput = div.querySelector("trix-editor");
     let msgTrixStore = div.querySelector('[name="msg[content]"]');
     // set your own value here (e.g. if you want to use <p></p> etc...)
-    let tlkBubbleStart = '<div class="tlk-bubble">';
-    let tlkBubbleEnd = '</div>';
+    let tlkBubbleStart = '<div class="tlk-bubble-holder"><div class="tlk-bubble">';
+    let tlkBubbleEnd = '</div></div>';
 
     let msgTrixPreview = div.querySelector(".msg-preview");
 
@@ -27,8 +27,10 @@ const changeBrToDiv = () => {
           skipDivs = true;
           let tlkBubbleText = textBlock.flat(Infinity).join("").replace(/<div class="tlk-bubble"><\/div>/g, "");
           // joins the textBlock array and sets it to the value of the msgTrixStore
+          msgTrixPreview.innerHTML = tlkBubbleText;
           msgTrixStore.value = tlkBubbleText;
           // msgTrixStore.value = textBlock.flat(Infinity).join("");
+
         }
 
         if(!skipDivs) {
@@ -89,6 +91,10 @@ const changeBrToDiv = () => {
             msgTrixStore.value = tlkBubbleText;
           });
         }
+
+        if (msgTrixInput.value == "" || msgTrixInput.value == '<div class="tlk-bubble-holder"></div>'){
+          msgTrixPreview.innerHTML = '<p>Your message preview will appear here.</p>'
+        }
       }, 250);
     });
   });
@@ -96,7 +102,7 @@ const changeBrToDiv = () => {
 
 export { changeBrToDiv }
 
-
 // Non mobile line 12:
 // msgTrixInput.addEventListener('keyup', (event) => {
+
 
