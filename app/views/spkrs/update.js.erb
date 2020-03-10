@@ -2,7 +2,7 @@ let nameInput = document.querySelector('#name-spkr-<%= @spkr.id %>');
 let bioInput = document.querySelector('#biog-spkr-<%= @spkr.id %>');
 let images = document.querySelectorAll('.image-spkr-<%= @spkr.id %>')
 let names = document.querySelectorAll('.name-spkr-<%= @spkr.id %>')
-let bio = document.querySelector('.biog-spkr-<%= @spkr.id %>')
+let bio = document.querySelector('.biog-spkr-<%= @spkr.id %>');
 names.forEach(name => {
   name.innerText = '<%= @spkr.name %>'
 });
@@ -12,3 +12,7 @@ names.forEach(name => {
   });
 <% end %>
 bio.innerHTML = bioInput.innerHTML
+
+let colours = document.querySelectorAll('.spkr-color-<%= @spkr.id %>')
+
+

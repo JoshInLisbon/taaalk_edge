@@ -5,7 +5,7 @@
   <% if current_user.biog.present? %>
     <div>
       <div class="tlk-note">
-      <p>You can customise your details for each Taaalk to make them relevant to the subject. This will just update your bio for this Taaalk, not the one on <%= link_to 'your profile', show_user_path(current_user) %>.</p>
+      <p>You can customise your details for each Taaalk to make them relevant to the subject.</p>
       </div>
     </div>
   <% else %>
@@ -56,6 +56,109 @@
 
 
 
+        <div class="spkr-color-edit">
+          <div><label for="color">Edit your speech bubble style:</label></div>
+
+
+          <div class="spkr-color-scroll" target="spkr-<%= spkr.id %>">
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-red" type="radio" name="color" value="red" <%= spkr.color == 'red' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-red">
+                <div class="spkr-color-example msg-red"><div class="tlk-bubble">Strawberry</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-p-red" type="radio" name="color" value="p-red" <%= spkr.color == 'p-red' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-p-red">
+                <div class="spkr-color-example msg-p-red"><div class="tlk-bubble">Cherry</div></div>
+              </label>
+            </div>
+
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-orange" type="radio" name="color" value="orange" <%= spkr.color == 'orange' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-orange">
+                <div class="spkr-color-example msg-orange"><div class="tlk-bubble">Orange</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-p-orange" type="radio" name="color" value="p-orange" <%= spkr.color == 'p-orange' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-p-orange">
+                <div class="spkr-color-example msg-p-orange"><div class="tlk-bubble">Grapefruit</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-yellow" type="radio" name="color" value="yellow" <%= spkr.color == 'yellow' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-yellow">
+                <div class="spkr-color-example msg-yellow"><div class="tlk-bubble">Lemon</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-green" type="radio" name="color" value="green" <%= spkr.color == 'green' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-green">
+                <div class="spkr-color-example msg-green"><div class="tlk-bubble">Apple</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-p-green" type="radio" name="color" value="p-green" <%= spkr.color == 'p-green' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-p-green">
+                <div class="spkr-color-example msg-p-green"><div class="tlk-bubble">Mint</div></div>
+              </label>
+            </div>
+
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-blue" type="radio" name="color" value="blue" <%= spkr.color == 'blue' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-blue">
+                <div class="spkr-color-example msg-blue"><div class="tlk-bubble">Blueberry</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-p-blue" type="radio" name="color" value="p-blue" <%= spkr.color == 'p-blue' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-p-blue">
+                <div class="spkr-color-example msg-p-blue"><div class="tlk-bubble">Water</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-purple" type="radio" name="color" value="purple" <%= spkr.color == 'purple' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-purple">
+                <div class="spkr-color-example msg-purple"><div class="tlk-bubble">Aubergine</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-pink" type="radio" name="color" value="pink" <%= spkr.color == 'pink' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-pink">
+                <div class="spkr-color-example msg-pink"><div class="tlk-bubble">Candy</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-white" type="radio" name="color" value="white" <%= spkr.color == 'white' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-white">
+                <div class="spkr-color-example msg-white"><div class="tlk-bubble">White</div></div>
+              </label>
+            </div>
+
+            <div class="spkr-color-option">
+              <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-black" type="radio" name="color" value="black" <%= spkr.color == 'black' ? 'checked' : '' %> >
+              <label for="spkr-<%= spkr.id %>-color-option-black">
+                <div class="spkr-color-example msg-black"><div class="tlk-bubble">Black</div></div>
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+
         <div>
           <label for="name">Edit your bio:</label>
         </div>
@@ -64,7 +167,9 @@
         </div>
       <% end %>
       <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
-      <p id="leave-tlk" class="fake-link tlk-leave" target="spkr-leave-<%= spkr.id %>">Leave this Taaalk</p>
+      <div>
+        <p id="leave-tlk" class="fake-link tlk-leave" target="spkr-leave-<%= spkr.id %>">Leave this Taaalk</p>
+      </div>
       <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off tlk-leave-links">
         <%= link_to raw('Leave & <strong>DELETE</strong> all your messages.'), url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"} %><br>
         <%= link_to raw('Leave & <strong>KEEP</strong> all your messages. (You can delete your messages later.)'), url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"} %>

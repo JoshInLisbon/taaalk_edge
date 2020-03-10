@@ -31,6 +31,11 @@
   }
 }
 
+// .spkr-biog-holder-tlk-right {
+//   text-align: right;
+// }
+
+
 .spkr-info {
   margin-bottom: 32px;
 }
@@ -41,6 +46,8 @@
 
 .spkr-info-right {
   text-align: right;
+  border-right: $desk-line-width solid $grey;
+  padding-right: 12px;
   .spkr-image-and-name {
     flex-direction: row-reverse;
   }
@@ -48,19 +55,25 @@
     margin-left: 8px;
   }
   .spkr-biog {
-    text-align: left;
-    padding-left: 32px;
-    border-left: $desk-line-width solid $grey;
+    text-align: right;
+    padding-left: 24px;
+    // border-left: $desk-line-width solid $grey;
+    div {
+      text-align: left;
+      display: inline-block;
+    }
   }
 }
 
 .spkr-info-left {
+  border-left: $desk-line-width solid $grey;
+  padding-left: 12px;
   .spkr-bio-image {
     margin-right: 8px;
   }
   .spkr-biog {
-    padding-right: 32px;
-    border-right: $desk-line-width solid $grey;
+    padding-right: 24px;
+    // border-right: $desk-line-width solid $grey;
   }
 }
 
@@ -73,15 +86,19 @@
     font-size: 18px;
   }
   .spkr-info-right {
+    border-right: $mob-line-width solid $grey;
+    padding-right: 8px;
     .spkr-biog {
       padding-left: 16px;
-      border-left: $mob-line-width solid $grey;
+      // border-left: $mob-line-width solid $grey;
     }
   }
   .spkr-info-left {
+    border-left: $mob-line-width solid $grey;
+    padding-left: 8px;
     .spkr-biog {
       padding-right: 16px;
-      border-right: $mob-line-width solid $grey;
+      // border-right: $mob-line-width solid $grey;
     }
   }
   .spkr-bio-image {

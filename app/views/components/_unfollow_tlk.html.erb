@@ -1,5 +1,5 @@
 <div class="tlk-container">
-<div class="tlk-note">
+<div class="tlk-note tlk-follow-note">
   <p>You are following this Taaalk</p>
 </div>
 <%= link_to "Unfollow", tlk_destroy_follow_path(@tlk.id), method: :delete, remote: true, class: "tlk-unfollow" %>

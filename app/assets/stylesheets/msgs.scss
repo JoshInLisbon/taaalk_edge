@@ -1,3 +1,174 @@
 // Place all the styles related to the msgs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.spkr-color-edit {
+  margin-top: 4px;
+  .spkr-color-example {
+    display: inline-block !important;
+  }
+  .spkr-color-option {
+    display: inline-block !important;
+    margin: 0 8px 0 0;
+  }
+  .tlk-bubble {
+    padding: 9px 10px 7px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    &:hover{
+      text-decoration-style: none;
+    }
+  }
+  input[type="radio"]:checked+label {
+    .tlk-bubble {
+      // -webkit-box-shadow: 0px 0px 8px 0px rgba(255,255,255,1);
+      // -moz-box-shadow: 0px 0px 8px 0px rgba(255,255,255,1);
+      // box-shadow: 0px 0px 8px 0px rgba(255,255,255,1);
+      outline: -webkit-focus-ring-color auto 5px;
+      outline-color: -webkit-focus-ring-color;
+      outline-style: auto;
+      outline-width: 5px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .spkr-color-scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap;
+    padding-top: 14px;
+    border-right: 4px solid blue;
+  }
+}
+
+.msg-p-red {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-p-red !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-p-red !important;
+  }
+}
+
+.msg-p-blue {
+  .tlk-bubble {
+    background-color: $msg-p-blue !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-p-blue !important;
+  }
+}
+
+
+.msg-p-orange {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-p-orange !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-p-orange !important;
+  }
+}
+
+.msg-p-green {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-p-green !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-p-green !important;
+  }
+}
+
+
+.msg-green {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-green !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-green !important;
+  }
+}
+.msg-purple {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-purple !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-purple !important;
+  }
+}
+.msg-blue {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-blue !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-blue !important;
+  }
+}
+.msg-red {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-red !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-red !important;
+  }
+}
+.msg-orange {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-orange !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-orange !important;
+  }
+}
+.msg-black {
+  .tlk-bubble {
+    color: white !important;
+    background-color: $msg-black !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-black !important;
+  }
+}
+.msg-pink {
+  .tlk-bubble {
+    background-color: $msg-pink !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-pink !important;
+  }
+}
+.msg-yellow {
+  .tlk-bubble {
+    background-color: $msg-yellow !important;
+  }
+  .spkr-info, .spkr-details-container-index {
+    border-color: $msg-yellow !important;
+  }
+}
+.msg-white {
+  .tlk-bubble {
+    background-color: $msg-white !important;
+  }
+  .spkr-info {
+    border-color: $msg-white !important;
+  }
+  .spkr-details-container-index {
+      border-color: $light-grey !important;
+    }
+}
+
+
+
+
+
+
+

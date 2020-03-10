@@ -1,6 +1,6 @@
 import { editSwitch } from "../components/edit_switch"
 import { copyWithClick } from "../components/copy_with_click"
-import { unsavedAlert, unsavedImageAlert, rtaUnsavedAlert } from "../components/unsaved_alert"
+import { unsavedAlert, unsavedImageAlert, rtaUnsavedAlert, unsavedRadioAlert } from "../components/unsaved_alert"
 import { invitedLogin } from "../components/invited_login"
 import { leaveTlk } from "../components/leave_tlk"
 import { trixEditorOverrides } from "../components/trix-editor-overrides"
@@ -25,6 +25,7 @@ if(mode == 'tlks-show-edit') {
   uploadImage();
   changeBrToDiv();
   scrollToPreview();
+  unsavedRadioAlert();
 }
 
 if(mode == 'tlks-show-invited') {
@@ -43,6 +44,7 @@ if(mode == 'tlks-show-spkr') {
   changeBrToDiv();
   uploadImage();
   scrollToPreview();
+  unsavedRadioAlert();
 }
 
 if(mode == 'users-edit') {
