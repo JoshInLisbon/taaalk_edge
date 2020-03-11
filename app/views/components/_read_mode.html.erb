@@ -13,23 +13,25 @@
 
   <% @tlk.spkrs.each do |spkr| %>
     <% if spkr.user == @tlk.user && spkr.hide == false %>
-      <div class="msg-<%= spkr.color %>">
-        <div class="spkr-info spkr-info-<%= spkr.side %>">
-          <div class="spkr-image-and-name">
-            <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
-              <% if spkr.image.present? %>
-                style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
-              <% elsif spkr.user.image.present? %>
-                style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
-              <% else %>
-                style="background-image: url(<%= asset_url('user.svg') %>)"
-              <% end %>
-              >
+      <div class="spkr-color-<%= spkr.id %>">
+        <div class="msg-<%= spkr.color %>">
+          <div class="spkr-info spkr-info-<%= spkr.side %>">
+            <div class="spkr-image-and-name">
+              <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+                <% if spkr.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                <% elsif spkr.user.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                <% else %>
+                  style="background-image: url(<%= asset_url('user.svg') %>)"
+                <% end %>
+                >
+              </div>
+              <h3 class="name-spkr-<%= spkr.id %>"><%= link_to spkr.name, show_user_path(spkr.user) %></h3>
             </div>
-            <h3 class="name-spkr-<%= spkr.id %>"><%= link_to spkr.name, show_user_path(spkr.user) %></h3>
-          </div>
-          <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
-            <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
+            <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
+              <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
+            </div>
           </div>
         </div>
       </div>

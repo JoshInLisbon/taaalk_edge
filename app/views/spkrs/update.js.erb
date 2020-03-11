@@ -1,8 +1,10 @@
-let nameInput = document.querySelector('#name-spkr-<%= @spkr.id %>');
-let bioInput = document.querySelector('#biog-spkr-<%= @spkr.id %>');
-let images = document.querySelectorAll('.image-spkr-<%= @spkr.id %>')
-let names = document.querySelectorAll('.name-spkr-<%= @spkr.id %>')
-let bio = document.querySelector('.biog-spkr-<%= @spkr.id %>');
+console.log("update!");
+
+var nameInput = document.querySelector('#name-spkr-<%= @spkr.id %>');
+var bioInput = document.querySelector('#biog-spkr-<%= @spkr.id %>');
+var images = document.querySelectorAll('.image-spkr-<%= @spkr.id %>')
+var names = document.querySelectorAll('.name-spkr-<%= @spkr.id %>')
+var bio = document.querySelector('.biog-spkr-<%= @spkr.id %>');
 names.forEach(name => {
   name.innerText = '<%= @spkr.name %>'
 });
@@ -13,6 +15,8 @@ names.forEach(name => {
 <% end %>
 bio.innerHTML = bioInput.innerHTML
 
-let colours = document.querySelectorAll('.spkr-color-<%= @spkr.id %>')
-
+var colors = document.querySelectorAll('.spkr-color-<%= @spkr.id %>');
+colors.forEach(color => {
+  color.children[0].classList = 'msg-<%= @spkr.color %>';
+});
 

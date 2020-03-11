@@ -25,8 +25,10 @@
         <div class="name-spkr-<%= msg.spkr.id %> tlk-blob-name"><%= msg.spkr.name %></div>
         <div class="tlk-blob-date"><%= msg.created_at.strftime("%H:%M, %d %b %Y") %></div>
       </div>
-      <div class="msg-<%= msg.spkr.color %> spkr-color-<%= spkr.id %>">
-        <div class="tlk-blob-msg"><%= msg.content %></div>
+      <div class="spkr-color-<%= msg.spkr.id %>">
+        <div class="msg-<%= msg.spkr.color %>" target="spkr-color-<% msg.spkr.id %>">
+          <div class="tlk-blob-msg"><%= msg.content %></div>
+        </div>
       </div>
     </div>
   <% end %>
@@ -71,9 +73,11 @@
         <div class="text-right">
           <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button fake-link" %>
         </div>
-        <div class="msg-<%= spkr.color %>">
-          <div class="msg-preview trix-content" target="preview-spkr-msg-form-<%= spkr.id %>">
-            <p>Your message preview will appear here.</p>
+        <div class="spkr-color-<%= spkr.id %>">
+          <div class="msg-<%= spkr.color %>">
+            <div class="msg-preview trix-content" target="preview-spkr-msg-form-<%= spkr.id %>">
+              <p>Your message preview will appear here.</p>
+            </div>
           </div>
         </div>
         <%= f.submit "Publish Your Message", name: "publish", id: "submit-msg-#{spkr.id}", class: "msg-submit-btn btn btn-secondary" %>

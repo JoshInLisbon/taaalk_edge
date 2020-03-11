@@ -7,7 +7,7 @@ const copyWithClick = () => {
       selectText(id);
       document.execCommand('copy');
       // btn.innerText = 'copied';
-    btn.style = 'color: #EE5555;';
+    btn.style = 'color: blue;';
     });
   });
 }

@@ -5,7 +5,7 @@
   <% if current_user.biog.present? %>
     <div>
       <div class="tlk-note">
-      <p>You can customise your details for each Taaalk to make them relevant to the subject.</p>
+      <p>Customise your info for each Taaalk to make it relevant to the subject.<%= current_user.tlks.length > 1 ? " Changes made in this Taaalk will not be reflected in others." : "" %></p>
       </div>
     </div>
   <% else %>
