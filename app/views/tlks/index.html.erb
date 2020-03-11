@@ -5,24 +5,64 @@
   <p>The Taaalks below are sorted by the most recently updated conversations. <%= link_to "Sort Taaalks by when they were created instead.", newly_created_path %></p>
 </div>
 
-<% @tlks.each do |tlk| %>
-  <%= link_to show_tlk_path(tlk) do %>
-    <h4><%= tlk.title %></h4>
-    <% tlk.spkrs.each do |spkr| %>
-      <div class="tlk-tlking-image spkr-image"
-        <% if spkr.image.present? %>
-          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
-        <% elsif spkr.user.image.present? %>
-          style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
-        <% else %>
-          style="background-image: url(<%= asset_url('user.svg') %>)"
+<%= will_paginate @tlks %>
+
+<div class="index-background">
+  <div class="index-container">
+
+    <div class="card-columns">
+      <% @tlks.each_with_index do |tlk, i| %>
+        <%= link_to show_tlk_path(tlk), class: "tlk-index-link" do %>
+          <div class="tlk-card card">
+            <div
+            <% if tlk.image.present? %>
+              class="tlk-image-index card-img-top img-fluid tlk-image-present"
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(tlk.image) %>)"
+           <% elsif tlk.color.present? %>
+              class="tlk-image-index card-img-top img-fluid"
+              style="
+                background: <%= tlk.color %>;
+              "
+            <% else %>
+              class="tlk-image-index tlk-image-index-color card-img-top img-fluid tlk-image-not-present"
+            <% end %>
+            >
+              <h4 class="tlk-card-title card-title"><%= tlk.title %></h4>
+            </div>
+            <div class="tlk-card-block card-block">
+              <% tlk.spkrs.each do |spkr| %>
+                <div class="msg-<%= spkr.color %>">
+                  <div class="spkr-details-container-index spkr-index-<%= spkr.side %>">
+                    <div class="spkr-img-name-container-index">
+                      <div class="spkr-image-index"
+                        <% if spkr.image.present? %>
+                          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                        <% elsif spkr.user.image.present? %>
+                          style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                        <% else %>
+                          style="background-image: url(<%= asset_url('user.svg') %>)"
+                        <% end %>
+                        >
+                      </div>
+                      <p class="spkr-name-index"><strong><%= spkr.name %></strong></p>
+                    </div>
+                    <% if spkr.biog.present? %>
+                      <div class="spkr-biog-holder-index">
+                        <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 100) %></p>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+
+              <% end %>
+            </div>
+          </div>
         <% end %>
-        >
-      </div>
-      <p><%= spkr.name %></p>
-      <p><%= truncate(strip_tags(spkr.biog.to_s), length: 50) %></p>
-    <% end %>
-  <% end %>
-<% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
 
 <%= will_paginate @tlks %>
+

@@ -25,7 +25,7 @@ const changeBrToDiv = () => {
         if(!msgTrixInputDivs[0]) {
           textBlock.push(tlkBubbleStart, msgTrixInput.innerHTML, tlkBubbleEnd);
           skipDivs = true;
-          let tlkBubbleText = textBlock.flat(Infinity).join("").replace(/<div class="tlk-bubble"><\/div>/g, "");
+          let tlkBubbleText = textBlock.flat(Infinity).join("").replace(/<div class="tlk-bubble-holder"><div class="tlk-bubble"><\/div><\/div>/g, "");
           // joins the textBlock array and sets it to the value of the msgTrixStore
           msgTrixPreview.innerHTML = tlkBubbleText;
           msgTrixStore.value = tlkBubbleText;
@@ -85,7 +85,7 @@ const changeBrToDiv = () => {
             }
             // see your result in the console
             // console.log(textBlock.flat(Infinity).join(""));
-            let tlkBubbleText = textBlock.flat(Infinity).join("").replace(/<div class="tlk-bubble"><\/div>/g, "");
+            let tlkBubbleText = textBlock.flat(Infinity).join("").replace(/<div class="tlk-bubble-holder"><div class="tlk-bubble"><\/div><\/div>/g, "");
             // joins the textBlock array and sets it to the value of the msgTrixStore
             msgTrixPreview.innerHTML = tlkBubbleText;
             msgTrixStore.value = tlkBubbleText;

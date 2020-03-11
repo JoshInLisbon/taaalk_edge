@@ -48,6 +48,7 @@
     }
     .nav-btn:last-of-type {
       margin-right: 0px;
+      height: 39px;
     }
     .nav-user-btn {
       // height: 36px;
@@ -82,7 +83,9 @@
     }
   }
 }
-
+.login-btn {
+  margin-right: 8px !important;
+}
 
 
 // Small devices (landscape phones, 576px and up)
@@ -119,6 +122,9 @@
   }
   .navbar-user-image {
     margin-top: 6px !important;
+  }
+  .nav-btn:last-of-type {
+    height: auto !important;
   }
 }
 

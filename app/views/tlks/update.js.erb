@@ -1,6 +1,6 @@
-let header = document.querySelector('.tlk-title');
-let headerEdit = document.querySelector('.tlk-title-edit');
-let tlkImages = document.querySelectorAll('.tlk-image');
+var header = document.querySelector('.tlk-title');
+var headerEdit = document.querySelector('.tlk-title-edit');
+var tlkImages = document.querySelectorAll('.tlk-image');
 
 header.innerText = headerEdit.value;
 <% if @tlk.image.present? %>

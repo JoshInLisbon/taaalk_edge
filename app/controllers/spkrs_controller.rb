@@ -3,7 +3,8 @@ class SpkrsController < ApplicationController
 
   def update
     if @spkr.user == current_user
-      @spkr.update(spkr_params)
+      params = spkr_params.merge!(spkr_color_param)
+      @spkr.update(params)
       complete_user_profile
       respond_to do |format|
         format.js # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
@@ -55,6 +56,10 @@ class SpkrsController < ApplicationController
 
   def spkr_params
     params.require(:spkr).permit(:name, :bio, :image, :biog)
+  end
+
+  def spkr_color_param
+    params.permit(:color)
   end
 
   def complete_user_profile_on_edit
