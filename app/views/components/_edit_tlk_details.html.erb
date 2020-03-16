@@ -1,7 +1,10 @@
 <%= form_with model: @tlk do |f| %>
   <div class="tlk-image tlk-image-edit"
   <% if @tlk.image.present? %>
-    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(@tlk.image) %>)"
+    style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(@tlk.image) %>);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;"
   <% end %>
   >
     <%= f.label :title, "Edit title:" %><br />

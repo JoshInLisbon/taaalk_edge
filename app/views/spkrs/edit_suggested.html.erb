@@ -1,0 +1,82 @@
+<div class="tlk-container">
+  <h1 class="spkr-suggested-edit-header">Hello</h1>
+
+  <p><%= @spkr.tlk.user.username %> has suggested an edit to your profile in the Taaalk "<%= link_to @spkr.tlk.title, show_tlk_path(@spkr.tlk) %>".</p>
+  <p>You need to decide if you want to accept or reject the changes.</p>
+
+  <div class="big-white-split"></div>
+
+  <p><strong>The old version of your profile was:</strong></p>
+
+  <div class="msg-<%= @spkr.color %>">
+    <div class="spkr-info spkr-info-left">
+      <div class="spkr-image-and-name">
+        <div class="spkr-bio-image spkr-image image-spkr-<%= @spkr.id %>"
+          <% if @spkr.image.present? %>
+            style="background-image: url(<%= rails_blob_url(@spkr.image) %>)"
+          <% elsif @spkr.user.image.present? %>
+            style="background-image: url(<%= rails_blob_url(@spkr.user.image) %>)"
+          <% else %>
+            style="background-image: url(<%= asset_url('user.svg') %>)"
+          <% end %>
+          >
+        </div>
+        <h3 class="name-spkr-<%= @spkr.id %>"><%= link_to @spkr.name, show_user_path(@spkr.user) %></h3>
+      </div>
+      <div class="spkr-biog-holder-tlk-left">
+        <div class="spkr-biog biog-spkr-<%= @spkr.id %>"><%= @spkr.biog %></div>
+      </div>
+    </div>
+    <div class="tlk-bubble">Your messages look like this</div>
+  </div>
+
+  <div class="big-white-split"></div>
+
+  <p><strong>The suggested changes would make your profile look like this:</strong></p>
+
+<% if @spkr.edited_color.present? %>
+  <div class="msg-<%= @spkr.edited_color %>">
+<% else %>
+  <div class="msg-<%= @spkr.color %>">
+<% end %>
+    <div class="spkr-info spkr-info-left">
+      <div class="spkr-image-and-name">
+        <div class="spkr-bio-image spkr-image image-spkr-<%= @spkr.id %>"
+          <% if @spkr.edited_image.present? %>
+            style="background-image: url(<%= rails_blob_url(@spkr.edited_image) %>)"
+          <% elsif @spkr.image.present? %>
+            style="background-image: url(<%= rails_blob_url(@spkr.image) %>)"
+          <% elsif @spkr.user.image.present? %>
+            style="background-image: url(<%= rails_blob_url(@spkr.user.image) %>)"
+          <% else %>
+            style="background-image: url(<%= asset_url('user.svg') %>)"
+          <% end %>
+          >
+        </div>
+        <% if @spkr.edited_name.present? %>
+        <h3 class="name-spkr-<%= @spkr.id %>"><%= link_to @spkr.edited_name, show_user_path(@spkr.user) %></h3>
+        <% else %>
+        <h3 class="name-spkr-<%= @spkr.id %>"><%= link_to @spkr.name, show_user_path(@spkr.user) %></h3>
+        <% end %>
+      </div>
+      <div class="spkr-biog-holder-tlk-left">
+        <% if @spkr.edited_biog.present? %>
+          <div class="spkr-biog biog-spkr-<%= @spkr.id %>"><%= @spkr.edited_biog %></div>
+        <% else %>
+          <div class="spkr-biog biog-spkr-<%= @spkr.id %>"><%= @spkr.biog %></div>
+        <% end %>
+      </div>
+    </div>
+    <div class="tlk-bubble">Your messages will look like this</div>
+  </div>
+
+  <div class="big-white-split"></div>
+
+  <p><%= link_to "Accept the suggested changes", edit_confirmed_path(@spkr) %>.</p>
+
+  <p><%= link_to "Reject the suggested changes", edit_rejected_path(@spkr), class: "spkr-changes-rejected-link" %> (if you change your mind and want to accept the changes, just come back to this page at a later date).</p>
+
+
+
+
+</div>

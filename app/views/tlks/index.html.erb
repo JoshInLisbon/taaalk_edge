@@ -1,14 +1,37 @@
-<h1>Taaalk</h1>
-<h2>Description of The Taaalk Co.</h2>
 
-<div class="tlk-note">
+
+<div class="tlk-note" style="display: none;">
   <p>The Taaalks below are sorted by the most recently updated conversations. <%= link_to "Sort Taaalks by when they were created instead.", newly_created_path %></p>
 </div>
 
-<%= will_paginate @tlks %>
-
 <div class="index-background">
+
+  <div id="index-background-color" class="index-background-color-small">
+    <div id="tlk-explain-div" class="index-container top-index-container tlk-explain-div-small">
+      <div class="index-header-container">
+        <h1>The home of public conversations</h1>
+        <div id="index-what-btn" class="btn edit-mode-on">Hmmm?</div>
+      </div>
+      <div class="index-tlk-container">
+        <div class="small-white-split" id="index-top-small-white-split"></div>
+      </div>
+     <!--  <div class="tlk-intro-container-what">
+
+      </div> -->
+
+
+
+      <%# if !(params.include? "page") && (cookies[:got_it] != 'true') %>
+      <%# if !(params.include? "page") %>
+        <div id="tlk-intro-container" class="index-hide-intro">
+          <%= render 'components/tlk_intro' %>
+        </div>
+      <%# end %>
+    </div>
+  </div>
   <div class="index-container">
+
+    <%= will_paginate @tlks %>
 
     <div class="card-columns">
       <% @tlks.each_with_index do |tlk, i| %>
@@ -17,7 +40,10 @@
             <div
             <% if tlk.image.present? %>
               class="tlk-image-index card-img-top img-fluid tlk-image-present"
-              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(tlk.image) %>)"
+              style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(tlk.image) %>);
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;"
            <% elsif tlk.color.present? %>
               class="tlk-image-index card-img-top img-fluid"
               style="
@@ -61,8 +87,10 @@
       <% end %>
     </div>
 
+    <%= will_paginate @tlks %>
+
   </div>
 </div>
 
-<%= will_paginate @tlks %>
+
 
