@@ -9,6 +9,7 @@ import { multiDraft } from "../components/multi_draft"
 import { uploadImage } from "../components/upload_image"
 import { changeBrToDiv } from "../components/trix_change_br_to_div"
 import { scrollToPreview } from "../components/scroll_to_preview"
+import { indexInfoPivot } from "../components/index_info_pivot"
 
 let mode = document.querySelector('#meta').content
 
@@ -49,4 +50,8 @@ if(mode == 'tlks-show-spkr') {
 
 if(mode == 'users-edit') {
   // uploadImage();
+}
+
+if(mode == 'tlks-index') {
+  indexInfoPivot();
 }

@@ -188,3 +188,19 @@
 .spkr-only-edit-btn {
   margin-top: 16px !important;
 }
+
+
+.spkr-suggested-edit-header {
+  font-size: 28px;
+  padding: 24px 0 16px 0;
+}
+
+@media (max-width: 768px) {
+  .spkr-suggested-edit-header {
+    font-size: 20px;
+  }
+}
+
+.spkr-changes-rejected-link {
+  color: $sharp-red;
+}

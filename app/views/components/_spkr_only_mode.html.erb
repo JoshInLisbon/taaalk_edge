@@ -2,7 +2,10 @@
 
 <div class="tlk-image"
 <% if @tlk.image.present? %>
-  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(@tlk.image) %>)"
+  style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(@tlk.image) %>);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;"
 <% end %>
 >
   <h1 class="tlk-title"><%= @tlk.title %></h1>

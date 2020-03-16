@@ -1,11 +1,7 @@
-Hi <%= @spkr.name %>,
+Hi<%= " #{@spkr.name}" %>,
 
-<%= @editing_spkr.name %> is suggesting an edit to your details in the Taaalk '<%= @tlk.title %>'.
+<%= @editing_spkr.user.username %> is suggesting an edit to your details in the Taaalk '<%= @tlk.title %>'.
 
-Your updated details are:
+To view the suggested changes and decide if you want to accept or reject them go to this url:
 
-Name: <%= @spkr.edited_name %>
-
-Bio: <%= @spkr.edited_bio %>
-
-To confirm this edit click this link: <%= edit_confirmed_url(@spkr) %>
+<%= edit_suggested_url(@tlk, @spkr) %>

@@ -182,8 +182,10 @@
 
 .edit-mode-on {
   background-color: $sharp-red !important;
+  color: white;
   &:hover {
     background-color: $sharp-red-hover !important;
+    color: white;
   }
 }
 
@@ -350,8 +352,8 @@
 }
 
 .index-container {
-  max-width: 1056px;
-  padding: 16px;
+  max-width: 1164px;
+  padding: 0 16px;
   margin: 0 auto;
 }
 
@@ -401,6 +403,15 @@
   strong {
     text-decoration: none;
   }
+  .tlk-card {
+    background-color: $grey-hover;
+  }
+  .tlk-image-index-color {
+    background-color: $grey-hover;
+  }
+  .tlk-card-block {
+    background-color: $grey-hover;
+  }
 }
 
 @media (max-width: 768px) {
@@ -433,6 +444,9 @@
 
 .tlk-image-index {
   border-radius: 4px 4px 0 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .tlk-image-index-color {
@@ -565,6 +579,188 @@
   }
 }
 
+.small-white-split {
+  height: $desk-line-width;
+  background-color: $grey;
+  // margin: 32px 0 40px 0;
+  margin: 0;
+  max-width: 700px;
+  // margin-bottom: 32px;
+
+}
+
+.small-blue-split {
+  height: $desk-line-width;
+  background-color: blue;
+  // margin: 32px 0 40px 0;
+  margin: 0;
+  max-width: 700px;
+}
+
+.index-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  .tlk-blob-spkr {
+    margin: 8px auto 6px auto;
+  }
+  h1 {
+    font-size: 23px;
+    padding-top: 40px;
+    padding-bottom: 32px;
+    color: white;
+    font-weight: normal;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  #index-what-btn {
+    // height: min-content;
+    margin-top: 2px;
+    i {
+      color: #07d755;
+      margin-right: 4px;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .index-header-container {
+    display: block;
+  }
+  h1 {
+    display: block !important;
+    padding-bottom: 12px !important;
+  }
+  #index-what-btn {
+    margin-top: 0 !important;
+    margin-bottom: 18px;
+    display: inline-block !important;
+  }
+}
+
+
+.tlk-logo-span {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.index-msg {
+  .tlk-bubble {
+    padding: 0;
+    border-radius: 0;
+    font-size: 23px;
+    margin-top: 36px;
+    margin-bottom: 32px;
+    color: white;
+    background: transparent;
+  }
+}
+
+
+.index-background-color-big {
+  background: #0000ff;
+  background: -moz-linear-gradient(top,  #0000ff 0%, #f5f5f5 100%);
+  background: -webkit-linear-gradient(top,  #0000ff 0%, #f5f5f5 100%);
+  background: linear-gradient(to bottom,  #0000ff 0%, #f5f5f5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#f5f5f5',GradientType=0 );
+}
+
+.index-background-color-small {
+  background: #0000ff;
+  background: -moz-linear-gradient(top,  #0000ff 0%, #7272fa 100%);
+  background: -webkit-linear-gradient(top,  #0000ff 0%, #7272fa 100%);
+  background: linear-gradient(to bottom,  #0000ff 0%, #7272fa 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#7272fa',GradientType=0 );
+}
 
 
 
+.index-tlking-container {
+  padding-left: 64px;
+  max-width: 636px;
+  margin-top: 36px;
+  // padding-bottom: 32px;
+  .tlk-blob-spkr {
+    height: 0;
+  }
+  .tlk-tlking-image {
+    top: 4px;
+  }
+}
+
+.top-index-container {
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px){
+  .index-tlking-container {
+    .tlk-tlking-image {
+      display: inline-block;
+      position: relative;
+      top: 3px;
+      height: 54px;
+      width: 54px;
+    }
+    .tlk-blob-left {
+
+    }
+    .tlk-blob-right {
+
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .top-index-container {
+    margin-bottom: 12px;
+  }
+  .small-white-split {
+    height: $mob-line-width;
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+  .index-tlking-container {
+    padding-left: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .tlk-blob-spkr {
+    height: 32px !important;
+    margin-top: 16px !important;
+  }
+  .index-tlking-container {
+    max-width: 700px;
+  }
+}
+
+// .index-got-it {
+//   margin-bottom: 40px;
+// }
+
+#index-what-btn {
+
+}
+
+
+
+.index-hide-intro {
+  display: none;
+}
+
+.index-show-intro {
+  display: block;
+}
+
+.tlk-explain-div-small {
+  padding-bottom: 40px;
+}
+
+#last-index-tlk-bubble {
+  margin-bottom: 0;
+}
+.got-it-mode-on {
+  background-color: $msg-green;
+  color: white;
+  &:hover { color: white; }
+}

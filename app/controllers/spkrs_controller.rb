@@ -1,5 +1,6 @@
 class SpkrsController < ApplicationController
   before_action :set_spkr
+  skip_before_action :authenticate_user!, only: :edit_suggested
 
   def update
     if @spkr.user == current_user
@@ -39,6 +40,9 @@ class SpkrsController < ApplicationController
         @spkr.image.purge
         @spkr.image = @spkr.edited_image.blob
       end
+      if @spkr.edited_color.present?
+        @spkr.color = @spkr.edited_color
+      end
       @spkr.save!
       complete_user_profile_on_edit
       redirect_to show_tlk_path(@spkr.tlk)
@@ -46,6 +50,14 @@ class SpkrsController < ApplicationController
       flash[:notice] = "You must be the logged in as the account holder for #{@spkr.name} to confirm an edit. Right now you are not logged in as this user."
       redirect_to show_tlk_path(@spkr.tlk)
     end
+  end
+
+  def edit_suggested
+
+  end
+
+  def edit_rejected
+
   end
 
   private
@@ -102,6 +114,9 @@ class SpkrsController < ApplicationController
     if spkr_params[:biog] != @spkr.biog
       @spkr.edited_biog = spkr_params[:biog]
     end
+    if params.permit(:color)[:color] != @spkr.color
+      @spkr.edited_color = /(msg-)(.*)/.match(params.permit(:color)[:color])[2]
+    end
     if spkr_params[:image].present?
       @spkr.edited_image = spkr_params[:image]
     end
@@ -118,6 +133,16 @@ class SpkrsController < ApplicationController
     end
 
     mail = SpkrMailer.with(spkr: @spkr, editing_spkr: editing_spkr, tlk: @spkr.tlk).edited_spkr
+    mail.deliver_later
+  end
+
+  def send_spkr_edit_accept_mail
+    mail = SpkrMailer.with(spkr: @spkr, editing_spkr: @spkr.tlk.spkr, tlk: @spkr.tlk).accept_edit
+    mail.deliver_later
+  end
+
+  def send_spkr_edit_reject_mail
+    mail = SpkrMailer.with(spkr: @spkr, editing_spkr: @spkr.tlk.spkr, tlk: @spkr.tlk).reject_edit
     mail.deliver_later
   end
 end

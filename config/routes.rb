@@ -29,8 +29,12 @@ Rails.application.routes.draw do
   resources :spkrs, only: [:create, :update, :destroy]
   get 'spkrs/hide', to: 'spkrs#hide_spkr', as: 'hide_spkr'
   get 'spkr/confirm-edit/:id', to: 'spkrs#edit_confirmed', as: 'edit_confirmed'
+  get 'spkr/reject-edit/:id', to: 'spkrs#edit_rejected', as: 'edit_rejected'
+  get '/t/:tlk_id/spkr-update/:id', to: 'spkrs#edit_suggested', as: 'edit_suggested'
 
   get '/t/request/:id', to: 'tlk_requests#show', as: 'tlk_request'
   get '/t/request-accepted/:id', to: 'tlk_requests#accept', as: 'tlk_request_accept'
   get '/t/request-rejected/:id', to: 'tlk_requests#reject', as: 'tlk_request_reject'
+
+  get 'index_got_it', to: 'cookies#index_got_it_cookie', as: 'index_got_it_cookie'
 end
