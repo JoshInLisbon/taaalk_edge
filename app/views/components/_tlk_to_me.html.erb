@@ -1,21 +1,56 @@
 <% if current_user.present? %>
-  <div class="spkr-user-edit-form">
-    <%= simple_form_for current_user, :url => tlk_with_me_path, :method => :patch do |f| %>
-      <div class="user-image"
-        <% if current_user.image.present? %>
-          style="background-image: url(<%= rails_blob_url(current_user.image) %>)"
-        <% else %>
-          style="background-image: url(<%= asset_url('user.svg') %>)"
-        <% end %>
-        >
+
+  <div class="btn btn-dark <%= @twm_present ? 'update-class' : 'leave-class' %>" id="create-spkr-user-edit-form-btn"><%= @twm_present ? 'Update' : 'Leave' %> Your Details &nbsp;<i class="fas fa-pencil-alt"></i></div>
+
+  <div class="spkr-user-edit-form tlk-section-off" id="create-spkr-user-edit-form">
+
+   <%= form_with model: current_user do |f| %>
+
+
+      <div>
+        <label for="name">Tell people what they should Taaalk to you about:</label>
       </div>
-      <%= f.input :image %>
-      <%= f.input :username %>
-      <p><strong>People should Taaalk to you about...</strong></p>
-      <%= f.rich_text_area :tlk_with_me %>
-      <%= f.button :submit, 'Update Your Details' %>
+      <%= f.rich_text_area :tlk_with_me, id: "biog-spkr-#{current_user.id}", target: "spkr-#{current_user.id}" %>
+
+      <div>
+        <label for="name">Edit your name:</label>
+      </div>
+      <div>
+      <%= f.text_field :username, id: "name-spkr-#{current_user.id}", class: 'spkr-edit', target: "spkr-#{current_user.id}" %>
+      </div>
+
+      <label>
+        <div class="spkr-image-upload-div">
+
+          <div class="spkr-bio-image spkr-image image-spkr-<%= current_user.id %>"
+            <% if current_user.image.present? %>
+              style="background-image: url(<%= rails_blob_url(current_user.image) %>)"
+            <% else %>
+              style="background-image: url(<%= asset_url('user.svg') %>)"
+            <% end %>
+            >
+          </div>
+          <div class="spkr-image-upload-btn-and-text">
+            <span class="btn btn-dark">Upload a Profile Photo</span>
+            <div id="spkr-<%= current_user.id %>-file-name-div" class="text-success mt-2"></div>
+            <span style="display:none;">
+              <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{current_user.id}" %>
+            </span>
+          </div>
+
+        </div>
+      </label>
+      <div>
+        <%= f.submit "#{ @twm_present ? 'Update' : 'Leave' } Your Details", id: "spkr-#{current_user.id}", class: 'btn-spkr-edit btn btn-secondary create-user-update-btn' %>
+      </div>
+      <p id="p-spkr-<%= current_user.id %>" class="tlk-p-nochange">Changes not saved. Press '<%= current_user.tlk_with_me.present? ? 'Update' : 'Leave' %> Your Details' to save.</p>
+      <% if @twm_present %>
+        <p class="create-remove-details"><%= link_to "Remove your details", destroy_tlk_with_me_path(current_user) %></p>
+      <% end %>
     <% end %>
   </div>
 <% else %>
-  <%= link_to "Log in or sign up to leave your details.", new_user_session_path %>
+  <!-- <div class="btn btn-dark"> -->
+    <%= link_to raw('Leave Your Details &nbsp;<i class="fas fa-pencil-alt"></i>'), new_user_session_path, class: "btn btn-dark" %>
+  <!-- </div> -->
 <% end %>

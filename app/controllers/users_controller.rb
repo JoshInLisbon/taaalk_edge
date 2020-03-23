@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :set_user, only: [:edit, :update, :tlk_with_request]
+  before_action :set_user, only: [:edit, :update, :tlk_with_request, :destroy_tlk_with_me]
 
   def show
     @user = User.includes(:tlks).friendly.find(params[:id])
+    set_user_tlks
   end
 
   def edit
@@ -27,12 +28,31 @@ class UsersController < ApplicationController
     create_tlk_request
     update_user_profile_with_tlk_request
     send_tlk_request_mail
+    flash[:notice] = "Your request has been sent. You will get an email if the request is accepted."
+    redirect_to new_tlk_path
+  end
+
+  def destroy_tlk_with_me
+    @user.tlk_with_me.destroy
+    redirect_to new_tlk_path
   end
 
   private
 
   def set_user
     @user = User.friendly.find(params[:id])
+  end
+
+  def set_user_tlks
+    user_tlks = []
+    user_tlks_ids = []
+    @user.spkrs.each do |spkr|
+      unless user_tlks_ids.include?(spkr.tlk.id)
+        user_tlks_ids << spkr.tlk.id
+        user_tlks << spkr.tlk
+      end
+    end
+    @user_tlks = user_tlks.sort! { |a,b| b.updated_at <=> a.updated_at }
   end
 
   def user_params

@@ -1,45 +1,125 @@
+<div class="tlk-note">
+  <h1 class="spkr-suggested-edit-header pt-0 pb-2">Hello</h1>
+  <p><strong><%= @requesting_user.username %></strong> has requested to Taaalk with you.</p>
+  <p>Check out the details of the proposed Taaalk.</p>
+  <p>Decide if you want to <strong>accept</strong> or <strong>reject</strong> the proposal.</p>
+</div>
+
 <div class="tlk-image">
   <h1 class="tlk-title"><%= @tlk_request.title %></h1>
 </div>
 
-<div class="spkr-bio-image spkr-image"
-  <% if @requesting_user.image.present? %>
-    style="background-image: url(<%= rails_blob_url(@requesting_user.image) %>)"
-  <% else %>
-    style="background-image: url(<%= asset_url('user.svg') %>)"
-  <% end %>
-  >
-</div>
-<h3><%= link_to @requesting_user.username, show_user_path(@requesting_user) %></h3>
-<p><%= @requesting_user.bio %></p>
+<div class="tlk-container">
 
-
-<div class="spkr-bio-image spkr-image"
-  <% if @requested_user.image.present? %>
-    style="background-image: url(<%= rails_blob_url(@requested_user.image) %>)"
-  <% else %>
-    style="background-image: url(<%= asset_url('user.svg') %>)"
-  <% end %>
-  >
-</div>
-<h3><%= link_to @requested_user.username, show_user_path(@requested_user) %></h3>
-<p><%= @requested_user.bio %></p>
-
-
-
-<div class="tlk-blob">
-  <div class="tlk-tlking-image spkr-image"
-    <% if @requesting_user.image.present? %>
-      style="background-image: url(<%= rails_blob_url(@requesting_user.image) %>)"
-    <% else %>
-      style="background-image: url(<%= asset_url('user.svg') %>)"
-    <% end %>
-    >
+  <div class="msg-<%= @requesting_user_color %>">
+    <div class="spkr-info spkr-info-left">
+      <div class="spkr-image-and-name">
+        <div class="spkr-bio-image spkr-image"
+          <% if @requesting_user.image.present? %>
+            style="background-image: url(<%= rails_blob_url(@requesting_user.image) %>)"
+          <% else %>
+            style="background-image: url(<%= asset_url('user.svg') %>)"
+          <% end %>
+          >
+        </div>
+        <h3><%= link_to @requesting_user.username, show_user_path(@requesting_user) %></h3>
+      </div>
+      <div class="spkr-biog-holder-tlk-left">
+        <div class="spkr-biog"><%= @requesting_user.biog %></div>
+      </div>
+    </div>
   </div>
-  <p><%= @requesting_user.username %></p>
-  <p><%= @tlk_request.first_msg %></p>
+
+
+
+  <div class="msg-<%= @requested_user_color %>">
+    <div class="spkr-info spkr-info-right">
+      <div class="spkr-image-and-name">
+        <div class="spkr-bio-image spkr-image"
+          <% if @requested_user.image.present? %>
+            style="background-image: url(<%= rails_blob_url(@requested_user.image) %>)"
+          <% else %>
+            style="background-image: url(<%= asset_url('user.svg') %>)"
+          <% end %>
+          >
+        </div>
+        <h3><%= link_to @requested_user.username, show_user_path(@requested_user) %></h3>
+      </div>
+      <div class="spkr-biog-holder-tlk-left">
+        <div class="spkr-biog"><%= @requested_user.biog %></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to "Accept Taaalk Request", tlk_request_accept_path(@tlk_request), class: 'tlk-accept-btn', data: { confirm: 'Are you sure?' } %>
+<div class="tlk-container">
+  <div class="big-blue-split"></div>
+</div>
 
-<%= link_to "Reject Taaalk Request", tlk_request_reject_path(@tlk_request), class: 'tlk-reject-btn', data: { confirm: 'You can always accept at a later date by coming back to this page.' } %>
+
+<div class="tlking-container">
+  <div class="tlk-blob tlk-blob-left">
+    <div class="tlk-blob-spkr">
+      <div class="tlk-tlking-image spkr-image"
+        <% if @requesting_user.image.present? %>
+          style="background-image: url(<%= rails_blob_url(@requesting_user.image) %>)"
+        <% else %>
+          style="background-image: url(<%= asset_url('user.svg') %>)"
+        <% end %>
+        >
+      </div>
+      <div class="tlk-blob-name"><%= @requesting_user.username %></div>
+      <div class="tlk-blob-date"><%= @tlk_request.first_msg.created_at.strftime("%H:%M, %d %b %Y") %></div>
+    </div>
+    <div>
+      <div class="msg-<%= @requesting_user_color %>">
+
+
+        <div class="tlk-blob-msg">
+          <div class="tlk-bubble-holder">
+            <div class="tlk-bubble">
+              <%= @tlk_request.first_msg %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tlk-container">
+  <div class="big-white-split big-blue-split-bottom"></div>
+</div>
+<div class="tlk-container">
+  <p>
+    <%= link_to "Accept taaalk request", tlk_request_accept_path(@tlk_request), class: 'tlk-accept-btn', data: { confirm: 'Are you sure?' } %>
+    (this will start the Taaalk and you'll be able to reply straight away).
+  </p>
+
+  <p>
+    <%= link_to "Reject taaalk request", tlk_request_reject_path(@tlk_request), class: 'spkr-changes-rejected-link', data: { confirm: 'You can always accept at a later date by coming back to this page.' } %>
+    (if you change your mind, just return to this page to accept the request).
+  </p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

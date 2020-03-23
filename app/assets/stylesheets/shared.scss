@@ -32,6 +32,8 @@ h3 {
   margin: 48px 0 32px 0;
 }
 
+
+
 .big-dark-split {
   height: $desk-line-width;
   background-color: $sharp-red;
@@ -46,6 +48,7 @@ h3 {
 
 .big-blue-split-bottom {
   margin-top: 56px !important;
+  margin-bottom: 20px !important;
 }
 
 .full-width-dark-split {
@@ -57,6 +60,11 @@ h3 {
 
 .full-width-spkr-only {
   margin-bottom: 16px;
+}
+
+.tlk-note-split {
+  background-color: #e9e9e9;
+  height: 8px;
 }
 
 .btn {
@@ -96,6 +104,7 @@ h3 {
   }
   .big-blue-split-bottom {
     margin-top: 20px !important;
+    margin-bottom: 8px !important;
   }
 }
 
@@ -138,9 +147,18 @@ a {
 }
 
 .alert {
-  position: absolute;
+  z-index: 1000;
+  position: fixed;
   bottom: 8px;
   right: 8px;
+  margin-left: 8px;
+  margin-bottom: 0 !important;
+  border: none !important;
+  color: white !important;
+  background-color: $msg-black !important;
+  .close:hover {
+    color: red !important;
+  }
 }
 
 .spkr-user-edit-form {
@@ -306,3 +324,35 @@ a {
 //     font-size: 18px;
 //   }
 // }
+
+#tlk-note-margin-top-btm {
+  margin: 20px 0;
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+.f-white {
+  color: white;
+}
+
+.tlk-note-margin-none {
+  margin: 0 !important;
+}
+
+.btn-green {
+  background-color: $msg-green;
+  color: white;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}

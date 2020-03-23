@@ -10,6 +10,7 @@ import { uploadImage } from "../components/upload_image"
 import { changeBrToDiv } from "../components/trix_change_br_to_div"
 import { scrollToPreview } from "../components/scroll_to_preview"
 import { indexInfoPivot } from "../components/index_info_pivot"
+import { detailsToggle } from "../components/details_toggle"
 
 let mode = document.querySelector('#meta').content
 
@@ -54,4 +55,12 @@ if(mode == 'users-edit') {
 
 if(mode == 'tlks-index') {
   indexInfoPivot();
+}
+
+if(mode == 'tlks-new') {
+  unsavedImageAlert();
+  unsavedAlert();
+  rtaUnsavedAlert();
+  uploadImage();
+  detailsToggle();
 }

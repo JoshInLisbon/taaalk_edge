@@ -1,36 +1,55 @@
+  <div class="tlk-container">
+    <h1 class="spkr-suggested-edit-header">Request to Taaalk with <%= @user.username %></h1>
 
-  <div class="spkr-bio-image spkr-image"
-    <% if @user.image.present? %>
-      style="background-image: url(<%= rails_blob_url(@user.image) %>)"
-    <% else %>
-      style="background-image: url(<%= asset_url('user.svg') %>)"
-    <% end %>
-    >
-  </div>
-  <h3><%= link_to @user.username, show_user_path(@user) %></h3>
-  <p><%= @user.tlk_with_me %></p>
-  <p><strong>You want to Taaalk with <i><%= @user.username %></i> because...</strong></p>
-  <div class="tlk-tlking-image spkr-image"
-    <% if current_user.image.present? %>
-      style="background-image: url(<%= rails_blob_url(current_user.image) %>)"
-    <% else %>
-      style="background-image: url(<%= asset_url('user.svg') %>)"
-    <% end %>
-    >
-  </div>
-  <h4><%= link_to current_user.username, show_user_path(current_user) %></h4>
-  <%= simple_form_for current_user, :url => send_tlk_request_path, :method => :patch  do |f| %>
-    <div class="spkr-user-edit-form">
-    <%= f.rich_text_area :tlk_with_you %>
+    <p>Tell <%= @user.username %> <strong>why</strong> you want to Taaalk with them.</p>
+    <p>Choose the <strong>title</strong> of your Taaalk.</p>
+    <p>Write the <strong>first message</strong>.</p>
+
+    <div class="big-white-split"></div>
+
+    <p><%= @user.username.possessive %> details:</p>
+
+    <div class="msg-white">
+      <div class="spkr-info">
+        <div class="spkr-image-and-name">
+          <div class="spkr-bio-image spkr-image"
+            <% if @user.image.present? %>
+              style="background-image: url(<%= rails_blob_url(@user.image) %>)"
+            <% else %>
+              style="background-image: url(<%= asset_url('user.svg') %>)"
+            <% end %>
+            >
+          </div>
+          <h3 class="ml-2"><%= link_to @user.username, show_user_path(@user) %></h3>
+        </div>
+        <div class="spkr-biog-holder-tlk-left">
+          <div class="spkr-biog"><%= @user.tlk_with_me %></div>
+        </div>
+      </div>
     </div>
-      <%= fields_for @tlk_request do |fi| %>
-        <p><strong>What will the title of your Taaalk be?</strong></p>
-        <%= fi.label :title %>
-        <%= fi.text_field :title %>
-        <p><strong>What's the first thing you will say in your Taaalk?</strong></p>
-        <p>Ask a question to get things going.</p>
-        <%= fi.rich_text_area :first_msg %>
-      <% end %>
-    <%= f.submit %>
 
-  <% end %>
+    <div class="big-white-split"></div>
+
+    <p><strong>Why</strong> do you want to Taaalk with <%= @user.username %>?</p>
+    <%= simple_form_for current_user, :url => send_tlk_request_path, :method => :patch  do |f| %>
+      <div class="spkr-user-edit-form">
+      <%= f.rich_text_area :tlk_with_you %>
+      </div>
+        <%= fields_for @tlk_request do |fi| %>
+          <p>What will the <strong>title</strong> of your Taaalk be?</p>
+          <div class="spkr-user-edit-form">
+            <%= fi.text_field :title, class: 'title-input' %>
+          </div>
+          <div class="spkr-user-edit-form">
+            <p>What's the <strong>first thing you will say</strong> in your Taaalk?</p>
+            <p><strong>Tip:</strong> Ask a question to get things going.</p>
+            <%= fi.rich_text_area :first_msg %>
+          </div>
+        <% end %>
+      <%= f.submit "Send Taaalk Request", class: "btn-spkr-edit btn btn-secondary create-user-update-btn mb-3" %>
+
+    <% end %>
+
+
+
+  </div>

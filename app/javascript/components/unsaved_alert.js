@@ -9,18 +9,23 @@ const unsavedAlert = () => {
       let p = document.querySelector(`#p-${id}`);
       if (input.value !== startValue) {
         btn.classList.add('tlk-btn-unsaved');
+        btn.classList.add('normal-unsaved');
         p.classList.remove('tlk-p-nochange');
         p.classList.add('tlk-p-unsaved');
         btn.addEventListener('click', (event) => {
           let startValue = input.value;
           btn.classList.remove('tlk-btn-unsaved');
+          btn.classList.remove('normal-unsaved');
           p.classList.remove('tlk-p-unsaved');
           p.classList.add('tlk-p-nochange');
         });
       } else {
-        btn.classList.remove('tlk-btn-unsaved');
-        p.classList.remove('tlk-p-unsaved');
-        p.classList.add('tlk-p-nochange');
+        if (!btn.classList.contains('radio-unsaved') && !btn.classList.contains('rta-unsaved') && !btn.classList.contains('image-unsaved')) {
+          btn.classList.remove('tlk-btn-unsaved');
+          btn.classList.remove('normal-unsaved');
+          p.classList.remove('tlk-p-unsaved');
+          p.classList.add('tlk-p-nochange');
+        }
       }
     });
   });
@@ -42,19 +47,23 @@ const rtaUnsavedAlert = () => {
     let inputValue = `${inputValueArray[1]}<!--block-->${inputValueArray[2]}`
     if (inputValue !== startValue) {
       btn.classList.add('tlk-btn-unsaved');
+      btn.classList.add('rta-unsaved');
       p.classList.remove('tlk-p-nochange');
       p.classList.add('tlk-p-unsaved');
       btn.addEventListener('click', (event) => {
         let startValue = input.value;
         btn.classList.remove('tlk-btn-unsaved');
+        btn.classList.remove('rta-unsaved');
         p.classList.remove('tlk-p-unsaved');
         p.classList.add('tlk-p-nochange');
       });
     } else {
-      console.log("start again!")
-      btn.classList.remove('tlk-btn-unsaved');
-      p.classList.remove('tlk-p-unsaved');
-      p.classList.add('tlk-p-nochange');
+      if (!btn.classList.contains('radio-unsaved') && !btn.classList.contains('normal-unsaved') && !btn.classList.contains('image-unsaved')) {
+        btn.classList.remove('tlk-btn-unsaved');
+        btn.classList.remove('rta-unsaved');
+        p.classList.remove('tlk-p-unsaved');
+        p.classList.add('tlk-p-nochange');
+      }
     }
   });
  })
@@ -73,18 +82,23 @@ const unsavedImageAlert = () => {
       let p = document.querySelector(`#p-${id}`);
       if (input.value !== startValue) {
         btn.classList.add('tlk-btn-unsaved');
+        btn.classList.add('image-unsaved');
         p.classList.remove('tlk-p-nochange');
         p.classList.add('tlk-p-unsaved');
         btn.addEventListener('click', (event) => {
           let startValue = input.value;
+          btn.classList.remove('image-unsaved');
           btn.classList.remove('tlk-btn-unsaved');
           p.classList.remove('tlk-p-unsaved');
           p.classList.add('tlk-p-nochange');
         });
       } else {
-        btn.classList.remove('tlk-btn-unsaved');
-        p.classList.remove('tlk-p-unsaved');
-        p.classList.add('tlk-p-nochange');
+        if (!btn.classList.contains('radio-unsaved') && !btn.classList.contains('normal-unsaved') && !btn.classList.contains('rta-unsaved')) {
+          btn.classList.remove('image-unsaved');
+          btn.classList.remove('tlk-btn-unsaved');
+          p.classList.remove('tlk-p-unsaved');
+          p.classList.add('tlk-p-nochange');
+        }
       }
     });
   });
@@ -113,18 +127,24 @@ const unsavedRadioAlert = () => {
       input.addEventListener('change', (event) => {
         if (input.value !== startRadioValue) {
           btn.classList.add('tlk-btn-unsaved');
+          btn.classList.add('radio-unsaved');
           p.classList.remove('tlk-p-nochange');
           p.classList.add('tlk-p-unsaved');
           btn.addEventListener('click', (event) => {
             let startRadioValue = input.value;
+            btn.classList.remove('radio-unsaved');
             btn.classList.remove('tlk-btn-unsaved');
             p.classList.remove('tlk-p-unsaved');
             p.classList.add('tlk-p-nochange');
           });
         } else {
-          btn.classList.remove('tlk-btn-unsaved');
-          p.classList.remove('tlk-p-unsaved');
-          p.classList.add('tlk-p-nochange');
+          if (!btn.classList.contains('normal-unsaved') && !btn.classList.contains('rta-unsaved') && !btn.classList.contains('image-unsaved')) {
+            console.log("here! :)")
+            btn.classList.remove('radio-unsaved');
+            btn.classList.remove('tlk-btn-unsaved');
+            p.classList.remove('tlk-p-unsaved');
+            p.classList.add('tlk-p-nochange');
+          }
         }
       });
     });
@@ -139,3 +159,7 @@ const unsavedRadioAlert = () => {
 export { unsavedRadioAlert }
 
 
+// image-unsaved
+// rta-unsaved
+// normal-unsaved
+// radio-unsaved

@@ -48,7 +48,7 @@ class SpkrsController < ApplicationController
       redirect_to show_tlk_path(@spkr.tlk)
     else
       flash[:notice] = "You must be the logged in as the account holder for #{@spkr.name} to confirm an edit. Right now you are not logged in as this user."
-      redirect_to show_tlk_path(@spkr.tlk)
+      redirect_to edit_suggested_path(@spkr.tlk, @spkr)
     end
   end
 
@@ -57,7 +57,7 @@ class SpkrsController < ApplicationController
   end
 
   def edit_rejected
-
+    redirect_to show_tlk_path(@spkr.tlk)
   end
 
   private

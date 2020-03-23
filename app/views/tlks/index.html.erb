@@ -1,37 +1,25 @@
-
-
-<div class="tlk-note" style="display: none;">
-  <p>The Taaalks below are sorted by the most recently updated conversations. <%= link_to "Sort Taaalks by when they were created instead.", newly_created_path %></p>
-</div>
-
 <div class="index-background">
 
   <div id="index-background-color" class="index-background-color-small">
     <div id="tlk-explain-div" class="index-container top-index-container tlk-explain-div-small">
-      <div class="index-header-container">
-        <h1>The home of public conversations</h1>
-        <div id="index-what-btn" class="btn edit-mode-on">Hmmm?</div>
-      </div>
-      <div class="index-tlk-container">
-        <div class="small-white-split" id="index-top-small-white-split"></div>
-      </div>
-     <!--  <div class="tlk-intro-container-what">
-
-      </div> -->
-
-
-
-      <%# if !(params.include? "page") && (cookies[:got_it] != 'true') %>
-      <%# if !(params.include? "page") %>
+      <div class="index-border-btm-container">
+        <div class="index-header-container">
+          <h1 class="f-white">The home of public conversations</h1>
+          <div id="index-what-btn" class="btn edit-mode-on">Hmmm?</div>
+        </div>
+        <!-- <div class="index-tlk-container">
+          <div class="small-white-split" id="index-top-small-white-split"></div>
+        </div> -->
         <div id="tlk-intro-container" class="index-hide-intro">
           <%= render 'components/tlk_intro' %>
         </div>
-      <%# end %>
+
+      </div>
     </div>
   </div>
   <div class="index-container">
 
-    <%= will_paginate @tlks %>
+    <%= will_paginate @tlks, inner_window: 2, outer_window: 1 %>
 
     <div class="card-columns">
       <% @tlks.each_with_index do |tlk, i| %>
@@ -74,7 +62,7 @@
                     </div>
                     <% if spkr.biog.present? %>
                       <div class="spkr-biog-holder-index">
-                        <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 100) %></p>
+                        <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 120) %></p>
                       </div>
                     <% end %>
                   </div>
@@ -87,7 +75,7 @@
       <% end %>
     </div>
 
-    <%= will_paginate @tlks %>
+    <%= will_paginate @tlks, inner_window: 2, outer_window: 1 %>
 
   </div>
 </div>
