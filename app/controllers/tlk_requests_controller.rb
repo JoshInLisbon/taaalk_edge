@@ -6,6 +6,7 @@ class TlkRequestsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def show
+    @title = "Taaalk request from #{@requesting_user.username}"
     @requesting_user_color = %w(green purple red orange black pink white blue yellow).sample
     @requested_user_color = %w(green purple red orange black pink white blue yellow).sample
   end

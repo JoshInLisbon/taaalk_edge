@@ -26,7 +26,6 @@ class MsgsController < ApplicationController
   end
 
   def update
-    byebug
   end
 
   private

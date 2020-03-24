@@ -6,14 +6,17 @@ class TlksController < ApplicationController
 
   def index
     @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
+    @title = "The home of public conversations"
   end
 
   def newly_created
     @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(created_at: :desc)
+    @title = "The home of public conversations"
   end
 
   def show
     @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
+    @title = @tlk.title
     @user_spkrs = Spkr.where(tlk: @tlk, user: current_user)
     @msg = Msg.new()
     new_spkr_on_invite
@@ -22,6 +25,7 @@ class TlksController < ApplicationController
 
   def new
     @tlk = Tlk.new()
+    @title = "Start a conversation"
     @tlk_with_me_users = User.joins(:rich_text_tlk_with_me).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
     if current_user.present?
       @twm_present = current_user.tlk_with_me.present? ? true : false

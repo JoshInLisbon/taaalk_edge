@@ -5,6 +5,7 @@ class Invite::TlksController < ApplicationController
 
   def show
     @tlk = Tlk.friendly.find(params[:id])
+    @title = "(Invitation) #{@tlk.title}"
   end
 
   def invited?

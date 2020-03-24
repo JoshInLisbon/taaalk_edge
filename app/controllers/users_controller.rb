@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :set_user, only: [:edit, :update, :tlk_with_request, :destroy_tlk_with_me]
+  before_action :set_user, only: [:show, :edit, :update, :tlk_with_request, :destroy_tlk_with_me]
 
   def show
-    @user = User.includes(:tlks).friendly.find(params[:id])
+    @title = "(User) #{@user.username}"
     set_user_tlks
   end
 
   def edit
+    @title = "Edit your details"
   end
 
   def update
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
 
   def tlk_with_request
     @tlk_request = TlkRequest.new()
+    @title = "Request to Taaalk with #{@user.username}"
   end
 
   def send_tlk_request

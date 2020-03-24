@@ -3,7 +3,7 @@
   <head>
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-    <title>Taaalk</title>
+    <title>Taaalk<%= @title.present? ? " | #{@title}" : "" %></title>
     <% if @current_user.present? || @tlk.present? %>
       <% if @tlk.user == current_user %>
         <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-edit" >
