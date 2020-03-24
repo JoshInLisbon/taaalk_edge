@@ -59,6 +59,9 @@
   <% end %>
   <% if @user_tlks.any? %>
     <div class="p-0 user-container">
+      <% if !(@user.tlk_with_me.present?) && !(@user.biog.present?) %>
+        <div class="m-0 big-blue-split"></div>
+      <% end %>
       <p class="mt-24 mb-24"><strong><%= @user.username.possessive %> Taaalk<%= @user_tlks.length > 1 ? "s" : "" %>:</strong></p>
     </div>
   <% end %>

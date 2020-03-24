@@ -83,6 +83,10 @@
 .log-out-btn {
   color: white;
   background-color: blue;
+  &:hover {
+    color: white;
+    background-color: #0000C2;
+  }
 }
 
 
