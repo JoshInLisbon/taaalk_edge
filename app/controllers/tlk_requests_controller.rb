@@ -6,7 +6,8 @@ class TlkRequestsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def show
-
+    @requesting_user_color = %w(green purple red orange black pink white blue yellow).sample
+    @requested_user_color = %w(green purple red orange black pink white blue yellow).sample
   end
 
   def accept
@@ -56,7 +57,7 @@ class TlkRequestsController < ApplicationController
   def make_msg
     @msg = Msg.new(
       tlk: @tlk,
-      content: @tlk_request.first_msg,
+      content: "<div class='tlk-bubble-holder'><div class='tlk-bubble'>#{@tlk_request.first_msg}</div></div>",
       spkr: @requesting_spkr,
       user: @requesting_user
     )

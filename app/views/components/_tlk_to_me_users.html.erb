@@ -1,15 +1,41 @@
-<% @tlk_with_me_users.each do |twm_user| %>
-  <div class="tlk-tlking-image spkr-image"
-    <% if twm_user.image.present? %>
-      style="background-image: url(<%= rails_blob_url(twm_user.image) %>)"
-    <% else %>
-      style="background-image: url(<%= asset_url('user.svg') %>)"
-    <% end %>
-    >
-  </div>
-  <h4><%= link_to twm_user.username, show_user_path(twm_user) %></h4>
-  <p><%= twm_user.tlk_with_me %></p>
-  <p><%= link_to "Request to Taaalk with #{twm_user.username}", tlk_with_request_path(twm_user) %></p>
-<% end %>
+<div class="index-container create-twm-user-container">
 
-<%= will_paginate @tlk_with_me_users %>
+  <%= will_paginate @tlk_with_me_users, inner_window: 2, outer_window: 1 %>
+
+  <div class="card-columns" id="create-card-columns">
+
+    <% @tlk_with_me_users.each do |twm_user| %>
+      <div class="tlk-card card tlk-card-block twm_user">
+        <div class="spkr-details-container-index spkr-index-left">
+          <div class="spkr-img-name-container-index">
+            <div class="spkr-image-index"
+              <% if twm_user.image.present? %>
+                style="background-image: url(<%= rails_blob_url(twm_user.image) %>); height: 60px; width: 60px;"
+              <% else %>
+                style="background-image: url(<%= asset_url('user.svg') %>)"
+              <% end %>
+              >
+            </div>
+            <p class="spkr-name-index"><strong><%= link_to twm_user.username, show_user_path(twm_user) %></strong></p>
+          </div>
+          <% if twm_user.tlk_with_me.present? %>
+            <div class="spkr-biog-holder-index">
+              <div class="spkr-biog-index create-user-padding-left"><%= twm_user.tlk_with_me %></div>
+            </div>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "Request to Taaalk with #{twm_user.username}", tlk_with_request_path(twm_user), class: "" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= will_paginate @tlk_with_me_users, inner_window: 2, outer_window: 1 %>
+
+
+</div>
+
+
+
+

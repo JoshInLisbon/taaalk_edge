@@ -1,0 +1,8 @@
+Hi<%= " #{@requested_user.username}" %>,
+
+<%= @requesting_user.username %> would like to start a Taaalk ('<%= @tlk_request.title %>') with you.
+
+To see the details and decide if you want to accept or reject the request:
+
+<%= tlk_request_url(@tlk_request) %>
+

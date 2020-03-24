@@ -1,29 +1,39 @@
-<h1>Two Ways to Start a Taaalk</h1>
 
-<h4>1. Start a Taaalk and invite people you know</h4>
-<ul>
-  <li>Create a Taaalk with a title of your choice</li>
-  <li>Get an invite link and code</li>
-  <li>Invite as many people as you'd like to take part</li>
-</ul>
+
+<div class="index-background-color-medium">
+  <div class="create-index-container top-index-container tlk-explain-div-small">
+    <div class="create-container">
+      <h1>
+      Start a Taaalk and invite people you know</h1>
+      <div class="index-tlk-container tlk-image-edit">
+        <% if current_user.present? %>
+          <%= simple_form_for(@tlk, remote: true) do |f| %>
+            <%= f.label :title, "Taaalk Title:" %><br />
+            <%= f.text_field :title, class: 'tlk-title-edit', target: 'update-tlk' %>
+            <div id="tlk-note-margin-top-btm">Your Taaalk will have an invite link and code.</div>
+            <div>
+              <%= f.button :submit, "Start Your Taaalk", class: 'btn edit-mode-on' %>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to "Start Your Taaalk", new_user_session_path, class: "btn btn-dark edit-mode-on" %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>
 <div>
-  <% if current_user.present? %>
-    <%= simple_form_for(@tlk, remote: true) do |f| %>
-      <%= f.input :title %>
-      <%= f.button :submit %>
-    <% end %>
-  <% else %>
-    <%= link_to "Log in or sign up to start your Taaalk.", new_user_session_path %>
-  <% end %>
+  <div class="create-index-container top-index-container tlk-explain-div-small">
+    <div class="create-header-container" id="create-border-top-20-blue">
+      <h1><u>Or...</u> Meet someone to Taaalk with</h1>
+      <%= render 'components/tlk_to_me' %>
+    </div>
+  </div>
 </div>
 
-<h4>2. Meet someone to Taaalk with</h4>
-<ul>
-  <li>Let people know what you know</li>
-  <li>Ask people who know interesting things to Taaalk with you</li>
-</ul>
 
-<%= render 'components/tlk_to_me' %>
 
 <%= render 'components/tlk_to_me_users' %>
 

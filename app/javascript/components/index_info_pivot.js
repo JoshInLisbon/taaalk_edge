@@ -3,15 +3,18 @@ const indexInfoPivot = () => {
   let indexBackground = document.querySelector('#index-background-color');
   let indexTlk = document.querySelector('#tlk-intro-container');
   let topWhiteSplit = document.querySelector('#index-top-small-blue-split');
+  let indexBorderBtmContainer = document.querySelector('.index-border-btm-container');
   hmmmBtn.addEventListener('click', (event) => {
-    if (hmmmBtn.classList.contains("edit-mode-on")) {
+    if (hmmmBtn.innerHTML == 'Hmmm?') {
       hmmmBtn.classList.add('got-it-mode-on');
       hmmmBtn.classList.remove('edit-mode-on');
       hmmmBtn.innerHTML = 'Got It';
+      // indexBorderBtmContainer.style = "border-bottom: 40px solid #FE0002;"
     } else {
       hmmmBtn.classList.add('edit-mode-on');
       hmmmBtn.classList.remove('got-it-mode-on');
       hmmmBtn.innerHTML = 'Hmmm?';
+      // indexBorderBtmContainer.style = "border-bottom: 40px solid #07d755;"
     }
     if (indexTlk.classList.contains("index-hide-intro")) {
       indexTlk.classList.remove("index-hide-intro");

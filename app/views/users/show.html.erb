@@ -1,50 +1,127 @@
-<div class="user-image"
-  <% if @user.image.present? %>
-    style="background-image: url(<%= rails_blob_url(@user.image) %>)"
-  <% else %>
-    style="background-image: url(<%= asset_url('user.svg') %>)"
-  <% end %>
-  >
-</div>
-<h1><%= @user.username %></h1>
-<p><%= @user.biog %></p>
-<% if @user.tlk_with_me.present? %>
-<p>Taaalk with me about:</p>
-<p><%= @user.tlk_with_me %></p>
-<% end %>
-
 <% if @user == current_user %>
   <div class="tlk-note">
-    <p><strong>This is your profile.</strong> Only you can see the information in this box.</p>
-    <p><strong>Email:</strong> <%= @user.email %></p>
-    <p><strong>Default 'Taaalk Request' message:</strong></p>
-    <p><%= @user.tlk_with_you %></p>
-    <p><%= link_to "Edit Your Details", edit_user_path(@user) %></p>
-    <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
+    <h1 class="spkr-suggested-edit-header pt-0 pb-2">Hello</h1>
+    <p>This is your profile. Only you can see the information in this box.</p>
+    <div class="big-blue-split mt-0 mb-2" style="height:8px; background-color:#e9e9e9;"></div>
+    <p><strong>Your email:</strong></p>
+    <p><%= @user.email %></p>
+    <% if @user.tlk_with_you.present? %>
+      <p><strong>Default 'Taaalk request' message:</strong></p>
+      <p><%= @user.tlk_with_you %></p>
+    <% end %>
+    <div class="tlk-note-split mt-0 mb-2"></div>
+    <p><%= link_to "Edit Your Details", edit_user_path(@user), class: "btn btn-dark" %></p>
+    <p><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn log-out-btn" %></p>
+    <p>Delete account</p>
   </div>
-<% else %>
-  <%= render 'components/follow_unfollow_user' %>
 <% end %>
 
-
-<% @user.spkrs.each do |spkr| %>
-  <%= link_to show_tlk_path(spkr.tlk) do %>
-    <h4><%= spkr.tlk.title %></h4>
-    <% spkr.tlk.spkrs.each do |speaker| %>
-      <div class="tlk-tlking-image spkr-image"
-        <% if speaker.image.present? %>
-          style="background-image: url(<%= rails_blob_url(speaker.image) %>)"
-        <% elsif speaker.user.image.present? %>
-          style="background-image: url(<%= rails_blob_url(speaker.user.image) %>)"
+<div class="index-background-color-medium">
+  <div class="create-index-container">
+    <div class="user-container user-border-bottom">
+      <div class="user-image"
+        <% if @user.image.present? %>
+          style="background-image: url(<%= rails_blob_url(@user.image) %>)"
         <% else %>
           style="background-image: url(<%= asset_url('user.svg') %>)"
         <% end %>
         >
       </div>
-      <p><%= speaker.name %></p>
-    <% end %>
+      <h1 class="user-title"><%= @user.username %></h1>
+    </div>
+  </div>
+</div>
+
+<div class="create-index-container">
+  <%= render 'components/follow_unfollow_user' %>
+
+  <% if @user.biog.present? %>
+    <div class="p-0 user-container">
+      <div class="m-0 big-blue-split"></div>
+      <div class="user-biog">
+        <%= @user.biog %>
+      </div>
+      <div class="m-0 big-white-split"></div>
+    </div>
   <% end %>
+  <% if @user.tlk_with_me.present? %>
+    <div class="p-0 user-container">
+      <% unless @user.biog.present? %>
+        <div class="m-0 big-blue-split"></div>
+      <% end %>
+      <p class="mt-24"><strong>Taaalk with me about:</strong></p>
+      <div class="user-biog">
+        <%= @user.tlk_with_me %>
+      </div>
+      <%= link_to "Request to Taaalk with #{@user.username}", tlk_with_request_path(@user), class: "mb-24 d-inline-block" %>
+      <div class="m-0 big-white-split"></div>
+    </div>
+  <% end %>
+  <% if @user_tlks.any? %>
+    <div class="p-0 user-container">
+      <p class="mt-24 mb-24"><strong><%= @user.username.possessive %> Taaalk<%= @user_tlks.length > 1 ? "s" : "" %>:</strong></p>
+    </div>
+  <% end %>
+</div>
+
+<% if @user_tlks.any? %>
+
+<div class="index-container">
+
+  <div class="card-columns">
+    <% @user_tlks.each_with_index do |tlk, i| %>
+      <%= link_to show_tlk_path(tlk), class: "tlk-index-link" do %>
+        <div class="tlk-card card">
+          <div
+          <% if tlk.image.present? %>
+            class="tlk-image-index card-img-top img-fluid tlk-image-present"
+            style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(tlk.image) %>);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;"
+         <% elsif tlk.color.present? %>
+            class="tlk-image-index card-img-top img-fluid"
+            style="
+              background: <%= tlk.color %>;
+            "
+          <% else %>
+            class="tlk-image-index tlk-image-index-color card-img-top img-fluid tlk-image-not-present"
+          <% end %>
+          >
+            <h4 class="tlk-card-title card-title"><%= tlk.title %></h4>
+          </div>
+          <div class="tlk-card-block card-block">
+            <% tlk.spkrs.each do |spkr| %>
+              <div class="msg-<%= spkr.color %>">
+                <div class="spkr-details-container-index spkr-index-<%= spkr.side %>">
+                  <div class="spkr-img-name-container-index">
+                    <div class="spkr-image-index"
+                      <% if spkr.image.present? %>
+                        style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                      <% elsif spkr.user.image.present? %>
+                        style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                      <% else %>
+                        style="background-image: url(<%= asset_url('user.svg') %>)"
+                      <% end %>
+                      >
+                    </div>
+                    <p class="spkr-name-index"><strong><%= spkr.name %></strong></p>
+                  </div>
+                  <% if spkr.biog.present? %>
+                    <div class="spkr-biog-holder-index">
+                      <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 100) %></p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+
 <% end %>
-
-
-

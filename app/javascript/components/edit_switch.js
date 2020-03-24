@@ -14,12 +14,7 @@ const editSwitch = () => {
       toggleZone(editZone);
       toggleZone(readZone);
     });
-});
-  // editBtn.addEventListener('click', (event) => {
-  //   changeBtnTextAndClass();
-  //   toggleZone(editZone);
-  //   toggleZone(readZone);
-  // });
+  });
 }
 
 export { editSwitch }

@@ -1,2 +1,5 @@
-<%= link_to "Follow User", user_follow_path(@user.id), method: :post, remote: true, class: "user-follow" %>
-<p>Receive an email when this user starts a Taaalk.</p>
+<%= link_to "Follow #{@user.username}", user_follow_path(@user.id), method: :post, remote: true, class: "user-follow" %>
+<div class="tlk-note tlk-follow-note mx-0">
+  <p><%= @user.followers.count + 1 %> follower<%= @user.followers.count > 0 ? "s" : "" %></p>
+</div>
+

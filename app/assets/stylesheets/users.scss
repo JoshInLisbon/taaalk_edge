@@ -2,6 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.user-container {
+  max-width: 700px;
+  padding: 56px 0;
+}
+
+.user-image-bg {
+  min-height: 240px;
+  padding: 0 16px;
+  margin-bottom: 32px;
+  // Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0000ff+0,c6f1d6+100 */
+  background: #0000ff;
+  background: -moz-linear-gradient(top,  #0000ff 0%, $grey 100%);
+  background: -webkit-linear-gradient(top,  #0000ff 0%, $grey 100%);
+  background: linear-gradient(to bottom,  #0000ff 0%, $grey 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#f0f0f0',GradientType=0 );
+}
+
+
+.user-title {
+  color: white;
+  margin: 0 auto;
+  font-weight: $bold;
+}
+
+
 .user-image {
   background: $bright-blue;
   background-size: cover;
@@ -11,3 +36,58 @@
   width: 100px;
   border-radius: 50%;
 }
+
+.user-biog {
+  font-size: 19px;
+}
+
+@media (max-width: 768px) {
+  .user-biog {
+    font-size: 18px;
+  }
+}
+
+.user-border-bottom {
+  border-bottom: 40px solid $almost-white;
+}
+
+@media (max-width: 768px) {
+  .user-border-bottom {
+    border-bottom: none;
+  }
+}
+
+.user-follow {
+  margin-right: 8px;
+}
+
+.user-bio-tlk-note {
+  font-size: 19px !important;
+  max-width: 700px !important;
+  margin: 8px 0 0 0 !important;
+}
+
+.user-follow-div {
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .user-bio-tlk-note {
+    font-size: 18px !important;
+  }
+  .user-follow-div {
+    margin-top: 28px;
+  }
+}
+
+.log-out-btn {
+  color: white;
+  background-color: blue;
+}
+
+
+.user-biog {
+  margin: 24px 0;
+}
+
+

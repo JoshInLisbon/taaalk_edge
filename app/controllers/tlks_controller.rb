@@ -2,7 +2,7 @@ class TlksController < ApplicationController
   require 'digest/md5'
   include SpkrMaker
 
-  skip_before_action :authenticate_user!, only: [:index, :show, :new]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :newy]
 
   def index
     @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
@@ -22,7 +22,10 @@ class TlksController < ApplicationController
 
   def new
     @tlk = Tlk.new()
-    @tlk_with_me_users = User.joins(:rich_text_tlk_with_me).paginate(page: params[:page], per_page: 30).order(created_at: :desc)
+    @tlk_with_me_users = User.joins(:rich_text_tlk_with_me).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
+    if current_user.present?
+      @twm_present = current_user.tlk_with_me.present? ? true : false
+    end
   end
 
   def edit
