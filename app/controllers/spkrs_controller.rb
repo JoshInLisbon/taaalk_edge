@@ -53,7 +53,7 @@ class SpkrsController < ApplicationController
   end
 
   def edit_suggested
-
+    @title = "Suggested edit to #{@spkr.name}"
   end
 
   def edit_rejected
