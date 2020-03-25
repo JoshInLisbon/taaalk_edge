@@ -94,4 +94,38 @@
   margin: 24px 0;
 }
 
+.user-tlks-index-container {
+  max-width: 1164px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
 
+@media (max-width: 768px) {
+  .user-tlks-index-container {
+    padding: 0 8px;
+  }
+}
+
+.username-edit {
+  outline: none;
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 700;
+  padding: 0 0 0 8px;
+  font-size: 48px;
+  display: block;
+
+  border-radius: 4px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: $bright-blue;
+  color: $core-font-color;
+}
+
+@media (max-width: 768px) {
+  .username-edit {
+    font-size: 32px;
+  }
+}

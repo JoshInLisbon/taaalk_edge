@@ -1,0 +1,9 @@
+Hi <%= @requesting_user.username %>,
+
+<%= @requested_user.username %> has accepted your Taaalk request ('<%= @tlk.title %>').
+
+The Taaalk is available here:
+
+<%= show_tlk_url(@tlk) %>
+
+You will be sent a seperate email when <%= @requested_user.username %> writes a message in the Taaalk.

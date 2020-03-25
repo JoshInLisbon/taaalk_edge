@@ -23,6 +23,7 @@ class TlkRequestsController < ApplicationController
         make_spkr
         make_msg
         @tlk_request.destroy
+        send_requesting_user_accept_mail
         send_both_user_followers_new_tlk_mail(@requesting_user, @requested_user, @tlk)
         redirect_to show_tlk_path(@tlk)
       end
@@ -34,6 +35,7 @@ class TlkRequestsController < ApplicationController
 
   def reject
     if current_user == @requested_user
+      send_requesting_user_reject_mail
       redirect_to root_path
     else
       flash[:notice] = "You need to be logged in as the requested user to reject the Taaalk request."
@@ -65,10 +67,29 @@ class TlkRequestsController < ApplicationController
     @msg.save!
   end
 
+  def send_requesting_user_accept_mail
+    mail = TlkRequestMailer.with(
+      tlk: @tlk,
+      requesting_user: @requesting_user,
+      requested_user: @requested_user
+    ).accepted
+    mail.deliver_later
+  end
+
+  def send_requesting_user_reject_mail
+    mail = TlkRequestMailer.with(
+      tlk_request: @tlk_request,
+      requesting_user: @requesting_user,
+      requested_user: @requested_user
+    ).rejected
+    mail.deliver_later
+  end
+
   def send_both_user_followers_new_tlk_mail(requesting_user, requested_user, tlk)
     requesting_user.followers.each do |follower|
       mail = TlkMailer.with(
-        tlk: tlk, followed_user: requesting_user,
+        tlk: tlk,
+        followed_user: requesting_user,
         follower: follower
       ).new_tlk_update_user_follower
       mail.deliver_later
