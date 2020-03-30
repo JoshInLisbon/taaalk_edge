@@ -6,7 +6,7 @@ class MsgMailer < ApplicationMailer
 
     mail(
       to: "#{@spkr.name} <#{@spkr.user.email}>",
-      subject: "#{@tlk.title}: New message. Read it and reply."
+      subject: "New message from #{@msg.spkr.name} in \"#{@tlk.title}\""
     )
   end
 
@@ -17,7 +17,7 @@ class MsgMailer < ApplicationMailer
 
     mail(
       to: "#{@follow.user.username} <#{@follow.user.email}>",
-      subject: "#{@tlk.title}: New message for you to read."
+      subject: "New message in \"#{@tlk.title}\""
     )
   end
 end

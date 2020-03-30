@@ -44,7 +44,8 @@ class TlksController < ApplicationController
     @tlk.msg_key = Digest::MD5.hexdigest(@tlk.title)
     if @tlk.save!
       make_spkr
-      send_user_followers_new_tlk_mail(current_user, @tlk)
+      send_tlk_user_tlk_created_mail
+      send_user_followers_new_tlk_mail
       redirect_to show_tlk_path(@tlk), flash: { edit: true }
     end
   end
@@ -74,10 +75,19 @@ class TlksController < ApplicationController
     end
   end
 
-  def send_user_followers_new_tlk_mail(current_user, tlk)
+  def send_tlk_user_tlk_created_mail
+    mail = TlkMailer.with(
+      tlk: @tlk,
+      user: current_user
+    ).tlk_user_tlk_created
+    mail.deliver_later
+  end
+
+  def send_user_followers_new_tlk_mail
     current_user.followers.each do |follower|
       mail = TlkMailer.with(
-        tlk: tlk, followed_user: current_user,
+        tlk: @tlk,
+        followed_user: current_user,
         follower: follower
       ).new_tlk_update_user_follower
       mail.deliver_later

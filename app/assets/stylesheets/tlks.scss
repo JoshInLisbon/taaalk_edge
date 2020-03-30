@@ -345,6 +345,10 @@
 .tlk-follow-link {
   margin-right: 8px;
 }
+
+.tlk-bottom-edit-btn {
+  margin-top: 32px !important;
+}
 // index
 
 .index-background {
@@ -686,7 +690,7 @@
 }
 
 #index-top-blob-spkr {
-  margin-top: -6px;
+  margin-top: -14px;
 }
 
 
@@ -709,7 +713,10 @@
 
 .top-index-container {
   margin-bottom: 40px;
+  margin-top: 0;
 }
+
+
 
 @media (min-width: 768px){
   .index-tlking-container {
@@ -739,6 +746,7 @@
     margin-top: 0;
   }
   .index-tlking-container {
+    margin-top: 26px;
     padding-left: 0;
     margin-bottom: 0;
     padding-bottom: 0;

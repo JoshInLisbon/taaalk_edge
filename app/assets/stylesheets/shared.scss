@@ -90,7 +90,7 @@ h3 {
   }
   .big-dark-split {
     height: $mob-line-width;
-    margin-top: 16px;
+    margin-top: 8px;
   }
   .full-width-dark-split {
     height: $mob-line-width;
@@ -105,6 +105,9 @@ h3 {
   .big-blue-split-bottom {
     margin-top: 20px !important;
     margin-bottom: 8px !important;
+  }
+  .full-width-spkr-only {
+    margin-bottom: 8px;
   }
 }
 
@@ -146,7 +149,32 @@ a {
   }
 }
 
+.danger-link {
+  border: none;
+  background: transparent;
+  color: $sharp-red;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    color: $sharp-red-hover;
+  }
+}
+
+.fake-link-from-btn {
+  border: none;
+  background: transparent;
+  color: $green;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .alert {
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
   z-index: 1000;
   position: fixed;
   bottom: 8px;
@@ -155,9 +183,9 @@ a {
   margin-bottom: 0 !important;
   border: none !important;
   color: white !important;
-  background-color: $msg-black !important;
+  background-color: $msg-green !important;
   .close:hover {
-    color: red !important;
+    color: black !important;
   }
 }
 

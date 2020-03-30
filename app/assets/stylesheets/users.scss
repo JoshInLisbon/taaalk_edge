@@ -83,15 +83,79 @@
 .log-out-btn {
   color: white;
   background-color: blue;
+  margin: 0 16px 16px 16px;
   &:hover {
     color: white;
     background-color: #0000C2;
   }
 }
 
+@media (max-width: 768px) {
+  .log-out-btn {
+    margin: 0 8px 8px 8px;
+  }
+}
+
+.user-email {
+  width: 100%;
+  padding: 8px 0 8px 8px;
+
+}
 
 .user-biog {
   margin: 24px 0;
 }
 
+.user-tlks-index-container {
+  max-width: 1164px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
 
+@media (max-width: 768px) {
+  .user-tlks-index-container {
+    padding: 0 8px;
+  }
+}
+
+.username-edit {
+  outline: none;
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 700;
+  padding: 0 0 0 8px;
+  font-size: 48px;
+  display: block;
+
+  border-radius: 4px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: $bright-blue;
+  color: $core-font-color;
+}
+
+.user-bottom-edit-btn {
+  margin-top: 40px !important;
+}
+
+
+@media (max-width: 768px) {
+  .username-edit {
+    font-size: 32px;
+  }
+  .user-bottom-edit-btn {
+    margin-top: 24px !important;
+  }
+}
+
+.user-big-dark-split {
+  margin-bottom: 24px !important;
+}
+
+.user-p-style {
+  p {
+    margin-bottom: 0.5rem;
+  }
+}

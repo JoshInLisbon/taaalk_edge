@@ -22,7 +22,19 @@ class SpkrsController < ApplicationController
     redirect_to show_tlk_path(@spkr.tlk)
   end
 
+  def remove
+    send_spkr_remove_mail
+    @spkr.destroy
+    redirect_to show_tlk_path(@spkr.tlk)
+  end
+
   def hide_spkr
+    @spkr.hide = true
+    @spkr.save!
+    redirect_to show_tlk_path(@spkr.tlk)
+  end
+
+  def hide_other_spkr
     @spkr.hide = true
     @spkr.save!
     redirect_to show_tlk_path(@spkr.tlk)
@@ -124,15 +136,7 @@ class SpkrsController < ApplicationController
   end
 
   def send_spkr_edited_mail
-    editing_spkr = ""
-
-    @spkr.tlk.spkrs.each do |spkr|
-      if spkr.user == current_user
-        editing_spkr = spkr
-      end
-    end
-
-    mail = SpkrMailer.with(spkr: @spkr, editing_spkr: editing_spkr, tlk: @spkr.tlk).edited_spkr
+    mail = SpkrMailer.with(spkr: @spkr, editing_spkr: current_user, tlk: @spkr.tlk).edited_spkr
     mail.deliver_later
   end
 
@@ -144,5 +148,10 @@ class SpkrsController < ApplicationController
   def send_spkr_edit_reject_mail
     mail = SpkrMailer.with(spkr: @spkr, editing_spkr: @spkr.tlk.spkr, tlk: @spkr.tlk).reject_edit
     mail.deliver_later
+  end
+
+  def send_spkr_remove_mail
+    mail = SpkrMailer.with(spkr: @spkr, editing_spkr: current_user, tlk: @spkr.tlk).removed
+    mail.deliver
   end
 end

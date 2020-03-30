@@ -10,10 +10,11 @@ class Invite::TlksController < ApplicationController
 
   def invited?
     @tlk = Tlk.friendly.find(invited_params[:id])
-
     if invited_params[:key].to_i == @tlk.invite_code
       if current_user.present?
         make_spkr
+        send_tlk_spkr_tlk_joined_mail
+        send_tlk_owner_spkr_joined_mail
         redirect_to show_tlk_path(@tlk), flash: { edit: true }
       else
         redirect_to show_tlk_path(@tlk), flash: { invited: true }
@@ -30,5 +31,22 @@ class Invite::TlksController < ApplicationController
 
   def invited_params
     params.require(:tlk).permit(:key, :id)
+  end
+
+  def send_tlk_spkr_tlk_joined_mail
+    mail = TlkMailer.with(
+      tlk: @tlk,
+      user: current_user
+    ).tlk_spkr_tlk_joined
+    mail.deliver_later
+  end
+
+  def send_tlk_owner_spkr_joined_mail
+    mail = TlkMailer.with(
+      tlk: @tlk,
+      user: @tlk.user,
+      joined_user: current_user
+    ).tlk_owner_tlk_joined
+    mail.deliver_later
   end
 end
