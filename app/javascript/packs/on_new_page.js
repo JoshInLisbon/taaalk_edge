@@ -11,6 +11,7 @@ import { changeBrToDiv } from "../components/trix_change_br_to_div"
 import { scrollToPreview } from "../components/scroll_to_preview"
 import { indexInfoPivot } from "../components/index_info_pivot"
 import { detailsToggle } from "../components/details_toggle"
+import { userEditSwitch } from "../components/user_edit_switch"
 
 let mode = document.querySelector('#meta').content
 
@@ -63,4 +64,9 @@ if(mode == 'tlks-new') {
   rtaUnsavedAlert();
   uploadImage();
   detailsToggle();
+}
+
+if (mode == 'users-show-edit') {
+  userEditSwitch();
+  uploadImage();
 }

@@ -63,7 +63,7 @@
         <div class="field" id="rta-<%= spkr.id %>">
           <strong><%= f.label :content, "#{spkr.name} says:" %></strong>
           <%#= f.rich_text_area :content, target: "draft-#{spkr.id}", id: "msg-#{spkr.id}" %>
-          <%= f.rich_text_area :content, target: "submit-msg-#{spkr.id}", id: "msg-#{spkr.id}" %>
+          <%= f.rich_text_area :content, target: "submit-msg-#{spkr.id}", id: "msg-#{spkr.id}", required: true  %>
         </div>
         <%= f.hidden_field :tlk_id, :value => @tlk.id %>
         <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :set_user, only: [:show, :edit, :update, :tlk_with_request, :destroy_tlk_with_me]
+  before_action :set_user, only: [:show, :edit, :tlk_with_request, :destroy_tlk_with_me, :destroy_tlk_with_me_user_page, :destroy]
 
   def show
     @title = "(User) #{@user.username}"
+    # @user_for_delete = @user
     set_user_tlks
   end
 
@@ -12,8 +13,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update!(user_params)
-    redirect_to show_user_path(@user)
+    current_user.update!(user_params)
+    redirect_to show_user_path(current_user)
   end
 
   def tlk_with_me
@@ -35,8 +36,40 @@ class UsersController < ApplicationController
   end
 
   def destroy_tlk_with_me
-    @user.tlk_with_me.destroy
+    current_user.tlk_with_me.destroy
     redirect_to new_tlk_path
+  end
+
+  def destroy_tlk_with_me_user_page
+    current_user.tlk_with_me.destroy
+    redirect_to show_user_path
+  end
+
+  def destroy
+    if current_user.destroy_with_password(password_param[:password])
+      redirect_to root_path
+    else
+      redirect_to show_user_path
+      flash[:notice] = "Password not correct."
+    end
+  end
+
+  def update_password
+    current_password = update_password_params[:current_password]
+    new_password = update_password_params[:new_password]
+    confirm_new_password = update_password_params[:confirm_new_password]
+    if current_user.valid_password?(current_password)
+      if current_user.reset_password(new_password, confirm_new_password)
+        redirect_to show_user_path(current_user)
+        flash[:notice] = "Your password has been updated. You need to log in again."
+      else
+        redirect_to show_user_path(current_user)
+        flash[:notice] = "Your new password and its confirmation didn't match."
+      end
+    else
+      redirect_to show_user_path(current_user)
+      flash[:notice] = "Your current password was entered incorrectly."
+    end
   end
 
   private
@@ -58,7 +91,15 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_me)
+    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_me, :tlk_with_you, :password_for_delete)
+  end
+
+  def password_param
+    params.require(:user).permit(:password)
+  end
+
+  def update_password_params
+    params.require(:user).permit(:current_password, :new_password, :confirm_new_password)
   end
 
   def tlk_request_user_params

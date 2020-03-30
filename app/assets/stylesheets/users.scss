@@ -83,12 +83,24 @@
 .log-out-btn {
   color: white;
   background-color: blue;
+  margin: 0 16px 16px 16px;
   &:hover {
     color: white;
     background-color: #0000C2;
   }
 }
 
+@media (max-width: 768px) {
+  .log-out-btn {
+    margin: 0 8px 8px 8px;
+  }
+}
+
+.user-email {
+  width: 100%;
+  padding: 8px 0 8px 8px;
+
+}
 
 .user-biog {
   margin: 24px 0;
@@ -124,8 +136,26 @@
   color: $core-font-color;
 }
 
+.user-bottom-edit-btn {
+  margin-top: 40px !important;
+}
+
+
 @media (max-width: 768px) {
   .username-edit {
     font-size: 32px;
+  }
+  .user-bottom-edit-btn {
+    margin-top: 24px !important;
+  }
+}
+
+.user-big-dark-split {
+  margin-bottom: 24px !important;
+}
+
+.user-p-style {
+  p {
+    margin-bottom: 0.5rem;
   }
 }

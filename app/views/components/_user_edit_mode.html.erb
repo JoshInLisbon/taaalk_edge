@@ -1,27 +1,6 @@
-<p><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn log-out-btn" %></p>
-<div class="user-image"
-  <% if @user.image.present? %>
-    style="background-image: url(<%= rails_blob_url(@user.image) %>)"
-  <% else %>
-    style="background-image: url(<%= asset_url('user.svg') %>)"
-  <% end %>
-  >
-</div>
-<div class="spkr-user-edit-form">
-  <%= simple_form_for(@user) do |f| %>
-    <%= f.input :image %>
-    <%= f.input :username %>
-    <%= f.input :email %>
-    <p>Default Taaalk bio:</p>
-    <%= f.rich_text_area :biog %>
-    <p>People should Taaalk with you about:</p>
-    <%= f.rich_text_area :tlk_with_me %>
-    <p>Default 'Taaalk Request' message:</p>
-    <%= f.rich_text_area :tlk_with_you %>
-    <%= f.button :submit, 'Update Your Details' %>
-  <% end %>
-</div>
-<p>Delete account</p>
+<%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn log-out-btn" %>
+
+<div class="full-width-dark-split full-width-spkr-only"></div>
 
 <%= form_with model: @user do |f| %>
 
@@ -51,18 +30,64 @@
     </div>
   </div>
 
-  <div class="spkr-user-edit-form">
+  <div class="spkr-user-edit-form user-p-style">
     <div class="create-index-container">
       <div class="p-0 user-container">
-        <div class="user-biog">
+        <div>
+          <p>Your email:</p>
+          <%= f.text_field :email, class: "user-email" %>
+        </div>
+        <div>
           <p>Default Taaalk bio:</p>
           <%= f.rich_text_area :biog %>
         </div>
-        <div class="m-0 big-white-split"></div>
+        <p>People should Taaalk with you about:</p>
+        <%= f.rich_text_area :tlk_with_me %>
+        <% if @user.tlk_with_me.present? %>
+          <p class="create-remove-details mb-4"><%= link_to "Remove yourself from the \"Taaalk with me\" section", destroy_tlk_with_me_user_page_path(current_user) %></p>
+        <% end %>
+        <p>Default 'Taaalk Request' message:</p>
+        <%= f.rich_text_area :tlk_with_you %>
+        <%= f.submit "Update Your Details", id: "spkr-#{@user.id}", class: 'btn-spkr-edit btn create-user-update-btn' %>
       </div>
     </div>
-
-
-
   </div>
 <% end %>
+
+<div class="create-index-container">
+  <div class="p-0 user-container">
+  <div class="spkr-user-edit-form">
+    <div class="big-white-split"></div>
+    <%= form_with model: current_user, url: :update_password do |fi| %>
+      <p><strong>Change your password:</strong></p>
+      <p>You'll have to log in again after changing your password.</p>
+      <p class="mb-0">Your <strong>current</strong> password:</p>
+      <%= fi.password_field :current_password %>
+      <p class="mb-0">Your <strong>new</strong> password:</p>
+      <%= fi.password_field :new_password %>
+      <p class="mb-0"><strong>Confirm</strong> your new password:</p>
+      <%= fi.password_field :confirm_new_password %>
+      <div>
+        <%= fi.submit "Change your password", class: "fake-link-from-btn" %>
+      </div>
+    <% end %>
+    <div class="big-white-split"></div>
+    <p><strong>Delete your account:</strong></p>
+    <p>This will delete all your Taaalks and messages.</p>
+    <p>It will not delete Taaalks you didn't start, but it will delete your messages in them.</p>
+    <p class="mb-0">Enter your password:</p>
+    <%= form_for @user, method: :delete do |fo| %>
+      <%= fo.password_field :password %>
+      <div>
+        <%= fo.submit "Delete your account", class: "mb-0 danger-link" %>
+      </div>
+    <% end %>
+    <div class="big-white-split"></div>
+  </div>
+    <div class="user-bottom-edit-btn">
+      <button id="tlk-toggle-edit" class="tlk-toggle-edit edit-mode-on btn btn-dark spkr-only-edit-btn">Exit Edit Mode</button>
+      <div class="user-big-dark-split big-dark-split"></div>
+    </div>
+  </div>
+</div>
+

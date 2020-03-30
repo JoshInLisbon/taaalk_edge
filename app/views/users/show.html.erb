@@ -2,71 +2,73 @@
   <div>
     <div class="tlk-note">
       <p>This is your profile.
-        <%= link_to "Edit Your Details / Log Out", edit_user_path(@user), class: "btn btn-dark" %>
+        <span id="tlk-toggle-edit" class="tlk-toggle-edit edit-mode-off btn btn-dark">Edit Your Details / Log Out</span>
       </p>
     </div>
-    <div id="tlk-section-edit" >
-      <!-- class="tlk-section-off" -->
+    <div id="tlk-section-edit" class="tlk-section-off"  >
       <%= render 'components/user_edit_mode' %>
     </div>
   </div>
 <% end %>
 
-<div class="index-background-color-medium">
-  <div class="create-index-container">
-    <div class="user-container user-border-bottom">
-      <div class="user-image"
-        <% if @user.image.present? %>
-          style="background-image: url(<%= rails_blob_url(@user.image) %>)"
-        <% else %>
-          style="background-image: url(<%= asset_url('user.svg') %>)"
-        <% end %>
-        >
+<div id="tlk-section-read" class="tlk-section-on">
+
+  <div class="index-background-color-medium">
+    <div class="create-index-container">
+      <div class="user-container user-border-bottom">
+        <div class="user-image"
+          <% if @user.image.present? %>
+            style="background-image: url(<%= rails_blob_url(@user.image) %>)"
+          <% else %>
+            style="background-image: url(<%= asset_url('user.svg') %>)"
+          <% end %>
+          >
+        </div>
+        <h1 class="user-title"><%= @user.username %></h1>
       </div>
-      <h1 class="user-title"><%= @user.username %></h1>
     </div>
   </div>
-</div>
 
-<div class="create-index-container">
-  <%= render 'components/follow_unfollow_user' %>
+  <div class="create-index-container">
+    <%= render 'components/follow_unfollow_user' %>
 
-  <% if @user.biog.present? %>
-    <div class="p-0 user-container">
-      <div class="m-0 big-blue-split"></div>
-      <div class="user-biog">
-        <%= @user.biog %>
-      </div>
-      <div class="m-0 big-white-split"></div>
-    </div>
-  <% end %>
-  <% if @user.tlk_with_me.present? %>
-    <div class="p-0 user-container">
-      <% unless @user.biog.present? %>
+    <% if @user.biog.present? %>
+      <div class="p-0 user-container">
         <div class="m-0 big-blue-split"></div>
-      <% end %>
-      <p class="mt-24"><strong>Taaalk with me about:</strong></p>
-      <div class="user-biog">
-        <%= @user.tlk_with_me %>
+        <div class="user-biog">
+          <%= @user.biog %>
+        </div>
+        <div class="m-0 big-white-split"></div>
       </div>
-      <%= link_to "Request to Taaalk with #{@user.username}", tlk_with_request_path(@user), class: "mb-24 d-inline-block" %>
-      <div class="m-0 big-white-split"></div>
-    </div>
-  <% end %>
-  <% if @user_tlks.any? %>
-    <div class="p-0 user-container">
-      <% if !(@user.tlk_with_me.present?) && !(@user.biog.present?) %>
-        <div class="m-0 big-blue-split"></div>
-      <% end %>
-      <p class="mt-24 mb-24"><strong><%= @user.username.possessive %> Taaalk<%= @user_tlks.length > 1 ? "s" : "" %>:</strong></p>
-    </div>
-  <% end %>
+    <% end %>
+    <% if @user.tlk_with_me.present? %>
+      <div class="p-0 user-container">
+        <% unless @user.biog.present? %>
+          <div class="m-0 big-blue-split"></div>
+        <% end %>
+        <p class="mt-24"><strong>Taaalk with me about:</strong></p>
+        <div class="user-biog">
+          <%= @user.tlk_with_me %>
+        </div>
+        <%= link_to "Request to Taaalk with #{@user.username}", tlk_with_request_path(@user), class: "mb-24 d-inline-block" %>
+        <div class="m-0 big-white-split"></div>
+      </div>
+    <% end %>
+    <% if @user_tlks.any? %>
+      <div class="p-0 user-container">
+        <% if !(@user.tlk_with_me.present?) && !(@user.biog.present?) %>
+          <div class="m-0 big-blue-split"></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
 </div>
 
 <% if @user_tlks.any? %>
 
 <div class="user-tlks-index-container">
-
+  <p class="mt-24 mb-24"><strong><%= @user.username.possessive %> Taaalk<%= @user_tlks.length > 1 ? "s" : "" %>:</strong></p>
   <div class="card-columns">
     <% @user_tlks.each_with_index do |tlk, i| %>
       <%= link_to show_tlk_path(tlk), class: "tlk-index-link" do %>

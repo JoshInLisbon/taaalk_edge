@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   get '/u/:id', to: 'users#show', as: 'show_user'
   get '/u/:id/taaalk-request', to: 'users#tlk_with_request', as: 'tlk_with_request'
   patch 'tlk-with-me', to: 'users#tlk_with_me', as: 'tlk_with_me'
+  patch 'update-password', to: 'users#update_password', as: 'update_password'
   patch ':id/send-tlk-request', to: 'users#send_tlk_request', as: 'send_tlk_request'
   get ':id/destroy_tlk_with_me', to: 'users#destroy_tlk_with_me', as: 'destroy_tlk_with_me'
+  get ':id/destroy_tlk_with_me_user_page', to: 'users#destroy_tlk_with_me_user_page', as: 'destroy_tlk_with_me_user_page'
   resources :users do
     post :user_follows, to: 'user_follows#create', as: 'follow'
     delete :user_follows, to: 'user_follows#destroy', as: 'destroy_follow'

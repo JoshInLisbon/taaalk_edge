@@ -6,7 +6,7 @@ class TlkRequestMailer < ApplicationMailer
 
     mail(
       to: "#{@requesting_user.username} <#{@requesting_user.email}>",
-      subject: "#{@requested_user.username} has accepted your Taaalk request | #{@tlk.title}"
+      subject: "#{@requested_user.username} has accepted your Taaalk request | \"#{@tlk.title}\""
     )
   end
 
@@ -17,7 +17,7 @@ class TlkRequestMailer < ApplicationMailer
 
     mail(
       to: "#{@requesting_user.username} <#{@requesting_user.email}>",
-      subject: "#{@requested_user.username} has rejected your Taaalk request | #{@tlk_request.title}"
+      subject: "#{@requested_user.username} has rejected your Taaalk request | \"#{@tlk_request.title}\""
     )
   end
 end

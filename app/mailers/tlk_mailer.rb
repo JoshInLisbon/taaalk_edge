@@ -5,7 +5,7 @@ class TlkMailer < ApplicationMailer
 
     mail(
       to: "#{@user.username} <#{@user.email}>",
-      subject: "Detials for your Taaalk '#{@tlk.title}'"
+      subject: "Detials for your Taaalk \"#{@tlk.title}\""
     )
   end
 
@@ -15,7 +15,7 @@ class TlkMailer < ApplicationMailer
 
     mail(
       to: "#{@user.username} <#{@user.email}>",
-      subject: "Details for your Taaalk '#{@tlk.title}'"
+      subject: "Details for your Taaalk \"#{@tlk.title}\""
     )
   end
 
@@ -26,7 +26,7 @@ class TlkMailer < ApplicationMailer
 
     mail(
       to: "#{@user.username} <#{@user.email}>",
-      subject: "#{ @joined_user.username } joined your Taaalk '#{@tlk.title}'"
+      subject: "#{ @joined_user.username } joined your Taaalk \"#{@tlk.title}\""
     )
   end
 
@@ -37,7 +37,7 @@ class TlkMailer < ApplicationMailer
 
     mail(
       to: "#{@follower.username} <#{@follower.email}>",
-      subject: "#{@followed_user.username} has started a new Taaalk '#{@tlk.title}'"
+      subject: "#{@followed_user.username} has started a new Taaalk \"#{@tlk.title}\""
     )
   end
 
@@ -48,7 +48,7 @@ class TlkMailer < ApplicationMailer
 
     mail(
       to: "#{@requested_user.username} <#{@requested_user.email}>",
-      subject: "#{@requesting_user.username} would like to Taaalk with you | #{@tlk_request.title}"
+      subject: "#{@requesting_user.username} would like to Taaalk with you | \"#{@tlk_request.title}\""
     )
   end
 end
