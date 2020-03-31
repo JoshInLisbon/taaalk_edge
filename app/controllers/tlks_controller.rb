@@ -40,7 +40,7 @@ class TlksController < ApplicationController
     # If making changes, this method also exists in TlkRequestsController
     @tlk = Tlk.new(tlk_params)
     @tlk.user = current_user
-    @tlk.invite_code = '%010d' % rand(100000..999999)
+    @tlk.invite_code = '%010d' % rand(100000000..999999999)
     @tlk.msg_key = Digest::MD5.hexdigest(@tlk.title)
     if @tlk.save!
       make_spkr

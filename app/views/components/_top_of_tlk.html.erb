@@ -1,3 +1,4 @@
+
 <% if current_user == @tlk.user %>
   <% if flash[:edit] == true %>
     <div>
@@ -61,9 +62,6 @@
 <% elsif flash[:invited] == true %>
   <div id="tlk-section-invite">
     <%= render 'components/invited_mode' %>
-  </div>
-  <div id="tlk-section-read" class="tlk-section-on">
-    <%= render 'components/read_mode' %>
   </div>
 <% else %>
   <div id="tlk-section-read">

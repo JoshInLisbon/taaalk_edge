@@ -1,99 +1,188 @@
 
-<div>
+<div style="display: none;">
   <div class="tlk-note">
-    <p id="tlk-invited-note-login" class="tlk-section-on">Have a Taaalk account? <span id="tlk-invited-login" class="fake-link">Log in</span>.</p>
-    <p id ="tlk-invited-note-signup" class="tlk-section-off">Don't have an account? <span id="tlk-invited-signup" class="fake-link">Sign up</span>.</p>
+    <p id="tlk-invited-note-login" class="tlk-section-on mb-0"><span class="f-red"><strong>Important:</strong></span> Have a Taaalk account? <span id="tlk-invited-login" class="tlk-invited-login fake-link">Log in</span>.</p>
+    <p id ="tlk-invited-note-signup" class="tlk-section-off"></span>Don't have an account? <span id="tlk-invited-signup" class="tlk-invited-signup fake-link">Sign up</span>.</p>
   </div>
 </div>
 
-<div class="tlk-login tlk-section-off">
-  <div>
-    <div class="tlk-note">
-      <p><strong>Logging in using the form below will add you to this Taaalk.</strong> If you don't want that to happen, please log in <%= link_to "here", new_user_session_path %>.</p>
+<div class="tlk-image"
+<% if @tlk.image.present? %>
+  style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(@tlk.image) %>);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;"
+<% end %>
+>
+  <h1 class="tlk-title"><%= @tlk.title %></h1>
+</div>
+
+
+<div class="tlk-container">
+
+  <div class="tlk-login tlk-section-off">
+    <div>
+      <div>
+        <p id="tlk-invited-note-signup"><span class="f-green">Don't have an account?</span> <span id="tlk-invited-signup" class="tlk-invited-signup fake-link">Sign up</span></p>
+        <div class="big-white-split"></div>
+        <p><strong>Log in:</strong></p>
+        <p>Logging in using the form below will add you to this Taaalk.</p>
+      </div>
+    </div>
+
+    <div class="spkr-user-edit-form user-p-style">
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div>
+          <p><strong>Email:</strong></p>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "fw-text-input" %>
+        </div>
+
+        <div class="field">
+          <p><strong>Password:</strong></p>
+          <%= f.password_field :password, autocomplete: "current-password", class: "fw-text-input" %>
+        </div>
+
+        <% if flash[:invited] %>
+          <%= fields_for @spkr do |fi| %>
+            <%= fi.hidden_field :flash_invite_code, value: @tlk.invite_code %>
+            <%= fi.hidden_field :tlk_id, value: @tlk.id %>
+          <% end %>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "Join This Taaalk", class: "btn-spkr-edit btn create-user-update-btn mb-3" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <p>
+            Remember me?
+            <span class="inline-check-box">
+              <%= f.check_box :remember_me, checked: true %>
+            </span>
+            </p>
+          </div>
+        <% end %>
+
+        <p><%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
+        <p>(Don't want to join this Taaalk, but do want to log in? Visit the <%= link_to "normal  log in page", new_user_session_path %>.)</p>
+      <% end %>
     </div>
   </div>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="tlk-signup tlk-section-on">
+    <div>
+      <div>
+        <p><span class="f-red">Have a Taaalk account?</span> <span id="tlk-invited-login" class="tlk-invited-login fake-link">Log in</span></p>
+        <div class="big-white-split"></div>
+        <!-- <h3 class="mb-3">Welcome</h3> -->
+        <p><span><strong><u>Or...</u> Sign up:</strong></span></p>
+        <p>A Taaalk is a conversation between two or more people that anyone can read.</p>
+        <p>Readers of this Taaalk need to know about you, so please sign up with...</p>
+        <div class="spkr-user-edit-form user-p-style">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <%= fields_for @spkr do |fi| %>
+              <div>
+                <p><strong>Your full name</strong> (or a name/username of your choice):</p>
+                <%= fi.text_field :name, class: "fw-text-input" %>
+              </div>
+              <div>
+                <p><strong>Your bio</strong> (some information about you, so people understand why what you say is relevant):</p>
+                <%= fi.rich_text_area :biog %>
+              </div>
+            <% end %>
+            <div>
+              <p><strong>Your email</strong> (so we can send you updates if someone writes in this Taaalk):</p>
+              <%= f.email_field :email, autocomplete: "email", class: "fw-text-input" %>
+            </div>
+            <div>
+              <p><strong>Password:</strong></p>
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "fw-text-input" %>
+            </div>
+            <div>
+              <p><strong>Confirm</strong> your password:</p>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "fw-text-input" %>
+            </div>
+            <%= f.hidden_field :tlk_id, :value => @tlk.id %>
+            <div>
+              <%= f.submit "Join This Taaalk", class: "btn-spkr-edit btn create-user-update-btn mb-3" %>
+            </div>
+            <p>Don't want to join this Taaalk, but want to sign up? Visit the <%= link_to "normal sign up page", new_registration_path(resource_name) %>.</p>
+          <% end %>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+
+
+
+
+
+
+
+
+  <div class="m-48-mob-24 big-white-split"></div>
+  <!-- <p class="mb-32"><strong>Members of this Taaalk:</strong></p> -->
+
+  <% @tlk.spkrs.each do |spkr| %>
+    <% if spkr.user == @tlk.user && spkr.hide == false %>
+      <div class="spkr-color-<%= spkr.id %>">
+        <div class="msg-<%= spkr.color %>">
+          <div class="spkr-info spkr-info-<%= spkr.side %>">
+            <div class="spkr-image-and-name">
+              <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+                <% if spkr.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                <% elsif spkr.user.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                <% else %>
+                  style="background-image: url(<%= asset_url('user.svg') %>)"
+                <% end %>
+                >
+              </div>
+              <h3><%= link_to spkr.name, show_user_path(spkr.user), class: "name-spkr-#{ spkr.id }" %></h3>
+            </div>
+            <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
+              <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
-
-    <% if flash[:invited] %>
-      <%= fields_for @spkr do |fi| %>
-        <%= fi.hidden_field :flash_invite_code, value: @tlk.invite_code %>
-        <%= fi.hidden_field :tlk_id, value: @tlk.id %>
-      <% end %>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
   <% end %>
 
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %>
-</div>
-
-<div class="tlk-signup tlk-section-on">
-  <div>
-    <div class="tlk-note">
-      <p>A Taaalk is a conversation between two or more people that anyone can read.</p>
-      <p>Please provide a name and a bio for readers to know who you are and where your thoughts are coming from.</p>
-    </div>
-  </div>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <%= fields_for @spkr do |fi| %>
-      <div class="field">
-        <%= fi.label :name %>
-        <%= fi.text_field :name %>
+  <% @tlk.spkrs.each do |spkr| %>
+    <% unless spkr.user == @tlk.user || spkr.hide == true  %>
+      <div class="spkr-color-<%= spkr.id %>">
+        <div class="msg-<%= spkr.color %>">
+          <div class="spkr-info spkr-info-<%= spkr.side %>">
+            <div class="spkr-image-and-name">
+              <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+                <% if spkr.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                <% elsif spkr.user.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                <% else %>
+                  style="background-image: url(<%= asset_url('user.svg') %>)"
+                <% end %>
+                >
+              </div>
+              <h3><%= link_to spkr.name, show_user_path(spkr.user), class: "name-spkr-#{ spkr.id }" %></h3>
+            </div>
+            <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
+              <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="field">
-        <%= fi.label :bio %>
-        <%= fi.text_field :bio %>
-      </div>
-      <div class="spkr-user-edit-form">
-        <%= fi.label :biog %>
-        <%= fi.rich_text_area :biog %>
-      </div>
-
     <% end %>
-
-
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-
-
-
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-
-
-
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <%= f.hidden_field :tlk_id, :value => @tlk.id %>
-
-    <div class="actions">
-      <%= f.submit "Sign Up and Create Your Profile" %>
-    </div>
   <% end %>
+
 </div>
+
+

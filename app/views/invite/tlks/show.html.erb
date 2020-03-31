@@ -1,11 +1,140 @@
-<h4>Hello.</h4>
-<p>You have been invited to join the Taaalk <strong><%= @tlk.title %></strong>.</p>
-<p>Please paste your six digit <strong>invite code</strong> here:</p>
 
-<p><%= @tlk.invite_code %></p>
-
-<%= form_with model: @tlk, as: :post, url: invited_to_tlk_path do |f| %>
-  <%= f.text_field :key %>
-  <%= f.hidden_field :id, :value => @tlk.id %>
-  <%= f.submit "Submit Invite Code" %>
+<div class="tlk-image"
+<% if @tlk.image.present? %>
+  style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(@tlk.image) %>);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;"
 <% end %>
+>
+  <h1 class="tlk-title"><%= @tlk.title %></h1>
+</div>
+
+<div class="tlk-container">
+  <h3 class="mb-3">Hello</h3>
+  <p>You have been invited to join this Taaalk.</p>
+  <p>Please type your <strong>invite code</strong> here:</p>
+  <div class="spkr-user-edit-form">
+    <%= form_with model: @tlk, as: :post, url: invited_to_tlk_path do |f| %>
+      <%= f.text_field :key, class: "fw-text-input" %>
+      <%= f.hidden_field :id, :value => @tlk.id %>
+      <div>
+        <%= f.submit "Submit Invite Code", class: "mb-1 btn-spkr-edit btn tlk-invite-btn" %>
+      </div>
+    <% end %>
+  </div>
+  <p><%= @tlk.invite_code %></p>
+  <div class="m-48-mob-24 big-white-split"></div>
+
+  <% @tlk.spkrs.each do |spkr| %>
+    <% if spkr.user == @tlk.user && spkr.hide == false %>
+      <div class="spkr-color-<%= spkr.id %>">
+        <div class="msg-<%= spkr.color %>">
+          <div class="spkr-info spkr-info-<%= spkr.side %>">
+            <div class="spkr-image-and-name">
+              <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+                <% if spkr.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                <% elsif spkr.user.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                <% else %>
+                  style="background-image: url(<%= asset_url('user.svg') %>)"
+                <% end %>
+                >
+              </div>
+              <h3><%= link_to spkr.name, show_user_path(spkr.user), class: "name-spkr-#{ spkr.id }" %></h3>
+            </div>
+            <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
+              <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% @tlk.spkrs.each do |spkr| %>
+    <% unless spkr.user == @tlk.user || spkr.hide == true  %>
+      <div class="spkr-color-<%= spkr.id %>">
+        <div class="msg-<%= spkr.color %>">
+          <div class="spkr-info spkr-info-<%= spkr.side %>">
+            <div class="spkr-image-and-name">
+              <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+                <% if spkr.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                <% elsif spkr.user.image.present? %>
+                  style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                <% else %>
+                  style="background-image: url(<%= asset_url('user.svg') %>)"
+                <% end %>
+                >
+              </div>
+              <h3><%= link_to spkr.name, show_user_path(spkr.user), class: "name-spkr-#{ spkr.id }" %></h3>
+            </div>
+            <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
+              <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
+
+
+<%= render 'components/follow_unfollow_tlk' %>
+<div class="tlk-container">
+<div class="big-blue-split"></div>
+</div>
+
+
+<% if @tlk.msgs.any? %>
+  <div class="tlking-container">
+
+  <% @tlk.msgs.each_with_index do |msg, i| %>
+    <div class="tlk-blob tlk-blob-<%= msg.spkr.side %>" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
+      <div class="tlk-blob-spkr">
+        <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
+          <% if msg.spkr.image.present? %>
+            style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
+          <% elsif msg.spkr.user.image.present? %>
+            style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
+          <% else %>
+            style="background-image: url(<%= asset_url('user.svg') %>)"
+          <% end %>
+          >
+        </div>
+        <div class="name-spkr-<%= msg.spkr.id %> tlk-blob-name"><%= msg.spkr.name %></div>
+        <div class="tlk-blob-date"><%= msg.created_at.strftime("%H:%M, %d %b %Y") %></div>
+      </div>
+      <div class="spkr-color-<%= msg.spkr.id %>">
+        <div class="msg-<%= msg.spkr.color %>" target="spkr-color-<% msg.spkr.id %>">
+          <div class="tlk-blob-msg"><%= msg.content %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  </div>
+
+
+<% else %>
+
+  <div class="tlk-blob-msg tlk-start-msg">
+    <div class="trix-content">
+     <div class="tlk-bubble-holder"><div class="tlk-bubble">Taaalk messages...</div></div>
+     <div class="tlk-bubble-holder"><div class="tlk-bubble">Will appear...</div></div>
+     <div class="tlk-bubble-holder"><div class="mb-0 tlk-bubble">Here.</div></div>
+    </div>
+  </div>
+<% end %>
+
+<div class="tlk-container">
+  <div class="big-white-split big-blue-split-bottom"></div>
+</div>
+
+
+<%= render 'components/follow_unfollow_tlk' %>
+
+

@@ -35,7 +35,7 @@
       <div class="p-0 user-container">
         <div>
           <p>Your email:</p>
-          <%= f.text_field :email, class: "user-email" %>
+          <%= f.text_field :email, class: "fw-text-input" %>
         </div>
         <div>
           <p>Default Taaalk bio:</p>
@@ -62,11 +62,11 @@
       <p><strong>Change your password:</strong></p>
       <p>You'll have to log in again after changing your password.</p>
       <p class="mb-0">Your <strong>current</strong> password:</p>
-      <%= fi.password_field :current_password %>
+      <%= fi.password_field :current_password, class: "fw-text-input" %>
       <p class="mb-0">Your <strong>new</strong> password:</p>
-      <%= fi.password_field :new_password %>
+      <%= fi.password_field :new_password, class: "fw-text-input" %>
       <p class="mb-0"><strong>Confirm</strong> your new password:</p>
-      <%= fi.password_field :confirm_new_password %>
+      <%= fi.password_field :confirm_new_password, class: "fw-text-input" %>
       <div>
         <%= fi.submit "Change your password", class: "fake-link-from-btn" %>
       </div>
@@ -77,7 +77,7 @@
     <p>It will not delete Taaalks you didn't start, but it will delete your messages in them.</p>
     <p class="mb-0">Enter your password:</p>
     <%= form_for @user, method: :delete do |fo| %>
-      <%= fo.password_field :password %>
+      <%= fo.password_field :password, class: "fw-text-input" %>
       <div>
         <%= fo.submit "Delete your account", class: "mb-0 danger-link" %>
       </div>
