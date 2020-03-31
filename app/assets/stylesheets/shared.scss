@@ -26,6 +26,10 @@ h3 {
   font-size: 28px;
 }
 
+.navbar {
+  border-bottom: 1px solid #dbdbdb;
+}
+
 .big-white-split {
   height: $desk-line-width;
   background-color: $grey;
@@ -221,6 +225,7 @@ a {
 
 
 .tlk-note {
+  border: 1px solid #dbdbdb;
   // border-left: 12px solid blue;
   background-color: $grey;
   // border: 1px solid #dfdfdf;
@@ -303,7 +308,6 @@ a {
 }
 
 
-
 .p-header-followed-by-tlk-note {
   margin-bottom: 0;
 }
@@ -327,6 +331,7 @@ a {
     padding: 8px 14px;
     margin: 0px 8px 0 0;
     background-color: $grey;
+    border: 1px solid #dbdbdb;
     // border: 1px solid #f8f8f8;
     // border-top: 1px solid #fafafa;
     // border-left: 1px solid #fafafa;
@@ -339,6 +344,7 @@ a {
     background-color: $green;
     color: white;
     text-decoration: none;
+    border: 1px solid $green;
     // border: 1px solid $green;
   }
   :last-child {
