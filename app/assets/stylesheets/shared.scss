@@ -208,14 +208,27 @@ a {
   }
 }
 
+.fw-text-input {
+  width: 38%;
+  padding: 8px 0 8px 8px;
+}
+
+@media (max-width: 425px) {
+  .fw-text-input {
+    width: 100%;
+  }
+}
+
+
 .tlk-note {
   // border-left: 12px solid blue;
   background-color: $grey;
   // border: 1px solid #dfdfdf;
   border-top: 1px solid #fafafa;
   border-left: 1px solid #fafafa;
-  border-bottom: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  border-bottom: 1px solid #f6f6f6;
+  // #e6e6e6;
+  border-right: 1px solid #f6f6f6;
   // border-bottom: 1px solid #d4d4d4;
   // border-right: 1px solid #d4d4d4;
   margin: 16px;
@@ -312,13 +325,14 @@ a {
     flex-shrink: 0;
     text-align: center;
     display: inline-block;
-    padding: 8px 12px;
+    padding: 8px 14px;
     margin: 0px 8px 0 0;
     background-color: $grey;
+    border: 1px solid #f8f8f8;
     border-top: 1px solid #fafafa;
     border-left: 1px solid #fafafa;
-    border-bottom: 1px solid #e6e6e6;
-    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #f6f6f6;
+    border-right: 1px solid #f6f6f6;
     border-radius: 4px;
     font-style: normal;
   }
@@ -326,6 +340,7 @@ a {
     background-color: $green;
     color: white;
     text-decoration: none;
+    border: 1px solid $green;
   }
   :last-child {
     margin: 0;
@@ -383,4 +398,30 @@ a {
 
 .mb-16 {
   margin-bottom: 16px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
+}
+
+.m-48-mob-24 {
+  margin: 42px 0 48px 0 !important;
+}
+
+@media (max-width: 768px) {
+  .m-48-mob-24 {
+    margin: 24px 0 32px 0 !important;
+  }
+}
+
+.f-green {
+  color: $msg-green;
+}
+
+.inline-check-box {
+  display: inline-block;
+  input[type="checkbox"] {
+    vertical-align: top;
+    display: block;
+  }
 }

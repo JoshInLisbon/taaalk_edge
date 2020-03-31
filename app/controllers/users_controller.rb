@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @title = "(User) #{@user.username}"
-    # @user_for_delete = @user
     set_user_tlks
   end
 

@@ -11,9 +11,9 @@
 // }
 
 // invite
-#tlk-invited-note-login {
-  margin-bottom: 0;
-}
+// #tlk-invited-note-login {
+//   margin-bottom: 0;
+// }
 
 
 .tlk-section-off {
@@ -441,9 +441,15 @@
   background-color: $grey;
   border-top: 1px solid #fafafa;
   border-left: 1px solid #fafafa;
-  border-bottom: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  border-bottom: 1px solid #f6f6f6;
+  border-right: 1px solid #f6f6f6;
   // border: 1px solid #dfdfdf;
+  &:hover {
+    border-top: 1px solid #fdfdfd;
+    border-left: 1px solid #fdfdfd;
+    border-bottom: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+  }
 }
 
 .tlk-image-index {
@@ -1030,4 +1036,24 @@
 
 .create-remove-details {
   margin: 16px 0 0 0;
+}
+
+// Invite
+
+.tlk-invite-code {
+  // width: 100%;
+  width: 252px;
+  padding: 8px 0 8px 8px;
+
+}
+
+@media (max-width: 425px) {
+  .tlk-invite-code {
+    width: 100%;
+  }
+}
+
+.tlk-invite-btn {
+  color: white !important;
+  background-color: blue !important;
 }
