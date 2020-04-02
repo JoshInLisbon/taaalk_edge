@@ -4,6 +4,7 @@ const changeBrToDiv = () => {
   msgTrixInputDivs.forEach(div => {
     let msgTrixInput = div.querySelector("trix-editor");
     let msgTrixStore = div.querySelector('[name="msg[content]"]');
+    let msgTrixSafeStore = div.querySelector('[name="msg[safe_content]"]')
     // set your own value here (e.g. if you want to use <p></p> etc...)
     let tlkBubbleStart = '<div class="tlk-bubble-holder"><div class="tlk-bubble">';
     let tlkBubbleEnd = '</div></div>';
@@ -29,6 +30,7 @@ const changeBrToDiv = () => {
           // joins the textBlock array and sets it to the value of the msgTrixStore
           msgTrixPreview.innerHTML = tlkBubbleText;
           msgTrixStore.value = tlkBubbleText;
+          msgTrixSafeStore.value = tlkBubbleText;
           // msgTrixStore.value = textBlock.flat(Infinity).join("");
 
         }
@@ -89,6 +91,7 @@ const changeBrToDiv = () => {
             // joins the textBlock array and sets it to the value of the msgTrixStore
             msgTrixPreview.innerHTML = tlkBubbleText;
             msgTrixStore.value = tlkBubbleText;
+            msgTrixSafeStore.value = tlkBubbleText;
           });
         }
 

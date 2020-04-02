@@ -27,7 +27,8 @@ h3 {
 }
 
 .navbar {
-  border-bottom: 1px solid #dbdbdb;
+  background-color: white;
+  // border-bottom: 1px solid #e3e3e3;
 }
 
 .big-white-split {
@@ -176,18 +177,19 @@ a {
 }
 
 .alert {
-  -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+  // -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+  // -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+  // box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+  border-radius: 0px !important;
   z-index: 1000;
-  position: fixed;
-  bottom: 8px;
-  right: 8px;
-  margin-left: 8px;
+  // position: fixed;
+  // bottom: 8px;
+  // right: 8px;
+  // margin-left: 8px;
   margin-bottom: 0 !important;
   border: none !important;
-  color: white !important;
-  background-color: $msg-green !important;
+  // color: white !important;
+  background-color: #FBF2D5 !important;
   .close:hover {
     color: black !important;
   }
@@ -225,7 +227,7 @@ a {
 
 
 .tlk-note {
-  border: 1px solid #dbdbdb;
+  // border: 1px solid #e3e3e3;
   // border-left: 12px solid blue;
   background-color: $grey;
   // border: 1px solid #dfdfdf;
@@ -254,11 +256,13 @@ a {
   .to-copy-section {
     display: block;
     padding: 4px;
-    background-color: white;
+    background-color: #FBF2D5;
+    border: 1px solid #F1E8CB;
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
     span {
+      margin-right: 10px;
       display:inline-block;
       word-wrap : break-word;
     }
@@ -269,7 +273,7 @@ a {
   }
   .splitter {
     // border-bottom: 1px solid $bright-blue;
-    border-bottom: 4px solid white;
+    border-bottom: 4px solid #EBECED;
   }
   // .tlk-note-btn {
   //   display: inline-block;
@@ -331,7 +335,7 @@ a {
     padding: 8px 14px;
     margin: 0px 8px 0 0;
     background-color: $grey;
-    border: 1px solid #dbdbdb;
+    border: 1px solid #e3e3e3;
     // border: 1px solid #f8f8f8;
     // border-top: 1px solid #fafafa;
     // border-left: 1px solid #fafafa;
@@ -409,6 +413,16 @@ a {
   margin-bottom: 32px;
 }
 
+.mb-40-mob-12 {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .mb-40-mob-12 {
+    margin-bottom: 12px;
+  }
+}
+
 .m-48-mob-24 {
   margin: 42px 0 48px 0 !important;
 }
@@ -428,5 +442,15 @@ a {
   input[type="checkbox"] {
     vertical-align: top;
     display: block;
+  }
+}
+
+.bdr-btm-drk-mob-none {
+  // border-bottom: 1px solid #dbdbdb;
+}
+
+@media (max-width: 768px) {
+  .bdr-btm-drk-mob-none {
+   // border-bottom: none;
   }
 }

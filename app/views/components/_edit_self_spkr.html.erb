@@ -5,8 +5,8 @@
   <% if current_user.biog.present? %>
     <div>
       <div class="tlk-note">
-      <p>Customise your info to make it relevant to the subject.</p>
-      <%= current_user.tlks.length > 1 ? raw("<p>Changes made in this Taaalk will not be reflected in others.</p>") : "" %>
+      <p>Customise your info to make it relevant to the subject.<%= current_user.tlks.length > 1 ? " (Changes made in this Taaalk will not be reflected in others.)" : "" %></p>
+      <%#= current_user.tlks.length > 1 ? raw("<p>Changes made in this Taaalk will not be reflected in others.</p>") : "" %>
       </div>
     </div>
   <% else %>

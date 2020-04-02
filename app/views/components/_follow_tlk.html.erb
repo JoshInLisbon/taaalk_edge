@@ -6,6 +6,6 @@
     Follow this Taaalk
     <% end %>
     <div class="tlk-note tlk-follow-note">
-      <p><%= @tlk.tlk_follows.count + @tlk.spkrs.count %> followers</p>
+      <p><%= @tlk.tlk_follows.count + @tlk.spkrs.count %> follower<%= @tlk.tlk_follows.count + @tlk.spkrs.count > 1 ? "s" : "" %></p>
     </div>
 </div>

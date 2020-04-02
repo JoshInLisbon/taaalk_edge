@@ -1,6 +1,6 @@
-let drafts = document.querySelectorAll('.tlk-draft');
-let richTextAreas = document.querySelectorAll('.trix-content')
-let keyupEvent = new Event('keyup');
+var drafts = document.querySelectorAll('.tlk-draft');
+var richTextAreas = document.querySelectorAll('.trix-content')
+var keyupEvent = new Event('keyup');
 
 const loadDraftMsg = (draftMsg) => {
   drafts.forEach(draft => {

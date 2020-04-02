@@ -60,7 +60,7 @@ class MsgsController < ApplicationController
   end
 
   def msg_params
-    params.require(:msg).permit(:content, :tlk_id, :spkr_id)
+    params.require(:msg).permit(:content, :tlk_id, :spkr_id, :safe_content)
   end
 
   def send_spkrs_new_msg_mail
