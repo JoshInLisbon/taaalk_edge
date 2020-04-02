@@ -27,7 +27,7 @@
       </div>
       <div class="spkr-color-<%= msg.spkr.id %>">
         <div class="msg-<%= msg.spkr.color %>" target="spkr-color-<% msg.spkr.id %>">
-          <div class="tlk-blob-msg"><%= msg.content %></div>
+          <div class="tlk-blob-msg"><%= msg.safe_content %></div>
         </div>
       </div>
     </div>
@@ -66,6 +66,7 @@
           <%#= f.rich_text_area :content, target: "draft-#{spkr.id}", id: "msg-#{spkr.id}" %>
           <%= f.rich_text_area :content, target: "submit-msg-#{spkr.id}", id: "msg-#{spkr.id}", required: true  %>
         </div>
+        <%= f.hidden_field :safe_content %>
         <%= f.hidden_field :tlk_id, :value => @tlk.id %>
         <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
@@ -81,6 +82,7 @@
             </div>
           </div>
         </div>
+        <%= f.hidden_field :spkr_id, :value => spkr.id %>
         <%= f.submit "Publish Your Message", name: "publish", id: "submit-msg-#{spkr.id}", class: "msg-submit-btn btn btn-secondary" %>
       <% end %>
     </div>
@@ -90,12 +92,12 @@
 
   <% if spkr.draft_msg.present? %>
     <div class="tlk-draft" id="submit-msg-<%= spkr.id %>-draft">
-      <%= spkr.draft_msg.content %>
+      <%= spkr.draft_msg.safe_content %>
     </div>
 
     <%= javascript_tag do %>
       <!-- can I pass spkr id to js? -->
-      window.draftMsgpe<%= spkr.id %> = `<%= spkr.draft_msg.content %>`;
+      window.draftMsgpe<%= spkr.id %> = `<%= spkr.draft_msg.safe_content %>`;
     <% end %>
   <% else %>
     <%= javascript_tag do %>

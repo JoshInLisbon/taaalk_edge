@@ -18,7 +18,7 @@ class Invite::TlksController < ApplicationController
         redirect_to show_tlk_path(@tlk), flash: { edit: true }
       else
         redirect_to show_tlk_path(@tlk), flash: { invited: true }
-        flash[:notice] = "Welcome to the Taaalk. You need to sign up / log in now to enter."
+        flash[:notice] = "Correct code. You must sign up / log in now to join the Taaalk."
       end
     else
       respond_to do |format|
