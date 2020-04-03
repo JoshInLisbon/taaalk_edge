@@ -9,4 +9,8 @@ class Spkr < ApplicationRecord
 
   has_rich_text :biog
   has_rich_text :edited_biog
+
+  def unpublished_message
+    msgs.find_by(published: false)
+  end
 end

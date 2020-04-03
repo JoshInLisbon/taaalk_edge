@@ -8,8 +8,6 @@ const loadDraftMsg = (draftMsg) => {
       let rtaTarget = rta.getAttribute('target')
       if(draft.id == `${rtaTarget}-draft`) {
         rta.innerHTML = draft.innerHTML;
-        console.log(draft.innerHTML);
-        console.log(rta.innerHTML);
       }
       document.querySelector('.navbar').focus;
       setTimeout(function(){

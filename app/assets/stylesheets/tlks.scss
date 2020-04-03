@@ -27,9 +27,9 @@
 .tlk-btn-unsaved {
   background: $green !important;
   color: white !important;
-  // &:hover {
-  //   background: $green-hover !important;
-  // }
+  &:hover {
+    background: $green-hover !important;
+  }
 }
 
 .tlk-p-unsaved {
@@ -948,7 +948,7 @@
     background-color: transparent;
     padding: 0;
     trix-toolbar .trix-button:not(:disabled) {
-      background: #fcfcfc;
+      background: white;
     }
   }
 }

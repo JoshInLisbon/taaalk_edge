@@ -5,22 +5,44 @@ class MsgsController < ApplicationController
   def create
     if verify
       if params[:publish]
-        @msg = Msg.new(msg_params)
-        @msg.user = current_user
-        @msg.save!
-        destroy_draft
-        @tlk.update(updated_at: Time.now)
+        if set_msg
+          @msg.published = true
+          @msg.created_at = Time.now
+          @msg.update!(msg_params)
+          @tlk.update(updated_at: Time.now)
+        else
+          @msg = Msg.new(msg_params)
+          @msg.user = current_user
+          @msg.published = true
+          @msg.save!
+          @tlk.update(updated_at: Time.now)
+        end
         send_spkrs_new_msg_mail
         send_followers_new_msg_mail
         redirect_to show_tlk_path(@tlk)
       elsif params[:draft]
-        destroy_draft
-        draft_msg = DraftMsg.new(msg_params)
-        draft_msg.user = current_user
-        draft_msg.save
-        respond_to do |format|
-          format.js { render 'create', layout: false }
+        if set_msg
+          @msg.update!(draft_msg_params)
+          respond_to do |format|
+            format.js { render 'create', layout: false }
+          end
+        else
+          @msg = Msg.new(draft_msg_params)
+          @msg.user = current_user
+          @msg.save!
+          respond_to do |format|
+            format.js { render 'create', layout: false }
+          end
         end
+        # @msg = Msg.new(msg_params)
+        # @msg.user = current_user
+        # # destroy_draft
+        # draft_msg = DraftMsg.new(msg_params)
+        # draft_msg.user = current_user
+        # draft_msg.save
+        # respond_to do |format|
+        #   format.js { render 'create', layout: false }
+        # end
       end
     end
   end
@@ -29,6 +51,10 @@ class MsgsController < ApplicationController
   end
 
   private
+
+  def set_msg
+    params[:msg][:msg_id].present? ? @msg = Msg.find(params[:msg][:msg_id]) : false
+  end
 
   def set_spkr
     @spkr = Spkr.find(params[:msg][:spkr_id])
@@ -61,6 +87,10 @@ class MsgsController < ApplicationController
 
   def msg_params
     params.require(:msg).permit(:content, :tlk_id, :spkr_id, :safe_content)
+  end
+
+  def draft_msg_params
+    params.require(:msg).permit(:tlk_id, :spkr_id, :draft_string)
   end
 
   def send_spkrs_new_msg_mail
