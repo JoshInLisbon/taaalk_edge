@@ -5,6 +5,7 @@ const changeBrToDiv = () => {
     let msgTrixInput = div.querySelector("trix-editor");
     let msgTrixStore = div.querySelector('[name="msg[content]"]');
     let msgTrixSafeStore = div.querySelector('[name="msg[safe_content]"]')
+    let msgTrixDraftString = div.querySelector('[name="msg[draft_string]"]')
     // set your own value here (e.g. if you want to use <p></p> etc...)
     let tlkBubbleStart = '<div class="tlk-bubble-holder"><div class="tlk-bubble">';
     let tlkBubbleEnd = '</div></div>';
@@ -29,8 +30,9 @@ const changeBrToDiv = () => {
           let tlkBubbleText = textBlock.flat(Infinity).join("").replace(/<div class="tlk-bubble-holder"><div class="tlk-bubble"><\/div><\/div>/g, "");
           // joins the textBlock array and sets it to the value of the msgTrixStore
           msgTrixPreview.innerHTML = tlkBubbleText;
-          msgTrixStore.value = tlkBubbleText;
+          // msgTrixStore.value = tlkBubbleText;
           msgTrixSafeStore.value = tlkBubbleText;
+          msgTrixDraftString.value = msgTrixInput.innerHTML;
           // msgTrixStore.value = textBlock.flat(Infinity).join("");
 
         }
@@ -90,8 +92,9 @@ const changeBrToDiv = () => {
             let tlkBubbleText = textBlock.flat(Infinity).join("").replace(/<div class="tlk-bubble-holder"><div class="tlk-bubble"><\/div><\/div>/g, "");
             // joins the textBlock array and sets it to the value of the msgTrixStore
             msgTrixPreview.innerHTML = tlkBubbleText;
-            msgTrixStore.value = tlkBubbleText;
+            // msgTrixStore.value = tlkBubbleText;
             msgTrixSafeStore.value = tlkBubbleText;
+            msgTrixDraftString.value = msgTrixInput.innerHTML;
           });
         }
 
