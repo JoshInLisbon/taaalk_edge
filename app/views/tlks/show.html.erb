@@ -6,7 +6,7 @@
 </div>
 
 
-<% if @tlk.msgs.any? %>
+<% if @tlk.any_published_msgs? %>
   <div class="tlking-container">
 
   <% @tlk.msgs.each_with_index do |msg, i| %>

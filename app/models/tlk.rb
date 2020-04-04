@@ -9,6 +9,10 @@ class Tlk < ApplicationRecord
 
   validates :title, presence: true
 
+  def any_published_msgs?
+    msgs.find_by(published: true).present?
+  end
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
