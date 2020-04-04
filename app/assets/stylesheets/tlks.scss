@@ -236,6 +236,13 @@
   border-radius: 26px;
   margin-bottom: 8px;
   font-size: 19px;
+  max-width: 732px;
+}
+
+.msg-preview {
+  .tlk-bubble {
+    max-width: 680px;
+  }
 }
 
 .tlk-blob-right {
@@ -271,11 +278,17 @@
 
 
 @media (max-width: 768px) {
+  .msg-preview {
+    .tlk-bubble {
+      max-width: calc(100vw - 36px);
+    }
+  }
   .tlk-bubble {
     padding: 8px 12px 8px 12px;
     margin-bottom: 6px;
     border-radius: 20px;
     font-size: 18px;
+    max-width: calc(100vw - 16px);
   }
   .tlk-start-msg {
     padding: 0 8px;

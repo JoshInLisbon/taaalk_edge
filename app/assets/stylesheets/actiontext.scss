@@ -46,8 +46,12 @@
 }
 
 .trix-content pre {
-  background-color: #23241f;
-  color: #f8f8f2;
+  background-color: #EFF0F1;
+  color: #2F3337;
+  border-radius: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: wrap;
 }
 
 .trix-content img {
