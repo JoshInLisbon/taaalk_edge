@@ -7,6 +7,8 @@ class Tlk < ApplicationRecord
 
   has_one_attached :image
 
+  validates :title, presence: true
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
