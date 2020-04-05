@@ -12,7 +12,7 @@
 
 <div class="tlk-container">
   <h3 class="mb-3">Hello</h3>
-  <p>You have been invited to join this Taaalk.</p>
+  <p>You have been invited to join the Taaalk <strong>"<%= @tlk.title %>"</strong>.</p>
   <p>Please type your <strong>invite code</strong> here:</p>
   <div class="spkr-user-edit-form">
     <%= form_with model: @tlk, as: :post, url: invited_to_tlk_path do |f| %>
@@ -110,7 +110,7 @@
       </div>
       <div class="spkr-color-<%= msg.spkr.id %>">
         <div class="msg-<%= msg.spkr.color %>" target="spkr-color-<% msg.spkr.id %>">
-          <div class="tlk-blob-msg"><%= msg.content %></div>
+          <div class="tlk-blob-msg"><%= msg.safe_content %></div>
         </div>
       </div>
     </div>
