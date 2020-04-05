@@ -34,15 +34,6 @@ class MsgsController < ApplicationController
             format.js { render 'create', layout: false }
           end
         end
-        # @msg = Msg.new(msg_params)
-        # @msg.user = current_user
-        # # destroy_draft
-        # draft_msg = DraftMsg.new(msg_params)
-        # draft_msg.user = current_user
-        # draft_msg.save
-        # respond_to do |format|
-        #   format.js { render 'create', layout: false }
-        # end
       end
     end
   end
@@ -95,7 +86,7 @@ class MsgsController < ApplicationController
 
   def send_spkrs_new_msg_mail
     @tlk.spkrs.each do |spkr|
-      unless spkr == @spkr
+      unless spkr.user == @spkr.user
         mail = MsgMailer.with(tlk: @tlk, spkr: spkr, msg: @msg).new_msg_update_spkr
         mail.deliver_later
       end

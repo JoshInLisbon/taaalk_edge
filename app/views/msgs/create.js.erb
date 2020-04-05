@@ -1,1 +1,23 @@
-console.log("HI!")
+var saveDraftDiv = document.querySelector("[target='spkr-msg-form-<%= @spkr.id %>']");
+var saveDraftBtn = saveDraftDiv.querySelector(".tlk-draft-button");
+var draftSavedMsg = "Draft Saved";
+setTimeout(function() {
+  saveDraftBtn.setAttribute('value', draftSavedMsg);
+  saveDraftBtn.classList.remove('fake-link');
+  saveDraftBtn.classList.add('f-green');
+  saveDraftBtn.classList.add('cursor-default');
+}, 5);
+var rtaID = saveDraftBtn.getAttribute('target')
+var rtaForDraft = saveDraftDiv.querySelector(`#${rtaID}`);
+var rtaForDraftStartValue = rtaForDraft.value;
+var draftUsavedMsg = "Save Draft";
+rtaForDraft.addEventListener('keyup', (event) => {
+  if(rtaForDraftStartValue !== rtaForDraft.value) {
+    setTimeout(function() {
+      saveDraftBtn.setAttribute('value', draftUsavedMsg);
+      saveDraftBtn.classList.add('fake-link');
+      saveDraftBtn.classList.remove('f-green');
+      saveDraftBtn.classList.remove('cursor-default');
+    }, 5);
+  }
+});
