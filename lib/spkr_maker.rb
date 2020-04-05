@@ -9,8 +9,8 @@ module SpkrMaker
       side: @tlk.spkrs.length.even? ? 'left' : 'right',
       color: choose_color(@tlk)
     )
-    send_tlk_spkr_tlk_joined_mail
-    send_tlk_owner_spkr_joined_mail unless @requesting_spkr.present?
+    send_tlk_spkr_tlk_joined_mail unless spkr.user == @tlk.user
+    send_tlk_owner_spkr_joined_mail unless @requesting_spkr.present? || spkr.user == @tlk.user
   end
 
   def make_remote_spkr(user)
