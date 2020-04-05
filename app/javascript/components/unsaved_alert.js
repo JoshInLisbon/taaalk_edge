@@ -2,18 +2,18 @@ const inputs = document.querySelectorAll('input[type=text]');
 
 const unsavedAlert = () => {
   inputs.forEach(input => {
-    let startValue = input.value;
+    var startValue = input.value;
     input.addEventListener('keyup', (event) => {
-      let id = input.getAttribute('target');
-      let btn = document.querySelector(`#${id}`);
-      let p = document.querySelector(`#p-${id}`);
+      var id = input.getAttribute('target');
+      var btn = document.querySelector(`#${id}`);
+      var p = document.querySelector(`#p-${id}`);
       if (input.value !== startValue) {
         btn.classList.add('tlk-btn-unsaved');
         btn.classList.add('normal-unsaved');
         p.classList.remove('tlk-p-nochange');
         p.classList.add('tlk-p-unsaved');
         btn.addEventListener('click', (event) => {
-          let startValue = input.value;
+          var startValue = input.value;
           btn.classList.remove('tlk-btn-unsaved');
           btn.classList.remove('normal-unsaved');
           p.classList.remove('tlk-p-unsaved');
@@ -38,31 +38,37 @@ const rtaInputs = document.querySelectorAll('trix-editor');
 
 const rtaUnsavedAlert = () => {
  rtaInputs.forEach(input => {
-  let startValue = input.innerHTML;
+  var startValue = input.innerHTML;
   input.addEventListener('keyup', (event) => {
-    let id = input.getAttribute('target');
-    let btn = document.querySelector(`#${id}`);
-    let p = document.querySelector(`#p-${id}`);
-    let inputValueArray = input.value.split(/(<div>)(.*)/);
-    let inputValue = `${inputValueArray[1]}<!--block-->${inputValueArray[2]}`
+    var id = input.getAttribute('target');
+    var btn = document.querySelector(`#${id}`);
+    var p = document.querySelector(`#p-${id}`);
+    var inputValueArray = input.value.split(/(<div>)(.*)/);
+    var inputValue = `${inputValueArray[1]}<!--block-->${inputValueArray[2]}`
     if (inputValue !== startValue) {
       btn.classList.add('tlk-btn-unsaved');
       btn.classList.add('rta-unsaved');
-      p.classList.remove('tlk-p-nochange');
-      p.classList.add('tlk-p-unsaved');
+      if(p) {
+        p.classList.remove('tlk-p-nochange');
+        p.classList.add('tlk-p-unsaved');
+      }
       btn.addEventListener('click', (event) => {
-        let startValue = input.value;
+        var startValue = input.value;
         btn.classList.remove('tlk-btn-unsaved');
         btn.classList.remove('rta-unsaved');
-        p.classList.remove('tlk-p-unsaved');
-        p.classList.add('tlk-p-nochange');
+        if(p) {
+          p.classList.remove('tlk-p-unsaved');
+          p.classList.add('tlk-p-nochange');
+        }
       });
     } else {
       if (!btn.classList.contains('radio-unsaved') && !btn.classList.contains('normal-unsaved') && !btn.classList.contains('image-unsaved')) {
         btn.classList.remove('tlk-btn-unsaved');
         btn.classList.remove('rta-unsaved');
-        p.classList.remove('tlk-p-unsaved');
-        p.classList.add('tlk-p-nochange');
+        if(p) {
+          p.classList.remove('tlk-p-unsaved');
+          p.classList.add('tlk-p-nochange');
+        }
       }
     }
   });
@@ -75,18 +81,18 @@ const imageInputs = document.querySelectorAll('input[type=file]');
 
 const unsavedImageAlert = () => {
   imageInputs.forEach(input => {
-    let startValue = input.value;
+    var startValue = input.value;
     input.addEventListener('change', (event) => {
-      let id = input.getAttribute('target');
-      let btn = document.querySelector(`#${id}`);
-      let p = document.querySelector(`#p-${id}`);
+      var id = input.getAttribute('target');
+      var btn = document.querySelector(`#${id}`);
+      var p = document.querySelector(`#p-${id}`);
       if (input.value !== startValue) {
         btn.classList.add('tlk-btn-unsaved');
         btn.classList.add('image-unsaved');
         p.classList.remove('tlk-p-nochange');
         p.classList.add('tlk-p-unsaved');
         btn.addEventListener('click', (event) => {
-          let startValue = input.value;
+          var startValue = input.value;
           btn.classList.remove('image-unsaved');
           btn.classList.remove('tlk-btn-unsaved');
           p.classList.remove('tlk-p-unsaved');
@@ -108,22 +114,16 @@ export { unsavedImageAlert }
 
 const radioInputSections = document.querySelectorAll('.spkr-color-scroll');
 
-
-
-
-// const radioInputs = document.querySelectorAll('input[type=radio]');
-
 const unsavedRadioAlert = () => {
 
   radioInputSections.forEach(section => {
-    let id = section.getAttribute('target');
-    let btn = document.querySelector(`#${id}`);
-    let p = document.querySelector(`#p-${id}`);
-    let sectionInputs = section.querySelectorAll('input[type=radio]')
+    var id = section.getAttribute('target');
+    var btn = document.querySelector(`#${id}`);
+    var p = document.querySelector(`#p-${id}`);
+    var sectionInputs = section.querySelectorAll('input[type=radio]')
     sectionInputs.forEach(input => {
-      let startRadioValue = ""
+      var startRadioValue = ""
       input.checked ? startRadioValue = input.value : startRadioValue = "";
-      console.log(startRadioValue);
       input.addEventListener('change', (event) => {
         if (input.value !== startRadioValue) {
           btn.classList.add('tlk-btn-unsaved');
@@ -131,7 +131,7 @@ const unsavedRadioAlert = () => {
           p.classList.remove('tlk-p-nochange');
           p.classList.add('tlk-p-unsaved');
           btn.addEventListener('click', (event) => {
-            let startRadioValue = input.value;
+            var startRadioValue = input.value;
             btn.classList.remove('radio-unsaved');
             btn.classList.remove('tlk-btn-unsaved');
             p.classList.remove('tlk-p-unsaved');
@@ -139,7 +139,6 @@ const unsavedRadioAlert = () => {
           });
         } else {
           if (!btn.classList.contains('normal-unsaved') && !btn.classList.contains('rta-unsaved') && !btn.classList.contains('image-unsaved')) {
-            console.log("here! :)")
             btn.classList.remove('radio-unsaved');
             btn.classList.remove('tlk-btn-unsaved');
             p.classList.remove('tlk-p-unsaved');
@@ -149,17 +148,6 @@ const unsavedRadioAlert = () => {
       });
     });
   });
-  // radioInputs.forEach(input => {
-  //   input.addEventListener('change', (event) => {
-  //     console.log(input.value);
-  //   });
-  // });
 }
 
 export { unsavedRadioAlert }
-
-
-// image-unsaved
-// rta-unsaved
-// normal-unsaved
-// radio-unsaved

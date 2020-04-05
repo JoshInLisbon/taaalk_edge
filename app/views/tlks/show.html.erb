@@ -80,7 +80,7 @@
         <!-- <button class="btn btn-dark preview-msg" target="submit-msg-<%= spkr.id %>" id="preview-msg-<%= spkr.id %>">Review Your Message</button> -->
 
         <div class="text-right">
-          <%= f.submit "Save Draft", name: "draft", class: "tlk-draft-button fake-link" %>
+          <%= f.submit "Save Draft", name: "draft", target: "msg-#{spkr.id}", class: "tlk-draft-button fake-link" %>
         </div>
         <div class="spkr-color-<%= spkr.id %>">
           <div class="msg-<%= spkr.color %>">
