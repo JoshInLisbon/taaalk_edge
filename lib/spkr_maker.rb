@@ -9,6 +9,8 @@ module SpkrMaker
       side: @tlk.spkrs.length.even? ? 'left' : 'right',
       color: choose_color(@tlk)
     )
+    send_tlk_spkr_tlk_joined_mail
+    send_tlk_owner_spkr_joined_mail unless @requesting_spkr.present?
   end
 
   def make_remote_spkr(user)
@@ -21,7 +23,11 @@ module SpkrMaker
       side: @new_tlk.spkrs.length.even? ? 'left' : 'right',
       color: choose_color(@new_tlk)
     )
+    # send_tlk_spkr_tlk_joined_mail
+    # send_tlk_owner_spkr_joined_mail
   end
+
+  private
 
   def choose_color(tlk)
     colors = %w(green purple red orange black pink white blue yellow)
@@ -37,5 +43,22 @@ module SpkrMaker
     else
       colors.sample
     end
+  end
+
+  def send_tlk_spkr_tlk_joined_mail
+    mail = TlkMailer.with(
+      tlk: @tlk,
+      user: current_user
+    ).tlk_spkr_tlk_joined
+    mail.deliver_later
+  end
+
+  def send_tlk_owner_spkr_joined_mail
+    mail = TlkMailer.with(
+      tlk: @tlk,
+      user: @tlk.user,
+      joined_user: current_user
+    ).tlk_owner_tlk_joined
+    mail.deliver_later
   end
 end
