@@ -60,7 +60,7 @@ class TlkRequestsController < ApplicationController
   def make_msg
     @msg = Msg.new(
       tlk: @tlk,
-      content: "<div class='tlk-bubble-holder'><div class='tlk-bubble'>#{@tlk_request.first_msg}</div></div>",
+      safe_content: "<div class='tlk-bubble-holder'><div class='tlk-bubble'>#{@tlk_request.first_msg}</div></div>",
       spkr: @requesting_spkr,
       user: @requesting_user
     )

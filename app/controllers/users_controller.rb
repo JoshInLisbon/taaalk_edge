@@ -27,11 +27,17 @@ class UsersController < ApplicationController
   end
 
   def send_tlk_request
-    create_tlk_request
-    update_user_profile_with_tlk_request
-    send_tlk_request_mail
-    flash[:notice] = "Your request has been sent. You will get an email if the request is accepted."
-    redirect_to new_tlk_path
+    if tlk_request_user_params[:tlk_with_you].present? && tlk_request_params[:title].present? && tlk_request_params[:first_msg].present?
+      create_tlk_request
+      update_user_profile_with_tlk_request
+      send_tlk_request_mail
+      flash[:notice] = "Your request has been sent. You will get an email if the request is accepted."
+      redirect_to new_tlk_path
+    else
+      flash[:notice] = "You must complete all fields to send a Taaalk request."
+      redirect_to tlk_with_request_path(User.friendly.find(params[:id]))
+    end
+
   end
 
   def destroy_tlk_with_me
