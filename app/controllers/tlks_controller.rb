@@ -16,6 +16,7 @@ class TlksController < ApplicationController
 
   def show
     @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
+    @msgs = @tlk.msgs.sort_by(&:created_at)
     @title = @tlk.title
     @user_spkrs = Spkr.where(tlk: @tlk, user: current_user)
     @msg = Msg.new()

@@ -7,13 +7,9 @@
           <h1 class="f-white">The home of public conversations</h1>
           <div id="index-what-btn" class="btn edit-mode-on">Hmmm?</div>
         </div>
-        <!-- <div class="index-tlk-container">
-          <div class="small-white-split" id="index-top-small-white-split"></div>
-        </div> -->
         <div id="tlk-intro-container" class="index-hide-intro">
           <%= render 'components/tlk_intro' %>
         </div>
-
       </div>
     </div>
   </div>
@@ -45,29 +41,30 @@
             </div>
             <div class="tlk-card-block card-block">
               <% tlk.spkrs.each do |spkr| %>
-                <div class="msg-<%= spkr.color %>">
-                  <div class="spkr-details-container-index spkr-index-<%= spkr.side %>">
-                    <div class="spkr-img-name-container-index">
-                      <div class="spkr-image-index"
-                        <% if spkr.image.present? %>
-                          style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
-                        <% elsif spkr.user.image.present? %>
-                          style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
-                        <% else %>
-                          style="background-image: url(<%= asset_url('user.svg') %>)"
-                        <% end %>
-                        >
+                <% unless spkr.hide == true %>
+                  <div class="msg-<%= spkr.color %>">
+                    <div class="spkr-details-container-index spkr-index-<%= spkr.side %>">
+                      <div class="spkr-img-name-container-index">
+                        <div class="spkr-image-index"
+                          <% if spkr.image.present? %>
+                            style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                          <% elsif spkr.user.image.present? %>
+                            style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                          <% else %>
+                            style="background-image: url(<%= asset_url('user.svg') %>)"
+                          <% end %>
+                          >
+                        </div>
+                        <p class="spkr-name-index"><strong><%= spkr.name %></strong></p>
                       </div>
-                      <p class="spkr-name-index"><strong><%= spkr.name %></strong></p>
+                      <% if spkr.biog.present? %>
+                        <div class="spkr-biog-holder-index">
+                          <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 120) %></p>
+                        </div>
+                      <% end %>
                     </div>
-                    <% if spkr.biog.present? %>
-                      <div class="spkr-biog-holder-index">
-                        <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 120) %></p>
-                      </div>
-                    <% end %>
                   </div>
-                </div>
-
+                <% end %>
               <% end %>
             </div>
           </div>

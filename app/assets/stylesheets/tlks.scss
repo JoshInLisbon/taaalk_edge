@@ -544,6 +544,8 @@
   background: $bright-blue;
   background-size: cover;
   border-radius: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media (max-width: 768px) {

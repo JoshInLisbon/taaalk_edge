@@ -9,7 +9,7 @@
 <% if @tlk.any_published_msgs? %>
   <div class="tlking-container">
 
-  <% @tlk.msgs.each_with_index do |msg, i| %>
+  <% @msgs.each_with_index do |msg, i| %>
     <% if msg.published == true %>
       <div class="tlk-blob tlk-blob-<%= msg.spkr.side %>" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
         <div class="tlk-blob-spkr">
@@ -65,8 +65,6 @@
       <%= form_with model: @msg, class: 'rta', id: "spkr-msg-form-#{spkr.id}" do |f| %>
         <div class="field" id="rta-<%= spkr.id %>">
           <strong><%= f.label :content, "#{spkr.name} says:" %></strong>
-          <%#= f.rich_text_area :content, target: "draft-#{spkr.id}", id: "msg-#{spkr.id}" %>
-
           <%= f.rich_text_area :content, target: "submit-msg-#{spkr.id}", id: "msg-#{spkr.id}", required: true  %>
         </div>
         <%= f.hidden_field :safe_content %>
@@ -77,8 +75,6 @@
         <% if spkr.unpublished_message.present? %>
           <%= f.hidden_field :msg_id, :value => spkr.unpublished_message.id %>
         <% end %>
-        <!-- <button class="btn btn-dark preview-msg" target="submit-msg-<%= spkr.id %>" id="preview-msg-<%= spkr.id %>">Review Your Message</button> -->
-
         <div class="text-right">
           <%= f.submit "Save Draft", name: "draft", target: "msg-#{spkr.id}", class: "tlk-draft-button fake-link" %>
         </div>

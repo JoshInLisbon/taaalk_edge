@@ -22,11 +22,13 @@ class MsgsController < ApplicationController
         redirect_to show_tlk_path(@tlk)
       elsif params[:draft]
         if set_msg
+          @new_draft = false
           @msg.update!(draft_msg_params)
           respond_to do |format|
             format.js { render 'create', layout: false }
           end
         else
+          @new_draft = true
           @msg = Msg.new(draft_msg_params)
           @msg.user = current_user
           @msg.save!

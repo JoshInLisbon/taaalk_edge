@@ -356,13 +356,13 @@ a {
   }
 }
 
-@media (max-width: 614px) {
+@media (max-width: 678px) {
   .pagination {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space:nowrap;
     padding: 8px 0;
-    border-right: 4px solid blue;
+    border-right: 8px solid blue;
   }
 }
 

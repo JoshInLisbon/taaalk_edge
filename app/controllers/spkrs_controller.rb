@@ -1,6 +1,7 @@
 class SpkrsController < ApplicationController
   before_action :set_spkr
   skip_before_action :authenticate_user!, only: :edit_suggested
+  include SpkrMaker
 
   def update
     if @spkr.user == current_user
@@ -19,25 +20,36 @@ class SpkrsController < ApplicationController
 
   def destroy
     @spkr.destroy
-    redirect_to show_tlk_path(@spkr.tlk)
+    @tlk = @spkr.tlk
+    spkr_sides_update(@tlk)
+    redirect_to show_tlk_path(@tlk)
+    # redirect_to show_tlk_path(@spkr.tlk)
+
   end
 
   def remove
     send_spkr_remove_mail
     @spkr.destroy
-    redirect_to show_tlk_path(@spkr.tlk)
+    @tlk = @spkr.tlk
+    spkr_sides_update(@tlk)
+    redirect_to show_tlk_path(@tlk)
+    # redirect_to show_tlk_path(@spkr.tlk)
   end
 
   def hide_spkr
     @spkr.hide = true
     @spkr.save!
-    redirect_to show_tlk_path(@spkr.tlk)
+    @tlk = @spkr.tlk
+    spkr_sides_update(@tlk)
+    redirect_to show_tlk_path(@tlk)
   end
 
   def hide_other_spkr
     @spkr.hide = true
     @spkr.save!
-    redirect_to show_tlk_path(@spkr.tlk)
+    @tlk = @spkr.tlk
+    spkr_sides_update(@tlk)
+    redirect_to show_tlk_path(@tlk)
   end
 
   def edit_confirmed

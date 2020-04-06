@@ -27,34 +27,7 @@
   <div class="m-48-mob-24 big-white-split"></div>
 
   <% @tlk.spkrs.each do |spkr| %>
-    <% if spkr.user == @tlk.user && spkr.hide == false %>
-      <div class="spkr-color-<%= spkr.id %>">
-        <div class="msg-<%= spkr.color %>">
-          <div class="spkr-info spkr-info-<%= spkr.side %>">
-            <div class="spkr-image-and-name">
-              <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
-                <% if spkr.image.present? %>
-                  style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
-                <% elsif spkr.user.image.present? %>
-                  style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
-                <% else %>
-                  style="background-image: url(<%= asset_url('user.svg') %>)"
-                <% end %>
-                >
-              </div>
-              <h3><%= link_to spkr.name, show_user_path(spkr.user), class: "name-spkr-#{ spkr.id }" %></h3>
-            </div>
-            <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
-              <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-
-  <% @tlk.spkrs.each do |spkr| %>
-    <% unless spkr.user == @tlk.user || spkr.hide == true  %>
+    <% unless spkr.hide == true %>
       <div class="spkr-color-<%= spkr.id %>">
         <div class="msg-<%= spkr.color %>">
           <div class="spkr-info spkr-info-<%= spkr.side %>">
@@ -89,10 +62,10 @@
 </div>
 
 
-<% if @tlk.msgs.any? %>
+<% if @tlk.any_published_msgs? %>
   <div class="tlking-container">
 
-  <% @tlk.msgs.each_with_index do |msg, i| %>
+  <% @msgs.each_with_index do |msg, i| %>
     <div class="tlk-blob tlk-blob-<%= msg.spkr.side %>" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
       <div class="tlk-blob-spkr">
         <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
