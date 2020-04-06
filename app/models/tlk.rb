@@ -17,6 +17,10 @@ class Tlk < ApplicationRecord
     spkrs.where(hide: false)
   end
 
+  def non_tlk_user_spkrs
+    spkrs.where.not(user: self.user)
+  end
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
