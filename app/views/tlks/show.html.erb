@@ -9,7 +9,7 @@
 <% if @tlk.any_published_msgs? %>
   <div class="tlking-container">
 
-  <% @tlk.msgs.each_with_index do |msg, i| %>
+  <% @msgs.each_with_index do |msg, i| %>
     <% if msg.published == true %>
       <div class="tlk-blob tlk-blob-<%= msg.spkr.side %>" <%= 'id=new' if i+1 == @tlk.msgs.length %> >
         <div class="tlk-blob-spkr">

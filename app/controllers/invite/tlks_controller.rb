@@ -5,6 +5,7 @@ class Invite::TlksController < ApplicationController
 
   def show
     @tlk = Tlk.friendly.find(params[:id])
+    @msgs = @tlk.msgs.sort_by(&:created_at)
     @title = "(Invitation) #{@tlk.title}"
   end
 

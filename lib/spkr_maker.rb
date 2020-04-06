@@ -23,8 +23,17 @@ module SpkrMaker
       side: @new_tlk.spkrs.length.even? ? 'left' : 'right',
       color: choose_color(@new_tlk)
     )
-    # send_tlk_spkr_tlk_joined_mail
-    # send_tlk_owner_spkr_joined_mail
+  end
+
+  def spkr_sides_update(tlk)
+    i = 0
+    tlk.spkrs.each do |spkr|
+      unless spkr.hide == true
+        i.even? ? spkr.side = 'left' : spkr.side = 'right'
+        spkr.save!
+        i += 1
+      end
+    end
   end
 
   private
