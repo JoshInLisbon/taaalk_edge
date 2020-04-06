@@ -13,6 +13,10 @@ class Tlk < ApplicationRecord
     msgs.find_by(published: true).present?
   end
 
+  def non_hidden_spkrs
+    spkrs.where(hide: false).count
+  end
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
