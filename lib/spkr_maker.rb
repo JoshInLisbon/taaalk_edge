@@ -6,7 +6,7 @@ module SpkrMaker
       name: current_user.username,
       bio: current_user.bio,
       biog: current_user.biog,
-      side: @tlk.non_hidden_spkrs.even? ? 'left' : 'right',
+      side: @tlk.non_hidden_spkrs.count.even? ? 'left' : 'right',
       color: choose_color(@tlk)
     )
     send_tlk_spkr_tlk_joined_mail unless spkr.user == @tlk.user

@@ -14,7 +14,7 @@ class Tlk < ApplicationRecord
   end
 
   def non_hidden_spkrs
-    spkrs.where(hide: false).count
+    spkrs.where(hide: false)
   end
 
   extend FriendlyId

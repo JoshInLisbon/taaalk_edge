@@ -92,8 +92,7 @@
             <h4 class="tlk-card-title card-title"><%= tlk.title %></h4>
           </div>
           <div class="tlk-card-block card-block">
-            <% tlk.spkrs.each do |spkr| %>
-              <% unless spkr.hide == true %>
+            <% tlk.non_hidden_spkrs.each do |spkr| %>
               <div class="msg-<%= spkr.color %>">
                 <div class="spkr-details-container-index spkr-index-<%= spkr.side %>">
                   <div class="spkr-img-name-container-index">
@@ -116,7 +115,6 @@
                   <% end %>
                 </div>
               </div>
-              <% end %>
             <% end %>
           </div>
         </div>

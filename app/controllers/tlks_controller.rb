@@ -18,7 +18,7 @@ class TlksController < ApplicationController
     @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
     @msgs = @tlk.msgs.sort_by(&:created_at)
     @title = @tlk.title
-    @user_spkrs = Spkr.where(tlk: @tlk, user: current_user)
+    @user_spkrs = Spkr.where(tlk: @tlk, user: current_user, hide: false)
     @msg = Msg.new()
     new_spkr_on_invite
     user_is_spkr_only? if current_user.present?
