@@ -178,8 +178,9 @@
     <% elsif spkr.user == current_user && spkr.hide == true %>
       <div>
         <div class="tlk-note">
-          <p>You (<%= spkr.name %>) are no longer a participant in this Taaalk. <%= link_to 'Delete all your messages', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). Confirm below:"} %>.</p>
-          <p>To rejoin the Taaalk visit <%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %>.</p>
+          <p>You (<%= spkr.name %>) are no longer a participant in this Taaalk.</p>
+          <p><%= link_to 'Delete all your messages', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). Confirm below:"} %>.</p>
+          <p>To rejoin the Taaalk visit: <%= link_to tlk_invite_url(@tlk), tlk_invite_url(@tlk) %></p>
         </div>
       </div>
     <% end %>
