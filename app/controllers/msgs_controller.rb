@@ -87,7 +87,7 @@ class MsgsController < ApplicationController
   end
 
   def send_spkrs_new_msg_mail
-    @tlk.spkrs.each do |spkr|
+    @tlk.non_hidden_spkrs.each do |spkr|
       unless spkr.user == @spkr.user
         mail = MsgMailer.with(tlk: @tlk, spkr: spkr, msg: @msg).new_msg_update_spkr
         mail.deliver_later
