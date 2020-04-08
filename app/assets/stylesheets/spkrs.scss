@@ -134,7 +134,7 @@
     width: 223px;
   }
   .spkr-image-upload-btn-and-text {
-      margin: -2px 0 0 8px !important;
+      margin: 0 0 0 8px !important;
   }
 }
 
@@ -142,14 +142,13 @@
 .spkr-image-upload-div {
   display: inline-flex;
   .spkr-image-upload-btn-and-text {
-    margin: 3px 0 0 8px;
+    margin: 0 0 0 8px;
   }
 }
 .spkr-user-edit-form, .spkr-msg-form {
   margin-top: 16px;
   .trix-content, input[type=text], input[type=password], input[type=email] {
     background-color: white;
-    // border: 2px dashed $bright-blue;
     margin-bottom: 16px;
     border-radius: 4px;
     color: $core-font-color;

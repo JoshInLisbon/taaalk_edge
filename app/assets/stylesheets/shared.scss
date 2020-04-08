@@ -2,7 +2,6 @@
 
 
 body {
-  // font-family: $font-family;
   font-family: 'Roboto', sans-serif;
   background-color: $light-grey;
   color: $core-font-color;
@@ -28,7 +27,6 @@ h3 {
 
 .navbar {
   background-color: white;
-  // border-bottom: 1px solid #e3e3e3;
 }
 
 .big-white-split {
@@ -36,8 +34,6 @@ h3 {
   background-color: $grey;
   margin: 48px 0 32px 0;
 }
-
-
 
 .big-dark-split {
   height: $desk-line-width;
@@ -75,6 +71,14 @@ h3 {
 .btn {
   border: none !important;
   box-shadow: inset 0 2px 0 0 rgba(255,255,255,0.4);
+  font-size: 15px;
+  padding: 9px 16px 10px 16px;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    font-size: 16px;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
@@ -161,7 +165,8 @@ a {
   padding: 0;
   margin: 0;
   &:hover {
-    color: $sharp-red-hover;
+    color: $sharp-red;
+    text-decoration: underline;
   }
 }
 
@@ -177,9 +182,6 @@ a {
 }
 
 .alert {
-  // -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
-  // -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
-  // box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
   border-radius: 0px !important;
   z-index: 1000;
   // position: fixed;
@@ -445,20 +447,52 @@ a {
   }
 }
 
-.bdr-btm-drk-mob-none {
-  // border-bottom: 1px solid #dbdbdb;
-}
-
-@media (max-width: 768px) {
-  .bdr-btm-drk-mob-none {
-   // border-bottom: none;
-  }
-}
-
 .trix-button.trix-active {
   background-color: $msg-green !important;
 }
 
 .cursor-default {
   cursor: default !important;
+}
+
+.form-check-input {
+  margin-left: 0;
+  position: absolute;
+}
+
+.form-check-label {
+  margin-left: 18px;
+}
+
+.bg-notice {
+  background-color: #F1E8CB;
+  color: #856404;
+  // background-color: #856404;
+  // color: white;
+  p {
+    margin: 0;
+    padding: 12px 16px 12px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-notice {
+    p {
+      padding: 8px;
+    }
+  }
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.calc-height-navbar {
+  height: calc(100vh - 68px);
+}
+
+@media (max-width: 440px) {
+  .calc-height-navbar {
+    height: calc(100vh - 160px);
+  }
 }
