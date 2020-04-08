@@ -158,6 +158,10 @@
 
 // devise-styles
 
+.flex-mob-block {
+  display: flex;
+}
+
 .devise-styles {
   background-color: #FBF2D5;
   color: #856404;
@@ -169,27 +173,28 @@
   // background: -webkit-linear-gradient(top,  white 0%, #00CD4B 100%);
   // background: linear-gradient(to bottom,  white 0%, #00CD4B 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='white', endColorstr='#00CD4B',GradientType=0 );
-  display: flex;
+  // display: flex;
   // #9DFCC0\#89E8AC
   h2 {
-    font-size: 28px;
+    font-size: 17px;
     margin-bottom: 8px;
+    color: $core-font-color;
   }
   label {
-    margin-bottom: 4px;
+    margin-bottom: 0px;
     // color: $core-font-color;
   }
   input[type=text], input[type=password], input[type=email] {
     // color: #020202;
     background-color: white;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     border-radius: 4px;
     color: $core-font-color;
     border-width: 2px;
     border-style: inset;
     // border-color: blue;
     border-color: #856404;
-    padding: 8px 0 8px 8px;
+    padding: 2px 0 2px 4px;
     width: 266px;
   }
   p {
@@ -198,7 +203,7 @@
   .signup-div {
     padding-left: 16px;
     margin-left: 16px;
-    border-left: 12px solid white;
+    border-left: 4px solid white;
   }
   input[type=submit] {
     border: none !important;
@@ -212,16 +217,17 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    font-size: 15px;
+    padding: 9px 16px 10px 16px;
     line-height: 1.5;
     border-radius: 0.25rem;
     -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    background: $green !important;
+    background: #23272b !important;
     color: white !important;
+    margin-top: 4px;
     &:hover {
-      background: $green-hover !important;
+      background: #0A0E12 !important;
     }
   }
   a {
@@ -236,30 +242,53 @@
     .signup-div {
       padding-left: 8px;
       margin-left: 8px;
-      border-left: 8px solid white;
+      border-left: 4px solid white;
+    }
+    input[type=submit] {
+      font-size: 16px;
     }
   }
 }
 
 @media (max-width: 588px) {
-  .devise-styles {
+  .flex-mob-block {
     display: block;
+  }
+  .devise-styles {
     padding: 8px 8px 24px 8px;
     .signup-div {
       padding-top: 8px;
       margin-top: 8px;
-      border-top: 8px solid white;
+      border-top: 4px solid white;
       padding-left: 0px;
       margin-left: 0px;
       border-left: none;
     }
-  }
-  h2 {
-    padding-top: 8px !important;
-  }
-  input[type=text], input[type=password], input[type=email] {
-    width: 100% !important;
+    h2 {
+      padding-top: 8px !important;
+    }
+    input[type=text], input[type=password], input[type=email] {
+      width: 100% !important;
+      font-size: 24px;
+      // padding: 8px 0 8px 8px !important;
+    }
+    input[type=submit] {
+      padding: 10px 40px 11px 40px !important;
+      width: 100%;
+    }
   }
 }
 
+#error_explanation {
+  h2 {
+    font-size: 17px;
+    color: $sharp-red;
+    font-weight: normal;
+  }
+  li {
+    font-size: 17px;
+    font-weight: normal;
+    color: $core-font-color;
+  }
+}
 
