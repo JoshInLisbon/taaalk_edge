@@ -76,10 +76,10 @@
 .msg-p-green {
   .tlk-bubble {
     color: white;
-    background-color: $msg-p-green;
+    background-color: #1eb2a6;
   }
   .spkr-info, .spkr-details-container-index {
-    border-color: $msg-p-green;
+    border-color: #1eb2a6;
   }
 }
 
@@ -87,10 +87,10 @@
 .msg-green {
   .tlk-bubble {
     color: white;
-    background-color: $msg-green;
+    background-color: #00CD4B;
   }
   .spkr-info, .spkr-details-container-index {
-    border-color: $msg-green;
+    border-color: #00CD4B;
   }
 }
 .msg-purple {
@@ -148,10 +148,10 @@
 }
 .msg-yellow {
   .tlk-bubble {
-    background-color: $msg-yellow;
+    background-color: #f9ca24;
   }
   .spkr-info, .spkr-details-container-index {
-    border-color: $msg-yellow;
+    border-color: #f9ca24;
   }
 }
 .msg-white {
@@ -162,7 +162,7 @@
     border-color: white;
   }
   .spkr-details-container-index {
-      border-color: $light-grey;
+      border-color: #EBECED;
     }
 }
 
