@@ -29,7 +29,9 @@
     <% unless spkr.user == current_user %>
 
       <div>
-      <%= link_to raw("<strong>#{spkr.name}</strong>"), show_user_path(spkr.user), class: "spkr-edit-other-heading-link" %>
+        <strong>
+          <%= link_to spkr.name, show_user_path(spkr.user), class: "spkr-edit-other-heading-link" %>
+        </strong>
       </div>
 
       <% if spkr.hide == false %>
@@ -192,8 +194,8 @@
               <p id="leave-tlk" class="fake-link tlk-leave" target="spkr-leave-<%= spkr.id %>">Remove from Taaalk</p>
             </div>
             <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off tlk-leave-links">
-              <%= link_to raw("Remove #{spkr.name} & <strong>DELETE</strong> all their messages."), url_for(action: :remove, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY remove #{spkr.name} from this Taaalk & delete their messages."} %><br>
-              <%= link_to raw("Remove #{spkr.name} & <strong>KEEP</strong> all their messages."), url_for(action: :hide_other_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove #{spkr.name} Taaalk, but keep your messages. Confirm below:"} %>
+              <%= link_to "Remove #{spkr.name} & DELETE all their messages."), url_for(action: :remove, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY remove #{spkr.name} from this Taaalk & delete their messages."} %><br>
+              <%= link_to "Remove #{spkr.name} & KEEP all their messages."), url_for(action: :hide_other_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove #{spkr.name} Taaalk, but keep your messages. Confirm below:"} %>
             </div>
 
           <% end %>
