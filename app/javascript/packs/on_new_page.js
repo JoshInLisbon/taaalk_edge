@@ -7,7 +7,7 @@ import { trixEditorOverrides } from "../components/trix-editor-overrides"
 import { loadDraftMsg } from "../components/load_draft_msg"
 import { multiDraft } from "../components/multi_draft"
 import { uploadImage } from "../components/upload_image"
-import { changeBrToDiv } from "../components/trix_change_br_to_div"
+// import { changeBrToDiv } from "../components/trix_change_br_to_div"
 import { scrollToPreview } from "../components/scroll_to_preview"
 import { indexInfoPivot } from "../components/index_info_pivot"
 import { detailsToggle } from "../components/details_toggle"
@@ -26,7 +26,7 @@ if(mode == 'tlks-show-edit') {
   loadDraftMsg();
   multiDraft();
   uploadImage();
-  changeBrToDiv();
+  // changeBrToDiv();
   scrollToPreview();
   unsavedRadioAlert();
 }
@@ -44,7 +44,7 @@ if(mode == 'tlks-show-spkr') {
   trixEditorOverrides();
   loadDraftMsg();
   multiDraft();
-  changeBrToDiv();
+  // changeBrToDiv();
   uploadImage();
   scrollToPreview();
   unsavedRadioAlert();

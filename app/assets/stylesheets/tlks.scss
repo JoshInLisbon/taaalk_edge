@@ -221,6 +221,7 @@
 }
 
 .tlk-tlking-image {
+  flex-shrink: 0;
   display: inline-block;
   position: relative;
   left: -64px;
