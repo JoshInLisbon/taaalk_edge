@@ -10,9 +10,22 @@ body {
 
 input, textarea, trix-editor {
   &:focus {
-    border-color: #00CD4B !important;
-    box-shadow: 0 0 0 4px rgba(0, 205, 75, 0.15);
+    // border-color: #00CD4B !important;
+    // box-shadow: 0 0 0 4px rgba(0, 205, 75, 0.15);
+    // outline: 0;
+    border-color: blue !important;
+    box-shadow: 0 0 0 4px rgba(66, 50, 255, 0.15);
     outline: 0;
+  }
+}
+
+.devise-styles {
+  input, textarea, trix-editor {
+    &:focus {
+      border-color: blue !important;
+      box-shadow: 0 0 0 4px rgba(66, 50, 255, 0.15);
+      outline: 0;
+    }
   }
 }
 
@@ -504,8 +517,9 @@ a {
 }
 
 .bg-notice {
-  background-color: #F1E8CB;
+  // background-color: #F1E8CB;
   color: #856404;
+  background-color: #FBF2D5;
   // background-color: #856404;
   // color: white;
   p {
