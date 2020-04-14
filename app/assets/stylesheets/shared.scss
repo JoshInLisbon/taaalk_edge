@@ -1,6 +1,4 @@
 
-
-
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #EBECED;
@@ -10,7 +8,13 @@ body {
   word-wrap : break-word;
 }
 
-
+input, textarea, trix-editor {
+  &:focus {
+    border-color: #00CD4B !important;
+    box-shadow: 0 0 0 4px rgba(0, 205, 75, 0.25);
+    outline: 0;
+  }
+}
 
 h1, h2, h3, h4, h5 {
   font-weight: bold;
