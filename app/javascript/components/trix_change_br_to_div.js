@@ -50,7 +50,7 @@ const changeBrToDiv = () => {
             // handles h1
             let h1 = mtiDiv.outerHTML.match(/<h1>[\s\S]*?<\/h1>/)
             // handles n > 3 line situations in the Trix input
-            let brMatchesBr = mtiDiv.outerHTML.match(/(?<=<br>)([\s\S]*?)(?=<br>)/g);
+            let brMatchesBr = mtiDiv.outerHTML.match(/(?:<br>)([\s\S]*?)(?=<br>)/g);
             // handles the last line if there are n > 1 lines
             let brMatchDiv = mtiDiv.outerHTML.match(/<br>(?![\s\S]*<br>[\s\S]*$)([\s\S]*?)(?:<\/div>)/);
             // handles the first line if there are n > 1 lines
@@ -73,7 +73,8 @@ const changeBrToDiv = () => {
               textBlock.push(tlkBubbleStart, blockMatchBr[1], tlkBubbleEnd);
               brMatchesBr.forEach(match => {
                 if(match) {
-                  textBlock.push(tlkBubbleStart, match, tlkBubbleEnd);
+                  var matcho = match.match(/(<br>)(.*)/);
+                  textBlock.push(tlkBubbleStart, matcho[2], tlkBubbleEnd);
                 }
               });
               if(brMatchDiv) {
