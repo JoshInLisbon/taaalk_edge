@@ -5,7 +5,7 @@ const indexInfoPivot = () => {
   let topWhiteSplit = document.querySelector('#index-top-small-blue-split');
   let indexBorderBtmContainer = document.querySelector('.index-border-btm-container');
   hmmmBtn.addEventListener('click', (event) => {
-    if (hmmmBtn.innerHTML == 'Hmmm?') {
+    if (hmmmBtn.innerHTML == 'Learn More') {
       hmmmBtn.classList.add('got-it-mode-on');
       hmmmBtn.classList.remove('edit-mode-on');
       hmmmBtn.innerHTML = 'Got It';
@@ -13,7 +13,7 @@ const indexInfoPivot = () => {
     } else {
       hmmmBtn.classList.add('edit-mode-on');
       hmmmBtn.classList.remove('got-it-mode-on');
-      hmmmBtn.innerHTML = 'Hmmm?';
+      hmmmBtn.innerHTML = 'Learn More';
       // indexBorderBtmContainer.style = "border-bottom: 40px solid #07d755;"
     }
     if (indexTlk.classList.contains("index-hide-intro")) {

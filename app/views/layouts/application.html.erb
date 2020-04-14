@@ -7,12 +7,12 @@
     <% if @tlk.present? %>
       <% if @tlk.user == current_user %>
         <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-edit" >
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <% elsif flash[:invited] %>
         <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-invited" >
       <% elsif @spkr_only %>
         <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-spkr" >
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <% else %>
         <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>" >
       <% end %>

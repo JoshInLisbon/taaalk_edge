@@ -3,10 +3,11 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: $light-grey;
-  color: $core-font-color;
+  background-color: #EBECED;
+  color: #020202;
   font-size: 100%;
   font-size: 17px;
+  word-wrap : break-word;
 }
 
 
@@ -30,19 +31,19 @@ h3 {
 }
 
 .big-white-split {
-  height: $desk-line-width;
-  background-color: $grey;
+  height: 12px;
+  background-color: white;
   margin: 48px 0 32px 0;
 }
 
 .big-dark-split {
-  height: $desk-line-width;
-  background-color: $sharp-red;
+  height: 12px;
+  background-color: #EA0000;
   margin: 16px 0 36px 0;
 }
 
 .big-blue-split {
-  height: $desk-line-width;
+  height: 12px;
   background-color: blue;
   margin: 24px 0 56px 0;
 }
@@ -53,8 +54,8 @@ h3 {
 }
 
 .full-width-dark-split {
-  height: $desk-line-width;
-  background-color: $sharp-red;
+  height: 12px;
+  background-color: #EA0000;
   margin-left: 16px;
   margin-right: 16px;
 }
@@ -124,24 +125,24 @@ h3 {
     font-size: 20px;
   }
   .big-white-split {
-    height: $mob-line-width;
+    height: 8px;
     margin: 32px 0 16px 0;
   }
   .big-red-split {
-    height: $mob-line-width;
+    height: 8px;
     margin: 32px 0 32px 0;
   }
   .big-dark-split {
-    height: $mob-line-width;
+    height: 8px;
     margin-top: 8px;
   }
   .full-width-dark-split {
-    height: $mob-line-width;
+    height: 8px;
     margin-left: 8px;
     margin-right: 8px;
   }
   .big-blue-split {
-    height: $mob-line-width;
+    height: 8px;
     margin-bottom: 24px;
     margin-top: 8px;
   }
@@ -176,30 +177,30 @@ h3 {
 }
 
 a {
-  color: $green;
+  color: blue;
   &:hover {
     // text-decoration: none;
-    color: $green;
+    color: blue;
   }
 }
 
 .fake-link {
   cursor: pointer;
-  color: $green;
+  color: blue;
   &:hover {
     text-decoration: underline;
-    // color: $green;
+    // color: blue;
   }
 }
 
 .danger-link {
   border: none;
   background: transparent;
-  color: $sharp-red;
+  color: #EA0000;
   padding: 0;
   margin: 0;
   &:hover {
-    color: $sharp-red;
+    color: #EA0000;
     text-decoration: underline;
   }
 }
@@ -207,7 +208,7 @@ a {
 .fake-link-from-btn {
   border: none;
   background: transparent;
-  color: $green;
+  color: blue;
   padding: 0;
   margin: 0;
   &:hover {
@@ -265,7 +266,7 @@ a {
 .tlk-note {
   // border: 1px solid #e3e3e3;
   // border-left: 12px solid blue;
-  background-color: $grey;
+  background-color: white;
   // border: 1px solid #dfdfdf;
   // border-top: 1px solid #fafafa;
   // border-left: 1px solid #fafafa;
@@ -281,7 +282,7 @@ a {
   // -webkit-box-shadow: 1px 1px 5px 0px rgba(85,85,85,0.6);
   // -moz-box-shadow: 1px 1px 5px 0px rgba(85,85,85,0.6);
   // box-shadow: 1px 1px 5px 0px rgba(85,85,85,0.6);
-  // border-bottom: 8px solid $bright-blue;
+  // border-bottom: 8px solid #343a40;
   p {
     margin-bottom: 8px;
   }
@@ -308,19 +309,19 @@ a {
     }
   }
   .splitter {
-    // border-bottom: 1px solid $bright-blue;
+    // border-bottom: 1px solid #343a40;
     border-bottom: 4px solid #EBECED;
   }
   // .tlk-note-btn {
   //   display: inline-block;
   //   border: none;
-  //   background: $bright-blue;
+  //   background: #343a40;
   //   color: white;
   //   border-radius: 4px;
   //   padding: 4px 8px;
   //   &:hover {
   //     cursor: pointer;
-  //     background-color: $red-btn-hover;
+  //     background-color: #23272b;
   //     text-decoration: none;
   //   }
   // }
@@ -334,16 +335,16 @@ a {
 
 
 .big-white-split {
-  background-color: $grey;
+  background-color: white;
   margin: 32px 0;
 }
 
 .btn-secondary {
-  background-color: $grey;
-  color: $core-font-color;
+  background-color: white;
+  color: #020202;
   &:hover {
-    background-color: $grey;
-    color: $core-font-color;
+    background-color: white;
+    color: #020202;
   }
 }
 
@@ -353,9 +354,9 @@ a {
 }
 
 .btn-dark {
-  background-color: $btn-dark;
+  background-color: #23272b;
   &:hover {
-    background-color: $btn-dark-hover;
+    background-color: #0A0E12;
   }
 }
 
@@ -370,7 +371,7 @@ a {
     display: inline-block;
     padding: 9px 18px;
     margin: 0px 8px 0 0;
-    background-color: $grey;
+    background-color: white;
     // border: 1px solid #e3e3e3;
     // border: 1px solid #f8f8f8;
     // border-top: 1px solid #fafafa;
@@ -381,11 +382,11 @@ a {
     font-style: normal;
   }
   a:hover {
-    background-color: $green;
+    background-color: blue;
     color: white;
     text-decoration: none;
-    // border: 1px solid $green;
-    // border: 1px solid $green;
+    // border: 1px solid blue;
+    // border: 1px solid blue;
   }
   :last-child {
     margin: 0;
@@ -429,7 +430,7 @@ a {
 }
 
 .btn-green {
-  background-color: $msg-green;
+  background-color: #00CD4B;
   color: white;
 }
 
@@ -470,7 +471,7 @@ a {
 }
 
 .f-green {
-  color: $msg-green;
+  color: #00CD4B;
 }
 
 .inline-check-box {
@@ -482,7 +483,7 @@ a {
 }
 
 .trix-button.trix-active {
-  background-color: $msg-green !important;
+  background-color: #00CD4B !important;
 }
 
 .cursor-default {

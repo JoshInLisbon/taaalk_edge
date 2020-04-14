@@ -25,10 +25,10 @@
 }
 
 .tlk-btn-unsaved {
-  background: $green !important;
+  background: blue !important;
   color: white !important;
   &:hover {
-    background: $green-hover !important;
+    background: #0000C2 !important;
   }
 }
 
@@ -56,9 +56,9 @@
   margin-bottom: 32px;
   // Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0000ff+0,c6f1d6+100 */
   background: #0000ff;
-  background: -moz-linear-gradient(top,  #0000ff 0%, $grey 100%);
-  background: -webkit-linear-gradient(top,  #0000ff 0%, $grey 100%);
-  background: linear-gradient(to bottom,  #0000ff 0%, $grey 100%);
+  background: -moz-linear-gradient(top,  #0000ff 0%, white 100%);
+  background: -webkit-linear-gradient(top,  #0000ff 0%, white 100%);
+  background: linear-gradient(to bottom,  #0000ff 0%, white 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#f0f0f0',GradientType=0 );
 }
 
@@ -68,7 +68,7 @@
   display: block;
   width: 700px;
   margin: 0 auto;
-  font-weight: $bold;
+  font-weight: 700;
   padding: 56px 0;
 }
 
@@ -141,8 +141,8 @@
     border-radius: 4px;
     border-width: 2px;
     border-style: inset;
-    border-color: $bright-blue;
-    color: $core-font-color;
+    border-color: #343a40;
+    color: #020202;
   }
   label {
     display: block;
@@ -181,10 +181,10 @@
 }
 
 .edit-mode-on {
-  background-color: $sharp-red !important;
+  background-color: #EA0000 !important;
   color: white;
   &:hover {
-    background-color: $sharp-red-hover !important;
+    background-color: #D60000 !important;
     color: white;
   }
 }
@@ -217,10 +217,11 @@
 .tlk-blob-date {
   font-size: 10px;
   margin-top: 11px;
-  color: $time-and-date-color;
+  color: #85898C;
 }
 
 .tlk-tlking-image {
+  flex-shrink: 0;
   display: inline-block;
   position: relative;
   left: -64px;
@@ -231,7 +232,7 @@
 
 .tlk-bubble {
   display: inline-block;
-  background-color: $grey;
+  background-color: white;
   padding: 11px 16px 10px 16px;
   border-radius: 26px;
   margin-bottom: 8px;
@@ -331,7 +332,7 @@
 .msg-preview {
   background-color: transparent !important;
   margin: 14px 0 16px 0;
-  border: 2px dashed $core-font-color !important;
+  border: 2px dashed #020202 !important;
   padding: 8px 8px 0px 8px;
   p {
     margin: 0 0 8px 0;
@@ -376,18 +377,7 @@
 }
 
 .card-columns {
-  @include media-breakpoint-only(sm) {
-    column-count: 2;
-  }
-  @include media-breakpoint-only(md) {
-    column-count: 2;
-  }
-  @include media-breakpoint-only(lg) {
-    column-count: 3;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 3;
-  }
+  column-count: 3;
   a {
     color: inherit;
   }
@@ -414,9 +404,9 @@
     text-decoration: underline;
   }
   p {
-    color: $core-font-color;
+    color: #020202;
     text-decoration: none;
-    text-decoration-color: $core-font-color;
+    text-decoration-color: #020202;
   }
   strong {
     text-decoration: none;
@@ -429,6 +419,19 @@
   }
   .tlk-card-block {
     background-color: #FBFCFD;
+  }
+}
+
+@media (max-width: 998px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+
+
+@media (max-width: 628px) {
+  .card-columns {
+    column-count: 1;
   }
 }
 
@@ -452,7 +455,7 @@
   border-radius: 4px;
   border: none;
   margin-bottom: 20px !important;
-  background-color: $grey;
+  background-color: white;
   // border: 1px solid #e3e3e3;
   // border-top: 1px solid #fafafa;
   // border-left: 1px solid #fafafa;
@@ -475,7 +478,7 @@
 }
 
 .tlk-image-index-color {
-  background: $grey;
+  background: white;
   border-bottom: 1px solid #dbdbdb;
   // background: #A1ACB2; /* Old browsers */
   // background: -moz-linear-gradient(-45deg,  #A4A4AE 0%, #A4A4AE 49%, #EBECED 100%); /* FF3.6-15 */
@@ -541,7 +544,7 @@
 .spkr-image-index {
   height: 32px;
   width: 32px;
-  background: $bright-blue;
+  background: #343a40;
   background-size: cover;
   border-radius: 40px;
   background-repeat: no-repeat;
@@ -619,8 +622,8 @@
 }
 
 .small-white-split {
-  height: $desk-line-width;
-  background-color: $grey;
+  height: 12px;
+  background-color: white;
   // margin: 32px 0 40px 0;
   margin: 0;
   max-width: 700px;
@@ -629,7 +632,7 @@
 }
 
 .small-blue-split {
-  height: $desk-line-width;
+  height: 12px;
   background-color: blue;
   // margin: 32px 0 40px 0;
   margin: 0;
@@ -764,7 +767,7 @@
     // margin-bottom: 12px;
   }
   .small-white-split {
-    height: $mob-line-width;
+    height: 8px;
     margin-bottom: 8px;
     margin-top: 0;
   }
@@ -809,7 +812,7 @@
   margin-bottom: 0;
 }
 .got-it-mode-on {
-  background-color: $msg-green;
+  background-color: #00CD4B;
   color: white;
   &:hover { color: white; }
 }
@@ -824,7 +827,7 @@
   display: inline-block;
   padding: 8px 15px;
   text-align: center;
-  background-color: $msg-green;
+  background-color: #00CD4B;
   color: white;
   border-radius: 24px;
   margin-right: 8px;
@@ -836,7 +839,7 @@
     display: inline;
     padding: 0;
     text-align: left;
-    color: $msg-green;
+    color: #00CD4B;
     border-radius: 0;
     background-color: transparent;
     margin-right: 6px;
@@ -937,15 +940,15 @@
 
 #create-spkr-user-edit-form {
   margin-top: 32px;
-  border-top: 12px solid $grey;
-  border-bottom: 12px solid $grey;
+  border-top: 12px solid white;
+  border-bottom: 12px solid white;
   padding: 14px 0 16px 0;
 }
 
 @media (max-width: 768px) {
   #create-spkr-user-edit-form {
-    border-top: 8px solid $grey;
-    border-bottom: 8px solid $grey;
+    border-top: 8px solid white;
+    border-bottom: 8px solid white;
   }
 }
 
@@ -994,7 +997,7 @@
   .spkr-image-index {
     height: 60px;
     width: 60px;
-    background: $bright-blue;
+    background: #343a40;
     background-size: cover;
     border-radius: 40px;
   }

@@ -4,7 +4,7 @@
 
 
 .spkr-image {
-  background: $bright-blue;
+  background: #343a40;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -46,7 +46,7 @@
 
 .spkr-info-right {
   text-align: right;
-  border-right: $desk-line-width solid $grey;
+  border-right: 12px solid white;
   padding-right: 12px;
   .spkr-image-and-name {
     flex-direction: row-reverse;
@@ -57,7 +57,7 @@
   .spkr-biog {
     text-align: right;
     padding-left: 24px;
-    // border-left: $desk-line-width solid $grey;
+    // border-left: 12px solid white;
     div {
       text-align: left;
       display: inline-block;
@@ -66,14 +66,14 @@
 }
 
 .spkr-info-left {
-  border-left: $desk-line-width solid $grey;
+  border-left: 12px solid white;
   padding-left: 12px;
   .spkr-bio-image {
     margin-right: 8px;
   }
   .spkr-biog {
     padding-right: 24px;
-    // border-right: $desk-line-width solid $grey;
+    // border-right: 12px solid white;
   }
 }
 
@@ -86,19 +86,19 @@
     font-size: 18px;
   }
   .spkr-info-right {
-    border-right: $mob-line-width solid $grey;
+    border-right: 8px solid white;
     padding-right: 8px;
     .spkr-biog {
       padding-left: 16px;
-      // border-left: $mob-line-width solid $grey;
+      // border-left: 8px solid white;
     }
   }
   .spkr-info-left {
-    border-left: $mob-line-width solid $grey;
+    border-left: 8px solid white;
     padding-left: 8px;
     .spkr-biog {
       padding-right: 16px;
-      // border-right: $mob-line-width solid $grey;
+      // border-right: 8px solid white;
     }
   }
   .spkr-bio-image {
@@ -115,17 +115,17 @@
 
 .spkr-edit {
   background-color: white;
-  // border: 2px dashed $bright-blue;
+  // border: 2px dashed #343a40;
   border-radius: 4px;
   display: inline-block;
   padding: 4px;
   font-size: 24px;
   font-weight: 700;
   margin: 0 0 16px 0;
-  color: $core-font-color;
+  color: #020202;
   border-width: 2px;
   border-style: inset;
-  border-color: $sharp-red;
+  border-color: #EA0000;
 }
 
 @media (max-width: 768px) {
@@ -151,10 +151,10 @@
     background-color: white;
     margin-bottom: 16px;
     border-radius: 4px;
-    color: $core-font-color;
+    color: #020202;
     border-width: 2px;
     border-style: inset;
-    border-color: $sharp-red;
+    border-color: #EA0000;
   }
   .title-input {
     width: 100%;
@@ -208,5 +208,5 @@
 }
 
 .spkr-changes-rejected-link {
-  color: $sharp-red;
+  color: #EA0000;
 }

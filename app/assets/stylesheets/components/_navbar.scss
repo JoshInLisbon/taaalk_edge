@@ -1,9 +1,9 @@
 
 .navbar {
   a {
-    color: $core-font-color;
+    color: #020202;
     &:hover {
-      color: $green;
+      color: blue;
       text-decoration: none;
     }
   }
@@ -11,7 +11,7 @@
     font-weight: bold;
     font-size: 28px;
     &:hover {
-      color: $green;
+      color: blue;
     }
   }
   .navbar-non-logo{
@@ -39,10 +39,10 @@
       }
       &:hover {
         cursor: pointer;
-        // background-color: $almost-white;
-        color: $green;
+        // background-color: white;
+        color: blue;
         a {
-          color: $green;
+          color: blue;
         }
       }
     }
@@ -63,7 +63,7 @@
         width: 28px;
         margin: 4px 8px 4px 0px;
         z-index: 100;
-        background: $bright-blue;
+        background: #343a40;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -74,10 +74,10 @@
       }
       &:hover {
         cursor: pointer;
-        // background-color: $almost-white;
-        color: $green;
+        // background-color: white;
+        color: blue;
         a {
-          color: $green;
+          color: blue;
         }
       }
     }
