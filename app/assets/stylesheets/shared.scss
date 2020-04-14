@@ -11,7 +11,7 @@ body {
 input, textarea, trix-editor {
   &:focus {
     border-color: #00CD4B !important;
-    box-shadow: 0 0 0 4px rgba(0, 205, 75, 0.25);
+    box-shadow: 0 0 0 4px rgba(0, 205, 75, 0.15);
     outline: 0;
   }
 }
