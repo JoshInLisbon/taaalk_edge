@@ -520,18 +520,30 @@ a {
   // background-color: #F1E8CB;
   color: #856404;
   background-color: #FBF2D5;
+  padding-bottom: 12px;
   // background-color: #856404;
   // color: white;
   p {
     margin: 0;
-    padding: 12px 16px 12px 16px;
+    padding: 12px 16px 0 16px;
+  }
+}
+
+.login-display-none {
+  display: none;
+}
+
+@media (max-width: 588px) {
+  .login-display-none {
+    display: block;
   }
 }
 
 @media (max-width: 768px) {
   .bg-notice {
+    padding-bottom: 8px;
     p {
-      padding: 8px;
+      padding: 8px 8px 0 8px;
     }
   }
 }
