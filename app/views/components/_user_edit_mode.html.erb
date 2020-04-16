@@ -16,7 +16,7 @@
           >
         </div>
         <label>
-          <span class="mt-2 btn btn-dark">Upload Profile Image</span>
+          <span class="mt-2 btn learn-more-btn">Upload Profile Image</span>
           <div id="update-tlk-file-name-div" class="text-success mt-2"></div>
           <span style="display:none;">
             <%= f.file_field :image, accept: 'image/png,image/jpeg', target: 'update-tlk' %>
@@ -68,7 +68,7 @@
       <p class="mb-0"><strong>Confirm</strong> your new password:</p>
       <%= fi.password_field :confirm_new_password, class: "fw-text-input" %>
       <div>
-        <%= fi.submit "Change your password", class: "fake-link-from-btn" %>
+        <%= fi.submit "Change your password", class: "fake-link-from-btn link-txt" %>
       </div>
     <% end %>
     <div class="big-white-split"></div>

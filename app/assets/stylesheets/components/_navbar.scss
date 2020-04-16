@@ -3,7 +3,7 @@
   a {
     color: #020202;
     &:hover {
-      color: blue;
+      color: #0000ff;
       text-decoration: none;
     }
   }
@@ -11,7 +11,7 @@
     font-weight: bold;
     font-size: 28px;
     &:hover {
-      color: blue;
+      color: #0000ff;
     }
   }
   .navbar-non-logo{
@@ -40,9 +40,9 @@
       &:hover {
         cursor: pointer;
         // background-color: white;
-        color: blue;
+        color: #0000ff;
         a {
-          color: blue;
+          color: #0000ff;
         }
       }
     }
@@ -75,9 +75,9 @@
       &:hover {
         cursor: pointer;
         // background-color: white;
-        color: blue;
+        color: #0000ff;
         a {
-          color: blue;
+          color: #0000ff;
         }
       }
     }
