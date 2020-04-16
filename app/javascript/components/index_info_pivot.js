@@ -9,7 +9,7 @@ const indexInfoPivot = () => {
       hmmmBtn.classList.add('got-it-mode-on');
       hmmmBtn.classList.remove('edit-mode-on');
       hmmmBtn.innerHTML = 'Got It';
-      // indexBorderBtmContainer.style = "border-bottom: 40px solid #FE0002;"
+      // indexBorderBtmContainer.style = "border-bottom: 40px solid #f81016;"
     } else {
       hmmmBtn.classList.add('edit-mode-on');
       hmmmBtn.classList.remove('got-it-mode-on');

@@ -1,5 +1,5 @@
 <div class="tlk-note tlk-follow-note ml-0 mr-1">
   <p>Following <%= @user.username %></p>
 </div>
-<%= link_to "Unfollow", user_destroy_follow_path(@user.id), method: :delete, remote: true, class: "user-unfollow" %>
+<%= link_to "Unfollow", user_destroy_follow_path(@user.id), method: :delete, remote: true, class: "user-unfollow link-txt" %>
 
