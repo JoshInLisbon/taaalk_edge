@@ -12,11 +12,11 @@
             <%= f.text_field :title, class: 'tlk-title-edit', target: 'update-tlk' %>
             <div id="tlk-note-margin-top-btm">Your Taaalk will have an invite link and code.</div>
             <div>
-              <%= f.button :submit, "Start Your Taaalk", class: 'btn learn-more-btn' %>
+              <%= f.button :submit, "Start Your Taaalk", class: 'btn tlk-btn-unsaved' %>
             </div>
           <% end %>
         <% else %>
-          <%= link_to "Start Your Taaalk", new_user_session_path, class: "btn btn-dark edit-mode-on" %>
+          <%= link_to "Start Your Taaalk", new_user_session_path, class: "btn tlk-btn-unsaved" %>
         <% end %>
 
       </div>
