@@ -987,15 +987,15 @@
 .twm_user {
   border-radius: 4px;
   .spkr-image-index {
-    height: 60px;
-    width: 60px;
+    height: 32px;
+    width: 32px;
     background: #343a40;
     background-size: cover;
     border-radius: 40px;
   }
   .trix-content {
     margin-top: 8px;
-    font-size: 19px;
+    font-size: 17px;
   }
 }
 
@@ -1030,7 +1030,7 @@
     padding: 8px 8px 8px 8px;
   }
   .create-user-padding-left {
-      padding-left: 2px;
+      padding-left: 0px;
   }
 }
 

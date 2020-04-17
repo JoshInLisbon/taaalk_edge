@@ -10,7 +10,7 @@
           <div class="spkr-img-name-container-index">
             <div class="spkr-image-index"
               <% if twm_user.image.present? %>
-                style="background-image: url(<%= rails_blob_url(twm_user.image) %>); height: 60px; width: 60px;"
+                style="background-image: url(<%= rails_blob_url(twm_user.image) %>); height: 32px; width: 32px;"
               <% else %>
                 style="background-image: url(<%= asset_url('user.svg') %>)"
               <% end %>
