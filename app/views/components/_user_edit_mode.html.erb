@@ -4,7 +4,7 @@
 
 <%= form_with model: @user do |f| %>
 
-  <div class="index-background-color-medium bdr-btm-drk-mob-none">
+  <div class="bg-fade bdr-btm-drk-mob-none">
     <div class="create-index-container">
       <div class="user-container user-border-bottom">
         <div class="user-image"
@@ -26,6 +26,7 @@
           <%= f.label :title, "Edit your name:", class: "mt-2 f-white" %><br />
           <%= f.text_field :username, class: 'mb-3 username-edit' %>
         </div>
+        <%= f.submit "Update Your Details", id: "spkr-#{@user.id}", class: 'btn-spkr-edit btn create-user-update-btn' %>
       </div>
     </div>
   </div>
