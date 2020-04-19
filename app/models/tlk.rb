@@ -13,6 +13,10 @@ class Tlk < ApplicationRecord
     msgs.find_by(published: true).present?
   end
 
+  def all_spkrs
+    spkrs.sort_by(&:created_at)
+  end
+
   def non_hidden_spkrs
     spkrs.where(hide: false).sort_by(&:created_at)
   end

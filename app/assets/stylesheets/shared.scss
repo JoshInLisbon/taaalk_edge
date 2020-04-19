@@ -598,3 +598,14 @@ a {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#eb0309',GradientType=1 ); /* IE6-9 */
   }
 }
+
+trix-editor, .trix-content {
+  a {
+    color: blue;
+    text-decoration: underline;
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

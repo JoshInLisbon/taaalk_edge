@@ -1,6 +1,9 @@
+require 'action_view'
+
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :set_user, only: [:show, :edit, :tlk_with_request, :destroy_tlk_with_me, :destroy_tlk_with_me_user_page, :destroy]
+  include ActionView::Helpers::SanitizeHelper
 
   def show
     @title = "(User) #{@user.username}"
@@ -12,7 +15,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    @old_name = current_user.username
+    @old_biog = strip_tags(current_user.biog.to_s)
+    @new_name = user_params[:username]
+    @new_biog = user_params[:biog]
     current_user.update!(user_params)
+    spkrs_update_after_user_update
     redirect_to show_user_path(current_user)
   end
 
@@ -140,5 +148,15 @@ class UsersController < ApplicationController
       requesting_user: @requesting_user
     ).tlk_request
     mail.deliver_later
+  end
+
+  def spkrs_update_after_user_update
+    current_user.spkrs.each do |spkr|
+      if spkr.name == @old_name && strip_tags(spkr.biog.to_s) == @old_biog || spkr.name == @old_name && !spkr.biog.present?
+        spkr.name = @new_name
+        spkr.biog = @new_biog
+        spkr.save!
+      end
+    end
   end
 end

@@ -17,7 +17,7 @@
     </div>
   <% end %>
 
-  <% @tlk.spkrs.each do |spkr| %>
+  <% @tlk.all_spkrs.each do |spkr| %>
     <% if spkr.user == current_user && spkr.hide == false %>
       <%= form_with model: spkr do |f| %>
 
@@ -164,16 +164,16 @@
           <label for="name">Edit your bio:</label>
         </div>
         <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
-        <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary' %>
+        <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary tlk-btn-unsaved' %>
         </div>
       <% end %>
       <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
       <div>
-        <p id="leave-tlk" class="fake-link tlk-leave" target="spkr-leave-<%= spkr.id %>">Leave this Taaalk</p>
+        <p id="leave-tlk" class="fake-link tlk-leave link-txt" target="spkr-leave-<%= spkr.id %>">Leave this Taaalk</p>
       </div>
       <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off tlk-leave-links">
-        <%= link_to raw('Leave & <strong>DELETE</strong> all your messages.'), url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"} %><br>
-        <%= link_to raw('Leave & <strong>KEEP</strong> all your messages. (You can delete your messages later.)'), url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"} %>
+        <%= link_to 'Leave & DELETE all your messages.', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"}, class: "link-txt" %><br>
+        <%= link_to 'Leave & KEEP all your messages. (You can delete your messages later.)', url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"}, class: "link-txt" %>
       </div>
     <% elsif spkr.user == current_user && spkr.hide == true %>
       <div>
