@@ -8,20 +8,24 @@ const unsavedAlert = () => {
       var btn = document.querySelector(`#${id}`);
       var p = document.querySelector(`#p-${id}`);
       if (input.value !== startValue) {
-        btn.classList.add('tlk-btn-unsaved');
+        if (btn.value.match(/\(Done\)/)) {
+          var startBtnValue = btn.value.match(/(.*)( \(Done\))/)[1]
+          btn.value = startBtnValue
+        }
         btn.classList.add('normal-unsaved');
         p.classList.remove('tlk-p-nochange');
         p.classList.add('tlk-p-unsaved');
         btn.addEventListener('click', (event) => {
           var startValue = input.value;
-          btn.classList.remove('tlk-btn-unsaved');
           btn.classList.remove('normal-unsaved');
+          if (!btn.value.match(/\(Done\)/)) {
+            btn.value += ' (Done)'
+          }
           p.classList.remove('tlk-p-unsaved');
           p.classList.add('tlk-p-nochange');
         });
       } else {
         if (!btn.classList.contains('radio-unsaved') && !btn.classList.contains('rta-unsaved') && !btn.classList.contains('image-unsaved')) {
-          btn.classList.remove('tlk-btn-unsaved');
           btn.classList.remove('normal-unsaved');
           p.classList.remove('tlk-p-unsaved');
           p.classList.add('tlk-p-nochange');
@@ -46,7 +50,10 @@ const rtaUnsavedAlert = () => {
     var inputValueArray = input.value.split(/(<div>)(.*)/);
     var inputValue = `${inputValueArray[1]}<!--block-->${inputValueArray[2]}`
     if (inputValue !== startValue) {
-      btn.classList.add('tlk-btn-unsaved');
+      if (btn.value.match(/\(Done\)/)) {
+        var startBtnValue = btn.value.match(/(.*)( \(Done\))/)[1]
+        btn.value = startBtnValue
+      }
       btn.classList.add('rta-unsaved');
       if(p) {
         p.classList.remove('tlk-p-nochange');
@@ -54,7 +61,9 @@ const rtaUnsavedAlert = () => {
       }
       btn.addEventListener('click', (event) => {
         var startValue = input.value;
-        btn.classList.remove('tlk-btn-unsaved');
+        if (!btn.value.match(/\(Done\)/)) {
+          btn.value += ' (Done)'
+        }
         btn.classList.remove('rta-unsaved');
         if(p) {
           p.classList.remove('tlk-p-unsaved');
@@ -63,7 +72,6 @@ const rtaUnsavedAlert = () => {
       });
     } else {
       if (!btn.classList.contains('radio-unsaved') && !btn.classList.contains('normal-unsaved') && !btn.classList.contains('image-unsaved')) {
-        btn.classList.remove('tlk-btn-unsaved');
         btn.classList.remove('rta-unsaved');
         if(p) {
           p.classList.remove('tlk-p-unsaved');
@@ -87,21 +95,25 @@ const unsavedImageAlert = () => {
       var btn = document.querySelector(`#${id}`);
       var p = document.querySelector(`#p-${id}`);
       if (input.value !== startValue) {
-        btn.classList.add('tlk-btn-unsaved');
+        if (btn.value.match(/\(Done\)/)) {
+          var startBtnValue = btn.value.match(/(.*)( \(Done\))/)[1]
+          btn.value = startBtnValue
+        }
         btn.classList.add('image-unsaved');
         p.classList.remove('tlk-p-nochange');
         p.classList.add('tlk-p-unsaved');
         btn.addEventListener('click', (event) => {
+          if (!btn.value.match(/\(Done\)/)) {
+            btn.value += ' (Done)'
+          }
           var startValue = input.value;
           btn.classList.remove('image-unsaved');
-          btn.classList.remove('tlk-btn-unsaved');
           p.classList.remove('tlk-p-unsaved');
           p.classList.add('tlk-p-nochange');
         });
       } else {
         if (!btn.classList.contains('radio-unsaved') && !btn.classList.contains('normal-unsaved') && !btn.classList.contains('rta-unsaved')) {
           btn.classList.remove('image-unsaved');
-          btn.classList.remove('tlk-btn-unsaved');
           p.classList.remove('tlk-p-unsaved');
           p.classList.add('tlk-p-nochange');
         }
@@ -126,21 +138,25 @@ const unsavedRadioAlert = () => {
       input.checked ? startRadioValue = input.value : startRadioValue = "";
       input.addEventListener('change', (event) => {
         if (input.value !== startRadioValue) {
-          btn.classList.add('tlk-btn-unsaved');
+          if (btn.value.match(/\(Done\)/)) {
+            var startBtnValue = btn.value.match(/(.*)( \(Done\))/)[1]
+            btn.value = startBtnValue
+          }
           btn.classList.add('radio-unsaved');
           p.classList.remove('tlk-p-nochange');
           p.classList.add('tlk-p-unsaved');
           btn.addEventListener('click', (event) => {
+            if (!btn.value.match(/\(Done\)/)) {
+              btn.value += ' (Done)'
+            }
             var startRadioValue = input.value;
             btn.classList.remove('radio-unsaved');
-            btn.classList.remove('tlk-btn-unsaved');
             p.classList.remove('tlk-p-unsaved');
             p.classList.add('tlk-p-nochange');
           });
         } else {
           if (!btn.classList.contains('normal-unsaved') && !btn.classList.contains('rta-unsaved') && !btn.classList.contains('image-unsaved')) {
             btn.classList.remove('radio-unsaved');
-            btn.classList.remove('tlk-btn-unsaved');
             p.classList.remove('tlk-p-unsaved');
             p.classList.add('tlk-p-nochange');
           }
