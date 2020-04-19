@@ -19,6 +19,9 @@ class UsersController < ApplicationController
     @old_biog = strip_tags(current_user.biog.to_s)
     @new_name = user_params[:username]
     @new_biog = user_params[:biog]
+    if user_twm_params[:tlk_with_me].present?
+      current_user.tlk_with_me = user_twm_params[:tlk_with_me]
+    end
     current_user.update!(user_params)
     spkrs_update_after_user_update
     redirect_to show_user_path(current_user)
@@ -104,7 +107,12 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_me, :tlk_with_you, :password_for_delete)
+    # params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_me, :tlk_with_you, :password_for_delete)
+    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_you, :password_for_delete)
+  end
+
+  def user_twm_params
+    params.require(:user).permit(:tlk_with_me)
   end
 
   def password_param
