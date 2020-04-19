@@ -45,7 +45,7 @@
         <p>People should Taaalk with you about:</p>
         <%= f.rich_text_area :tlk_with_me %>
         <% if @user.tlk_with_me.present? %>
-          <p class="create-remove-details mb-4"><%= link_to "Remove yourself from the \"Taaalk with me\" section", destroy_tlk_with_me_user_page_path(current_user) %></p>
+          <p class="create-remove-details mb-4"><%= link_to "Remove yourself from the \"Taaalk with me\" section", destroy_tlk_with_me_user_page_path(current_user), class: "danger-link" %></p>
         <% end %>
         <p>Default 'Taaalk Request' message:</p>
         <%= f.rich_text_area :tlk_with_you %>
