@@ -48,9 +48,10 @@
         });
       </script>
     <% end %>
-    <!-- <p class="alert notice"><%= notice %></p> -->
-    <!-- <p class="alert"><%= alert %></p> -->
-    <%= yield %>
+    <div class="calc-height-navbar">
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
     <%= javascript_pack_tag 'on_new_page' %>
   </body>
 </html>

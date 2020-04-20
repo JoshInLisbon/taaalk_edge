@@ -86,7 +86,7 @@
           </div>
         </div>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
-        <%= f.submit "Publish Your Message", name: "publish", id: "submit-msg-#{spkr.id}", class: "msg-submit-btn btn tlk-btn-unsaved" %>
+        <%= f.submit "Publish Your Message", name: "publish", id: "submit-msg-#{spkr.id}", class: "btn tlk-btn-unsaved msg-submit-btn" %>
       <% end %>
     </div>
 
@@ -104,6 +104,7 @@
 
 <% unless @user_spkrs.any? %>
   <%= render 'components/follow_unfollow_tlk' %>
+  <div class="tlk-btm-follow-spacer"></div>
 <% end %>
 
 

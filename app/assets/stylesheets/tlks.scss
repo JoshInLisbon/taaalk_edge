@@ -257,7 +257,6 @@
   margin-bottom: 8px;
   font-size: 19px;
   max-width: 732px;
-  word-wrap : break-word;
 }
 
 .msg-preview {
@@ -373,7 +372,7 @@
 }
 
 .msg-submit-btn {
-  margin: 8px 0 24px 0;
+  margin: 8px 0 28px 0;
 }
 
 .tlk-follow-link {
@@ -397,6 +396,7 @@
 
 .card-columns {
   column-count: 3;
+  column-gap: 20px;
   a {
     color: inherit;
   }
@@ -456,6 +456,7 @@
 
 @media (max-width: 768px) {
   .card-columns {
+    column-gap: 16px;
     a:hover {
       text-decoration: none;
     }
@@ -512,6 +513,9 @@
   }
   .tlk-card-block {
     padding: 16px 8px 8px 8px;
+  }
+  .tlk-card {
+    margin-bottom: 16px !important;
   }
 }
 
@@ -1102,4 +1106,21 @@
 .tlk-invite-btn {
   color: white !important;
   background-color: #2c2c57 !important;
+}
+
+
+// Tlk page
+
+.tlk-btm-follow-spacer {
+  height: 16px;
+}
+
+@media (max-width: 768px) {
+  .tlk-btm-follow-spacer {
+    height: 8px;
+  }
+}
+
+.tlk-request-submit-btn {
+  margin-bottom: 30px;
 }
