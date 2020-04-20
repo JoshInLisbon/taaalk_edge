@@ -1,0 +1,39 @@
+<div class="bg-footer div-footer">
+<% if @tlk.present? %>
+  <% if @tlk.title.present? %>
+    <div class="narrow-div-footer internal-div-footer">
+  <% else %>
+    <div class="wide-div-footer internal-div-footer">
+  <% end %>
+<% elsif @tlk_request.present? %>
+  <div class="narrow-div-footer internal-div-footer">
+<% elsif @pop.present? %>
+  <div class="internal-div-footer">
+<% else %>
+  <div class="wide-div-footer internal-div-footer">
+<% end %>
+    <p>Give Feedback</p>
+    <p><%= link_to "Homepage", root_path %></p>
+    <p><%= link_to "Start a Taaalk", new_tlk_path %></p>
+    <p>Privacy Terms</p>
+    <div class="josh-info josh-info-closed">
+      <p>Hi, my name is Joshua and I built and designed Taaalk. I'm a full stack Ruby on Rails engineer and former venture capitalist, and I'm looking for a job in either of those fields, so please <a href="mailto:joshua@taaalk.co">get in touch with me</a> if you're hiring.</p>
+      <p><strong>Other projects and details:</strong></p>
+      <p><a href="https://psyarxiv.com/k6trz">https://psyarxiv.com/k6trz</a> - A Suggestion for a New Interpretation of Dreams: Dreaming Is the Inverse of Anxious Mind-Wandering.</p>
+      <p><a href="https://twitter.com/JoshSummers1234">https://twitter.com/JoshSummers1234</a> - Follow me on Twitter</p>
+    </div>
+    <p id="josh-read-more">Read More</p>
+    <script type="text/javascript">
+      var joshInfo = document.querySelector('.josh-info');
+      var joshInfoBtn = document.querySelector('#josh-read-more')
+      joshInfoBtn.addEventListener('click', (event) => {
+        joshInfo.classList.toggle('josh-info-closed');
+        if (joshInfoBtn.innerText == 'Read More') {
+          joshInfoBtn.innerText = 'Read Less'
+        } else {
+          joshInfoBtn.innerText = 'Read More'
+        }
+      });
+    </script>
+  </div>
+</div>
