@@ -6,6 +6,8 @@ body {
   font-size: 100%;
   font-size: 17px;
   // word-wrap : break-word;
+  text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
 }
 
 input, textarea, trix-editor {
@@ -707,9 +709,7 @@ trix-editor, .trix-content {
 }
 
 .josh-info-closed {
-  font-size: 17px !important;
-  max-height: 142px;
-  overflow: hidden;
+  display: none !important;
 }
 
 .full-height {
@@ -731,6 +731,10 @@ trix-editor, .trix-content {
   .user-btm-spacer {
     height: 14px;
   }
+}
+
+.opacity07 {
+  opacity: 0.5;
 }
 
 

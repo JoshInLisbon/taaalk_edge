@@ -15,27 +15,28 @@
     <p>Give Feedback</p>
     <p><%= link_to "Homepage", root_path %></p>
     <p><%= link_to "Start a Taaalk", new_tlk_path %></p>
-    <p>Privacy Terms</p>
     <div class="josh-info josh-info-closed">
-      <p>Hi, my name is Joshua and I built and designed Taaalk. I'm a full stack engineer and former venture capitalist, and I'm looking for a job in either field, so please <a href="mailto:joshua@taaalk.co">get in touch with me</a> if you're hiring.</p>
+      <p>Hi, my name is Joshua and I built and designed Taaalk. I'm a product focused full stack developer and before that I was an analyst at one of Europe's top VC funds. I'm looking to be employed in either field, so please <a href="mailto:joshua@taaalk.co">get in touch with me</a> if you're hiring.</p>
       <p><strong>Other projects:</strong></p>
       <p>I write about psychology and technology.</p>
       <p><strong>Psychology: </strong><a href="https://psyarxiv.com/k6trz">https://psyarxiv.com/k6trz</a> - [Paper] A Suggestion for a New Interpretation of Dreams: Dreaming Is the Inverse of Anxious Mind-Wandering.</p>
       <p><strong>Psychology: </strong>(Coming soon) [Book] The Mechanics of Mental Health. <a href="https://twitter.com/JoshSummers1234">Follow me on Twitter</a> for updates.</p>
-      <p><strong>Technology: </strong>(Coming soon) [Book] How to Think Like a Venture Capitalist. <a href="https://twitter.com/JoshSummers1234">Twitter</a> for updates.</p>
+      <p><strong>Technology: </strong>(Coming soon) [Book] How to Analyse Like a Venture Capitalist. <a href="https://twitter.com/JoshSummers1234">Twitter</a> for updates.</p>
     </div>
-    <p id="josh-read-more">See My Other Projects...</p>
+    <p id="josh-read-more">Hire Me + See My Other Projects</p>
     <script type="text/javascript">
       var joshInfo = document.querySelector('.josh-info');
       var joshInfoBtn = document.querySelector('#josh-read-more')
       joshInfoBtn.addEventListener('click', (event) => {
         joshInfo.classList.toggle('josh-info-closed');
-        if (joshInfoBtn.innerText == 'See My Other Projects...') {
+        if (joshInfoBtn.innerText == 'Hire Me + See My Other Projects') {
           joshInfoBtn.innerText = 'Show Less'
         } else {
-          joshInfoBtn.innerText = 'See My Other Projects...'
+          joshInfoBtn.innerText = 'Hire Me + See My Other Projects'
         }
       });
     </script>
+    <p class="opacity07">By using this website you aggree to our:</p>
+    <p><%= link_to "Privacy Policy", privacy_path %> <span class="opacity07">and</span> <%= link_to "Terms of Service", terms_path %></p>
   </div>
 </div>
