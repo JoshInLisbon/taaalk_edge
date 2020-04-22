@@ -738,3 +738,47 @@ trix-editor, .trix-content {
 }
 
 
+
+.tlk-note-dark {
+  margin: 0 16px 16px 16px;
+  border-radius: 4px;
+  display: inline-block;
+  max-width: 500px;
+  p {
+    margin-bottom: 8px;
+  }
+  p:last-of-type {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  .splitter {
+    border-bottom: 4px solid white;
+  }
+  .tlk-with-you-from {
+    padding: 8px;
+    background-color: white;
+    border-radius: 4px 4px 0 0;
+  }
+  .tlk-with-you {
+    padding: 8px;
+    background-color: #2c2c57;
+    color: white;
+    border-radius: 0 0 4px 4px;
+    a {
+      color: white;
+      opacity: 0.8;
+      text-decoration: none;
+      &:hover {
+        color: white;
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tlk-note-dark {
+    margin: 0 8px 8px 8px;
+  }
+}

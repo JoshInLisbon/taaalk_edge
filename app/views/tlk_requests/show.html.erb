@@ -4,6 +4,17 @@
   <p>Decide if you want to <strong>accept</strong> or <strong>reject</strong> the proposal.</p>
 </div>
 
+<div></div>
+
+<div class="tlk-note-dark">
+  <div class="tlk-with-you-from">
+    <%= @requesting_user.username %> wants to Taaalk with you because:
+  </div>
+  <div class="tlk-with-you">
+    <%= @tlk_request.tlk_with_you %>
+  </div>
+</div>
+
 <div class="tlk-image">
   <h1 class="tlk-title"><%= @tlk_request.title %></h1>
 </div>
