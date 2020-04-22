@@ -44,4 +44,7 @@ Rails.application.routes.draw do
   get '/t/request-rejected/:id', to: 'tlk_requests#reject', as: 'tlk_request_reject'
 
   get 'index_got_it', to: 'cookies#index_got_it_cookie', as: 'index_got_it_cookie'
+
+  get 'terms', to: 'pages#terms', as: 'terms'
+  get 'privacy', to: 'pages#privacy', as: 'privacy'
 end
