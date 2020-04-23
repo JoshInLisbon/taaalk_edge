@@ -5,7 +5,7 @@ const uploadImage = () => {
       const fileName = uploader.value.match(/[^\\]*\.(jpg|png|gif|tif)/i)[0];
       let target = uploader.getAttribute('target');
       const fileNameDiv = document.querySelector(`#${target}-file-name-div`);
-      fileNameDiv.innerHTML = `✅ ${fileName}`
+      fileNameDiv.innerHTML = `✅ ${fileName} <br><strong>Press "Update" Button to Confirm</strong>`
     });
   });
 };

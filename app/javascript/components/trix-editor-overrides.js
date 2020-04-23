@@ -1,16 +1,16 @@
 const trixEditorOverrides = () => {
   window.addEventListener("trix-file-accept", function(event) {
-    const maxFileSize = 2048 * 2048 // 4 MB
+    const maxFileSize = 6000 * 6000 // 4 MB
     let saveAlert = true
     if (event.file.size > maxFileSize) {
       event.preventDefault();
-      alert("Only support attachment files upto size 4MB!");
+      alert("Only support attachment of images that are smaller than that!");
       saveAlert = false
     }
-    const acceptedTypes = ['image/jpeg', 'image/png']
+    const acceptedTypes = ['image/jpeg', 'image/png', 'image/jpg']
     if (!acceptedTypes.includes(event.file.type)) {
       event.preventDefault()
-      alert("Only support attachment of jpeg or png files")
+      alert("Only support attachment of jpg, jpeg or png files")
       saveAlert = false
     }
     if (saveAlert) {
