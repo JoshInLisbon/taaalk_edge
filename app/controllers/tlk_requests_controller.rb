@@ -15,7 +15,7 @@ class TlkRequestsController < ApplicationController
     if current_user == @requested_user
       @new_tlk = Tlk.new(title: @tlk_request.title)
       @new_tlk.user = @requesting_user
-      @new_tlk.invite_code = '%010d' % rand(100000..999999)
+      @new_tlk.invite_code = '%010d' % rand(100000000..999999999)
       @new_tlk.msg_key = Digest::MD5.hexdigest(@new_tlk.title)
       if @new_tlk.save!
         @requesting_spkr = make_remote_spkr(@requesting_user)
@@ -64,6 +64,7 @@ class TlkRequestsController < ApplicationController
       spkr: @requesting_spkr,
       user: @requesting_user
     )
+    @msg.published = true
     @msg.save!
   end
 
