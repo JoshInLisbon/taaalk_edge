@@ -266,7 +266,7 @@
 }
 
 .msg-edit-p {
-  margin: -8px 0 0 0;
+  margin: -4px 0 0 0;
   padding: 0 0 0 16px;
 }
 
@@ -275,6 +275,10 @@
   &:hover {
     color: #787C7F;
   }
+}
+
+.msg-update-btn {
+  margin: 8px 0 20px 0;
 }
 
 .tlk-blob-right {
@@ -1153,3 +1157,4 @@
 .tlk-request-submit-btn {
   margin-bottom: 30px;
 }
+
