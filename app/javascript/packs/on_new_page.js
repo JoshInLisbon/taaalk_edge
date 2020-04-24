@@ -8,10 +8,11 @@ import { loadDraftMsg } from "../components/load_draft_msg"
 import { multiDraft } from "../components/multi_draft"
 import { uploadImage } from "../components/upload_image"
 import { changeBrToDiv } from "../components/trix_change_br_to_div"
-import { scrollToPreview } from "../components/scroll_to_preview"
+// import { scrollToPreview } from "../components/scroll_to_preview"
 import { indexInfoPivot } from "../components/index_info_pivot"
 import { detailsToggle } from "../components/details_toggle"
 import { userEditSwitch } from "../components/user_edit_switch"
+import { loadEditMsg } from "../components/load_edit_msg"
 
 let mode = document.querySelector('#meta').content
 
@@ -27,7 +28,7 @@ if(mode == 'tlks-show-edit') {
   multiDraft();
   uploadImage();
   changeBrToDiv();
-  scrollToPreview();
+  // scrollToPreview();
   unsavedRadioAlert();
 }
 
@@ -46,7 +47,7 @@ if(mode == 'tlks-show-spkr') {
   multiDraft();
   changeBrToDiv();
   uploadImage();
-  scrollToPreview();
+  // scrollToPreview();
   unsavedRadioAlert();
 }
 
@@ -69,4 +70,10 @@ if(mode == 'tlks-new') {
 if (mode == 'users-show-edit') {
   userEditSwitch();
   uploadImage();
+}
+
+if (mode == 'msgs-edit-edit') {
+  changeBrToDiv();
+  loadEditMsg();
+  trixEditorOverrides();
 }
