@@ -64,6 +64,7 @@ class UsersController < ApplicationController
   def destroy
     if current_user.destroy_with_password(password_param[:password])
       redirect_to root_path
+      flash[:notice] = "Your account has been deleted."
     else
       redirect_to show_user_path
       flash[:notice] = "Password not correct."

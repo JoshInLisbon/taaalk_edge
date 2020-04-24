@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   patch 'tlk/invited', to: 'invite/tlks#invited?', as: 'invited_to_tlk'
   get '/start-conversation', to: 'tlks#new', as: 'new_tlk'
   # resources :tlks, only: [:new, :create, :update, :edit] do
-  resources :tlks, only: [:create, :update, :edit] do
+  resources :tlks, only: [:create, :update, :edit, :destroy] do
     post :tlk_follows, to: 'tlk_follows#create', as: 'follow'
     delete :tlk_follows, to: 'tlk_follows#destroy', as: 'destroy_follow'
     # resources :tlk_follows, only: [:create, :destroy]
