@@ -2,7 +2,7 @@ class TlksController < ApplicationController
   require 'digest/md5'
   include SpkrMaker
 
-  skip_before_action :authenticate_user!, only: [:index, :show, :new, :newy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new]
 
   def index
     @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
@@ -60,7 +60,23 @@ class TlksController < ApplicationController
     end
   end
 
+  def destroy
+    @tlk = Tlk.friendly.find(params[:id])
+    if current_user.valid_password?(password_param[:password]) && @tlk.user == current_user
+      @tlk.destroy
+      redirect_to root_path
+      flash[:notice] = "Your Taaalk has been deleted."
+    else
+      redirect_to show_tlk_path(@tlk)
+      flash[:notice] = "Password not correct."
+    end
+  end
+
   private
+
+  def password_param
+    params.require(:tlk).permit(:password)
+  end
 
   def tlk_params
     params.require(:tlk).permit(:title, :image)
