@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     delete :user_follows, to: 'user_follows#destroy', as: 'destroy_follow'
   end
 
-  resources :msgs, only: [:create, :update]
+  resources :msgs, only: [:create, :update, :edit, :destroy]
 
   resources :spkrs, only: [:create, :update, :destroy]
   delete 'spkr/remove', to: 'spkrs#remove', as: 'remove_spkr'

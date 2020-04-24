@@ -265,6 +265,18 @@
   }
 }
 
+.msg-edit-p {
+  margin: -8px 0 0 0;
+  padding: 0 0 0 16px;
+}
+
+.edit-link {
+  color: #85898C;
+  &:hover {
+    color: #787C7F;
+  }
+}
+
 .tlk-blob-right {
   .tlk-blob-spkr {
     flex-direction: row-reverse;
@@ -281,8 +293,25 @@
   .tlk-blob-name {
     margin: 4px -38px 4px 8px;
   }
+  .msg-edit-p {
+    padding: 0 16px 0;
+  }
+
 }
 
+
+@media (max-width: 768px) {
+  .msg-edit-p {
+    font-size: 15px;
+    padding: 0 0 0 12px;
+    margin: -4px 0 0 0;
+  }
+  .tlk-blob-right {
+    .msg-edit-p {
+      padding: 0 12px 0 0;
+    }
+  }
+}
 
 
 

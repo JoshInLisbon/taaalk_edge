@@ -1,0 +1,28 @@
+
+<div class="tlk-container">
+
+    <div class="spkr-msg-form" target="spkr-msg-form-<%= @spkr.id %>">
+      <%= form_with model: @msg, class: 'rta', id: "spkr-msg-form-#{@spkr.id}" do |f| %>
+        <div class="field" id="rta-<%= @spkr.id %>">
+          <strong><%= f.label :content, "#{@spkr.name} says:" %></strong>
+          <%= f.rich_text_area :content, target: "submit-msg-#{@spkr.id}", id: "msg-#{@spkr.id}", required: true  %>
+        </div>
+        <%= f.hidden_field :safe_content %>
+        <%= f.hidden_field :draft_string %>
+        <%= f.hidden_field :tlk_id, :value => @tlk.id %>
+        <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
+        <%= f.hidden_field :spkr_id, :value => @spkr.id %>
+        <div class="spkr-color-<%= @spkr.id %>">
+          <div class="msg-<%= @spkr.color %>">
+            <div class="msg-preview trix-content" target="preview-spkr-msg-form-<%= @spkr.id %>">
+              <p>Your message preview will appear here.</p>
+            </div>
+          </div>
+        </div>
+        <%= f.hidden_field :spkr_id, :value => @spkr.id %>
+        <%= f.submit "Update Your Message", name: "publish", id: "submit-msg-#{@spkr.id}", class: "btn tlk-btn-unsaved msg-submit-btn" %>
+        <p><%= link_to "Delete message", msg_path(@msg), data: { method: :delete, confirm: 'Are you sure?' }, class: "danger-link" %></p>
+      <% end %>
+    </div>
+
+</div>

@@ -24,11 +24,15 @@
             >
           </div>
           <div class="name-spkr-<%= msg.spkr.id %> tlk-blob-name"><%= msg.spkr.name %></div>
-          <div class="tlk-blob-date"><%= msg.created_at.strftime("%H:%M, %d %b %Y") %></div>
+          <div class="tlk-blob-date"><%= msg.created_at.strftime("%H:%M, %d %b %y") %><%= msg.updated_at.strftime("%H:%M, %d %b %y") == msg.created_at.strftime("%H:%M, %d %b %y") ? "" : " (edit: #{msg.updated_at.strftime("%H:%M, %d %b %y")})" %></div>
         </div>
         <div class="spkr-color-<%= msg.spkr.id %>">
           <div class="msg-<%= msg.spkr.color %>" target="spkr-color-<% msg.spkr.id %>">
-            <div class="tlk-blob-msg"><%= msg.safe_content %></div>
+            <div class="tlk-blob-msg"><%= msg.safe_content %>
+              <% if msg.user == current_user %>
+                <p class="msg-edit-p"><%= link_to "edit", edit_msg_path(msg), class: "edit-link" %></p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

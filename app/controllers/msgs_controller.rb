@@ -1,6 +1,7 @@
 class MsgsController < ApplicationController
-  before_action :set_tlk
-  before_action :set_spkr
+  before_action :set_tlk, only: [:create, :update]
+  before_action :set_spkr, only: [:create, :update]
+  before_action :set_edit_msg, only: [:edit, :update, :destroy]
 
   def create
     if verify
@@ -40,10 +41,35 @@ class MsgsController < ApplicationController
     end
   end
 
+  def edit
+    # @msg = Msg.find(params[:id])
+    unless @msg.user == current_user
+      flash[:notice] = "You cannot edit a message you did not write."
+      redirect_to root_path
+    end
+    @tlk = @msg.tlk
+    @spkr = @msg.spkr
+  end
+
   def update
+    if verify
+      @msg.update!(msg_params)
+      flash[:notice] = "Your message has been updated."
+      redirect_to show_tlk_path(@tlk)
+    end
+  end
+
+  def destroy
+    @msg.destroy
+    flash[:notice] = "Your message has been deleted."
+    redirect_to show_tlk_path(@msg.tlk)
   end
 
   private
+
+  def set_edit_msg
+    @msg = Msg.find(params[:id])
+  end
 
   def set_msg
     params[:msg][:msg_id].present? ? @msg = Msg.find(params[:msg][:msg_id]) : false
