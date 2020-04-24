@@ -20,7 +20,7 @@
           </div>
         </div>
         <%= f.hidden_field :spkr_id, :value => @spkr.id %>
-        <%= f.submit "Update Your Message", name: "publish", id: "submit-msg-#{@spkr.id}", class: "btn tlk-btn-unsaved msg-submit-btn" %>
+        <%= f.submit "Update Your Message", name: "publish", id: "submit-msg-#{@spkr.id}", class: "btn tlk-btn-unsaved msg-update-btn" %>
         <p><%= link_to "Delete message", msg_path(@msg), data: { method: :delete, confirm: 'Are you sure?' }, class: "danger-link" %></p>
       <% end %>
     </div>
