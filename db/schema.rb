@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_130630) do
+ActiveRecord::Schema.define(version: 2020_04_27_170946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_130630) do
     t.integer "invite_code"
     t.string "msg_key"
     t.string "color"
+    t.integer "views", default: 0
     t.index ["slug"], name: "index_tlks_on_slug", unique: true
     t.index ["user_id"], name: "index_tlks_on_user_id"
   end

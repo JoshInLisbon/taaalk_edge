@@ -22,6 +22,8 @@ class TlksController < ApplicationController
     @msg = Msg.new()
     new_spkr_on_invite
     user_is_spkr_only? if current_user.present?
+    view_count = @tlk.views += 1
+    @tlk.update_attribute "views", view_count
   end
 
   def new

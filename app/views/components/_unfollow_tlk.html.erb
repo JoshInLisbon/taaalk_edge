@@ -1,4 +1,7 @@
 <div class="tlk-container">
+  <div class="tlk-note tlk-follow-note tlk-views-note"  style="margin-right: 3px;">
+    <p><%= number_with_delimiter(@tlk.views, :delimiter => ',') %> view<%= @tlk.views > 1 ? "s" : "" %></p>
+  </div>
 <div class="tlk-note tlk-follow-note">
   <p>Following this Taaalk</p>
 </div>
