@@ -39,7 +39,7 @@ module SpkrMaker
   private
 
   def choose_color(tlk)
-    colors = %w(green purple red orange black pink white blue yellow)
+    colors = [1..70]
     if tlk.spkrs.present?
       if tlk.spkrs.length > 9
         colors.sample
