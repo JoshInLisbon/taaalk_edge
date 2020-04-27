@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @title = "(User) #{@user.username}"
+    @nav = "user"
     set_user_tlks
   end
 
