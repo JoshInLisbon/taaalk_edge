@@ -39,9 +39,9 @@ module SpkrMaker
   private
 
   def choose_color(tlk)
-    colors = [1..70]
+    colors = (1..70).to_a
     if tlk.spkrs.present?
-      if tlk.spkrs.length > 9
+      if tlk.spkrs.length > 70
         colors.sample
       else
         tlk.spkrs.each do |spkr|

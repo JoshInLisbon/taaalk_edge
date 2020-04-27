@@ -13,6 +13,9 @@
       <% elsif @spkr_only %>
         <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-spkr" >
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <% elsif @edit.present? %>
+        <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>-edit" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <% else %>
         <meta id="meta" name="js-loader" content="<%= controller_name %>-<%= action_name %>" >
       <% end %>

@@ -42,7 +42,7 @@ class MsgsController < ApplicationController
   end
 
   def edit
-    # @msg = Msg.find(params[:id])
+    @edit = true
     unless @msg.user == current_user
       flash[:notice] = "You cannot edit a message you did not write."
       redirect_to root_path
