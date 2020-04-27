@@ -1035,6 +1035,25 @@
   }
 }
 
+
+#tlk-intro-container {
+  .tlk-blob-name {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #tlk-intro-container {
+    .tlk-blob-name {
+      display: block;
+      margin: 8px 8px 8px 8px;
+      color: white;
+      font-size: 18px;
+    }
+  }
+}
+
+
 .create-user-update-btn {
   // margin-top: 24px !important;
   color: white !important;
