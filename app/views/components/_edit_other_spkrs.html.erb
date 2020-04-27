@@ -70,18 +70,21 @@
               </div>
             </label>
 
+            <div>
+              <label for="name">Edit bio:</label>
+            </div>
 
 
-
+            <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
             <div class="spkr-color-edit">
-              <div><label for="color">Edit your speech bubble style:</label></div>
+              <div><label for="color">Edit speech bubble style:</label></div>
 
 
               <div class="spkr-color-scroll" target="spkr-<%= spkr.id %>">
 
                 <% 70.times do |i| %>
                   <div class="spkr-color-option">
-                    <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>" type="radio" name="color" value="<%= i + 1 %>" <%= spkr.color == i + 1 ? 'checked' : '' %> >
+                    <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>" type="radio" name="color" value="<%= i + 1 %>" <%= spkr.color.to_i == i + 1 ? 'checked' : '' %> >
                     <label for="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>">
                       <div class="spkr-color-example msg-<%= i + 1 %>"><div class="tlk-bubble"><%= i + 1 < 10 ? raw("&nbsp;") : "" %><%= i + 1 %><%= i + 1 < 10 ? raw("&nbsp;") : "" %></div></div>
                     </label>
@@ -91,17 +94,6 @@
               </div>
 
             </div>
-
-
-
-
-
-            <div>
-              <label for="name">Edit bio:</label>
-            </div>
-
-
-            <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
             <div class="other-spkr-edit-btn-div">
               <%= f.submit spkr.name.present? ? "Suggest Update (#{spkr.name})" : "Update Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary other-spkr-edit-btn tlk-btn-unsaved' %>
               <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Suggesting an update will send an email asking <%= spkr.name %> to confirm changes.</p>
