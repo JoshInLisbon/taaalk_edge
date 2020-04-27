@@ -86,7 +86,7 @@
                   <div class="spkr-color-option">
                     <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>" type="radio" name="color" value="<%= i + 1 %>" <%= spkr.color.to_i == i + 1 ? 'checked' : '' %> >
                     <label for="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>">
-                      <div class="spkr-color-example msg-<%= i + 1 %>"><div class="tlk-bubble"><%= i + 1 < 10 ? raw("&nbsp;") : "" %><%= i + 1 %><%= i + 1 < 10 ? raw("&nbsp;") : "" %></div></div>
+                      <div class="spkr-color-example msg-<%= i + 1 %>"><div class="tlk-bubble"><%= i + 1 %></div></div>
                     </label>
                   </div>
                 <% end %>
