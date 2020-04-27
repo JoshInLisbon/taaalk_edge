@@ -31,7 +31,7 @@
             >
           </div>
           <div class="spkr-image-upload-btn-and-text">
-            <span class="btn btn-dark">Upload a Profile Photo</span>
+            <span class="btn btn-dark">Select Profile Image</span>
             <div id="spkr-<%= current_user.id %>-file-name-div" class="text-success mt-2"></div>
             <span style="display:none;">
               <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{current_user.id}" %>

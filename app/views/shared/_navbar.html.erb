@@ -5,7 +5,7 @@
   <div class="navbar-non-logo">
     <div class="nav-btn-holder">
       <%= link_to new_tlk_path do %>
-        <div class="nav-btn">
+        <div class="nav-btn <%= @title == 'Start a conversation' ? 'link-txt' : ''%>">
         <i class="fas fa-align-left"></i>Start a Conversation
         </div>
       <% end %>
@@ -24,7 +24,7 @@
               <% end %>
               >
             </div>
-            <span>
+            <span class="<%= @nav.present? ? "link-txt" : "" %>">
               <%= current_user.username %>
             </span>
           </div>

@@ -187,8 +187,8 @@
     border-width: 2px;
     border-style: inset;
     // border-color: #2c2c57;
-    border-color: #856404;
-    padding: 2px 0 2px 4px;
+    border-color: #EA0000;
+    padding: 8px 0 8px 8px;
     width: 266px;
   }
   p {
@@ -225,8 +225,12 @@
     }
   }
   a {
+    color: blue;
     display: inline-block;
     margin-top: 12px;
+    &:hover {
+      color: blue;
+    }
   }
 }
 
@@ -240,6 +244,9 @@
     }
     input[type=submit] {
       font-size: 16px;
+    }
+    input[type=text], input[type=password], input[type=email] {
+      padding: 2px 0 2px 4px;
     }
   }
 }
