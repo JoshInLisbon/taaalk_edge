@@ -8,11 +8,11 @@ import { loadDraftMsg } from "../components/load_draft_msg"
 import { multiDraft } from "../components/multi_draft"
 import { uploadImage } from "../components/upload_image"
 import { changeBrToDiv } from "../components/trix_change_br_to_div"
-// import { scrollToPreview } from "../components/scroll_to_preview"
 import { indexInfoPivot } from "../components/index_info_pivot"
 import { detailsToggle } from "../components/details_toggle"
 import { userEditSwitch } from "../components/user_edit_switch"
 import { loadEditMsg } from "../components/load_edit_msg"
+import { toggleColorSpace } from "../components/toggle_colors"
 
 let mode = document.querySelector('#meta').content
 
@@ -28,8 +28,8 @@ if(mode == 'tlks-show-edit') {
   multiDraft();
   uploadImage();
   changeBrToDiv();
-  // scrollToPreview();
   unsavedRadioAlert();
+  toggleColorSpace();
 }
 
 if(mode == 'tlks-show-invited') {
@@ -47,8 +47,8 @@ if(mode == 'tlks-show-spkr') {
   multiDraft();
   changeBrToDiv();
   uploadImage();
-  // scrollToPreview();
   unsavedRadioAlert();
+  toggleColorSpace();
 }
 
 if(mode == 'users-edit') {

@@ -146,7 +146,7 @@
   }
 }
 .spkr-user-edit-form, .spkr-msg-form {
-  margin-top: 16px;
+  // margin-top: 16px;
   .trix-content, input[type=text], input[type=password], input[type=email] {
     background-color: white;
     margin-bottom: 16px;
@@ -183,7 +183,7 @@
 
 .spkr-edit-other-heading-link {
   margin-top: 24px;
-  margin-bottom: 0;
+  margin-bottom: 8px;
   display: inline-block;
 }
 
@@ -209,4 +209,10 @@
 
 .spkr-changes-rejected-link {
   color: #EA0000;
+}
+
+.spkr-edit-box {
+  background-color: #F5F5F5;
+  padding: 8px;
+  border-radius: 4px;
 }

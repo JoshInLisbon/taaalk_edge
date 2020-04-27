@@ -4,14 +4,14 @@
 
   <% if current_user.biog.present? %>
     <div>
-      <div class="tlk-note">
+      <div class="tlk-note mb-0">
       <p>Customise your details to make them relevant to the subject.<%= current_user.tlks.length > 1 ? " (Changes made in this Taaalk will not be reflected in others.)" : "" %></p>
       <%#= current_user.tlks.length > 1 ? raw("<p>Changes made in this Taaalk will not be reflected in others.</p>") : "" %>
       </div>
     </div>
   <% else %>
     <div>
-      <div class="tlk-note">
+      <div class="tlk-note mb-0">
         <p>Write a bio for yourself so that the people reading this Taaalk know how your thoughts are relevant to the subject.</p>
       </div>
     </div>
@@ -19,7 +19,14 @@
 
   <% @tlk.all_spkrs.each do |spkr| %>
     <% if spkr.user == current_user && spkr.hide == false %>
-      <%= form_with model: spkr do |f| %>
+
+      <div>
+        <strong>
+          <%= link_to spkr.name, show_user_path(spkr.user), class: "spkr-edit-other-heading-link" %>:
+        </strong>
+      </div>
+
+      <%= form_with model: spkr, :html => {:class => 'spkr-edit-box'} do |f| %>
 
         <div class="spkr-user-edit-form">
 
@@ -69,7 +76,7 @@
           <div><label for="color">Edit your speech bubble style:</label></div>
 
 
-          <div class="spkr-color-scroll" target="spkr-<%= spkr.id %>">
+          <div class="spkr-color-scroll spkr-color-scroll-short" target="spkr-<%= spkr.id %>" id="color-spkr-<%= spkr.id %>">
 
             <% 70.times do |i| %>
               <div class="spkr-color-option">
@@ -82,19 +89,22 @@
 
           </div>
 
+          <div class="spkr-color-show-more link-txt" target="color-spkr-<%= spkr.id %>">Show more colors...</div>
+
         </div>
 
         <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary tlk-btn-unsaved' %>
         </div>
-      <% end %>
+
       <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
       <div>
-        <p id="leave-tlk" class="fake-link tlk-leave link-txt" target="spkr-leave-<%= spkr.id %>">Leave this Taaalk</p>
+        <p id="leave-tlk" class="fake-link tlk-leave danger-link-txt" target="spkr-leave-<%= spkr.id %>">Leave this Taaalk</p>
       </div>
       <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off tlk-leave-links">
-        <%= link_to 'Leave & DELETE all your messages.', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"}, class: "link-txt" %><br>
-        <%= link_to 'Leave & KEEP all your messages. (You can delete your messages later.)', url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"}, class: "link-txt" %>
+        <strong><%= link_to 'Leave & delete all your messages.', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"}, class: "danger-link-txt" %></strong><br>
+        <strong><%= link_to 'Leave & keep all your messages. (You can delete your messages later.)', url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"}, class: "danger-link-txt" %></strong>
       </div>
+      <% end %>
     <% elsif spkr.user == current_user && spkr.hide == true %>
       <div>
         <div class="tlk-note">
