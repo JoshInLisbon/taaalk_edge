@@ -6,8 +6,8 @@ body {
   font-size: 100%;
   font-size: 17px;
   // word-wrap : break-word;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: subpixel-antialiased;
+  // text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
 }
 
 input, textarea, trix-editor {
