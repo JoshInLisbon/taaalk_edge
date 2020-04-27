@@ -139,7 +139,7 @@ class SpkrsController < ApplicationController
       @spkr.edited_biog = spkr_params[:biog]
     end
     if params.permit(:color)[:color] != @spkr.color
-      @spkr.edited_color = /(msg-)(.*)/.match(params.permit(:color)[:color])[2]
+      @spkr.edited_color = params.permit(:color)[:color]
     end
     if spkr_params[:image].present?
       @spkr.edited_image = spkr_params[:image]
