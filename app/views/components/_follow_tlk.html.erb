@@ -6,6 +6,9 @@
     Follow this Taaalk
     <% end %>
     <div class="tlk-note tlk-follow-note">
-      <p><%= @tlk.tlk_follows.count + @tlk.spkrs.count %> follower<%= @tlk.tlk_follows.count + @tlk.spkrs.count > 1 ? "s" : "" %></p>
+      <p><%= number_with_delimiter(@tlk.tlk_follows.count + @tlk.spkrs.count, :delimiter => ',') %> follower<%= @tlk.tlk_follows.count + @tlk.spkrs.count > 1 ? "s" : "" %></p>
+    </div>
+    <div class="tlk-note tlk-follow-note tlk-views-note" style="margin-left: 3px;">
+      <p><%= number_with_delimiter(@tlk.views, :delimiter => ',') %> view<%= @tlk.views > 1 ? "s" : "" %></p>
     </div>
 </div>

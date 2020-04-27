@@ -49,6 +49,16 @@
   max-height: 41px;
 }
 
+.tlk-views-note {
+  display: inline-block !important;
+}
+
+@media (max-width: 420px) {
+  .tlk-views-note {
+    display: none !important;
+  }
+}
+
 .tlk-image {
   min-height: 240px;
   padding: 0 16px;
