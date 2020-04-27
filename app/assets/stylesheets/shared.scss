@@ -237,6 +237,14 @@ a {
   }
 }
 
+.danger-link-txt {
+  color: #EA0000;
+  &:hover {
+    color: #EA0000;
+    text-decoration: underline;
+  }
+}
+
 .fake-link-from-btn {
   border: none;
   background: transparent;

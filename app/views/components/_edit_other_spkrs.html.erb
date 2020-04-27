@@ -30,13 +30,13 @@
 
       <div>
         <strong>
-          <%= link_to spkr.name, show_user_path(spkr.user), class: "spkr-edit-other-heading-link" %>
+          <%= link_to spkr.name, show_user_path(spkr.user), class: "spkr-edit-other-heading-link" %>:
         </strong>
       </div>
 
       <% if spkr.hide == false %>
 
-        <%= form_with model: spkr do |f| %>
+        <%= form_with model: spkr, :html => {:class => 'spkr-edit-box'} do |f| %>
 
           <div class="spkr-user-edit-form">
 
@@ -80,18 +80,20 @@
               <div><label for="color">Edit speech bubble style:</label></div>
 
 
-              <div class="spkr-color-scroll" target="spkr-<%= spkr.id %>">
+              <div class="spkr-color-scroll spkr-color-scroll-short" target="spkr-<%= spkr.id %>" id="color-spkr-<%= spkr.id %>">
 
                 <% 70.times do |i| %>
                   <div class="spkr-color-option">
                     <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>" type="radio" name="color" value="<%= i + 1 %>" <%= spkr.color.to_i == i + 1 ? 'checked' : '' %> >
                     <label for="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>">
-                      <div class="spkr-color-example msg-<%= i + 1 %>"><div class="tlk-bubble"><%= i + 1 < 10 ? raw("&nbsp;") : "" %><%= i + 1 %><%= i + 1 < 10 ? raw("&nbsp;") : "" %></div></div>
+                      <div class="spkr-color-example msg-<%= i + 1 %>"><div class="tlk-bubble"><%= i + 1 %></div></div>
                     </label>
                   </div>
                 <% end %>
 
               </div>
+
+              <div class="spkr-color-show-more link-txt" target="color-spkr-<%= spkr.id %>">Show more colors...</div>
 
             </div>
             <div class="other-spkr-edit-btn-div">
@@ -99,11 +101,11 @@
               <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Suggesting an update will send an email asking <%= spkr.name %> to confirm changes.</p>
             </div>
             <div>
-              <p id="leave-tlk" class="fake-link tlk-leave link-txt" target="spkr-leave-<%= spkr.id %>">Remove from Taaalk</p>
+              <p id="leave-tlk" class="fake-link tlk-leave danger-link-txt" target="spkr-leave-<%= spkr.id %>">Remove from Taaalk</p>
             </div>
             <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off tlk-leave-links">
-              <%= link_to "Remove #{spkr.name} & DELETE all their messages.", url_for(action: :remove, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY remove #{spkr.name} from this Taaalk & delete their messages."}, class: "link-txt" %><br>
-              <%= link_to "Remove #{spkr.name} & KEEP all their messages.", url_for(action: :hide_other_spkr, controller: :spkrs, id: spkr.id), class: "link-txt", method: :get, data: {confirm: "Thise will permanently remove #{spkr.name} Taaalk, but keep your messages. Confirm below:"} %>
+              <strong><%= link_to "Remove #{spkr.name} & delete all their messages.", url_for(action: :remove, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY remove #{spkr.name} from this Taaalk & delete their messages."}, class: "danger-link-txt" %></strong><br>
+              <strong><%= link_to "Remove #{spkr.name} & keep all their messages.", url_for(action: :hide_other_spkr, controller: :spkrs, id: spkr.id), class: "danger-link-txt", method: :get, data: {confirm: "Thise will permanently remove #{spkr.name} Taaalk, but keep your messages. Confirm below:"} %></strong>
             </div>
 
           <% end %>
