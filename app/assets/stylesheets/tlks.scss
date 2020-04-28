@@ -65,8 +65,14 @@
   display: flex;
   align-items: center;
   margin-bottom: 32px;
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
+
   background: #2c2c57; /* Old browsers */
+  // background: -moz-linear-gradient(left,  #1D1D48 0%, #2c2c57 100%); /* FF3.6-15 */
+  // background: -webkit-linear-gradient(left,  #1D1D48 0%,#2c2c57 100%); /* Chrome10-25,Safari5.1-6 */
+  // background: linear-gradient(to right,  #1D1D48 0%,#2c2c57 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1D1D48', endColorstr='#2c2c57',GradientType=1 ); /* IE6-9 */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
+  // background: #2c2c57; /* Old browsers */
   // background: -moz-linear-gradient(left,  #2c2c57 1%, #2c2c57 43%, #eb0309 100%); /* FF3.6-15 */
   // background: -webkit-linear-gradient(left,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* Chrome10-25,Safari5.1-6 */
   // background: linear-gradient(to right,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -160,9 +166,9 @@
     display: block;
 
     border-radius: 4px;
-    border-width: 3px;
+    border-width: 2px;
     border-style: inset;
-    border-color: pink;
+    border-color: blue;
     color: #020202;
   }
   label {
@@ -1162,7 +1168,7 @@
 .tlk-invite-code {
   // width: 100%;
   width: 252px;
-  padding: 8px 0 8px 8px;
+  padding: 6px 0 6px 6px;
 
 }
 

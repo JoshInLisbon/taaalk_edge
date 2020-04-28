@@ -30,19 +30,19 @@
 
     <div class="big-white-split"></div>
 
-    <p><strong>Why</strong> do you want to Taaalk with <%= @user.username %>?</p>
+    <p class="mb-4px"><strong>Why</strong> do you want to Taaalk with <%= @user.username %>?</p>
     <%= simple_form_for current_user, :url => send_tlk_request_path, :method => :patch  do |f| %>
       <div class="spkr-user-edit-form">
       <%= f.rich_text_area :tlk_with_you %>
       </div>
         <%= fields_for @tlk_request do |fi| %>
-          <p>What will the <strong>title</strong> of your Taaalk be?</p>
+          <p class="mb-4px">What will the <strong>title</strong> of your Taaalk be?</p>
           <div class="spkr-user-edit-form">
             <%= fi.text_field :title, class: 'title-input' %>
           </div>
           <div class="spkr-user-edit-form">
             <p>What's the <strong>first thing you will say</strong> in your Taaalk?</p>
-            <p><strong>Tip:</strong> Ask a question to get things going.</p>
+            <p class="mb-4px"><strong>Tip:</strong> Ask a question to get things going.</p>
             <%= fi.rich_text_area :first_msg %>
           </div>
         <% end %>

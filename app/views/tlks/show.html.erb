@@ -68,7 +68,7 @@
     <div class="spkr-msg-form" target="spkr-msg-form-<%= spkr.id %>">
       <%= form_with model: @msg, class: 'rta', id: "spkr-msg-form-#{spkr.id}" do |f| %>
         <div class="field" id="rta-<%= spkr.id %>">
-          <strong><%= f.label :content, "#{spkr.name} says:" %></strong>
+          <strong><%= f.label :content, raw("<span class='name-spkr-#{spkr.id}'>#{spkr.name}</span> says:") %></strong>
           <%= f.rich_text_area :content, target: "submit-msg-#{spkr.id}", id: "msg-#{spkr.id}", required: true  %>
         </div>
         <%= f.hidden_field :safe_content %>

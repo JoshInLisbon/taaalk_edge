@@ -25,86 +25,92 @@
           <%= link_to spkr.name, show_user_path(spkr.user), class: "spkr-edit-other-heading-link" %>:
         </strong>
       </div>
+      <div class="edit-spkr-color-<%= spkr.id %>">
+        <div class="edit-msg-<%= spkr.color %>">
 
-      <%= form_with model: spkr, :html => {:class => 'spkr-edit-box'} do |f| %>
-
-        <div class="spkr-user-edit-form">
-
-
-        <div>
-          <label for="name">Edit your name:</label>
-        </div>
-        <div>
-        <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit', target: "spkr-#{spkr.id}" %>
-        </div>
-
-        <label>
-          <div class="spkr-image-upload-div">
-
-            <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
-              <% if spkr.image.present? %>
-                style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
-              <% elsif spkr.user.image.present? %>
-                style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
-              <% else %>
-                style="background-image: url(<%= asset_url('user.svg') %>)"
-              <% end %>
-              >
-            </div>
-            <div class="spkr-image-upload-btn-and-text">
-              <span class="btn btn-dark">Select Profile Image</span>
-              <div id="spkr-<%= spkr.id %>-file-name-div" class="text-success mt-2"></div>
-              <span style="display:none;">
-                <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{spkr.id}" %>
-              </span>
-            </div>
-
-          </div>
-        </label>
+          <%= form_with model: spkr, :html => {:class => 'spkr-edit-box'} do |f| %>
 
 
 
+              <div class="spkr-user-edit-form">
 
 
-        <div>
-          <label for="name">Edit your bio:</label>
-        </div>
-        <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
-
-
-        <div class="spkr-color-edit">
-          <div><label for="color">Edit your speech bubble style:</label></div>
-
-
-          <div class="spkr-color-scroll spkr-color-scroll-short" target="spkr-<%= spkr.id %>" id="color-spkr-<%= spkr.id %>">
-
-            <% 70.times do |i| %>
-              <div class="spkr-color-option">
-                <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>" type="radio" name="color" value="<%= i + 1 %>" <%= spkr.color.to_i == (i + 1) ? 'checked' : '' %> >
-                <label for="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>">
-                  <div class="spkr-color-example msg-<%= i + 1 %>"><div class="tlk-bubble"><%= i + 1 %></div></div>
-                </label>
+              <div>
+                <label for="name" class="mb-4px">Edit your name:</label>
               </div>
-            <% end %>
+              <div>
+              <%= f.text_field :name, id: "name-spkr-#{spkr.id}", class: 'spkr-edit fw-text-input', target: "spkr-#{spkr.id}" %>
+              </div>
 
-          </div>
+              <label>
+                <div class="spkr-image-upload-div">
 
-          <div class="spkr-color-show-more link-txt" target="color-spkr-<%= spkr.id %>">See more colors...</div>
+                  <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+                    <% if spkr.image.present? %>
+                      style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                    <% elsif spkr.user.image.present? %>
+                      style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                    <% else %>
+                      style="background-image: url(<%= asset_url('user.svg') %>)"
+                    <% end %>
+                    >
+                  </div>
+                  <div class="spkr-image-upload-btn-and-text">
+                    <span class="btn btn-dark">Select Profile Image</span>
+                    <div id="spkr-<%= spkr.id %>-file-name-div" class="text-success mt-2"></div>
+                    <span style="display:none;">
+                      <%= f.file_field :image, accept: 'image/png,image/jpeg', target: "spkr-#{spkr.id}" %>
+                    </span>
+                  </div>
 
+                </div>
+              </label>
+
+
+
+
+
+              <div>
+                <label for="name" class="mb-4px">Edit your bio:</label>
+              </div>
+              <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
+
+
+              <div class="spkr-color-edit">
+                <div><label for="color" class="mb-4px">Edit your speech bubble style:</label></div>
+
+
+                <div class="spkr-color-scroll spkr-color-scroll-short" target="spkr-<%= spkr.id %>" id="color-spkr-<%= spkr.id %>">
+
+                  <% 70.times do |i| %>
+                    <div class="spkr-color-option">
+                      <input class="spkr-color-radio" id="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>" type="radio" name="color" value="<%= i + 1 %>" <%= spkr.color.to_i == (i + 1) ? 'checked' : '' %> >
+                      <label for="spkr-<%= spkr.id %>-color-option-<%= i + 1 %>">
+                        <div class="spkr-color-example msg-<%= i + 1 %>"><div class="tlk-bubble"><%= i + 1 %></div></div>
+                      </label>
+                    </div>
+                  <% end %>
+
+                </div>
+
+                <div class="spkr-color-show-more link-txt" target="color-spkr-<%= spkr.id %>">See more colors...</div>
+
+              </div>
+
+              <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary tlk-btn-unsaved' %>
+              </div>
+
+            <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
+            <div>
+              <p id="leave-tlk" class="fake-link tlk-leave danger-link-txt" target="spkr-leave-<%= spkr.id %>">Leave this Taaalk</p>
+            </div>
+            <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off tlk-leave-links">
+              <strong><%= link_to 'Leave & delete all your messages.', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"}, class: "danger-link-txt" %></strong><br>
+              <strong><%= link_to 'Leave & keep all your messages. (You can delete your messages later.)', url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"}, class: "danger-link-txt" %></strong>
+            </div>
+          <% end %>
         </div>
-
-        <%= f.submit "Update Your Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary tlk-btn-unsaved' %>
-        </div>
-
-      <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
-      <div>
-        <p id="leave-tlk" class="fake-link tlk-leave danger-link-txt" target="spkr-leave-<%= spkr.id %>">Leave this Taaalk</p>
       </div>
-      <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off tlk-leave-links">
-        <strong><%= link_to 'Leave & delete all your messages.', url_for(action: :destroy, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY delete all messages you have written in this Taaalk (not your other Taaalks). (If you do not want to do this, select the 'KEEP messages' option.) If you want to remove yourself from this Taaalk and delete all your messages, confirm below:"}, class: "danger-link-txt" %></strong><br>
-        <strong><%= link_to 'Leave & keep all your messages. (You can delete your messages later.)', url_for(action: :hide_spkr, controller: :spkrs, id: spkr.id), method: :get, data: {confirm: "Thise will permanently remove you from this Taaalk, but keep your messages. Confirm below:"}, class: "danger-link-txt" %></strong>
-      </div>
-      <% end %>
     <% elsif spkr.user == current_user && spkr.hide == true %>
       <div>
         <div class="tlk-note">

@@ -8,15 +8,15 @@
 
 
       <div>
-        <label for="name">Tell people what they should Taaalk to you about:</label>
+        <label for="name" class="mb-4px">Tell people what they should Taaalk to you about:</label>
       </div>
       <%= f.rich_text_area :tlk_with_me, id: "biog-spkr-#{current_user.id}", target: "spkr-#{current_user.id}" %>
 
       <div>
-        <label for="name">Edit your name:</label>
+        <label for="name" class="mb-4px">Edit your name:</label>
       </div>
       <div>
-      <%= f.text_field :username, id: "name-spkr-#{current_user.id}", class: 'spkr-edit', target: "spkr-#{current_user.id}" %>
+      <%= f.text_field :username, id: "name-spkr-#{current_user.id}", class: 'spkr-edit fw-text-input', target: "spkr-#{current_user.id}" %>
       </div>
 
       <label>
