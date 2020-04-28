@@ -1,6 +1,8 @@
 <div class="index-background">
 
-  <div id="index-background-color" class="bg-fade mb-40-mob-12 bdr-btm-drk-mob-none">
+
+  <div id="index-background-color" class="bg-fade mb-40-mob-12 bdr-btm-drk-mob-none bg-image-index">
+  <!-- <div id="index-background-color" class="mb-40-mob-12 bdr-btm-drk-mob-none bg-image-index" style="background-image: url(<%#= asset_url('background.svg') %>);"> -->
     <div id="tlk-explain-div" class="index-container top-index-container tlk-explain-div-small">
       <div class="index-border-btm-container">
         <div class="index-header-container">
@@ -13,6 +15,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="index-container">
 
     <%= will_paginate @tlks, inner_window: 2, outer_window: 1 %>
