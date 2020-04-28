@@ -133,7 +133,7 @@
   }
   .tlk-image {
     min-height: 180px;
-    padding: 0 8px;
+    padding: 0 12px;
   }
   .tlk-title {
     padding: 40px 0;
@@ -342,7 +342,8 @@
 @media (max-width: 768px) {
   .msg-preview {
     .tlk-bubble {
-      max-width: calc(100% - 16px);
+      max-width: 100%;
+      // max-width: calc(100% - 16px);
     }
   }
   .tlk-bubble {
@@ -350,7 +351,7 @@
     margin-bottom: 6px;
     border-radius: 20px;
     font-size: 18px;
-    max-width: calc(100vw - 16px);
+    max-width: calc(100vw - 24px);
   }
   .tlk-start-msg {
     padding: 0 8px;
@@ -360,7 +361,7 @@
 
 @media (max-width: 872px) {
   .tlking-container {
-    padding: 0 8px;
+    padding: 0 12px;
   }
   .tlk-blob-spkr {
     height: 32px;
@@ -551,7 +552,7 @@
     }
   }
   .index-container {
-    padding: 8px;
+    padding: 8px 12px;
   }
   .tlk-card-block {
     padding: 16px 8px 8px 8px;
@@ -979,7 +980,7 @@
 
 @media (max-width: 768px) {
   .create-index-container {
-   padding: 0 8px;
+   padding: 0 12px;
   }
   .tlk-title-edit {
     font-size: 32px !important;
