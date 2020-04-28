@@ -9,7 +9,7 @@
         <% if current_user.present? %>
           <%= simple_form_for(@tlk, remote: true) do |f| %>
             <%= f.label :title, "Taaalk Title:" %><br />
-            <%= f.text_field :title, class: 'tlk-title-edit', target: 'update-tlk' %>
+            <%= f.text_field :title, class: 'tlk-title-edit', target: 'update-tlk', autocomplete: 'off' %>
             <div id="tlk-note-margin-top-btm">Your Taaalk will have an invite link and code.</div>
             <div>
               <%= f.button :submit, "Start Your Taaalk", class: 'btn tlk-btn-unsaved' %>
