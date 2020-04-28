@@ -118,14 +118,14 @@
   // border: 2px dashed #343a40;
   border-radius: 4px;
   display: inline-block;
-  padding: 4px;
+  padding: 2px 4px;
   font-size: 24px;
   font-weight: 700;
   margin: 0 0 16px 0;
   color: #020202;
   border-width: 2px;
   border-style: inset;
-  border-color: #EA0000;
+  border-color: blue;
 }
 
 @media (max-width: 768px) {
@@ -154,7 +154,7 @@
     color: #020202;
     border-width: 2px;
     border-style: inset;
-    border-color: #EA0000;
+    border-color: blue;
   }
   .title-input {
     width: 100%;
@@ -215,7 +215,7 @@
 .spkr-edit-box {
   background-color: #F5F5F5;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: 0 0 4px 4px;
   .tlk-bubble {
     width: 40px;
     height: 40px;

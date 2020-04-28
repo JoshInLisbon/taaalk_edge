@@ -293,7 +293,7 @@ a {
 
 .fw-text-input {
   width: 38%;
-  padding: 8px 0 8px 8px;
+  padding: 6px 0 6px 6px;
 }
 
 @media (max-width: 425px) {
@@ -474,6 +474,10 @@ a {
   color: white;
 }
 
+.mb-4px {
+  margin-bottom: 4px !important;
+}
+
 .mb-24 {
   margin-bottom: 24px;
 }
@@ -594,44 +598,57 @@ a {
 }
 
 .bg-fade {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1D1D48+0,2c2c57+100 */
   background: #2c2c57; /* Old browsers */
+  // background: -moz-linear-gradient(left,  #1D1D48 0%, #2c2c57 100%); /* FF3.6-15 */
+  // background: -webkit-linear-gradient(left,  #1D1D48 0%,#2c2c57 100%); /* Chrome10-25,Safari5.1-6 */
+  // background: linear-gradient(to right,  #1D1D48 0%,#2c2c57 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1D1D48', endColorstr='#2c2c57',GradientType=1 ); /* IE6-9 */
+
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
+  // background: #2c2c57; /* Old browsers */
   // background: -moz-linear-gradient(left,  #2c2c57 1%, #2c2c57 43%, #150d2b 100%); /* FF3.6-15 */
   // background: -webkit-linear-gradient(left,  #2c2c57 1%,#2c2c57 43%,#150d2b 100%); /* Chrome10-25,Safari5.1-6 */
   // background: linear-gradient(to right,  #2c2c57 1%,#2c2c57 43%,#150d2b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#150d2b',GradientType=1 ); /* IE6-9 */
 }
 
-@media (max-width: 768px) {
-  .bg-fade {
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
-    background: #2c2c57; /* Old browsers */
-    // background: -moz-linear-gradient(left,  #2c2c57 1%, #150d2b 100%); /* FF3.6-15 */
-    // background: -webkit-linear-gradient(left,  #2c2c57 1%, #150d2b 100%); /* Chrome10-25,Safari5.1-6 */
-    // background: linear-gradient(to right,  #2c2c57 1%, #150d2b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#150d2b',GradientType=1 ); /* IE6-9 */
-  }
-}
+// @media (max-width: 768px) {
+//   .bg-fade {
+//     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
+//     background: #2c2c57; /* Old browsers */
+//     // background: -moz-linear-gradient(left,  #2c2c57 1%, #150d2b 100%); /* FF3.6-15 */
+//     // background: -webkit-linear-gradient(left,  #2c2c57 1%, #150d2b 100%); /* Chrome10-25,Safari5.1-6 */
+//     // background: linear-gradient(to right,  #2c2c57 1%, #150d2b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//     // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#150d2b',GradientType=1 ); /* IE6-9 */
+//   }
+// }
 
 .bg-green-fade {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
   background: #2c2c57; /* Old browsers */
+  // background: -moz-linear-gradient(left,  #1D1D48 0%, #2c2c57 100%); /* FF3.6-15 */
+  // background: -webkit-linear-gradient(left,  #1D1D48 0%,#2c2c57 100%); /* Chrome10-25,Safari5.1-6 */
+  // background: linear-gradient(to right,  #1D1D48 0%,#2c2c57 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1D1D48', endColorstr='#2c2c57',GradientType=1 ); /* IE6-9 */
+
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
+  // background: #2c2c57; /* Old browsers */
   // background: -moz-linear-gradient(left,  #2c2c57 1%, #2c2c57 43%, #150d2b 100%); /* FF3.6-15 */
   // background: -webkit-linear-gradient(left,  #2c2c57 1%,#2c2c57 43%,#150d2b 100%); /* Chrome10-25,Safari5.1-6 */
   // background: linear-gradient(to right,  #2c2c57 1%,#2c2c57 43%,#150d2b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#150d2b',GradientType=1 ); /* IE6-9 */
 }
 
-@media (max-width: 768px) {
-  .bg-green-fade {
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
-    background: #2c2c57; /* Old browsers */
-    // background: -moz-linear-gradient(left,  #2c2c57 1%, #150d2b 100%); /* FF3.6-15 */
-    // background: -webkit-linear-gradient(left,  #2c2c57 1%, #150d2b 100%); /* Chrome10-25,Safari5.1-6 */
-    // background: linear-gradient(to right,  #2c2c57 1%, #150d2b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#150d2b',GradientType=1 ); /* IE6-9 */
-  }
-}
+// @media (max-width: 768px) {
+//   .bg-green-fade {
+//     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
+//     background: #2c2c57; /* Old browsers */
+//     // background: -moz-linear-gradient(left,  #2c2c57 1%, #150d2b 100%); /* FF3.6-15 */
+//     // background: -webkit-linear-gradient(left,  #2c2c57 1%, #150d2b 100%); /* Chrome10-25,Safari5.1-6 */
+//     // background: linear-gradient(to right,  #2c2c57 1%, #150d2b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//     // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#150d2b',GradientType=1 ); /* IE6-9 */
+//   }
+// }
 
 trix-editor, .trix-content {
   a {
@@ -651,13 +668,14 @@ trix-editor, .trix-content {
 }
 
 .bg-footer {
-  background-color: #150d2b;
+  background-color: #2c2c57;
 }
 
 .div-footer {
   color: white;
+  // font-size: 15px;
   p {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   a, #josh-read-more {
     color: white;
@@ -706,13 +724,13 @@ trix-editor, .trix-content {
 
 .josh-info {
   font-size: 17px !important;
-  border-top: 4px solid #2c2c57;
+  border-top: 4px solid white;
   border-bottom: 4px solid white;
   padding: 16px 0 0 0;
   max-width: 434px;
   margin-bottom: 16px;
   li, p {
-    opacity: 0.7;
+    opacity: 0.8;
   }
   a {
     text-decoration: underline;

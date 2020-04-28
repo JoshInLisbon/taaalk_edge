@@ -35,19 +35,19 @@
     <div class="create-index-container">
       <div class="p-0 user-container mt-24">
         <div>
-          <p>Your email:</p>
+          <p class="mb-4px">Your email:</p>
           <%= f.text_field :email, class: "fw-text-input" %>
         </div>
         <div>
-          <p>Default Taaalk bio:</p>
+          <p class="mb-4px">Default Taaalk bio:</p>
           <%= f.rich_text_area :biog %>
         </div>
-        <p>People should Taaalk with you about:</p>
+        <p class="mb-4px">People should Taaalk with you about:</p>
         <%= f.rich_text_area :tlk_with_me %>
         <% if @user.tlk_with_me.present? %>
           <p class="create-remove-details mb-4"><%= link_to "Remove yourself from the \"Taaalk with me\" section", destroy_tlk_with_me_user_page_path(current_user), class: "danger-link" %></p>
         <% end %>
-        <p>Default 'Taaalk Request' message:</p>
+        <p class="mb-4px">Default 'Taaalk Request' message:</p>
         <%= f.rich_text_area :tlk_with_you %>
         <%= f.submit "Update Your Details", id: "spkr-#{@user.id}", class: 'btn-spkr-edit btn create-user-update-btn' %>
       </div>
@@ -62,11 +62,11 @@
     <%= form_with model: current_user, url: :update_password do |fi| %>
       <p><strong>Change your password:</strong></p>
       <p>You'll have to log in again after changing your password.</p>
-      <p class="mb-0">Your <strong>current</strong> password:</p>
+      <p class="mb-4px">Your <strong>current</strong> password:</p>
       <%= fi.password_field :current_password, class: "fw-text-input" %>
-      <p class="mb-0">Your <strong>new</strong> password:</p>
+      <p class="mb-4px">Your <strong>new</strong> password:</p>
       <%= fi.password_field :new_password, class: "fw-text-input" %>
-      <p class="mb-0"><strong>Confirm</strong> your new password:</p>
+      <p class="mb-4px"><strong>Confirm</strong> your new password:</p>
       <%= fi.password_field :confirm_new_password, class: "fw-text-input" %>
       <div>
         <%= fi.submit "Change your password", class: "fake-link-from-btn link-txt" %>
@@ -76,7 +76,7 @@
     <p><strong>Delete your account:</strong></p>
     <p>This will delete all your Taaalks and messages.</p>
     <p>It will not delete Taaalks you didn't start, but it will delete your messages in them.</p>
-    <p class="mb-0">Enter your password:</p>
+    <p class="mb-4px">Enter your password:</p>
     <%= form_for @user, method: :delete do |fo| %>
       <%= fo.password_field :password, class: "fw-text-input" %>
       <div>

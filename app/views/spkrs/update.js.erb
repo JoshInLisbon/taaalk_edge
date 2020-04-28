@@ -17,4 +17,5 @@ var colors = document.querySelectorAll('.spkr-color-<%= @spkr.id %>');
 colors.forEach(color => {
   color.children[0].classList = 'msg-<%= @spkr.color %>';
 });
-
+var editColor = document.querySelector('.edit-spkr-color-<%= @spkr.id %>')
+editColor.children[0].classList = 'edit-msg-<%= @spkr.color %>';
