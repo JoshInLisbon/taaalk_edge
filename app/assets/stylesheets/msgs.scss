@@ -31,14 +31,14 @@
 }
 
 .spkr-color-scroll-short {
-  max-height: 80px !important;
+  max-height: 78px !important;
   overflow: hidden !important;
-  margin-bottom: 16px;
+  margin-bottom: 24px !important;
 }
 
 .spkr-color-show-more {
   display: inline-block;
-  margin: 0 0 16px 0;
+  margin: 0 0 4px 0;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
@@ -48,6 +48,7 @@
 .spkr-color-scroll {
   padding-left: 20px;
   padding-top: 4px;
+  margin-bottom: 8px;
 }
 
 @media (max-width: 768px) {
