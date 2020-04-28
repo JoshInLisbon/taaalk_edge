@@ -6,10 +6,10 @@ const toggleColorSpace = () => {
     btn.addEventListener('click', (event) => {
       var colors = document.querySelector(`#${colorBtnTarget}`);
       colors.classList.toggle('spkr-color-scroll-short');
-      if (btn.innerText == "Show more colors...") {
-        btn.innerText = "Show less"
+      if (btn.innerText == "See more colors...") {
+        btn.innerText = "See less"
       } else {
-        btn.innerText = "Show more colors..."
+        btn.innerText = "See more colors..."
       }
     });
   });
