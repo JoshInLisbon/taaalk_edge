@@ -43,7 +43,7 @@
       <div>
         <%= f.submit "Update Your Details", id: "spkr-#{current_user.id}", class: 'btn-spkr-edit btn btn-secondary create-user-update-btn' %>
       </div>
-      <p id="p-spkr-<%= current_user.id %>" class="tlk-p-nochange">Changes not saved. Press '<%= current_user.tlk_with_me.present? ? 'Update' : 'Leave' %> Your Details' to save.</p>
+      <p id="p-spkr-<%= current_user.id %>" class="tlk-p-nochange">Changes not saved. Press 'Update Your Details' to save.</p>
       <% if @twm_present %>
         <p class="create-remove-details"><%= link_to "Remove your details", destroy_tlk_with_me_path(current_user), class: "danger-link" %></p>
       <% end %>
