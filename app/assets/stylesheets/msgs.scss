@@ -23,15 +23,15 @@
   input[type="radio"]:checked+label {
     .tlk-bubble {
       outline: -webkit-focus-ring-color auto 5px;
-      outline-color: -webkit-focus-ring-color;
-      outline-style: auto;
+      outline-style: dashed;
+      outline-color: #00CD4B;
       outline-width: 5px;
     }
   }
 }
 
 .spkr-color-scroll-short {
-  max-height: 78px !important;
+  max-height: 80px !important;
   overflow: hidden !important;
   margin-bottom: 24px !important;
 }
@@ -49,6 +49,9 @@
   padding-left: 20px;
   padding-top: 4px;
   margin-bottom: 8px;
+  input[type="radio"], input[type="checkbox"] {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
