@@ -8,6 +8,9 @@ gem 'rails', github: "rails/rails", branch: "6-0-stable"
 
 # TAAALK ADDITIONS
 
+# amazon S3
+gem "aws-sdk-s3", require: false
+
 # Font Awesome
 gem 'font-awesome-sass', '~> 5.12.0'
 # Pagination
