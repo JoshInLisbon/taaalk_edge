@@ -28,7 +28,7 @@
             <div
             <% if tlk.image.present? %>
               class="tlk-image-index card-img-top img-fluid tlk-image-present"
-              style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(tlk.image, resize: '800x300', auto_orient: true) %>);
+              style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(tlk.image, combine_options: { resize: '800x300', auto_orient: true }) %>);
               background-size: cover;
               background-repeat: no-repeat;
               background-position: center;"

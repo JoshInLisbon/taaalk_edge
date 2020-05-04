@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_rich_text :tlk_with_me
   has_rich_text :tlk_with_you
 
+  validates :username, presence: true
+  validates :email, presence: true
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
