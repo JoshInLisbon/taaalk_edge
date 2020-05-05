@@ -1,5 +1,3 @@
-Hi <%= @follow.user.username %>,
-
-<%= @msg.spkr.name %> has written a new message in the Taaalk "<%= @tlk.title %>".
+Hi <%= @follow.user.username %>. <%= @msg.spkr.name %> has written a new message in the Taaalk "<%= @tlk.title %>".
 
 You can read it here: <%= show_tlk_url(@tlk, anchor: 'new') %>
