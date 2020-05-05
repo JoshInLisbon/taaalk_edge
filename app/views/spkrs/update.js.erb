@@ -8,7 +8,7 @@ names.forEach(name => {
 });
 <% if @spkr.image.present? %>
   images.forEach(image => {
-    image.style = 'background-image: url(<%= rails_blob_url(@spkr.image) %>)'
+    image.style = 'background-image: url(<%= url_for(@spkr.image.variant(combine_options: { resize: "104x104^", auto_orient: true, gravity: "center" })) %>)'
   });
 <% end %>
 bio.innerHTML = bioInput.innerHTML

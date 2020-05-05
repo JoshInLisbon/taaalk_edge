@@ -14,7 +14,7 @@
         <div class="spkr-image-and-name">
           <div class="spkr-bio-image spkr-image"
             <% if @user.image.present? %>
-              style="background-image: url(<%= rails_blob_url(@user.image) %>)"
+              style="background-image: url(<%= url_for(@user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
             <% else %>
               style="background-image: url(<%= asset_url('user.svg') %>)"
             <% end %>

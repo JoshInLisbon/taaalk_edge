@@ -8,7 +8,7 @@
 
 <div class="tlk-image"
 <% if @tlk.image.present? %>
-  style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(@tlk.image) %>);
+  style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= url_for(@tlk.image.variant(combine_options: { resize_to_limit: [1600, nil], auto_orient: true, gravity: "center" })) %>);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;"
@@ -34,12 +34,12 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div>
-          <p><strong>Email:</strong></p>
+          <p class="mb-4px"><strong>Email:</strong></p>
           <%= f.email_field :email, autocomplete: "email", class: "fw-text-input" %>
         </div>
 
         <div class="field">
-          <p><strong>Password:</strong></p>
+          <p class="mb-4px"><strong>Password:</strong></p>
           <%= f.password_field :password, autocomplete: "current-password", class: "fw-text-input" %>
         </div>
 
@@ -64,8 +64,8 @@
           </div>
         <% end %>
 
-        <p><%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
-        <p>(Don't want to join this Taaalk, but do want to log in? Visit the <%= link_to "normal  log in page", new_user_session_path %>.)</p>
+        <p><%= link_to "Forgot your password?", new_password_path(resource_name), class: "link-txt" %></p>
+        <p>(Don't want to join this Taaalk, but do want to log in? Visit the <%= link_to "normal  log in page", new_user_session_path, class: "link-txt" %>.)</p>
       <% end %>
     </div>
   </div>
@@ -83,34 +83,34 @@
             <%= render "devise/shared/error_messages", resource: resource %>
             <%= fields_for @spkr do |fi| %>
               <div>
-                <p><strong>Your full name</strong> (or a name/username of your choice):</p>
+                <p class="mb-4px"><strong>Your full name</strong> (or a name/username of your choice):</p>
                 <%= fi.text_field :name, class: "fw-text-input" %>
               </div>
               <div>
-                <p><strong>Your bio</strong> (some information about you, so people understand why what you say is relevant):</p>
+                <p class="mb-4px"><strong>Your bio</strong> (some information about you, so people understand why what you say is relevant):</p>
                 <%= fi.rich_text_area :biog %>
               </div>
             <% end %>
             <div>
-              <p><strong>Your email</strong> (so we can send you updates if someone writes in this Taaalk):</p>
+              <p class="mb-4px"><strong>Your email</strong> (so we can send you updates if someone writes in this Taaalk):</p>
               <%= f.email_field :email, autocomplete: "email", class: "fw-text-input" %>
             </div>
             <div>
-              <p><strong>Password:</strong></p>
+              <p class="mb-4px"><strong>Password:</strong></p>
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %>
               <%= f.password_field :password, autocomplete: "new-password", class: "fw-text-input" %>
             </div>
             <div>
-              <p><strong>Confirm</strong> your password:</p>
+              <p class="mb-4px"><strong>Confirm</strong> your password:</p>
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "fw-text-input" %>
             </div>
             <%= f.hidden_field :tlk_id, :value => @tlk.id %>
             <div>
               <%= f.submit "Join This Taaalk", class: "btn-spkr-edit btn create-user-update-btn mb-3" %>
             </div>
-            <p>Don't want to join this Taaalk, but want to sign up? Visit the <%= link_to "normal sign up page", new_registration_path(resource_name) %>.</p>
+            <p>Don't want to join this Taaalk, but want to sign up? Visit the <%= link_to "normal sign up page", new_registration_path(resource_name), class: "link-txt" %>.</p>
           <% end %>
         </div>
       </div>
@@ -134,9 +134,9 @@
           <div class="spkr-image-and-name">
             <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
               <% if spkr.image.present? %>
-                style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                style="background-image: url(<%= url_for(spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
               <% elsif spkr.user.image.present? %>
-                style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                style="background-image: url(<%= url_for(spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
               <% else %>
                 style="background-image: url(<%= asset_url('user.svg') %>)"
               <% end %>
