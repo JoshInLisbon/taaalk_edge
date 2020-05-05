@@ -1,27 +1,16 @@
-Hi <%= @requesting_user.username %>,
-
-<%= @requested_user.username %> has accepted your Taaalk request ("<%= @tlk.title %>").
-
-You will be sent a seperate email when <%= @requested_user.username %> writes a message in the Taaalk.
+Hi <%= @requesting_user.username %>. <%= @requested_user.username %> has accepted your Taaalk request ("<%= @tlk.title %>").
 
 /// Write
-
 To write in your Taaalk:
-
 <%= show_tlk_url(@tlk) %> (while logged in)
 
 /// Share
-
 To share your Taaalk with readers:
-
 <%= show_tlk_url(@tlk) %>
 
 /// Tips
-
-You will receive emails when someone writes in your Taaalk, so keep an eye out for them.
-
+You will be sent an email every time <%= @requested_user.username %> writes a message in this Taaalk.
 Customise your profile for this Taaalk by clicking 'Edit Taaalk Details'.
-
 Make your Taaalk stand out by uploading a 'Taaalk Background Image'.
 
 Have fun Taaalking.

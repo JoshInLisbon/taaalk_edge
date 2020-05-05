@@ -60,6 +60,10 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "taaalk_edge_production"
 
+  #Mailer
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'https://taaalk.co' }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -111,5 +115,6 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Devise mailer
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'https://taaalk.co' }
 end

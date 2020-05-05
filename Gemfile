@@ -32,6 +32,8 @@ gem 'devise'
 gem 'bootstrap', '~> 4.4.1'
 # Jquery for Bootstrap
 gem 'jquery-rails'
+# Sendgrid for email
+gem 'sendgrid-ruby'
 
 # END TAAALK ADDITIONS
 
