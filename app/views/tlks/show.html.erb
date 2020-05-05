@@ -15,9 +15,9 @@
         <div class="tlk-blob-spkr">
           <div class="tlk-tlking-image spkr-image image-spkr-<%= msg.spkr.id %>"
             <% if msg.spkr.image.present? %>
-              style="background-image: url(<%= rails_blob_url(msg.spkr.image) %>)"
+              style="background-image: url(<%= url_for(msg.spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
             <% elsif msg.spkr.user.image.present? %>
-              style="background-image: url(<%= rails_blob_url(msg.spkr.user.image) %>)"
+              style="background-image: url(<%= url_for(msg.spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
             <% else %>
               style="background-image: url(<%= asset_url('user.svg') %>)"
             <% end %>

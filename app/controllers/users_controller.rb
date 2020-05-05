@@ -109,8 +109,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    # params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_me, :tlk_with_you, :password_for_delete)
-    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_you, :password_for_delete)
+    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_you, :password_for_delete, :tlk_with_me)
   end
 
   def user_twm_params
@@ -162,9 +161,9 @@ class UsersController < ApplicationController
 
   def spkrs_update_after_user_update
     current_user.spkrs.each do |spkr|
-      if spkr.name == @old_name && strip_tags(spkr.biog.to_s) == @old_biog || spkr.name == @old_name && !spkr.biog.present?
+      if spkr.name == @old_name
         spkr.name = @new_name
-        spkr.biog = @new_biog
+        spkr.biog = @new_biog if strip_tags(spkr.biog.to_s) == @old_biog || !spkr.biog.present?
         spkr.save!
       end
     end

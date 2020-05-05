@@ -13,9 +13,9 @@
       <div class="spkr-image-and-name">
         <div class="spkr-bio-image spkr-image image-spkr-<%= @spkr.id %>"
           <% if @spkr.image.present? %>
-            style="background-image: url(<%= rails_blob_url(@spkr.image) %>)"
+            style="background-image: url(<%= url_for(@spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
           <% elsif @spkr.user.image.present? %>
-            style="background-image: url(<%= rails_blob_url(@spkr.user.image) %>)"
+            style="background-image: url(<%= url_for(@spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
           <% else %>
             style="background-image: url(<%= asset_url('user.svg') %>)"
           <% end %>
@@ -43,11 +43,11 @@
       <div class="spkr-image-and-name">
         <div class="spkr-bio-image spkr-image image-spkr-<%= @spkr.id %>"
           <% if @spkr.edited_image.present? %>
-            style="background-image: url(<%= rails_blob_url(@spkr.edited_image) %>)"
+            style="background-image: url(<%= url_for(@spkr.edited_image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
           <% elsif @spkr.image.present? %>
-            style="background-image: url(<%= rails_blob_url(@spkr.image) %>)"
+            style="background-image: url(<%= url_for(@spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
           <% elsif @spkr.user.image.present? %>
-            style="background-image: url(<%= rails_blob_url(@spkr.user.image) %>)"
+            style="background-image: url(<%= url_for(@spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
           <% else %>
             style="background-image: url(<%= asset_url('user.svg') %>)"
           <% end %>

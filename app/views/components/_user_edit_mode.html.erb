@@ -9,7 +9,7 @@
       <div class="user-container user-border-bottom">
         <div class="user-image"
           <% if @user.image.present? %>
-            style="background-image: url(<%= rails_blob_url(@user.image) %>)"
+            style="background-image: url(<%= url_for(@user.image.variant(combine_options: { resize: '200x200^', auto_orient: true, gravity: "center" })) %>)"
           <% else %>
             style="background-image: url(<%= asset_url('user.svg') %>)"
           <% end %>

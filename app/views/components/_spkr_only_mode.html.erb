@@ -2,7 +2,7 @@
 
 <div class="tlk-image"
 <% if @tlk.image.present? %>
-  style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= rails_blob_url(@tlk.image) %>);
+  style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= url_for(@tlk.image.variant(combine_options: { resize_to_limit: [1600, nil], auto_orient: true, gravity: "center" })) %>);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;"
@@ -27,9 +27,9 @@
           <div class="spkr-image-and-name">
             <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
               <% if spkr.image.present? %>
-                style="background-image: url(<%= rails_blob_url(spkr.image) %>)"
+                style="background-image: url(<%= url_for(spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
               <% elsif spkr.user.image.present? %>
-                style="background-image: url(<%= rails_blob_url(spkr.user.image) %>)"
+                style="background-image: url(<%= url_for(spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
               <% else %>
                 style="background-image: url(<%= asset_url('user.svg') %>)"
               <% end %>
