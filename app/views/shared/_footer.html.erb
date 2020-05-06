@@ -14,7 +14,29 @@
 <% else %>
   <div class="wide-div-footer internal-div-footer">
 <% end %>
-    <p>Give Feedback</p>
+    <p><%= link_to "Give feedback", "/t/taaalk-feedback" %></p>
+    <div class="taaalk-about josh-info-closed">
+      <p><strong>So why did I build Taaalk?</strong></p>
+      <p>The world is filled with people who know lots of cool and weird stuff. When it comes to interviews, traditionally it's been the case that a journalist has to take an interest in what you do before you get one. That doesn't happen too often, so it's probably the case that the world is under-interviewed. Taaalk is here to change that. INTERVIEWS FOR EVERYONE.</p>
+      <p>But the word "interview" doesn't really capture what Taaalk is about. It's a bit too formal, and implies there is one person with all the knowledge (the interviewee) and another person getting it from them (the journalist/interviewer). Taaalk can be used more flexibly than that. Four people (a Taaalk can have any number of people) who know a lot about a subject can have an extremely nerdy and detailed Taaalk about it. Three people who don't know too much about anything can blab away to each other, just because they enjoy blabbing. And you don't even need to invite anyone to your Taaalk, if you want to write a poem every day, or share a continuous stream of thoughts about a subject of your choice, you can use Taaalk as a place to do that; monologues are ok.</p>
+      <p>And Taaalk is built for you to be even more creative than that. You can invite yourself to your own Taaalk, change the second-you's details and have an imaginary conversation. You can invite yourself to a Taaalk any number of times, and write a whole play made up of the dialogue of imaginary characters. </p>
+      <p><strong>If you don't have anyone to Taaalk with today</strong>, you can leave your details on the <%= link_to "Start a Conversation", new_tlk_path %> page. This means someone looking to Taaalk can introduce themselves to you. And you can introduce yourself to someone else who has left their details.</p>
+      <p>More seriously, <strong>we have all grown up in a digital world that is a bit awkward</strong>. In the real world you don't walk around shouting out random facts and opinions, instead you talk to people. And in the real world while you're talking, hundreds of random people don't jump into your conversation. The best chats have a healthy level of intimacy. Taaalk tries to recreate these real world properties online. Firstly, it is all about talking (taaalking). Back and forths. This makes things feel a bit more natural than shouting out snip-its of thoughts and ideas. There's also no character limit and you can save drafts before you reply, so it's a place for deep conversations. You might find that you enjoy Taaalking even if you have normally found yourself to be a bit too shy to fully enjoy other platforms. Secondly, though anyone can read a Taaalk, only the people the "Taaalk Owner" (the person who started the Taaalk) chooses can join in the conversation. This keeps things intimate.</p>
+      <p><strong>What you say matters (and might embarrass you).</strong> Because of this Taaalk comes with features to make you feel safe sharing your thoughts. Firstly, even if you are not the Taaalk Owner, you can leave a Taaalk and delete all your messages at the same time. The Taaalk will still exist, but what you've written will not. If you are a Taaalk Owner you can delete your Taaalk at any time. You can delete your account, deleting all messages you've written on the Taaalk platform and all the Taaalks you've started at the same time. It's possible to edit or delete an individual message after you have written it. And because it's possible to edit a message after someone has responded to it, we flag up when a message has been edited, so if you are the responder, you don't have to worry about someone changing the question after you've written a response to it. We hope these measures make you feel safe to share yourself on Taaalk, and if you have any more ideas, please come to the <%= link_to "Taaalk feedback conversation", "/t/taaalk-feedback" %> to share them.</p>
+    </div>
+    <p id="taaalk-read-about">About Taaalk</p>
+    <script type="text/javascript">
+      var taaalkAbout = document.querySelector('.taaalk-about');
+      var taaalkAboutBtn = document.querySelector('#taaalk-read-about')
+      taaalkAboutBtn.addEventListener('click', (event) => {
+        taaalkAbout.classList.toggle('josh-info-closed');
+        if (taaalkAboutBtn.innerText == 'About Taaalk') {
+          taaalkAboutBtn.innerText = 'Show less'
+        } else {
+          taaalkAboutBtn.innerText = 'About Taaalk'
+        }
+      });
+    </script>
     <div class="josh-info josh-info-closed">
       <p>Hi, my name is Joshua and I built and designed Taaalk. I'm a product focused full stack developer and before that I was an analyst at one of Europe's top VC funds. I'm looking to be employed in either field, so please <a href="mailto:joshua@taaalk.co">get in touch with me</a> if you're hiring.</p>
       <p><strong>Other projects:</strong></p>
@@ -23,16 +45,16 @@
       <p><strong>Psychology: </strong>(Coming soon) [Book] The Mechanics of Mental Health. <a href="https://twitter.com/JoshSummers1234">Follow me on Twitter</a> for updates.</p>
       <p><strong>Technology: </strong>(Coming soon) [Book] How to Analyse Like a Venture Capitalist. <a href="https://twitter.com/JoshSummers1234">Twitter</a> for updates.</p>
     </div>
-    <p id="josh-read-more">Hire Me + See My Other Projects</p>
+    <p id="josh-read-more">Hire me & see my other projects</p>
     <script type="text/javascript">
       var joshInfo = document.querySelector('.josh-info');
       var joshInfoBtn = document.querySelector('#josh-read-more')
       joshInfoBtn.addEventListener('click', (event) => {
         joshInfo.classList.toggle('josh-info-closed');
-        if (joshInfoBtn.innerText == 'Hire Me + See My Other Projects') {
+        if (joshInfoBtn.innerText == 'Hire me & see my other projects') {
           joshInfoBtn.innerText = 'Show Less'
         } else {
-          joshInfoBtn.innerText = 'Hire Me + See My Other Projects'
+          joshInfoBtn.innerText = 'Hire me & see my other projects'
         }
       });
     </script>

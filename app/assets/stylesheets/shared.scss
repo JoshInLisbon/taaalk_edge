@@ -677,7 +677,7 @@ trix-editor, .trix-content {
   p {
     margin-bottom: 12px;
   }
-  a, #josh-read-more {
+  a, #josh-read-more, #taaalk-read-about {
     color: white;
     opacity: 0.9;
     cursor: pointer;
@@ -722,7 +722,7 @@ trix-editor, .trix-content {
   opacity: 0.8;
 }
 
-.josh-info {
+.josh-info, .taaalk-about {
   font-size: 17px !important;
   border-top: 4px solid white;
   border-bottom: 4px solid white;
@@ -730,7 +730,7 @@ trix-editor, .trix-content {
   max-width: 434px;
   margin-bottom: 16px;
   li, p {
-    opacity: 0.8;
+    opacity: 0.9;
   }
   a {
     text-decoration: underline;
