@@ -17,7 +17,7 @@ class TlksController < ApplicationController
   def show
     @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
     @msgs = @tlk.msgs.sort_by(&:created_at)
-    @title = @tlk.title
+    @title = "#{@tlk.title} - #{spkr_names}"
     @user_spkrs = Spkr.where(tlk: @tlk, user: current_user, hide: false)
     @msg = Msg.new()
     new_spkr_on_invite
@@ -76,6 +76,18 @@ class TlksController < ApplicationController
   end
 
   private
+
+  def spkr_names
+    spkr_name_list = ""
+    @tlk.spkrs.each_with_index do |spkr, i|
+      if @tlk.spkrs.length == 1
+        spkr_name_list << spkr.name
+      else
+        i + 1 == @tlk.spkrs.length ? spkr_name_list << "& #{spkr.name}" : spkr_name_list << "#{spkr.name}, "
+      end
+    end
+    spkr_name_list
+  end
 
   def password_param
     params.require(:tlk).permit(:password)

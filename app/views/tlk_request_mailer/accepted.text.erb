@@ -1,8 +1,11 @@
-Hi <%= @requesting_user.username %>. <%= @requested_user.username %> has accepted your Taaalk request ("<%= @tlk.title %>").
+Hi <%= @requesting_user.username %>.
+
+<%= @requested_user.username %> has accepted your Taaalk request ("<%= @tlk.title %>").
 
 /// Write
 To write in your Taaalk:
-<%= show_tlk_url(@tlk) %> (while logged in)
+<%= show_tlk_url(@tlk) %>
+(while logged in)
 
 /// Share
 To share your Taaalk with readers:

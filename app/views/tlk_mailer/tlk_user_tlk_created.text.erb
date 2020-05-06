@@ -1,13 +1,18 @@
-Hi <%= @user.username %>. You have started a Taaalk called "<%= @tlk.title %>".
+Hi <%= @user.username %>.
+
+You have started a Taaalk called "<%= @tlk.title %>".
 
 /// Invite
 To invite people to speak with you in this Taaalk:
-<%= tlk_invite_url(@tlk) %> invite code: <%= @tlk.invite_code %>
+<%= tlk_invite_url(@tlk) %>
+Invite code: <%= @tlk.invite_code %>
+
 Inviting people is optional (monologues are ok). You can also invite yourself and make fictional chat partner.
 
 /// Write
 To write in your Taaalk:
-<%= show_tlk_url(@tlk) %> (while logged in)
+<%= show_tlk_url(@tlk) %>
+(while logged in)
 
 /// Share
 To share your Taaalk with readers:
