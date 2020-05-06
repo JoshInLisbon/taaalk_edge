@@ -32,7 +32,13 @@
             <h3><%= link_to spkr.name, show_user_path(spkr.user), class: "name-spkr-#{ spkr.id }" %></h3>
           </div>
           <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
-            <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
+            <div class="spkr-biog biog-spkr-<%= spkr.id %>">
+              <div class="spkr-biog-left <%= 'spkr-biog-present' if spkr.biog.present? %>">
+              <!-- <div class="spkr-biog-inline-block-right"> -->
+                <%= spkr.biog %>
+              <!-- </div> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
-Hi <%= @follower.username %>. <%= @followed_user.username %> has started a new Taaalk "<%= @tlk.title %>".
+Hi <%= @follower.username %>.
+
+<%= @followed_user.username %> has started a new Taaalk "<%= @tlk.title %>".
 
 To get updates when a new message is added, please go to this link & press 'Follow': <%= show_tlk_url(@tlk) %>

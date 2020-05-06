@@ -58,10 +58,12 @@
     text-align: right;
     padding-left: 24px;
     // border-left: 12px solid white;
-    div {
-      text-align: left;
+    .spkr-biog-present {
       display: inline-block;
     }
+  }
+  .spkr-biog-left {
+    text-align: left;
   }
 }
 
