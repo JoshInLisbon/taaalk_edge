@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def tlk_with_me
-    current_user.update!(user_params)
+    current_user.update!(user_params_twm_new_page)
     redirect_to new_tlk_path
   end
 
@@ -109,7 +109,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_you, :password_for_delete, :tlk_with_me)
+    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_you, :password_for_delete)
+  end
+
+  def user_params_twm_new_page
+    params.require(:user).permit(:image, :username, :tlk_with_me)
   end
 
   def user_twm_params
