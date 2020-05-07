@@ -11,7 +11,7 @@ names.forEach(name => {
     image.style = 'background-image: url(<%= url_for(@spkr.image.variant(combine_options: { resize: "104x104^", auto_orient: true, gravity: "center" })) %>)'
   });
 <% end %>
-bio.innerHTML = bioInput.innerHTML
+bio.innerHTML = `<div style="text-align: left; display: inline-block;">${bioInput.innerHTML}</div>`
 
 var colors = document.querySelectorAll('.spkr-color-<%= @spkr.id %>');
 colors.forEach(color => {
