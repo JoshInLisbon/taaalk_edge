@@ -82,8 +82,12 @@ class TlksController < ApplicationController
     @tlk.spkrs.each_with_index do |spkr, i|
       if @tlk.spkrs.length == 1
         spkr_name_list << spkr.name
+      elsif i + 2 == @tlk.spkrs.length
+        spkr_name_list << "#{spkr.name} "
+      elsif i + 1 == @tlk.spkrs.length
+        spkr_name_list << "& #{spkr.name}"
       else
-        i + 1 == @tlk.spkrs.length ? spkr_name_list << "& #{spkr.name}" : spkr_name_list << "#{spkr.name}, "
+        spkr_name_list << "#{spkr.name}, "
       end
     end
     spkr_name_list
