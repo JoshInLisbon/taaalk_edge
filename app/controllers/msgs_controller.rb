@@ -113,10 +113,14 @@ class MsgsController < ApplicationController
   end
 
   def send_spkrs_new_msg_mail
+    sent_spkr_users = []
     @tlk.non_hidden_spkrs.each do |spkr|
       unless spkr.user == @spkr.user
-        mail = MsgMailer.with(tlk: @tlk, spkr: spkr, msg: @msg).new_msg_update_spkr
-        mail.deliver_later
+        unless sent_spkr_users.include?(spkr.user)
+          mail = MsgMailer.with(tlk: @tlk, spkr: spkr, msg: @msg).new_msg_update_spkr
+          mail.deliver_later
+        end
+        sent_spkr_users << spkr.user
       end
     end
   end
