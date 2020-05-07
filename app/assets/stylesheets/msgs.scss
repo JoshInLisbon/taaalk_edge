@@ -1971,8 +1971,11 @@
     .tlk-bubble {
         background-color: white;
     }
-    .spkr-info, .spkr-details-container-index {
-        border-color: white;
+    .spkr-info {
+      border-color: white;
+    }
+    .spkr-details-container-index {
+      border-color: #EBECED;
     }
 }
 .edit-msg-70 {
