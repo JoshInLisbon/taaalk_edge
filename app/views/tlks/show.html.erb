@@ -68,7 +68,21 @@
     <div class="spkr-msg-form" target="spkr-msg-form-<%= spkr.id %>">
       <%= form_with model: @msg, class: 'rta', id: "spkr-msg-form-#{spkr.id}" do |f| %>
         <div class="field" id="rta-<%= spkr.id %>">
-          <strong><%= f.label :content, raw("<span class='name-spkr-#{spkr.id}'>#{spkr.name}</span> says:") %></strong>
+
+          <div class="spkr-image-and-name" style="margin-bottom: 8px;">
+            <div class="spkr-textbox-image spkr-image image-spkr-<%= spkr.id %>"
+              <% if spkr.image.present? %>
+                style="background-image: url(<%= url_for(spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
+              <% elsif spkr.user.image.present? %>
+                style="background-image: url(<%= url_for(spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
+              <% else %>
+                style="background-image: url(<%= asset_url('user.svg') %>)"
+              <% end %>
+              >
+            </div>
+            <!-- <h3><%#= link_to spkr.name, show_user_path(spkr.user), class: "name-spkr-#{ spkr.id }" %></h3> -->
+            <strong><%= f.label :content, raw("<span class='name-spkr-#{spkr.id}'>#{spkr.name}</span> says:"), class: "mb-0" %></strong>
+          </div>
           <%= f.rich_text_area :content, target: "submit-msg-#{spkr.id}", id: "msg-#{spkr.id}", required: true  %>
         </div>
         <%= f.hidden_field :safe_content %>

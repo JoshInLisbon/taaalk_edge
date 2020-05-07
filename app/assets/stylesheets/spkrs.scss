@@ -223,3 +223,11 @@
     text-align: center;
   }
 }
+
+.spkr-textbox-image {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
