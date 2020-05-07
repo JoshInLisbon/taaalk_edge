@@ -654,6 +654,20 @@ a {
 //   }
 // }
 
+.spkr-biog {
+  font-size: 19px;
+  .trix-content {
+    a {
+      color: blue;
+      text-decoration: none;
+      &:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 trix-editor, .trix-content {
   a {
     color: blue;
