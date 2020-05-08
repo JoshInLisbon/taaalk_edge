@@ -653,6 +653,19 @@ a {
 //     // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#150d2b',GradientType=1 ); /* IE6-9 */
 //   }
 // }
+.spkr-biog-index {
+  .trix-content {
+    a {
+      color: blue;
+      text-decoration: none;
+      &:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 
 .spkr-biog, .user-biog {
   font-size: 19px;

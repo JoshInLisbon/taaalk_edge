@@ -20,12 +20,14 @@
           </div>
           <% if twm_user.tlk_with_me.present? %>
             <div class="spkr-biog-holder-index">
-              <div class="spkr-biog-index create-user-padding-left"><%= twm_user.tlk_with_me %></div>
+              <div class="spkr-biog-index create-user-padding-left"><%#= twm_user.tlk_with_me %>
+                <%= truncate(strip_tags(twm_user.tlk_with_me.to_s).gsub(/&amp;/, '&'), length: 250) %>
+              </div>
             </div>
           <% end %>
         </div>
         <div>
-          <%= link_to "Request to Taaalk with #{twm_user.username}", tlk_with_request_path(twm_user), class: "link-txt" %>
+          <%= link_to "#{strip_tags(twm_user.tlk_with_me.to_s).gsub(/&amp;/, '&').length > 250 ? "Read more & r" : "R"}equest to Taaalk with #{twm_user.username}", tlk_with_request_path(twm_user), class: "link-txt" %>
         </div>
       </div>
     <% end %>
