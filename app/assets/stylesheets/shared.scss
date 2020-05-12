@@ -347,6 +347,13 @@ a {
       margin-right: 2px;
       cursor: pointer;
     }
+    a {
+      color: blue;
+      &:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+    }
   }
   .splitter {
     // border-bottom: 1px solid #343a40;

@@ -81,11 +81,16 @@
         <div class="spkr-user-edit-form user-p-style">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
+            <div>
+              <p class="mb-4px"><strong>Your full name</strong> (or a name/username of your choice):</p>
+              <%= f.text_field :username, class: "fw-text-input" %>
+            </div>
+
             <%= fields_for @spkr do |fi| %>
-              <div>
-                <p class="mb-4px"><strong>Your full name</strong> (or a name/username of your choice):</p>
-                <%= fi.text_field :name, class: "fw-text-input" %>
-              </div>
+              <!-- <div> -->
+                <!-- <p class="mb-4px"><strong>Your full name</strong> (or a name/username of your choice):</p> -->
+                <%#= fi.text_field :name, class: "fw-text-input" %>
+              <!-- </div> -->
               <div>
                 <p class="mb-4px"><strong>Your bio</strong> (some information about you, so people understand why what you say is relevant):</p>
                 <%= fi.rich_text_area :biog %>

@@ -13,10 +13,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     if params.include? :spkr
-      super
-      current_user.update_attributes(username: spkr_params[:name], bio: spkr_params[:bio], biog: spkr_params[:biog])
-      set_tlk
-      make_spkr
+      if user_params[:username].present? && user_params[:email].present?
+        super
+        current_user.update_attributes(biog: spkr_params[:biog])
+        set_tlk
+        make_spkr
+      else
+        flash[:notice] = "You must signup with both your name and email address. Please try again."
+        redirect_to root_path
+      end
     else
       super
     end
@@ -53,8 +58,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
 
+  def user_params
+    params.require(:user).permit(:username, :email)
+  end
+
   def spkr_params
-    params.require(:spkr).permit(:name, :bio, :biog)
+    params.require(:spkr).permit(:biog)
   end
 
   def set_tlk
