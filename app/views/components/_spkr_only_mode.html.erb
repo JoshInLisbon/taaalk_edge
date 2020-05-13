@@ -20,24 +20,32 @@
 
 <div class="tlk-container">
 
-  <% @tlk.spkrs.each do |spkr| %>
-    <% unless spkr.user == current_user || spkr.hide == true  %>
-      <div class="msg-<%= spkr.color %>">
-        <div class="spkr-info spkr-info-<%= spkr.side %>">
-          <div class="spkr-image-and-name">
-            <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
-              <% if spkr.image.present? %>
-                style="background-image: url(<%= url_for(spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
-              <% elsif spkr.user.image.present? %>
-                style="background-image: url(<%= url_for(spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
-              <% else %>
-                style="background-image: url(<%= asset_url('user.svg') %>)"
-              <% end %>
-              >
+  <% @tlk.non_hidden_spkrs.each do |spkr| %>
+    <% unless spkr.user == current_user %>
+      <div class="spkr-color-<%= spkr.id %>">
+        <div class="msg-<%= spkr.color %>">
+          <div class="spkr-info spkr-info-<%= spkr.side %>">
+            <div class="spkr-image-and-name">
+              <div class="spkr-bio-image spkr-image image-spkr-<%= spkr.id %>"
+                <% if spkr.image.present? %>
+                  style="background-image: url(<%= url_for(spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
+                <% elsif spkr.user.image.present? %>
+                  style="background-image: url(<%= url_for(spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
+                <% else %>
+                  style="background-image: url(<%= asset_url('user.svg') %>)"
+                <% end %>
+                >
+              </div>
+              <h3><%= link_to spkr.name, show_user_path(spkr.user), class: "name-spkr-#{ spkr.id }" %></h3>
             </div>
-            <h3 class="name-spkr-<%= spkr.id %>"><%= link_to spkr.name, show_user_path(spkr.user) %></h3>
+            <div class="spkr-biog-holder-tlk-<%= spkr.side %>">
+              <div class="spkr-biog biog-spkr-<%= spkr.id %>">
+                <div class="spkr-biog-left <%= 'spkr-biog-present' if spkr.biog.present? %>">
+                  <%= spkr.biog %>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="spkr-biog biog-spkr-<%= spkr.id %>"><%= spkr.biog %></div>
         </div>
       </div>
     <% end %>
