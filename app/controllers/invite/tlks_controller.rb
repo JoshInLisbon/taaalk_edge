@@ -15,6 +15,7 @@ class Invite::TlksController < ApplicationController
       if current_user.present?
         make_spkr
         redirect_to show_tlk_path(@tlk), flash: { edit: true }
+        flash[:notice] = "You are now a member of this Taaalk."
       else
         redirect_to show_tlk_path(@tlk), flash: { invited: true }
         flash[:notice] = "Correct code. You must sign up / log in now to join the Taaalk."

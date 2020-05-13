@@ -14,7 +14,6 @@
 <% else %>
   <div class="wide-div-footer internal-div-footer">
 <% end %>
-    <p><%= link_to "Give feedback", "/t/taaalk-feedback" %></p>
     <div class="taaalk-about josh-info-closed">
       <p><strong>So why did Taaalk get built?</strong></p>
       <p>The world is filled with people who know lots of cool stuff and weird things. When it comes to interviews, traditionally it's been the case that a journalist has to take an interest in what you do before you get one. That doesn't happen too often, so it's probably the case that the world is under-interviewed. Taaalk is here to change that. INTERVIEWS FOR EVERYONE.</p>
@@ -24,7 +23,7 @@
       <p>More seriously, <strong>we have all grown up in a digital world that is a bit awkward</strong>. In the real world you don't walk around shouting out random facts and opinions, instead you talk to people. And in the real world while you're talking, hundreds of random people don't jump into your conversation. The best chats have a healthy level of intimacy. Taaalk tries to recreate these real world properties online. Firstly, it is all about talking (taaalking). Back and forths. This makes things feel a bit more natural than shouting out snip-its of thoughts and ideas. There's also no character limit and you can save drafts before you reply, so it's a place for deep conversations. You might find that you enjoy Taaalking even if you have normally found yourself to be a bit too shy to fully enjoy other platforms. Secondly, though anyone can read a Taaalk, only the people the "Taaalk Owner" (the person who started the Taaalk) chooses can join in the conversation. This keeps things intimate.</p>
       <p><strong>What you say matters (and might embarrass you).</strong> Because of this Taaalk comes with features to make you feel safe sharing your thoughts. Firstly, even if you are not the Taaalk Owner, you can leave a Taaalk and delete all your messages at the same time. The Taaalk will still exist, but what you've written will not. If you are a Taaalk Owner you can delete your Taaalk at any time. You can delete your account, deleting all messages you've written on the Taaalk platform and all the Taaalks you've started at the same time. It's possible to edit or delete an individual message after you have written it. And because it's possible to edit a message after someone has responded to it, we flag up when a message has been edited, so if you are the responder, you don't have to worry about someone changing the question after you've written a response to it. We hope these measures make you feel safe to share yourself on Taaalk, and if you have any more ideas, please come to the <%= link_to "Taaalk feedback conversation", "/t/taaalk-feedback" %> to discuss them.</p>
     </div>
-    <p id="taaalk-read-about">About Taaalk</p>
+    <p id="taaalk-read-about">About</p>
     <script type="text/javascript">
       var taaalkAbout = document.querySelector('.taaalk-about');
       var taaalkAboutBtn = document.querySelector('#taaalk-read-about')
@@ -37,7 +36,9 @@
         }
       });
     </script>
-    <div class="josh-info josh-info-closed">
+    <p><%= link_to "Feedback", "/t/taaalk-feedback" %></p>
+
+    <!-- <div class="josh-info josh-info-closed">
       <p>Hi, my name is Joshua and I built and designed Taaalk. I'm a product focused full stack developer and before that I was an analyst at one of Europe's top VC funds. I'm looking to be employed in either field, so please <a href="mailto:joshua@taaalk.co">get in touch with me</a> if you're hiring.</p>
       <p><strong>Other projects:</strong></p>
       <p>I write about psychology and technology.</p>
@@ -57,7 +58,7 @@
           joshInfoBtn.innerText = 'Hire me & see my other projects'
         }
       });
-    </script>
+    </script> -->
     <p class="opacity07">By using this website you agree to our:</p>
     <p><%= link_to "Privacy Policy", privacy_path %> <span class="opacity07">and</span> <%= link_to "Terms of Service", terms_path %></p>
   </div>
