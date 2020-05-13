@@ -5,7 +5,8 @@ module SpkrMaker
       tlk: @tlk,
       name: current_user.username,
       bio: current_user.bio,
-      biog: ActionView::Base.full_sanitizer.sanitize(current_user.biog.to_s),
+      # biog: ActionView::Base.full_sanitizer.sanitize(current_user.biog.to_s),
+      biog: current_user.biog,
       side: @tlk.non_hidden_spkrs.count.even? ? 'left' : 'right',
       color: choose_color(@tlk)
     )
@@ -19,7 +20,8 @@ module SpkrMaker
       tlk: @new_tlk,
       name: user.username,
       bio: user.bio,
-      biog: ActionView::Base.full_sanitizer.sanitize(user.biog.to_s),
+      # biog: ActionView::Base.full_sanitizer.sanitize(user.biog.to_s),
+      biog: current_user.biog,
       side: @new_tlk.spkrs.length.even? ? 'left' : 'right',
       color: choose_color(@new_tlk)
     )
