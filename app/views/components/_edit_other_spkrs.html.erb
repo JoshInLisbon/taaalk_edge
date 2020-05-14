@@ -45,7 +45,7 @@
             <div class="spkr-user-edit-form">
 
               <div>
-                <label for="name" class="mb-4px">Edit name:</label>
+                <label for="name" class="mb-4px"><strong>Edit name:</strong></label>
               </div>
 
               <div>
@@ -75,20 +75,20 @@
               </label>
 
               <div>
-                <p class="mb-4px">Edit Twitter handle:</p>
+                <p class="mb-4px"><strong>Edit Twitter handle:</strong></p>
                 <p class="info-p mb-4px">E.g. for "<a href="https://twitter.com/gotaaalk">twitter.com/gotaaalk</a>", the Twitter handle would just be "gotaaalk"</p>
                 <p class="info-p mb-4px"><strong>Do not include</strong> the "twitter.com/" section of your Twitter profile url or the "@" of your handle.</p>
                 <%= f.text_field :twitter_handle, class: "fw-text-input", target: "spkr-#{spkr.id}" %>
               </div>
 
               <div>
-                <label for="name" class="mb-4px">Edit bio:</label>
+                <label for="name" class="mb-4px"><strong>Edit bio:</strong></label>
               </div>
 
 
               <%= f.rich_text_area :biog, id: "biog-spkr-#{spkr.id}", target: "spkr-#{spkr.id}" %>
               <div class="spkr-color-edit">
-                <div><label for="color" class="mb-4px">Edit speech bubble style:</label></div>
+                <div><label for="color" class="mb-4px"><strong>Edit speech bubble style:</strong></label></div>
 
                 <div class="spkr-color-show-more link-txt" target="color-spkr-<%= spkr.id %>">See more colors...</div>
 
@@ -110,12 +110,12 @@
                 <%= f.submit spkr.name.present? ? "Suggest Update (#{spkr.name})" : "Update Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary other-spkr-edit-btn tlk-btn-unsaved' %>
                 <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Suggesting an update will send an email asking <%= spkr.name %> to confirm changes.</p>
               </div>
-              <div>
-                <p id="leave-tlk" class="fake-link tlk-leave danger-link-txt" target="spkr-leave-<%= spkr.id %>">Remove from Taaalk</p>
+              <div class="text-right">
+                <p id="leave-tlk" class="fake-link tlk-leave" target="spkr-leave-<%= spkr.id %>">Remove from Taaalk</p>
               </div>
-              <div id="spkr-leave-<%= spkr.id %>" class="tlk-section-off tlk-leave-links">
-                <strong><%= link_to "Remove #{spkr.name} & delete all their messages.", url_for(action: :remove, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY remove #{spkr.name} from this Taaalk & delete their messages."}, class: "danger-link-txt" %></strong><br>
-                <strong><%= link_to "Remove #{spkr.name} & keep all their messages.", url_for(action: :hide_other_spkr, controller: :spkrs, id: spkr.id), class: "danger-link-txt", method: :get, data: {confirm: "Thise will permanently remove #{spkr.name} Taaalk, but keep your messages. Confirm below:"} %></strong>
+              <div id="spkr-leave-<%= spkr.id %>" class="text-right tlk-section-off tlk-leave-links">
+                <%= link_to "Remove #{spkr.name} & delete all their messages.", url_for(action: :remove, controller: :spkrs, id: spkr.id), method: :delete, data: {confirm: "This will PERMANENTLY remove #{spkr.name} from this Taaalk & delete their messages."}, class: "danger-link-txt" %><br>
+                <%= link_to "Remove #{spkr.name} & keep all their messages.", url_for(action: :hide_other_spkr, controller: :spkrs, id: spkr.id), class: "danger-link-txt", method: :get, data: {confirm: "Thise will permanently remove #{spkr.name} Taaalk, but keep your messages. Confirm below:"} %>
               </div>
 
             <% end %>

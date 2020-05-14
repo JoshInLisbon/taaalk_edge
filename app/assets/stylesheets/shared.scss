@@ -731,6 +731,7 @@ trix-editor, .trix-content {
     opacity: 0.9;
     cursor: pointer;
     &:hover {
+      color: white;
       opacity: 1;
       text-decoration: underline;
     }
