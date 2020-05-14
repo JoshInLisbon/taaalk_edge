@@ -18,6 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         current_user.update_attributes(biog: spkr_params[:biog])
         set_tlk
         make_spkr
+        flash[:edit] = true
       else
         flash[:notice] = "You must signup with both your name and email address. Please try again."
         redirect_to root_path

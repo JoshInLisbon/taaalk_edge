@@ -12,8 +12,8 @@
 }
 
 .spkr-bio-image {
-  height: 40px;
-  width: 40px;
+  height: 54px;
+  width: 54px;
   display: inline-block;
   flex-shrink: 0;
 }
@@ -21,7 +21,7 @@
 .spkr-image-and-name {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   .spkr-info {
     h3 {
       display: inline-block;
@@ -100,8 +100,8 @@
     }
   }
   .spkr-bio-image {
-    height: 40px;
-    width: 40px;
+    height: 48px;
+    width: 48px;
   }
   .spkr-image-and-name {
     margin-bottom: 8px;

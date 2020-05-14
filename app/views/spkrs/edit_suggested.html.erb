@@ -21,7 +21,15 @@
           <% end %>
           >
         </div>
-        <h3 class="name-spkr-<%= @spkr.id %>"><%= link_to @spkr.name, show_user_path(@spkr.user) %></h3>
+        <!-- <h3 class="name-spkr-<%= @spkr.id %>"><%#= link_to @spkr.name, show_user_path(@spkr.user) %></h3> -->
+        <div>
+          <h3><%= link_to @spkr.name, show_user_path(@spkr.user)%></h3>
+          <div id="twitter-handle-div-<%= @spkr.id %>">
+          <% if @spkr.twitter_handle.present? %>
+            <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle th-user" href="https://twitter.com/<%= @spkr.twitter_handle %>"><i class="fab fa-twitter"></i> @<%= @spkr.twitter_handle %></a>
+          <% end %>
+          </div>
+        </div>
       </div>
       <div class="spkr-biog-holder-tlk-left">
         <div class="spkr-biog biog-spkr-<%= @spkr.id %>"><%= @spkr.biog %></div>
@@ -53,11 +61,27 @@
           <% end %>
           >
         </div>
-        <% if @spkr.edited_name.present? %>
-        <h3 class="name-spkr-<%= @spkr.id %>"><%= link_to @spkr.edited_name, show_user_path(@spkr.user) %></h3>
-        <% else %>
-        <h3 class="name-spkr-<%= @spkr.id %>"><%= link_to @spkr.name, show_user_path(@spkr.user) %></h3>
-        <% end %>
+
+        <div>
+          <!-- <h3><%#= link_to spkr.name, show_user_path(spkr.user)%></h3> -->
+
+          <% if @spkr.edited_name.present? %>
+            <h3 class="name-spkr-<%= @spkr.id %>"><%= link_to @spkr.edited_name, show_user_path(@spkr.user) %></h3>
+          <% else %>
+            <h3 class="name-spkr-<%= @spkr.id %>"><%= link_to @spkr.name, show_user_path(@spkr.user) %></h3>
+          <% end %>
+
+
+          <div id="twitter-handle-div-<%= @spkr.id %>">
+            <% if @spkr.edited_twitter_handle.present? %>
+              <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle th-user" href="https://twitter.com/<%= @spkr.edited_twitter_handle %>"><i class="fab fa-twitter"></i> @<%= @spkr.edited_twitter_handle %></a>
+            <% elsif @spkr.twitter_handle.present? %>
+              <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle th-user" href="https://twitter.com/<%= @spkr.twitter_handle %>"><i class="fab fa-twitter"></i> @<%= @spkr.twitter_handle %></a>
+            <% end %>
+          </div>
+        </div>
+
+
       </div>
       <div class="spkr-biog-holder-tlk-left">
         <% if @spkr.edited_biog.present? %>

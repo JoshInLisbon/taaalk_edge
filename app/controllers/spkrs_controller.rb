@@ -23,8 +23,6 @@ class SpkrsController < ApplicationController
     @tlk = @spkr.tlk
     spkr_sides_update(@tlk)
     redirect_to show_tlk_path(@tlk)
-    # redirect_to show_tlk_path(@spkr.tlk)
-
   end
 
   def remove
@@ -67,6 +65,9 @@ class SpkrsController < ApplicationController
       if @spkr.edited_color.present?
         @spkr.color = @spkr.edited_color
       end
+      if @spkr.edited_twitter_handle.present?
+        @spkr.twitter_handle = @spkr.edited_twitter_handle
+      end
       @spkr.save!
       complete_user_profile_on_edit
       redirect_to show_tlk_path(@spkr.tlk)
@@ -91,7 +92,7 @@ class SpkrsController < ApplicationController
   end
 
   def spkr_params
-    params.require(:spkr).permit(:name, :bio, :image, :biog)
+    params.require(:spkr).permit(:name, :bio, :image, :biog, :twitter_handle)
   end
 
   def spkr_color_param
@@ -101,6 +102,9 @@ class SpkrsController < ApplicationController
   def complete_user_profile_on_edit
     if @spkr.name.present?
       current_user.update_attributes(username: @spkr.name) unless current_user.username.present?
+    end
+    if @spkr.twitter_handle.present?
+      current_user.update_attributes(twitter_handle: @spkr.twitter_handle) unless current_user.twitter_handle.present?
     end
     if @spkr.bio.present?
       current_user.update_attributes(bio: @spkr.bio) unless current_user.bio.present?
@@ -116,6 +120,9 @@ class SpkrsController < ApplicationController
   def complete_user_profile
     if spkr_params[:name].present?
       current_user.update_attributes(username: spkr_params[:name]) unless current_user.username.present?
+    end
+    if spkr_params[:twitter_handle].present?
+      current_user.update_attributes(twitter_handle: spkr_params[:twitter_handle]) unless current_user.twitter_handle.present?
     end
     if spkr_params[:bio].present?
       current_user.update_attributes(bio: spkr_params[:bio]) unless current_user.bio.present?
@@ -143,6 +150,9 @@ class SpkrsController < ApplicationController
     end
     if spkr_params[:image].present?
       @spkr.edited_image = spkr_params[:image]
+    end
+    if spkr_params[:twitter_handle].present?
+      @spkr.edited_twitter_handle = spkr_params[:twitter_handle]
     end
     @spkr.save!
   end

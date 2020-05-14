@@ -673,6 +673,17 @@ a {
   }
 }
 
+p, .trix-content {
+  a {
+    color: blue;
+    text-decoration: none;
+    &:hover {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+}
+
 
 .spkr-biog, .user-biog {
   font-size: 19px;
@@ -853,4 +864,8 @@ trix-editor, .trix-content {
 
 .bottom-spacer {
   height: 6px;
+}
+
+.info-p {
+  font-size: 14px;
 }
