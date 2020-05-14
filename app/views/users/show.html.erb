@@ -24,7 +24,11 @@
           <% end %>
           >
         </div>
+
         <h1 class="user-title"><%= @user.username %></h1>
+        <% if @user.twitter_handle.present? %>
+          <a class="twitter-handle th-user" href="https://twitter.com/<%= @user.twitter_handle %>"><i class="fab fa-twitter"></i> @<%= @user.twitter_handle %></a>
+        <% end %>
       </div>
     </div>
   </div>

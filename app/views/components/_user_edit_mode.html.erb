@@ -35,6 +35,12 @@
     <div class="create-index-container">
       <div class="p-0 user-container mt-24">
         <div>
+          <p class="mb-4px">Your Twitter handle:</p>
+          <p class="info-p mb-4px">E.g. for "<a href="https://twitter.com/gotaaalk">twitter.com/gotaaalk</a>", the Twitter handle would just be "gotaaalk"</p>
+          <p class="info-p mb-4px"><strong>Do not include</strong> the "twitter.com/" section of your Twitter profile url or the "@" of your handle.</p>
+          <%= f.text_field :twitter_handle, class: "fw-text-input" %>
+        </div>
+        <div>
           <p class="mb-4px">Your email:</p>
           <%= f.text_field :email, class: "fw-text-input" %>
         </div>

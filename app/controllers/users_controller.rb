@@ -109,7 +109,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_you, :password_for_delete)
+    params.require(:user).permit(:image, :username, :bio, :biog, :email, :tlk_with_you, :password_for_delete, :twitter_handle)
   end
 
   def user_params_twm_new_page
