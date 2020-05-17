@@ -26,7 +26,7 @@
           <h3><%= link_to @spkr.name, show_user_path(@spkr.user)%></h3>
           <div id="twitter-handle-div-<%= @spkr.id %>">
           <% if @spkr.twitter_handle.present? %>
-            <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle th-user" href="https://twitter.com/<%= @spkr.twitter_handle %>"><i class="fab fa-twitter"></i> @<%= @spkr.twitter_handle %></a>
+            <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle" href="https://twitter.com/<%= @spkr.twitter_handle %>"><i class="fab fa-twitter"></i> <%= @spkr.twitter_handle %></a>
           <% end %>
           </div>
         </div>
@@ -74,9 +74,9 @@
 
           <div id="twitter-handle-div-<%= @spkr.id %>">
             <% if @spkr.edited_twitter_handle.present? %>
-              <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle th-user" href="https://twitter.com/<%= @spkr.edited_twitter_handle %>"><i class="fab fa-twitter"></i> @<%= @spkr.edited_twitter_handle %></a>
+              <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle" href="https://twitter.com/<%= @spkr.edited_twitter_handle %>"><i class="fab fa-twitter"></i> <%= @spkr.edited_twitter_handle %></a>
             <% elsif @spkr.twitter_handle.present? %>
-              <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle th-user" href="https://twitter.com/<%= @spkr.twitter_handle %>"><i class="fab fa-twitter"></i> @<%= @spkr.twitter_handle %></a>
+              <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle" href="https://twitter.com/<%= @spkr.twitter_handle %>"><i class="fab fa-twitter"></i> <%= @spkr.twitter_handle %></a>
             <% end %>
           </div>
         </div>

@@ -22,7 +22,7 @@ if(bioInput.innerHTML) {
 }
 
 <% if @spkr.twitter_handle.present? %>
-  twitterHandleDiv.innerHTML = ` <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle th-user" href="https://twitter.com/<%= @spkr.twitter_handle %>"><i class="fab fa-twitter"></i> @<%= @spkr.twitter_handle %></a>`
+  twitterHandleDiv.innerHTML = ` <a id="twitter-handle-<%= @spkr.id %>" class="twitter-handle" href="https://twitter.com/<%= @spkr.twitter_handle %>"><i class="fab fa-twitter"></i> <%= @spkr.twitter_handle %></a>`
 <% else %>
   twitterHandleDiv.innerHTML = ""
 <% end %>
