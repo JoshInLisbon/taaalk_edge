@@ -13,6 +13,7 @@ import { detailsToggle } from "../components/details_toggle"
 import { userEditSwitch } from "../components/user_edit_switch"
 import { loadEditMsg } from "../components/load_edit_msg"
 import { toggleColorSpace } from "../components/toggle_colors"
+import { autoTweet } from "../components/auto_tweet"
 
 let mode = document.querySelector('#meta').content
 
@@ -30,6 +31,7 @@ if(mode == 'tlks-show-edit') {
   changeBrToDiv();
   unsavedRadioAlert();
   toggleColorSpace();
+  autoTweet();
 }
 
 if(mode == 'tlks-show-invited') {
@@ -49,6 +51,7 @@ if(mode == 'tlks-show-spkr') {
   uploadImage();
   unsavedRadioAlert();
   toggleColorSpace();
+  autoTweet();
 }
 
 if(mode == 'users-edit') {
