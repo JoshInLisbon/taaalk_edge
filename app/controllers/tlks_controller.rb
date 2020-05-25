@@ -154,11 +154,11 @@ class TlksController < ApplicationController
       end
     end
     if (tweet + spkrs_tweet_section).length <= 116
-      tweet << spkrs_tweet_section + " #{tlk_url}"
+      tweet << spkrs_tweet_section + " #{show_tlk_url}"
     elsif tweet.length <= 116
-      tweet << " #{tlk_url}"
+      tweet << " #{show_tlk_url}"
     else
-      tweet = "I wrote a new message in my Taaalk #{tlk_url}"
+      tweet = "I wrote a new message in my Taaalk #{show_tlk_url}"
     end
   end
 end
