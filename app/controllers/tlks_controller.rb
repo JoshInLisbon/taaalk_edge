@@ -135,7 +135,7 @@ class TlksController < ApplicationController
     @tlk.spkrs.where.not(user: current_user).where(hide: false).sort_by(&:created_at)
   end
 
-  def tweet # add @tlk. to things...
+  def tweet
     tweet = "I wrote a new message in my Taaalk \"#{@tlk.title}\""
     spkrs_tweet_section = ""
     if non_hidden_non_current_user_spkrs.present?
