@@ -24,13 +24,35 @@
   display: block;
 }
 
+// .tlk-btn-unsaved {
+//   background: #00CD4B !important;
+//   color: white !important;
+//   &:hover {
+//     background: #00C03E !important;
+//   }
+// }
+
 .tlk-btn-unsaved {
-  background: #00CD4B !important;
+  background-color: #2c2c57 !important;
   color: white !important;
   &:hover {
-    background: #00C03E !important;
+    background-color: #1F1F4A !important;
   }
 }
+
+
+.bg-green-fade, .bg-fade {
+  .tlk-btn-unsaved, .create-user-update-btn {
+    background: #00CD4B !important;
+    color: white !important;
+    &:hover {
+      background: #00C03E !important;
+    }
+  }
+}
+
+
+
 
 .tlk-p-unsaved {
   display: block;
@@ -423,9 +445,9 @@
   // }
 }
 
-.msg-submit-btn {
-  margin: 8px 0 28px 0;
-}
+// .msg-submit-btn {
+//   margin: 8px 0 28px 0;
+// }
 
 .tlk-follow-link {
   margin-right: 8px;
@@ -1080,10 +1102,18 @@
 }
 
 
+// .create-user-update-btn {
+//   // margin-top: 24px !important;
+//   color: white !important;
+//   background-color: #00CD4B !important;
+// }
+
 .create-user-update-btn {
-  // margin-top: 24px !important;
+  background-color: #2c2c57 !important;
   color: white !important;
-  background-color: #00CD4B !important;
+  &:hover {
+    background-color: #1F1F4A !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1202,4 +1232,162 @@
 .tlk-request-submit-btn {
   margin-bottom: 30px;
 }
+
+.auto-tweet-top {
+  // background-color: #F5F5F5;
+  border-radius: 6px 41px 4px 4px;
+  margin: 24px 0 28px 0;
+  p {
+    color: #00acee;
+  }
+  .auto-tweet-checkbox {
+    display: inline-block;
+    margin-right: 8px;
+    font-weight: bold;
+  }
+  .auto-tweet-first-p {
+    display: inline-block;
+    margin-left: 8px;
+    margin-bottom: 0;
+    font-size: 15px;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+  }
+  .fas {
+    font-size: 22px;
+    display: inline-block;
+    float: right;
+    margin-bottom: -6px;
+  }
+}
+
+.auto-tweet-on {
+  .auto-tweet-top {
+    // background-color: #00acee;
+    // background-color: #F5F5F5;
+  }
+  // p {
+  //   // color: white;
+  //   color: #00acee;
+  //   // color: #2c2c57;
+  // }
+  // .fa-check-square {
+  //   color: #00CD4B;
+  // }
+  .tlk-btn-unsaved {
+    background-color: #2c2c57 !important;
+    &:hover {
+      background-color: #1F1F4A !important;
+    }
+  }
+  .fa-toggle-on {
+    color: #00CD4B;
+    cursor: pointer;
+    &:hover {
+      color: #00C03E;
+      cursor: pointer;
+    }
+  }
+  .fa-toggle-off {
+    display: none;
+  }
+  .auto-tweet-span-on {
+    display: inline;
+    color: #00CD4B;
+  }
+  .auto-tweet-span-off {
+    display: none;
+  }
+}
+
+.auto-tweet-bottom {
+  // background-color: #00acee;
+  background-color: #F5F5F5;
+  padding: 8px 16px 8px 16px;
+  border-radius: 4px;
+  margin-top: 24px;
+  // font-size: 15px;
+  // border-top: 1px solid #14C0FF;
+  p {
+    margin-bottom: 8px;
+  }
+  textarea {
+    margin: 0;
+    border: none;
+    border-width: 0px;
+    border-style: inset;
+    border-color: blue;
+    border-radius: 4px;
+    padding: 4px 6px;
+    width: 100%;
+    background-color: #14C0FF;
+  }
+  .example-tweet {
+    border-radius: 4px;
+    padding: 4px 6px;
+    width: 100%;
+    background-color: #00acee;
+    color: white;
+  }
+}
+
+.auto-tweet-off {
+  // .auto-tweet-top {
+  //   background-color: #F5F5F5;
+  // }
+  // p {
+  //   color: #2c2c57;
+  // }
+  // .auto-tweet-bottom {
+  //   margin-top: 16px;
+  // }
+  .fa-toggle-on {
+    display: none;
+  }
+  .fa-toggle-off {
+    color: #EA0000;
+    cursor: pointer;
+    &:hover {
+      color: #D60000;
+      cursor: pointer;
+    }
+  }
+  .auto-tweet-span-on {
+    display: none;
+  }
+  .auto-tweet-span-off {
+    display: inline;
+    color: #EA0000;
+  }
+  .auto-tweet-bottom {
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .auto-tweet-top {
+    .auto-tweet-first-p {
+      font-size: 16px;
+    }
+  }
+  .auto-tweet-bottom {
+    font-size: 16px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 456px) {
+  .auto-tweet-top {
+    .auto-tweet-first-p {
+      display: block;
+      margin: 0;
+      padding: 24px 0 0 0;
+    }
+  }
+}
+
+
 

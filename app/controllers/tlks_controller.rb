@@ -22,6 +22,7 @@ class TlksController < ApplicationController
     @msg = Msg.new()
     new_spkr_on_invite
     user_is_spkr_only? if current_user.present?
+    @tweet = tweet if user_is_spkr_only? || @tlk.user == current_user
     updated_at = @tlk.updated_at
     view_count = @tlk.views += 1
     @tlk.update_columns(views: view_count, updated_at: updated_at)
@@ -127,6 +128,37 @@ class TlksController < ApplicationController
         follower: follower
       ).new_tlk_update_user_follower
       mail.deliver_later
+    end
+  end
+
+  def non_hidden_non_current_user_spkrs
+    @tlk.spkrs.where.not(user: current_user).where(hide: false).sort_by(&:created_at)
+  end
+
+  def tweet # add @tlk. to things...
+    tweet = "I wrote a new message in my Taaalk \"#{@tlk.title}\""
+    spkrs_tweet_section = ""
+    if non_hidden_non_current_user_spkrs.present?
+      spkrs_tweet_section << " with "
+      non_hidden_non_current_user_spkrs.each_with_index do |spkr, i| # needs to be other spkrs vs current user, so cannot be in model
+        spkr_name_and_twitter = spkr.twitter_handle.present? ? "#{spkr.name} (@#{spkr.twitter_handle})" : spkr.name
+        if non_hidden_non_current_user_spkrs.length == 1
+          spkrs_tweet_section << "#{spkr_name_and_twitter}"
+        elsif i + 2 == non_hidden_non_current_user_spkrs.length
+          spkrs_tweet_section << "#{spkr_name_and_twitter} "
+        elsif i + 1 == non_hidden_non_current_user_spkrs.length
+          spkrs_tweet_section << "& #{spkr_name_and_twitter}"
+        else
+          spkrs_tweet_section << "#{spkr_name_and_twitter}, "
+        end
+      end
+    end
+    if (tweet + spkrs_tweet_section).length <= 116
+      tweet << spkrs_tweet_section + " #{tlk_url}"
+    elsif tweet.length <= 116
+      tweet << " #{tlk_url}"
+    else
+      tweet = "I wrote a new message in my Taaalk #{tlk_url}"
     end
   end
 end

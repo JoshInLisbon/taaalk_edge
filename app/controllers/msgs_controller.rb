@@ -18,6 +18,7 @@ class MsgsController < ApplicationController
           @msg.save!
           @tlk.update(updated_at: Time.now)
         end
+        set_spkr_auto_tweet
         send_spkrs_new_msg_mail
         send_followers_new_msg_mail
         redirect_to show_tlk_path(@tlk)
@@ -26,7 +27,7 @@ class MsgsController < ApplicationController
           @new_draft = false
           @msg.update!(draft_msg_params)
           respond_to do |format|
-            format.js { render 'create', layout: false }
+            format.js { render 'draft', layout: false }
           end
         else
           @new_draft = true
@@ -34,7 +35,7 @@ class MsgsController < ApplicationController
           @msg.user = current_user
           @msg.save!
           respond_to do |format|
-            format.js { render 'create', layout: false }
+            format.js { render 'draft', layout: false }
           end
         end
       end
@@ -66,6 +67,17 @@ class MsgsController < ApplicationController
   end
 
   private
+
+  def set_spkr_auto_tweet
+    if auto_tweet_params[:auto_tweet_on] != @spkr.auto_tweet_on
+      @spkr.auto_tweet_on = auto_tweet_params[:auto_tweet_on]
+      @spkr.save!
+    end
+  end
+
+  def auto_tweet_params
+    params.require(:msg).permit(:auto_tweet_on)
+  end
 
   def set_edit_msg
     @msg = Msg.find(params[:id])

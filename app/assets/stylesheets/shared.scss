@@ -5,9 +5,19 @@ body {
   color: #020202;
   font-size: 100%;
   font-size: 17px;
-  // word-wrap : break-word;
-  // text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+a, .spkr-biog-index, .spkr-biog, .tlk-title, .example-tweet {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  -ms-word-break: break-word;
+  word-break: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 input, textarea, trix-editor {
@@ -400,10 +410,21 @@ a {
   margin-bottom: 0;
 }
 
-.btn-dark {
-  background-color: #2c2c57;
+
+  .btn-dark {
+    background-color: #2c2c57;
+    &:hover {
+      background-color: #1F1F4A;
+    }
+  }
+
+
+.btn-green {
+  background: #00CD4B;
+  color: white;
   &:hover {
-    background-color: #1F1F4A;
+    background: #00C03E;
+    color: white;
   }
 }
 
@@ -476,10 +497,10 @@ a {
   margin: 0 !important;
 }
 
-.btn-green {
-  background-color: #00CD4B;
-  color: white;
-}
+// .btn-green {
+//   background-color: #00CD4B;
+//   color: white;
+// }
 
 .mb-4px {
   margin-bottom: 4px !important;

@@ -90,6 +90,10 @@
         <%= f.hidden_field :tlk_id, :value => @tlk.id %>
         <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
+        <%= fields_for spkr do |fi| %>
+          <%= f.hidden_field :auto_tweet_on, :value => true, target: "auto-tweet-#{spkr.id}" %>
+        <% end %>
+
         <% if spkr.unpublished_message.present? %>
           <%= f.hidden_field :msg_id, :value => spkr.unpublished_message.id %>
         <% end %>
@@ -104,7 +108,31 @@
           </div>
         </div>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
-        <%= f.submit "Publish Your Message", name: "publish", id: "submit-msg-#{spkr.id}", class: "btn tlk-btn-unsaved msg-submit-btn" %>
+        <div class="auto-tweet <%= spkr.auto_tweet_on ? 'auto-tweet-on' : 'auto-tweet-off' %>" id="auto-tweet-<%= spkr.id %>">
+          <div class="auto-tweet-top">
+          <%= f.submit "Publish Your Message", name: "publish", id: "submit-msg-#{spkr.id}", class: "btn tlk-btn-unsaved msg-submit-btn", target: "submit-auto-tweet-#{spkr.id}" %>
+          <p class="auto-tweet-first-p">
+            <span class="auto-tweet-checkbox">
+              <i class="fas fa-toggle-on"></i>
+              <i class="fas fa-toggle-off"></i>
+            </span>
+            <i class="fab fa-twitter"></i> Tweet when publish is
+            <span class="auto-tweet-span-on"><strong>on</strong></span>
+            <span class="auto-tweet-span-off"><strong>off</strong></span>
+          </p>
+            <div class="auto-tweet-bottom">
+              <p><strong><i class="fab fa-twitter"></i> Tweet when publish increases your Taaalk readership.</strong></p>
+              <p>Twitter will open when you publish your message.</p>
+              <p>The suggested Tweet will read:</p>
+              <div class="example-tweet">
+                <%= @tweet %>
+              </div>
+              <p class="mb-0 mt-2">You can edit the Tweet in your Twitter client.</p>
+
+            </div>
+          </div>
+        </div>
+
       <% end %>
     </div>
 

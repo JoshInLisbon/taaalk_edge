@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  default_url_options :host => "taaalk.co"
   # devise_for :users
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
