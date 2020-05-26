@@ -17,7 +17,7 @@ class MsgMailer < ApplicationMailer
 
     mail(
       to: "#{@follow.user.username} <#{@follow.user.email}>",
-      subject: "New message in \"#{@tlk.title}\""
+      subject: "New message from #{@msg.spkr.name} in \"#{@tlk.title}\""
     )
   end
 end
