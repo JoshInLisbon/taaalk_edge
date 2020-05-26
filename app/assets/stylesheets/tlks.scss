@@ -1234,7 +1234,6 @@
 }
 
 .auto-tweet-top {
-  // background-color: #F5F5F5;
   border-radius: 6px 41px 4px 4px;
   margin: 24px 0 28px 0;
   p {
@@ -1265,18 +1264,6 @@
 }
 
 .auto-tweet-on {
-  .auto-tweet-top {
-    // background-color: #00acee;
-    // background-color: #F5F5F5;
-  }
-  // p {
-  //   // color: white;
-  //   color: #00acee;
-  //   // color: #2c2c57;
-  // }
-  // .fa-check-square {
-  //   color: #00CD4B;
-  // }
   .tlk-btn-unsaved {
     background-color: #2c2c57 !important;
     &:hover {
@@ -1304,13 +1291,10 @@
 }
 
 .auto-tweet-bottom {
-  // background-color: #00acee;
   background-color: #F5F5F5;
   padding: 8px 16px 8px 16px;
   border-radius: 4px;
   margin-top: 24px;
-  // font-size: 15px;
-  // border-top: 1px solid #14C0FF;
   p {
     margin-bottom: 8px;
   }
@@ -1335,15 +1319,6 @@
 }
 
 .auto-tweet-off {
-  // .auto-tweet-top {
-  //   background-color: #F5F5F5;
-  // }
-  // p {
-  //   color: #2c2c57;
-  // }
-  // .auto-tweet-bottom {
-  //   margin-top: 16px;
-  // }
   .fa-toggle-on {
     display: none;
   }
