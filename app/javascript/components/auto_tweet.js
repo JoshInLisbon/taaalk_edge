@@ -12,7 +12,8 @@ const autoTweet = () => {
         var spkrAtBoolean = document.querySelector(`[target="${atTarget}"]`);
         spkrAtBoolean.value = true;
         var msgPubBtn = ats.querySelector(`[target="submit-${atTarget}"]`);
-        var tweet = ats.querySelector('.example-tweet').innerText.replace(/ /g,"%20").replace(/&/,"%26");
+        var tweet = encodeURIComponent(ats.querySelector('.example-tweet').innerText);
+        console.log(tweet);
         msgPubBtn.addEventListener('click', function msgTweet(event) {
           window.open(`https://twitter.com/intent/tweet?original_referer=yoururl.com&source=tweetbutton&text=${tweet}`);
         });
@@ -29,7 +30,8 @@ const autoTweet = () => {
     var atTarget = ats.id
     if (ats.classList.contains('auto-tweet-on')) {
       var msgPubBtn = ats.querySelector(`[target="submit-${atTarget}"]`);
-      var tweet = ats.querySelector('.example-tweet').innerText.replace(/ /g,"%20").replace(/&/,"%26");
+      var tweet = encodeURIComponent(ats.querySelector('.example-tweet').innerText);
+      console.log(tweet);
       msgPubBtn.addEventListener('click', (event) => {
         window.open(`https://twitter.com/intent/tweet?original_referer=yoururl.com&source=tweetbutton&text=${tweet}`);
       });
