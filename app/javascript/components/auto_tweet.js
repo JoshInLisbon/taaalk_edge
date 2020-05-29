@@ -14,7 +14,6 @@ const autoTweet = () => {
         var msgPubBtn = ats.querySelector(`[target="submit-${atTarget}"]`);
         var exampleTweet = ats.querySelector('.example-tweet')
         var tweet = encodeURIComponent(exampleTweet.innerText);
-        // var msgHash = `%23${exampleTweet.id}`
         console.log(tweet);
         msgPubBtn.addEventListener('click', function msgTweet(event) {
           window.open(`https://twitter.com/intent/tweet?original_referer=yoururl.com&source=tweetbutton&text=${tweet}`);
@@ -34,8 +33,6 @@ const autoTweet = () => {
       var msgPubBtn = ats.querySelector(`[target="submit-${atTarget}"]`);
       var exampleTweet = ats.querySelector('.example-tweet')
       var tweet = encodeURIComponent(exampleTweet.innerText);
-      // var msgHash = `%23${exampleTweet.id}`
-      // var tweet = encodeURIComponent(ats.querySelector('.example-tweet').innerText);
       console.log(tweet);
       msgPubBtn.addEventListener('click', (event) => {
         window.open(`https://twitter.com/intent/tweet?original_referer=yoururl.com&source=tweetbutton&text=${tweet}`);
