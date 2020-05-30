@@ -22,8 +22,8 @@ module SpkrMaker
       name: user.username,
       bio: user.bio,
       # biog: ActionView::Base.full_sanitizer.sanitize(user.biog.to_s), # Don't know what this was for...
-      biog: current_user.biog,
-      twitter_handle: current_user.twitter_handle,
+      biog: user.biog,
+      twitter_handle: user.twitter_handle,
       side: @new_tlk.spkrs.length.even? ? 'left' : 'right',
       color: choose_color(@new_tlk)
     )
