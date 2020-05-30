@@ -553,6 +553,7 @@
 }
 
 .tlk-card {
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
   border-radius: 4px;
   border: none;
   margin-bottom: 20px !important;
@@ -657,7 +658,7 @@
 
 .spkr-index-right {
   // border-left: none !important;
-  border-right: 8px solid #EBECED;
+  border-right: 6px solid #EBECED;
   padding-left: 16px;
   .spkr-img-name-container-index {
     flex-direction: row-reverse;
@@ -682,7 +683,7 @@
 
 
 .spkr-index-left {
-  border-left: 8px solid #EBECED;
+  border-left: 6px solid #EBECED;
   .spkr-img-name-container-index {
     p {
       margin-left: 8px;
@@ -697,7 +698,7 @@
 }
 
 .index-border-btm-container {
-  border-bottom: 40px solid white;
+  border-bottom: 16px solid white;
   max-width: 700px;
 }
 
@@ -969,7 +970,7 @@
 
 .create-container {
   max-width: 700px;
-  border-bottom: 20px solid white;
+  border-bottom: 8px solid white;
   padding-bottom: 40px;
   // border-top: 40px solid white;
   h1 {
@@ -1064,7 +1065,7 @@
 }
 
 #create-border-top-20-blue {
-  border-top: 20px solid white;
+  border-top: 8px solid white;
   // background-color: white;
   // padding: 0 8px 8px 8px;
   trix-toolbar .trix-button:not(:disabled) {
