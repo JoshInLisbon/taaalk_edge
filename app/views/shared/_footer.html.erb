@@ -14,6 +14,7 @@
 <% else %>
   <div class="wide-div-footer internal-div-footer">
 <% end %>
+    <%= link_to raw("Taaa<span class='fc-logo'>l</span>k"), root_path, class: "navbar-brand tlk-brand" %>
     <div class="taaalk-about josh-info-closed">
       <p><strong>So why did Taaalk get built?</strong></p>
       <p>The world is filled with people who know lots of cool stuff and weird things. When it comes to interviews, traditionally it's been the case that a journalist has to take an interest in what you do before you get one. That doesn't happen too often, so it's probably the case that the world is under-interviewed. Taaalk is here to change that. INTERVIEWS FOR EVERYONE.</p>
@@ -29,10 +30,10 @@
       var taaalkAboutBtn = document.querySelector('#taaalk-read-about')
       taaalkAboutBtn.addEventListener('click', (event) => {
         taaalkAbout.classList.toggle('josh-info-closed');
-        if (taaalkAboutBtn.innerText == 'About Taaalk') {
+        if (taaalkAboutBtn.innerText == 'About') {
           taaalkAboutBtn.innerText = 'Show less'
         } else {
-          taaalkAboutBtn.innerText = 'About Taaalk'
+          taaalkAboutBtn.innerText = 'About'
         }
       });
     </script>
