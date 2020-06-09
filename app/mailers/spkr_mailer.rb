@@ -4,7 +4,7 @@ class SpkrMailer < ApplicationMailer
   def edited_spkr
     mail(
       to: "#{@spkr.name} <#{@spkr.user.email}>",
-      subject: "#{@editing_spkr.username} has edited your details in \"#{@tlk.title}\". Please confirm or reject this edit."
+      subject: "[Action Required] #{@editing_spkr.username} has edited your details in \"#{@tlk.title}\". Please confirm or reject this edit."
     )
   end
 
