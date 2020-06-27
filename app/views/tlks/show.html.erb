@@ -139,11 +139,23 @@
 
   <% end %>
 
+  <div class="spkr-notes mb-4">
+    <p class="mb-2"><strong><i class="fas fa-pen"></i> Take notes for your Taaalk.</strong> Keep ideas for future messages here.</p>
+    <div class="spkr-msg-form">
+      <%= form_with model: spkr do |fb| %>
+        <%= fb.rich_text_area :notes %>
+        <%= fb.submit "Save Notes", name: "notes", class: "spkr-notes-btn" %>
+      <% end %>
+    </div>
+  </div>
+
   <% if spkr.unpublished_message.present? %>
     <div class="tlk-draft" id="submit-msg-<%= spkr.id %>-draft">
       <%= raw(spkr.unpublished_message.draft_string) %>
     </div>
   <% end %>
+
+
 <% end %>
 
 </div>
