@@ -5,12 +5,22 @@ class SpkrsController < ApplicationController
 
   def update
     if @spkr.user == current_user
-      params = spkr_params.merge!(spkr_color_param)
-      @spkr.update(params)
-      complete_user_profile
-      respond_to do |format|
-        format.js # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
-        # format.html { redirect_to new_tlk_path(@tlk) }
+      if params[:notes]
+        @spkr.update(params.require(:spkr).permit(:notes))
+        respond_to do |format|
+          format.js {
+            render  :template => "spkrs/update_notes.js.erb",
+                    :layout => false
+          }
+        end
+      else
+        u_params = spkr_params.merge!(spkr_color_param)
+        @spkr.update(u_paramsparams)
+        complete_user_profile
+        respond_to do |format|
+          format.js # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
+          # format.html { redirect_to new_tlk_path(@tlk) }
+        end
       end
     else
       spkr_edited

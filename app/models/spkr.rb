@@ -9,6 +9,7 @@ class Spkr < ApplicationRecord
 
   has_rich_text :biog
   has_rich_text :edited_biog
+  has_rich_text :notes
 
   validates :name, presence: true
 
