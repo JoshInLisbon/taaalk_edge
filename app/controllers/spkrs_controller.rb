@@ -15,7 +15,7 @@ class SpkrsController < ApplicationController
         end
       else
         u_params = spkr_params.merge!(spkr_color_param)
-        @spkr.update(u_paramsparams)
+        @spkr.update(u_params)
         complete_user_profile
         respond_to do |format|
           format.js # { @tlk }# <-- will render `app/views/reviews/create.js.erb`
