@@ -143,8 +143,8 @@
     <p class="mb-2"><strong><i class="fas fa-pen"></i> Take notes for your Taaalk.</strong> Keep ideas for future messages here.</p>
     <div class="spkr-msg-form">
       <%= form_with model: spkr do |fb| %>
-        <%= fb.rich_text_area :notes %>
-        <%= fb.submit "Save Notes", name: "notes", class: "spkr-notes-btn" %>
+        <%= fb.rich_text_area :notes, id: "spkr-notes-#{ spkr.id }" %>
+        <%= fb.submit "Save Notes", name: "notes", class: "spkr-notes-btn spkr-notes-btn-unsaved", id: "btn-spkr-notes-#{ spkr.id }" %>
       <% end %>
     </div>
   </div>
