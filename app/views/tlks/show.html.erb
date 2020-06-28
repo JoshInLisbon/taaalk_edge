@@ -91,7 +91,7 @@
         <%= f.hidden_field :tlk_code, :value => @tlk.msg_key %>
         <%= f.hidden_field :spkr_id, :value => spkr.id %>
         <%= fields_for spkr do |fi| %>
-          <%= f.hidden_field :auto_tweet_on, :value => true, target: "auto-tweet-#{spkr.id}" %>
+          <%= f.hidden_field :auto_tweet_on, :value => spkr.auto_tweet_on == false ? false : true, target: "auto-tweet-#{spkr.id}" %>
         <% end %>
 
         <% if spkr.unpublished_message.present? %>
