@@ -1,0 +1,60 @@
+<% if rb_spkrs_array.any? %>
+
+<div class="user-tlks-index-container">
+  <p class="mt-24 mb-24"><strong><%= rb_title %>:</strong></p>
+  <div class="card-columns">
+    <% rb_spkrs_array.each_with_index do |tlk, i| %>
+      <%= link_to show_tlk_path(tlk), class: "tlk-index-link" do %>
+        <div class="tlk-card card">
+          <div
+          <% if tlk.image.present? %>
+            class="tlk-image-index card-img-top img-fluid tlk-image-present"
+            style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= url_for(tlk.image.variant(combine_options: { resize_to_limit: [600, nil], auto_orient: true, gravity: "center" })) %>);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;"
+         <% elsif tlk.color.present? %>
+            class="tlk-image-index card-img-top img-fluid"
+            style="
+              background: <%= tlk.color %>;
+            "
+          <% else %>
+            class="tlk-image-index tlk-image-index-color card-img-top img-fluid tlk-image-not-present"
+          <% end %>
+          >
+            <h4 class="tlk-card-title card-title"><%= tlk.title %></h4>
+          </div>
+          <div class="tlk-card-block card-block">
+            <% tlk.non_hidden_spkrs.each do |spkr| %>
+              <div class="msg-<%= spkr.color %>">
+                <div class="spkr-details-container-index spkr-index-<%= spkr.side %>">
+                  <div class="spkr-img-name-container-index">
+                    <div class="spkr-image-index"
+                      <% if spkr.image.present? %>
+                        style="background-image: url(<%= url_for(spkr.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
+                      <% elsif spkr.user.image.present? %>
+                        style="background-image: url(<%= url_for(spkr.user.image.variant(combine_options: { resize: '104x104^', auto_orient: true, gravity: "center" })) %>)"
+                      <% else %>
+                        style="background-image: url(<%= asset_url('user.svg') %>)"
+                      <% end %>
+                      >
+                    </div>
+                    <p class="spkr-name-index"><strong><%= spkr.name %></strong></p>
+                  </div>
+                  <% if spkr.biog.present? %>
+                    <div class="spkr-biog-holder-index">
+                      <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 115) %></p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+
+<% end %>

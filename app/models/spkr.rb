@@ -16,4 +16,8 @@ class Spkr < ApplicationRecord
   def unpublished_message
     msgs.find_by(published: false)
   end
+
+  def replied_last?
+    tlk.msgs.last.spkr == self
+  end
 end

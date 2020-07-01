@@ -11,12 +11,14 @@ class MsgsController < ApplicationController
           @msg.created_at = Time.now
           @msg.update!(msg_params)
           @tlk.update(updated_at: Time.now)
+          update_spkrs_to_reply
         else
           @msg = Msg.new(msg_params)
           @msg.user = current_user
           @msg.published = true
           @msg.save!
           @tlk.update(updated_at: Time.now)
+          update_spkrs_to_reply
         end
         set_spkr_auto_tweet
         send_spkrs_new_msg_mail
@@ -67,6 +69,17 @@ class MsgsController < ApplicationController
   end
 
   private
+
+  def update_spkrs_to_reply
+    if @tlk.spkrs.length == 1
+      @spkr.update_attribute(:to_reply, true) if @spkr.to_reply != true
+    else
+      @tlk.spkrs.each do |spkr|
+        spkr != @spkr ? spkr.to_reply = true : spkr.to_reply = false
+        spkr.save!
+      end
+    end
+  end
 
   def set_spkr_auto_tweet
     if auto_tweet_params[:auto_tweet_on] != @spkr.auto_tweet_on
