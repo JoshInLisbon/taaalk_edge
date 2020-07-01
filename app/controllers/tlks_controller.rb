@@ -5,7 +5,7 @@ class TlksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new]
 
   def index
-    @tlks = Tlk.paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
+    @tlks = Tlk.includes(:msgs).where.not(msgs: { id: nil }).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
     @title = "The home of public conversations"
   end
 
