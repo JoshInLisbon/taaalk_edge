@@ -11,6 +11,19 @@
       <% end %>
     </div>
 
+    <% if current_user.present? && current_user.has_spkrs? %>
+      <div class="nav-btn-holder">
+        <%= link_to tlk_replies_path do %>
+          <div class="nav-btn position-relative <%= @title == 'Your Replies' ? 'link-txt' : ''%>">
+          <i class="fas fa-inbox"></i>Reply
+          <% if current_user.has_replies? %>
+            <div class="tlks-notification-badge"></div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
     <div class="nav-btn-holder">
 
       <% if user_signed_in? %>

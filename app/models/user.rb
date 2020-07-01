@@ -50,4 +50,16 @@ class User < ApplicationRecord
     end
     true if arr.any?
   end
+
+  def has_spkrs?
+    spkrs.any?
+  end
+
+  def has_replies?
+    spkrs.each do |spkr|
+      return true if spkr.to_reply == true
+    end
+    false
+  end
+
 end

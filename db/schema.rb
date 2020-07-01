@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_120538) do
+ActiveRecord::Schema.define(version: 2020_06_29_152438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_120538) do
     t.string "twitter_handle"
     t.string "edited_twitter_handle"
     t.boolean "auto_tweet_on", default: true
+    t.boolean "to_reply", default: false
     t.index ["tlk_id"], name: "index_spkrs_on_tlk_id"
     t.index ["user_id"], name: "index_spkrs_on_user_id"
   end

@@ -5,13 +5,13 @@ class TlksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new]
 
   def index
-    @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
+    @tlks = Tlk.joins(:msgs).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
     @title = "The home of public conversations"
   end
 
-  def newly_created
-    @tlks = Tlk.includes(:spkrs).paginate(page: params[:page], per_page: 30).order(created_at: :desc)
-    @title = "The home of public conversations"
+  def replies
+    set_replies_and_no_replies
+    @title = 'Your Replies'
   end
 
   def show
@@ -49,6 +49,7 @@ class TlksController < ApplicationController
     @tlk.msg_key = Digest::MD5.hexdigest(@tlk.title)
     if @tlk.save!
       make_spkr
+      @spkr.update_attribute(:to_reply, true)
       send_tlk_user_tlk_created_mail
       send_user_followers_new_tlk_mail
       redirect_to show_tlk_path(@tlk), flash: { edit: true }
@@ -77,6 +78,48 @@ class TlksController < ApplicationController
   end
 
   private
+
+  def set_replies_and_no_replies
+    @has_no_messages_replies = []
+    @normal_replies = []
+    @only_spkr_replies = []
+    @multiple_same_spkr_replies = []
+    @no_replies = []
+
+    current_user.spkrs.each do |spkr|
+      if spkr.tlk.msgs.any?
+        if spkr.tlk.spkrs.length == 1
+          @only_spkr_replies << spkr.tlk
+
+
+        elsif spkr.to_reply == true
+          spkr.tlk.spkrs.each do |tlk_spkr|
+            if tlk_spkr != spkr
+              if tlk_spkr.user == spkr.user
+                if @multiple_same_spkr_replies.exclude?(spkr.tlk)
+                  @multiple_same_spkr_replies << spkr.tlk
+                end
+              else
+                @normal_replies << spkr.tlk
+              end
+            end
+          end
+        else
+          @no_replies << spkr.tlk
+        end
+      elsif spkr.tlk.user == spkr.user
+        @has_no_messages_replies << spkr.tlk
+      else
+        @no_replies << spkr.tlk
+      end
+    end
+
+    @has_no_messages_replies.sort! { |a, b| b.updated_at <=> a.updated_at }
+    @normal_replies.sort! { |a, b| b.updated_at <=> a.updated_at }
+    @only_spkr_replies.sort! { |a, b| b.updated_at <=> a.updated_at }
+    @multiple_same_spkr_replies.sort! { |a, b| b.updated_at <=> a.updated_at }
+    @no_replies.sort! { |a, b| b.updated_at <=> a.updated_at }
+  end
 
   def spkr_names
     spkr_name_list = ""

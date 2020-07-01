@@ -1,6 +1,6 @@
 module SpkrMaker
   def make_spkr
-    spkr = Spkr.create!(
+    @spkr = Spkr.create!(
       user: current_user,
       tlk: @tlk,
       name: current_user.username,
@@ -9,10 +9,11 @@ module SpkrMaker
       biog: current_user.biog,
       twitter_handle: current_user.twitter_handle,
       side: @tlk.non_hidden_spkrs.count.even? ? 'left' : 'right',
-      color: choose_color(@tlk)
+      color: choose_color(@tlk),
+      to_reply: @tlk.msgs.any? ? true : false
     )
-    send_tlk_spkr_tlk_joined_mail unless spkr.user == @tlk.user
-    send_tlk_owner_spkr_joined_mail unless @requesting_spkr.present? || spkr.user == @tlk.user
+    send_tlk_spkr_tlk_joined_mail unless @spkr.user == @tlk.user
+    send_tlk_owner_spkr_joined_mail unless @requesting_spkr.present? || @spkr.user == @tlk.user
   end
 
   def make_remote_spkr(user)
