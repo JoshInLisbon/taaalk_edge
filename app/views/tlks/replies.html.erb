@@ -1,31 +1,33 @@
 <%= render partial: 'components/reply_block', locals: {
   rb_title: @has_no_messages_replies.length > 1 ?
-    "You've started these Taaalks, but haven't written anything in them" :
-    "You've started this Taaalk, but haven't written anything in it",
+    "You've started these Taaalks, but haven't written anything in them:" :
+    "You've started this Taaalk, but haven't written anything in it:",
   rb_spkrs_array: @has_no_messages_replies
 }  %>
 
 <%= render partial: 'components/reply_block', locals: {
-  rb_title: "It could be your turn to reply",
+  rb_title: "It could be your turn to reply:",
   rb_spkrs_array: @normal_replies
 }  %>
 
 <%= render partial: 'components/reply_block', locals: {
   rb_title: @only_spkr_replies.length > 1 ?
-    "You're the only person in these Taaalks, so if you don't reply, no one else will" :
-    "You're the only person in this Taaalk, so if you don't reply, no one else will",
+    "You're the only person in these Taaalks, so if you don't reply, no one else will:" :
+    "You're the only person in this Taaalk, so if you don't reply, no one else will:",
   rb_spkrs_array: @only_spkr_replies
 }  %>
 
 <%= render partial: 'components/reply_block', locals: {
   rb_title: @multiple_same_spkr_replies.length > 1 ?
-    "Multiple versions of \"you\" are in these Taaalks, so you might want to reply to yourself" :
-    "Multiple versions of \"you\" are in this Taaalk, so you might want to reply to yourself",
+    raw("Multiple versions of \"you\" are in these Taaalks, so you might want to reply to yourself:<br>
+      <span style=\"font-weight: normal;\">If you didn't mean to join these Taaalks multiple times, you can leave them. Visit a Taaalk and click on \"Edit Taaalk Details\".</span>") :
+    raw("Multiple versions of \"you\" are in this Taaalk, so you might want to reply to yourself:<br>
+      <span style=\"font-weight: normal;\">If you didn't mean to join this Taaalk multiple times, you can leave it. Visit the Taaalk and click on \"Edit Taaalk Details\".</span>"),
   rb_spkrs_array: @multiple_same_spkr_replies
 }  %>
 
 <%= render partial: 'components/reply_block', locals: {
-  rb_title: "You're probably waiting for someone else to reply",
+  rb_title: "You're probably waiting for someone else to reply:",
   rb_spkrs_array: @no_replies
 }  %>
 

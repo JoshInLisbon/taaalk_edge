@@ -1,7 +1,7 @@
 <% if rb_spkrs_array.any? %>
 
 <div class="user-tlks-index-container">
-  <p class="mt-24 mb-24"><strong><%= rb_title %>:</strong></p>
+  <p class="mt-24 mb-24"><strong><%= rb_title %></strong></p>
   <div class="card-columns">
     <% rb_spkrs_array.each_with_index do |tlk, i| %>
       <%= link_to show_tlk_path(tlk), class: "tlk-index-link" do %>
