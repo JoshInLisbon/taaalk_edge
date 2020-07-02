@@ -90,8 +90,6 @@ class TlksController < ApplicationController
       if spkr.tlk.msgs.any?
         if spkr.tlk.spkrs.length == 1
           @only_spkr_replies << spkr.tlk
-
-
         elsif spkr.to_reply == true
           spkr.tlk.spkrs.each do |tlk_spkr|
             if tlk_spkr != spkr
@@ -100,7 +98,9 @@ class TlksController < ApplicationController
                   @multiple_same_spkr_replies << spkr.tlk
                 end
               else
-                @normal_replies << spkr.tlk
+                if @normal_replies.exclude?(spkr.tlk)
+                  @normal_replies << spkr.tlk
+                end
               end
             end
           end
