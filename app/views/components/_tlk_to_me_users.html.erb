@@ -21,7 +21,7 @@
           <% if twm_user.tlk_with_me.present? %>
             <div class="spkr-biog-holder-index">
               <div class="spkr-biog-index create-user-padding-left"><%#= twm_user.tlk_with_me %>
-                <%= truncate(strip_tags(twm_user.tlk_with_me.to_s).gsub(/&amp;/, '&'), length: 250) %>
+                <%= truncate(strip_tags(twm_user.tlk_with_me.to_s).gsub(/&amp;/, '&'), length: 250, separator: ' ') %>
               </div>
             </div>
           <% end %>

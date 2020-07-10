@@ -43,7 +43,7 @@
                   </div>
                   <% if spkr.biog.present? %>
                     <div class="spkr-biog-holder-index">
-                      <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 115) %></p>
+                      <p class="spkr-biog-index"><%= truncate(strip_tags(spkr.biog.to_s), length: 115, separator: ' ') %></p>
                     </div>
                   <% end %>
                 </div>

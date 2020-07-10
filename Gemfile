@@ -34,6 +34,17 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 # Sendgrid for email
 gem 'sendgrid-ruby'
+# Pundit for authentication
+gem 'pundit'
+# Factroy Bot for testing
+group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+end
+# clearning test db before testing
+group :test do
+  gem 'database_cleaner-active_record'
+end
 
 # END TAAALK ADDITIONS
 

@@ -2,20 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#tlk-section-edit {
-  // border: 1px solid red;
-}
-
-// #tlk-section-read {
-//   border: 1px solid #2c2c57;
-// }
-
-// invite
-// #tlk-invited-note-login {
-//   margin-bottom: 0;
-// }
-
-
 .tlk-section-off {
   display: none;
 }
@@ -23,14 +9,6 @@
 .tlk-section-on {
   display: block;
 }
-
-// .tlk-btn-unsaved {
-//   background: #00CD4B !important;
-//   color: white !important;
-//   &:hover {
-//     background: #00C03E !important;
-//   }
-// }
 
 .tlk-btn-unsaved {
   background-color: #2c2c57 !important;
@@ -87,30 +65,8 @@
   display: flex;
   align-items: center;
   margin-bottom: 32px;
-
-  background: #2c2c57; /* Old browsers */
-  // background: -moz-linear-gradient(left,  #1D1D48 0%, #2c2c57 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(left,  #1D1D48 0%,#2c2c57 100%); /* Chrome10-25,Safari5.1-6 */
-  // background: linear-gradient(to right,  #1D1D48 0%,#2c2c57 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1D1D48', endColorstr='#2c2c57',GradientType=1 ); /* IE6-9 */
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
-  // background: #2c2c57; /* Old browsers */
-  // background: -moz-linear-gradient(left,  #2c2c57 1%, #2c2c57 43%, #eb0309 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(left,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* Chrome10-25,Safari5.1-6 */
-  // background: linear-gradient(to right,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#eb0309',GradientType=1 ); /* IE6-9 */
+  background: #2c2c57;
 }
-
-// @media (max-width: 768px) {
-//   .tlk-image {
-//     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
-//     background: #2c2c57; /* Old browsers */
-//     background: -moz-linear-gradient(left,  #2c2c57 1%, #eb0309 100%); /* FF3.6-15 */
-//     background: -webkit-linear-gradient(left,  #2c2c57 1%, #eb0309 100%); /* Chrome10-25,Safari5.1-6 */
-//     background: linear-gradient(to right,  #2c2c57 1%, #eb0309 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-//     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#eb0309',GradientType=1 ); /* IE6-9 */
-//   }
-// }
 
 .tlk-title {
   color: white;
@@ -121,7 +77,6 @@
   padding: 56px 0;
 }
 
-// Medium devices (tablets, 768px and up)
 @media (max-width: 768px) {
   .tlk-image {
     min-height: 180px;
@@ -131,15 +86,12 @@
   }
 }
 
-
-
 .tlk-draft {
   display: none;
 }
 
 .tlk-follow {
   margin-bottom: 8px;
-  // font-size: 16px;
 }
 
 .tlk-follow-div {
@@ -175,9 +127,6 @@
   justify-content: center;
   .tlk-title-edit {
     outline: none;
-    // background: transparent;
-    // border: 2px dashed white;
-    // color: white;
     display: block;
     width: 100%;
     max-width: 700px;
@@ -186,7 +135,6 @@
     padding: 0 0 0 8px;
     font-size: 48px;
     display: block;
-
     border-radius: 4px;
     border-width: 2px;
     border-style: inset;
@@ -247,7 +195,6 @@
 
 .tlking-container {
   max-width: 872px;
-  // background-color: yellow;
   margin: 0 auto;
 }
 
@@ -295,9 +242,6 @@
   margin-bottom: 8px;
   font-size: 19px;
   max-width: 732px;
-  // progress {
-  //   display: none;
-  // }
 }
 
 .msg-preview {
@@ -375,7 +319,6 @@
   .msg-preview {
     .tlk-bubble {
       max-width: 100%;
-      // max-width: calc(100% - 16px);
     }
   }
   .tlk-bubble {
@@ -440,14 +383,7 @@
 
 .spkr-info-right {
   text-align: right;
-  // .trix-content {
-  //   text-align: left;
-  // }
 }
-
-// .msg-submit-btn {
-//   margin: 8px 0 28px 0;
-// }
 
 .tlk-follow-link {
   margin-right: 8px;
@@ -456,6 +392,7 @@
 .tlk-bottom-edit-btn {
   margin-top: 32px !important;
 }
+
 // index
 
 .bg-image-index {
@@ -574,11 +511,6 @@
   border-bottom: 1px solid #dbdbdb;
 }
 
-
-.tlk-card-title {
-
-}
-
 .tlk-card-block {
   padding: 16px 8px 8px 8px;
   background-color: white;
@@ -607,7 +539,6 @@
   p {
     padding: 0 8px;
     margin: 0;
-    // font-size: 16px;
   }
 }
 
@@ -659,7 +590,6 @@
 }
 
 .spkr-index-right {
-  // border-left: none !important;
   border-right: 6px solid #EBECED;
   padding-left: 16px;
   .spkr-img-name-container-index {
@@ -714,17 +644,13 @@
 .small-white-split {
   height: 12px;
   background-color: white;
-  // margin: 32px 0 40px 0;
   margin: 0;
   max-width: 700px;
-  // margin-bottom: 32px;
-
 }
 
 .small-blue-split {
   height: 12px;
   background-color: #2c2c57;
-  // margin: 32px 0 40px 0;
   margin: 0;
   max-width: 700px;
 }
@@ -746,8 +672,6 @@
     display: inline-block;
   }
   #index-what-btn {
-    // height: min-content;
-    // margin-top: 3px;
     i {
       color: #07d755;
       margin-right: 4px;
@@ -788,39 +712,6 @@
   }
 }
 
-
-.index-background-color-big {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
-  // background: #2c2c57; /* Old browsers */
-  // background: -moz-linear-gradient(left,  #2c2c57 1%, #2c2c57 43%, #eb0309 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(left,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* Chrome10-25,Safari5.1-6 */
-  // background: linear-gradient(to right,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#eb0309',GradientType=1 ); /* IE6-9 */
-
-  // background: #2c2c57;
-
-  // background: -moz-linear-gradient(top,  #2c2c57 0%, white 100%);
-  // background: -webkit-linear-gradient(top,  #2c2c57 0%, white 100%);
-  // background: linear-gradient(to bottom,  #2c2c57 0%, white 100%);
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='white',GradientType=0 );
-}
-
-.index-background-color-small {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
-  // background: #2c2c57; /* Old browsers */
-  // background: -moz-linear-gradient(left,  #2c2c57 1%, #2c2c57 43%, #eb0309 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(left,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* Chrome10-25,Safari5.1-6 */
-  // background: linear-gradient(to right,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#eb0309',GradientType=1 ); /* IE6-9 */
-
-  // background: #2c2c57;
-
-  // background: -moz-linear-gradient(top,  #2c2c57 0%, #8686FF 100%);
-  // background: -webkit-linear-gradient(top,  #2c2c57 0%, #8686FF 100%);
-  // background: linear-gradient(to bottom,  #2c2c57 0%, #8686FF 100%);
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#8686FF',GradientType=0 );
-}
-
 #index-top-blob-spkr {
   margin-top: -14px;
 }
@@ -829,8 +720,6 @@
 .index-tlking-container {
   padding-left: 64px;
   max-width: 636px;
-  // margin-top: 36px;
-  // padding-bottom: 32px;
   margin-bottom: 40px;
   .tlk-blob-spkr {
     height: 0;
@@ -844,7 +733,6 @@
 }
 
 .top-index-container {
-  // margin-bottom: 40px;
   margin-top: 0;
 }
 
@@ -869,9 +757,6 @@
 }
 
 @media (max-width: 768px) {
-  .top-index-container {
-    // margin-bottom: 12px;
-  }
   .small-white-split {
     height: 8px;
     margin-bottom: 8px;
@@ -892,16 +777,6 @@
   }
 }
 
-// .index-got-it {
-//   margin-bottom: 40px;
-// }
-
-#index-what-btn {
-
-}
-
-
-
 .index-hide-intro {
   display: none;
 }
@@ -909,10 +784,6 @@
 .index-show-intro {
   display: block;
 }
-
-// .tlk-explain-div-small {
-//   padding-bottom: 40px;
-// }
 
 #last-index-tlk-bubble {
   margin-bottom: 0;
@@ -924,10 +795,6 @@
 }
 
 // create
-
-// .create-number-div {
-//   display: inline-block;
-// }
 
 .create-number {
   display: inline-block;
@@ -956,10 +823,6 @@
 
 .create-background-color-red {
   background: #EB0309;
-  // background: linear-gradient(to bottom, #EB0309 0%, #D50000 100%);
-  // background: -moz-linear-gradient(top,  #EB0309 0%, #D50000 100%);
-  // background: -webkit-linear-gradient(top,  #EB0309 0%, #D50000 100%);
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EB0309', endColorstr='#D50000',GradientType=0 );
 }
 
 .f-blue {
@@ -974,7 +837,6 @@
   max-width: 700px;
   border-bottom: 8px solid white;
   padding-bottom: 40px;
-  // border-top: 40px solid white;
   h1 {
     font-size: 24px;
     padding-top: 40px;
@@ -992,25 +854,8 @@
     border-bottom: none;
     h1 {
       display: block !important;
-      // padding-bottom: 12px !important;
     }
   }
-}
-
-.index-background-color-medium {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2c2c57+1,2c2c57+43,eb0309+100 */
-  // background: #2c2c57; /* Old browsers */
-  // background: -moz-linear-gradient(left,  #2c2c57 1%, #2c2c57 43%, #eb0309 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(left,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* Chrome10-25,Safari5.1-6 */
-  // background: linear-gradient(to right,  #2c2c57 1%,#2c2c57 43%,#eb0309 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='#eb0309',GradientType=1 ); /* IE6-9 */
-
-  // background: #2c2c57;
-
-  // background: -moz-linear-gradient(top,  #2c2c57 0%, white 100%);
-  // background: -webkit-linear-gradient(top,  #2c2c57 0%, white 100%);
-  // background: linear-gradient(to bottom,  #2c2c57 0%, white 100%);
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c57', endColorstr='white',GradientType=0 );
 }
 
 .create-index-container {
@@ -1068,8 +913,6 @@
 
 #create-border-top-20-blue {
   border-top: 8px solid white;
-  // background-color: white;
-  // padding: 0 8px 8px 8px;
   trix-toolbar .trix-button:not(:disabled) {
     background: white;
   }
@@ -1104,13 +947,6 @@
   }
 }
 
-
-// .create-user-update-btn {
-//   // margin-top: 24px !important;
-//   color: white !important;
-//   background-color: #00CD4B !important;
-// }
-
 .create-user-update-btn {
   background-color: #2c2c57 !important;
   color: white !important;
@@ -1128,10 +964,6 @@
 .create-user-padding-left {
   padding-left: 8px;
 }
-
-// .creat-user-padding-bottom {
-//   padding-bottom: 8px;
-// }
 
 .twm_user {
   border-radius: 4px;
@@ -1202,7 +1034,6 @@
 // Invite
 
 .tlk-invite-code {
-  // width: 100%;
   width: 252px;
   padding: 6px 0 6px 6px;
 
@@ -1252,11 +1083,11 @@
     margin-left: 8px;
     margin-bottom: 0;
     font-size: 15px;
-    user-select: none; /* supported by Chrome and Opera */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
   .fas {
     font-size: 22px;
@@ -1366,8 +1197,6 @@
     }
   }
 }
-
-
 
 // anyone tlk
 

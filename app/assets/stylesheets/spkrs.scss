@@ -31,10 +31,6 @@
   }
 }
 
-// .spkr-biog-holder-tlk-right {
-//   text-align: right;
-// }
-
 
 .spkr-info {
   margin-bottom: 32px;
@@ -53,7 +49,6 @@
   .spkr-biog {
     text-align: right;
     padding-left: 24px;
-    // border-left: 12px solid white;
     .spkr-biog-present {
       display: inline-block;
     }
@@ -71,7 +66,6 @@
   }
   .spkr-biog {
     padding-right: 24px;
-    // border-right: 12px solid white;
   }
 }
 
@@ -88,7 +82,6 @@
     padding-right: 8px;
     .spkr-biog {
       padding-left: 16px;
-      // border-left: 8px solid white;
     }
   }
   .spkr-info-left {
@@ -96,7 +89,6 @@
     padding-left: 8px;
     .spkr-biog {
       padding-right: 16px;
-      // border-right: 8px solid white;
     }
   }
   .spkr-bio-image {
@@ -113,7 +105,6 @@
 
 .spkr-edit {
   background-color: white;
-  // border: 2px dashed #343a40;
   border-radius: 4px;
   display: inline-block;
   padding: 2px 4px;
@@ -144,7 +135,6 @@
   }
 }
 .spkr-user-edit-form, .spkr-msg-form {
-  // margin-top: 16px;
   .trix-content, input[type=text], input[type=password], input[type=email] {
     background-color: white;
     margin-bottom: 16px;
@@ -172,12 +162,6 @@
       border: none;
   }
 }
-
-// .spkr-user-edit-form:first-of-type {
-//   .spkr-edit-other-heading-link {
-//     margin-top: 24px !important;
-//   }
-// }
 
 .spkr-edit-other-heading-link {
   margin-top: 24px;
@@ -212,7 +196,6 @@
 .spkr-edit-box {
   background-color: #F5F5F5;
   padding: 8px;
-  // border-radius: 4px;
   .tlk-bubble {
     width: 40px;
     height: 40px;

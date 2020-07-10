@@ -25,7 +25,6 @@
     display: -webkit-box;
     display: -moz-box;
     display: -ms-box;
-    // display: box;
     text-align: right;
     .nav-btn-holder {
       margin-right: 32px
@@ -34,19 +33,16 @@
       margin-right: 0px;
     }
     .nav-btn {
-      // height: 36px;
       display: inline-block;
       display: inline-block;
       padding: 6px 0px 0 0px;
       border-radius: 4px;
-      // margin-right: 32px;
       i {
         margin-right: 8px;
         margin-left: 4px;
       }
       &:hover {
         cursor: pointer;
-        // background-color: white;
         color: #0000ff;
         a {
           color: #0000ff;
@@ -58,7 +54,6 @@
       height: 39px;
     }
     .nav-user-btn {
-      // height: 36px;
       border-radius: 4px;
       display: inline-flex;
       align-items: center;
@@ -81,7 +76,6 @@
       }
       &:hover {
         cursor: pointer;
-        // background-color: white;
         color: #0000ff;
         a {
           color: #0000ff;
@@ -94,8 +88,6 @@
   margin-right: 8px !important;
 }
 
-
-// Small devices (landscape phones, 576px and up)
 @media (max-width: 440px) {
   .navbar {
     display: block !important;
@@ -134,12 +126,3 @@
     height: auto !important;
   }
 }
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {  }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {  }
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {  }
