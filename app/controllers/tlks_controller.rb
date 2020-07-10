@@ -6,6 +6,7 @@ class TlksController < ApplicationController
 
   def index
     @tlks = Tlk.includes(:msgs).where.not(msgs: { id: nil }).paginate(page: params[:page], per_page: 30).order(updated_at: :desc)
+    authorize @tlks
     @title = "The home of public conversations"
   end
 

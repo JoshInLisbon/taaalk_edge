@@ -1,7 +1,9 @@
 <%= render partial: 'components/reply_block', locals: {
   rb_title: @has_no_messages_replies.length > 1 ?
-    "You've started these Taaalks, but haven't written anything in them:" :
-    "You've started this Taaalk, but haven't written anything in it:",
+    raw("You've started these Taaalks, but haven't written anything in them:<br>
+      <span style=\"font-weight: normal;\">If you haven't invited anyone to join your Taaalks, you should probably do that too.</span>") :
+    raw("You've started this Taaalk, but haven't written anything in it:<br>
+      <span style=\"font-weight: normal;\">If you haven't invited anyone to join your Taaalk, you should probably do that too.</span>"),
   rb_spkrs_array: @has_no_messages_replies
 }  %>
 
