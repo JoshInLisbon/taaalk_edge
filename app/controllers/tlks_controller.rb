@@ -17,9 +17,9 @@ class TlksController < ApplicationController
 
   def show
     @tlk = Tlk.includes(:spkrs, :msgs).friendly.find(params[:id])
-    @msgs = @tlk.msgs.sort_by(&:created_at)
+    @msgs = @tlk.msgs.order(:created_at)
     @title = "#{@tlk.title} - #{spkr_names}"
-    @user_spkrs = Spkr.where(tlk: @tlk, user: current_user, hide: false).sort_by(&:created_at)
+    @user_spkrs = Spkr.where(tlk: @tlk, user: current_user, hide: false).order(:created_at)
     @msg = Msg.new()
     new_spkr_on_invite
     user_is_spkr_only? if current_user.present?
@@ -176,7 +176,7 @@ class TlksController < ApplicationController
   end
 
   def non_hidden_non_current_user_spkrs
-    @tlk.spkrs.where.not(user: current_user).where(hide: false).sort_by(&:created_at)
+    @tlk.spkrs.where.not(user: current_user).where(hide: false).order(:created_at)
   end
 
   def tweet
