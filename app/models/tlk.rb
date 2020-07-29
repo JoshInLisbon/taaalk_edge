@@ -14,15 +14,15 @@ class Tlk < ApplicationRecord
   end
 
   def all_spkrs
-    spkrs.sort_by(&:created_at)
+    spkrs.order(:created_at)
   end
 
   def non_hidden_spkrs
-    spkrs.where(hide: false).sort_by(&:created_at)
+    spkrs.where(hide: false).order(:created_at)
   end
 
   def non_tlk_user_spkrs
-    spkrs.where.not(user: self.user).sort_by(&:created_at)
+    spkrs.where.not(user: self.user).order(:created_at)
   end
 
   extend FriendlyId
