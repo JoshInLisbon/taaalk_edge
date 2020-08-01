@@ -2,7 +2,6 @@ const indexInfoPivot = () => {
   let hmmmBtn = document.querySelector('#index-what-btn');
   let indexBackground = document.querySelector('#index-background-color');
   let indexTlk = document.querySelector('#tlk-intro-container');
-  let topWhiteSplit = document.querySelector('#index-top-small-blue-split');
   let indexBorderBtmContainer = document.querySelector('.index-border-btm-container');
   hmmmBtn.addEventListener('click', (event) => {
     if (hmmmBtn.innerHTML == 'Learn More') {

@@ -1,5 +1,5 @@
 <%= form_with model: @tlk do |f| %>
-  <div class="tlk-image tlk-image-edit"
+  <div class="tlk-image bg-purp tlk-image-edit"
   <% if @tlk.image.present? %>
     style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= url_for(@tlk.image.variant(combine_options: { resize_to_limit: [1600, nil], auto_orient: true, gravity: "center" })) %>);
     background-size: cover;
@@ -20,7 +20,7 @@
       </span>
     </label>
     <div>
-      <%= f.submit "Update Taaalk", class: 'btn btn-secondary tlk-btn-unsaved', id: 'update-tlk' %>
+      <%= f.submit "Update Taaalk", class: 'btn  tlk-btn-unsaved', id: 'update-tlk' %>
     </div>
   </div>
 <% end %>
