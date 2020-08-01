@@ -19,7 +19,7 @@
 }
 
 
-.bg-green-fade, .bg-fade {
+.bg-purp {
   .tlk-btn-unsaved, .create-user-update-btn {
     background: #00CD4B !important;
     color: white !important;
@@ -65,7 +65,6 @@
   display: flex;
   align-items: center;
   margin-bottom: 32px;
-  background: #2c2c57;
 }
 
 .tlk-title {
@@ -94,23 +93,11 @@
   margin-bottom: 8px;
 }
 
-.tlk-follow-div {
-  .btn {
-    font-size: 19px;
-    margin-bottom: 4px;
-  }
-}
-
 .tlk-unfollow {
   margin-left: 4px;
 }
 
 @media (max-width: 768px) {
-  .tlk-follow-div {
-    .btn {
-      font-size: 18px;
-    }
-  }
   .tlk-image {
     min-height: 180px;
     padding: 0 12px;
@@ -395,15 +382,14 @@
 
 // index
 
-.bg-image-index {
-  background-color: #2c2c57;
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: top left;
+.intro-p {
+  margin-bottom: 16px;
 }
 
-.index-background {
-  background-color: #EBECED;
+@media (max-width: 768px) {
+  .intro-p {
+    margin-bottom: 0;
+  }
 }
 
 .index-container {
@@ -644,13 +630,6 @@
 .small-white-split {
   height: 12px;
   background-color: white;
-  margin: 0;
-  max-width: 700px;
-}
-
-.small-blue-split {
-  height: 12px;
-  background-color: #2c2c57;
   margin: 0;
   max-width: 700px;
 }
@@ -994,10 +973,6 @@
   a {
     color: #2c2c57;
   }
-  .btn {
-    color: white;
-    display: inline-block;
-  }
   .spkr-index-left {
     border: none !important;
     .spkr-image-index {
@@ -1012,14 +987,6 @@
   }
   .create-user-padding-left {
       padding-left: 0px;
-  }
-}
-
-.btn-grey {
-  background-color: #EBECED;
-  color: #2c2c57 !important;
-  &:hover {
-    background-color: #D5D5D5;
   }
 }
 

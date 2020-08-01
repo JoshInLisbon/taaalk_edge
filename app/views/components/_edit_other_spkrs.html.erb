@@ -107,7 +107,7 @@
 
               </div>
               <div class="other-spkr-edit-btn-div">
-                <%= f.submit spkr.name.present? ? "Suggest Update (#{spkr.name})" : "Update Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn btn-secondary other-spkr-edit-btn tlk-btn-unsaved' %>
+                <%= f.submit spkr.name.present? ? "Suggest Update (#{spkr.name})" : "Update Details", id: "spkr-#{spkr.id}", class: 'btn-spkr-edit btn other-spkr-edit-btn tlk-btn-unsaved' %>
                 <p id="p-spkr-<%= spkr.id %>" class="tlk-p-nochange">Suggesting an update will send an email asking <%= spkr.name %> to confirm changes.</p>
               </div>
               <div class="text-right">

@@ -1,12 +1,9 @@
-<div class="index-background">
 
-
-  <div id="index-background-color" class="bg-fade mb-40-mob-12 bdr-btm-drk-mob-none bg-image-index">
-  <!-- <div id="index-background-color" class="mb-40-mob-12 bdr-btm-drk-mob-none bg-image-index" style="background-image: url(<%#= asset_url('background.svg') %>);"> -->
+  <div id="index-background-color" class="bg-purp mb-18-mob-12 bdr-btm-drk-mob-none bg-image-index">
     <div id="tlk-explain-div" class="index-container top-index-container tlk-explain-div-small">
       <div class="index-border-btm-container">
         <div class="index-header-container">
-          <h1 class="f-white">The home of public conversations</h1>
+          <h1 class="f-white">The social network for conversations</h1>
           <div id="index-what-btn" class="btn learn-more-btn">Learn More</div>
         </div>
         <div id="tlk-intro-container" class="index-hide-intro">
@@ -16,9 +13,9 @@
     </div>
   </div>
 
-  <!-- <div class="index-container">
-    <p><strong>Taaalks happening now:</strong></p>
-  </div> -->
+  <div class="index-container">
+    <p class="intro-p"><strong>Conversations happening now:</strong></p>
+  </div>
 
   <div class="index-container">
 
@@ -76,11 +73,9 @@
         <% end %>
       <% end %>
     </div>
-
     <%= will_paginate @tlks, inner_window: 2, outer_window: 1 %>
-
   </div>
-</div>
+
 
 <div class="index-btm-spacer"></div>
 
