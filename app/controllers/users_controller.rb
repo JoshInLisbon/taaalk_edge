@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
 
   def show
+    # test
     @title = "(User) #{@user.username}"
     @nav = "user" if @user == current_user
     set_user_tlks
